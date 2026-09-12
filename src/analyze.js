@@ -1,5 +1,6 @@
 const Sentiment = require('sentiment');
 const STOPWORDS = require('./stopwords');
+const { categorize, CATEGORY_ORDER, CATEGORY_LABELS } = require('./categorize');
 
 const sentiment = new Sentiment();
 
@@ -58,7 +59,39 @@ function std(arr, avg) {
   return Math.sqrt(mean(arr.map((x) => (x - avg) ** 2)));
 }
 
-function analyzeReviews(reviews, meta) {
+/** Groups reviews into product-funnel categories (trading, eKYC, activation,
+ * acquisition, support, other) and summarizes each: volume, rating,
+ * sentiment split, and its own top keywords for drill-down. */
+function categoryBreakdown(reviews, total) {
+  const buckets = {};
+  for (const cat of CATEGORY_ORDER) {
+    buckets[cat] = { reviews: [], ratingSum: 0, sentimentBuckets: { positive: 0, neutral: 0, negative: 0 } };
+  }
+  for (const r of reviews) {
+    const b = buckets[r.category] || buckets.other;
+    b.reviews.push(r);
+    b.ratingSum += r.rating || 0;
+    b.sentimentBuckets[ratingBucket(r.rating)]++;
+  }
+  return CATEGORY_ORDER.map((cat) => {
+    const b = buckets[cat];
+    const count = b.reviews.length;
+    return {
+      category: cat,
+      label: CATEGORY_LABELS[cat],
+      count,
+      pctOfTotal: total ? Number(((100 * count) / total).toFixed(1)) : 0,
+      avgRating: count ? Number((b.ratingSum / count).toFixed(2)) : 0,
+      sentimentBuckets: b.sentimentBuckets,
+      topKeywords: topKeywords(b.reviews, { n: 8 }),
+    };
+  });
+}
+
+function analyzeReviews(rawReviews, meta) {
+  // Tag each review with its funnel category up front (a shallow copy, so
+  // this never mutates the objects loaded from the raw store on disk).
+  const reviews = rawReviews.map((r) => (r.category ? r : { ...r, category: categorize(`${r.title || ''} ${r.text || ''}`) }));
   const total = reviews.length;
   const distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
   let ratingSum = 0;
@@ -146,6 +179,7 @@ function analyzeReviews(reviews, meta) {
     topKeywords: topKeywords(reviews),
     topComplaintKeywords: topKeywords(negativeReviews, { n: 20 }),
     topPraiseKeywords: topKeywords(positiveReviews, { n: 20 }),
+    categoryBreakdown: categoryBreakdown(reviews, total),
     recentReviews: reviews
       .slice()
       .sort((a, b) => new Date(b.date) - new Date(a.date))
