@@ -1,0 +1,22 @@
+{
+  "name": "playstore-review-agent",
+  "version": "1.0.0",
+  "description": "Fetches Play Store / App Store reviews, summarizes insights, and builds data for the dashboard artifact.",
+  "main": "index.js",
+  "scripts": {
+    "fetch": "node src/fetchAll.js",
+    "analyze": "node src/buildDashboardData.js",
+    "all": "node src/runAll.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.125.0",
+    "app-store-scraper": "^0.18.0",
+    "google-play-scraper": "^10.1.3",
+    "sentiment": "^5.0.2"
+  }
+}

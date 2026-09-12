@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "Swastika Stocks & Investments",
+      "play": { "appId": "swastika.tradingo.justrade", "country": "in", "lang": "en" },
+      "ios": { "appId": 1627649963, "country": "in" }
+    }
+  ]
+}
