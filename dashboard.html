@@ -27,11 +27,12 @@
     --status-neutral: #8b96a8;
 
     --cat-trading: #2a78d6;
-    --cat-ekyc: #eb6834;
-    --cat-activation: #1baf7a;
-    --cat-acquisition: #eda100;
-    --cat-support: #e87ba4;
-    --cat-other: #008300;
+    --cat-investment: #eb6834;
+    --cat-ekyc: #1baf7a;
+    --cat-activation: #eda100;
+    --cat-acquisition: #e87ba4;
+    --cat-support: #008300;
+    --cat-other: #4a3aa7;
 
     --grid-line: #e1e5ea;
     --baseline: #c7cfd9;
@@ -63,11 +64,12 @@
       --status-neutral: #7b87a0;
 
       --cat-trading: #3987e5;
-      --cat-ekyc: #d95926;
-      --cat-activation: #199e70;
-      --cat-acquisition: #c98500;
-      --cat-support: #d55181;
-      --cat-other: #008300;
+      --cat-investment: #d95926;
+      --cat-ekyc: #199e70;
+      --cat-activation: #c98500;
+      --cat-acquisition: #d55181;
+      --cat-support: #008300;
+      --cat-other: #9085e9;
 
       --grid-line: #232e3d;
       --baseline: #34404f;
@@ -669,6 +671,7 @@
 
   var CATEGORY_META = [
     { category: "trading", label: "Trading" },
+    { category: "investment", label: "Investment" },
     { category: "ekyc", label: "eKYC" },
     { category: "activation", label: "Activation" },
     { category: "acquisition", label: "Acquisition" },
@@ -689,6 +692,7 @@
     surface: getVar("--surface"),
     cat: {
       trading: getVar("--cat-trading"),
+      investment: getVar("--cat-investment"),
       ekyc: getVar("--cat-ekyc"),
       activation: getVar("--cat-activation"),
       acquisition: getVar("--cat-acquisition"),

@@ -1,0 +1,34 @@
+{
+  "competitors": [
+    {
+      "name": "Zerodha Kite",
+      "play": { "appId": "com.zerodha.kite3", "country": "in", "lang": "en" },
+      "ios": { "appId": 1449453802, "country": "in" }
+    },
+    {
+      "name": "Groww",
+      "play": { "appId": "com.nextbillion.groww", "country": "in", "lang": "en" },
+      "ios": { "appId": 1404871703, "country": "in" }
+    },
+    {
+      "name": "Upstox",
+      "play": { "appId": "in.upstox.app", "country": "in", "lang": "en" },
+      "ios": { "appId": 1584953620, "country": "in" }
+    },
+    {
+      "name": "Angel One",
+      "play": { "appId": "com.msf.angelmobile", "country": "in", "lang": "en" },
+      "ios": { "appId": 1060530981, "country": "in" }
+    },
+    {
+      "name": "Fyers",
+      "play": { "appId": "com.fyers.trader", "country": "in", "lang": "en" },
+      "ios": { "appId": 1526652184, "country": "in" }
+    },
+    {
+      "name": "Dhan",
+      "play": { "appId": "com.dhan.live", "country": "in", "lang": "en" },
+      "ios": { "appId": 1575318726, "country": "in" }
+    }
+  ]
+}

@@ -7,6 +7,9 @@
     "fetch": "node src/fetchAll.js",
     "analyze": "node src/buildDashboardData.js",
     "all": "node src/runAll.js",
+    "fetch:competitors": "node src/fetchCompetitors.js",
+    "analyze:competitors": "node src/buildCompetitorData.js",
+    "all:competitors": "npm run fetch:competitors && npm run analyze:competitors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

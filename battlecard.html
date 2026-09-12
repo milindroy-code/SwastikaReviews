@@ -1,0 +1,988 @@
+<!doctype html>
+<title>Battlecard</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f2f4f7;
+    --surface: #ffffff;
+    --surface-2: #e8ecf1;
+    --surface-3: #dde4ec;
+    --border: #d7dee6;
+    --ink: #101825;
+    --ink-secondary: #3d4a5c;
+    --ink-muted: #647186;
+    --accent: #2f4b9e;
+    --accent-ink: #2f4b9e;
+    --accent-soft: #e3e9fb;
+
+    --status-good: #0ca30c;
+    --status-good-text: #006300;
+    --status-warn: #b8791a;
+    --status-critical: #d03b3b;
+    --status-neutral: #8b96a8;
+
+    --cat-trading: #2a78d6;
+    --cat-investment: #eb6834;
+    --cat-ekyc: #1baf7a;
+    --cat-activation: #eda100;
+    --cat-acquisition: #e87ba4;
+    --cat-support: #008300;
+    --cat-other: #4a3aa7;
+
+    --grid-line: #e1e5ea;
+    --baseline: #c7cfd9;
+    --shadow-card: 0 1px 2px rgba(16, 24, 37, 0.04), 0 1px 14px rgba(16, 24, 37, 0.05);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0b0f16;
+      --surface: #121a25;
+      --surface-2: #182231;
+      --surface-3: #1e2a3b;
+      --border: #263344;
+      --ink: #eef2f7;
+      --ink-secondary: #c2ccda;
+      --ink-muted: #8695ab;
+      --accent: #8ca2f0;
+      --accent-ink: #93a8f2;
+      --accent-soft: #1c2740;
+
+      --status-good: #26bd6b;
+      --status-good-text: #35d17c;
+      --status-warn: #e0a940;
+      --status-critical: #ef6a6a;
+      --status-neutral: #7b87a0;
+
+      --cat-trading: #3987e5;
+      --cat-investment: #d95926;
+      --cat-ekyc: #199e70;
+      --cat-activation: #c98500;
+      --cat-acquisition: #d55181;
+      --cat-support: #008300;
+      --cat-other: #9085e9;
+
+      --grid-line: #232e3d;
+      --baseline: #34404f;
+      --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.28);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0b0f16;
+    --surface: #121a25;
+    --surface-2: #182231;
+    --surface-3: #1e2a3b;
+    --border: #263344;
+    --ink: #eef2f7;
+    --ink-secondary: #c2ccda;
+    --ink-muted: #8695ab;
+    --accent: #8ca2f0;
+    --accent-ink: #93a8f2;
+    --accent-soft: #1c2740;
+
+    --status-good: #26bd6b;
+    --status-good-text: #35d17c;
+    --status-warn: #e0a940;
+    --status-critical: #ef6a6a;
+    --status-neutral: #7b87a0;
+
+    --cat-trading: #3987e5;
+    --cat-investment: #d95926;
+    --cat-ekyc: #199e70;
+    --cat-activation: #c98500;
+    --cat-acquisition: #d55181;
+    --cat-support: #008300;
+    --cat-other: #9085e9;
+
+    --grid-line: #232e3d;
+    --baseline: #34404f;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.28);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 0 20px 64px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  a { color: var(--accent-ink); }
+
+  .shell { max-width: 1240px; margin: 0 auto; }
+
+  header.top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 28px 0 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 0 0 6px;
+  }
+  h1.title { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+  .meta-line { font-size: 12.5px; color: var(--ink-muted); display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .dot-sep::before { content: "\2022"; margin-right: 14px; color: var(--border); }
+
+  section.block { margin: 22px 0; }
+  .block-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .block-head h2 { font-size: 16px; font-weight: 600; }
+  .block-sub { font-size: 12.5px; color: var(--ink-muted); margin-top: 2px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 18px 20px;
+  }
+
+  /* Scoreboard table */
+  .table-scroll { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-card); }
+  table.scoreboard { border-collapse: collapse; width: 100%; min-width: 860px; font-size: 12.8px; }
+  table.scoreboard th, table.scoreboard td { padding: 11px 14px; text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.scoreboard th:first-child, table.scoreboard td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); }
+  table.scoreboard thead th {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    font-weight: 600;
+    background: var(--surface-2);
+  }
+  table.scoreboard thead th:first-child { background: var(--surface-2); }
+  table.scoreboard tbody tr:last-child td { border-bottom: none; }
+  table.scoreboard tbody tr.own-row td { background: var(--accent-soft); }
+  table.scoreboard tbody tr.own-row td:first-child { background: var(--accent-soft); border-left: 3px solid var(--accent); }
+  .app-name-cell { display: flex; align-items: center; gap: 8px; }
+  .own-badge {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--accent);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 5px;
+  }
+  .rate-cell { display: inline-flex; align-items: center; gap: 5px; }
+  .rate-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+  .rate-na { color: var(--ink-muted); }
+  .sent-mini { display: inline-flex; width: 54px; height: 8px; border-radius: 4px; overflow: hidden; vertical-align: middle; }
+
+  /* Trading vs Investment chart */
+  svg text { font-family: "IBM Plex Mono", monospace; fill: var(--ink-muted); }
+  .chart-wrap { position: relative; }
+  .chart-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    line-height: 1.5;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.08s ease;
+    z-index: 5;
+    white-space: nowrap;
+  }
+  .chart-tooltip .row { display: flex; gap: 8px; align-items: center; }
+  .chart-tooltip .key { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+  .chart-tooltip .val { font-weight: 700; margin-left: auto; padding-left: 10px; }
+  .legend-row { display: flex; gap: 14px; font-size: 11.5px; color: var(--ink-muted); flex-wrap: wrap; }
+  .legend-key { display: inline-flex; align-items: center; gap: 5px; }
+  .legend-swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+  /* Deep dive tabs */
+  .app-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .app-tab {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    padding: 7px 13px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-secondary);
+    cursor: pointer;
+  }
+  .app-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .dive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .dive-col h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-muted); margin-bottom: 10px; }
+  .quote-list { display: flex; flex-direction: column; gap: 10px; }
+  .quote {
+    padding: 10px 12px;
+    background: var(--surface-2);
+    border-radius: 9px;
+    font-size: 12.8px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+    border-left: 3px solid var(--border);
+  }
+  .quote.praise { border-left-color: var(--status-good); }
+  .quote.complaint { border-left-color: var(--status-critical); }
+  .quote-meta { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--ink-muted); margin-bottom: 4px; }
+  .cat-mini-list { display: flex; flex-direction: column; gap: 8px; }
+  .cat-mini-row { display: grid; grid-template-columns: 92px 1fr 40px; align-items: center; gap: 8px; }
+  .cat-mini-name { font-size: 12px; color: var(--ink-secondary); display: flex; align-items: center; gap: 6px; }
+  .cat-mini-track { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  .cat-mini-fill { height: 100%; border-radius: 4px; }
+  .cat-mini-val { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-muted); text-align: right; }
+
+  /* Backlog */
+  .backlog-layout { display: grid; grid-template-columns: 340px 1fr; gap: 16px; align-items: start; }
+  .backlog-form { display: flex; flex-direction: column; gap: 12px; }
+  .field label { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 6px; }
+  .field input[type="text"], .field textarea, .field select {
+    width: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+  .field textarea { resize: vertical; min-height: 60px; }
+  .chip-select { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip-select button {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    padding: 5px 9px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--ink-secondary);
+    cursor: pointer;
+  }
+  .chip-select button.active { color: #fff; border-color: transparent; }
+  .submit-btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 14px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+  }
+  .submit-btn:disabled { opacity: 0.5; cursor: default; }
+  .form-hint { font-size: 11.5px; color: var(--ink-muted); }
+
+  .backlog-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .status-col h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 10px; display: flex; justify-content: space-between; }
+  .status-count { font-family: "IBM Plex Mono", monospace; color: var(--ink-muted); }
+  .idea-list { display: flex; flex-direction: column; gap: 9px; min-height: 40px; }
+  .idea-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 12px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .idea-title { font-size: 13px; font-weight: 600; }
+  .idea-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .idea-cat-chip {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 6px;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .idea-source { font-size: 11px; color: var(--ink-muted); }
+  .idea-rationale { font-size: 12px; color: var(--ink-secondary); line-height: 1.45; }
+  .idea-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
+  .idea-vote {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    padding: 4px 9px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--ink-secondary);
+    cursor: pointer;
+  }
+  .idea-vote:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .idea-status-select {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    padding: 3px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-secondary);
+  }
+  .idea-delete { font-size: 11px; color: var(--ink-muted); cursor: pointer; background: none; border: none; padding: 0; }
+  .idea-delete:hover { color: var(--status-critical); }
+  .empty-col { font-size: 11.5px; color: var(--ink-muted); padding: 8px 2px; }
+  .backlog-offline { font-size: 12.5px; color: var(--ink-muted); padding: 10px 0; }
+
+  footer.foot {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .dive-grid, .backlog-layout { grid-template-columns: 1fr; }
+    .backlog-cols { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .backlog-cols { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+
+<div class="shell">
+  <header class="top">
+    <div>
+      <p class="brand-eyebrow">Battlecard</p>
+      <h1 class="title">Swastika Investmart vs. the market</h1>
+    </div>
+    <div class="meta-line">
+      <span id="genTime">&nbsp;</span>
+      <span class="dot-sep">Reviews compared across 7 apps, Play + App Store combined</span>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <h2>Scoreboard</h2>
+        <p class="block-sub">All-time, by review-funnel category &mdash; trading and investment tracked separately on purpose</p>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table class="scoreboard" id="scoreboardTable"></table>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <h2>Trading vs. investment rating</h2>
+        <p class="block-sub">Average rating from reviews tagged to each concept &mdash; never blended into one number</p>
+      </div>
+      <div class="legend-row" id="tviLegend"></div>
+    </div>
+    <div class="card">
+      <div class="chart-wrap" id="tviChartWrap"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <h2>What users say</h2>
+        <p class="block-sub">Top praise and complaint terms, and a few representative reviews, per app</p>
+      </div>
+    </div>
+    <div class="app-tabs" id="appTabs"></div>
+    <div class="card">
+      <div class="dive-grid" id="diveGrid"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <h2>Feature parity backlog</h2>
+        <p class="block-sub">Things competitors do that could help Swastika Investmart &mdash; shared and editable by anyone with this page</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="backlog-layout">
+        <div>
+          <div class="backlog-form" id="backlogForm">
+            <div class="field">
+              <label for="ideaTitle">Feature / idea</label>
+              <input type="text" id="ideaTitle" placeholder="e.g. One-tap SIP step-up">
+            </div>
+            <div class="field">
+              <label>Category</label>
+              <div class="chip-select" id="ideaCategoryChips"></div>
+            </div>
+            <div class="field">
+              <label>Seen in</label>
+              <div class="chip-select" id="ideaSourceChips"></div>
+            </div>
+            <div class="field">
+              <label for="ideaRationale">Why it helps Swastika</label>
+              <textarea id="ideaRationale" placeholder="What problem this solves, or what it would let us match/beat"></textarea>
+            </div>
+            <div class="field">
+              <label for="ideaAddedBy">Your name (optional)</label>
+              <input type="text" id="ideaAddedBy" placeholder="e.g. Milind">
+            </div>
+            <button class="submit-btn" id="ideaSubmit">Add to backlog</button>
+            <p class="form-hint" id="backlogHint">Visible to everyone who opens this page, and persists across sessions.</p>
+          </div>
+        </div>
+        <div>
+          <div class="backlog-cols" id="backlogCols"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Reviews pulled from each store's public review feed &mdash; same pipeline as the Review Desk dashboard.</span>
+    <span>Re-run <code class="mono">npm run all:competitors</code> and republish to refresh the scoreboard.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var CATEGORY_META = [
+    { category: "trading", label: "Trading" },
+    { category: "investment", label: "Investment" },
+    { category: "ekyc", label: "eKYC" },
+    { category: "activation", label: "Activation" },
+    { category: "acquisition", label: "Acquisition" },
+    { category: "support", label: "Support" },
+    { category: "other", label: "Other" },
+  ];
+  var STATUS_ORDER = ["idea", "planned", "in_progress", "shipped"];
+  var STATUS_LABELS = { idea: "Idea", planned: "Planned", in_progress: "In progress", shipped: "Shipped" };
+
+  var STATE = {
+    data: null,
+    diveApp: null,
+    db: null,
+    ideas: [],
+    formCategory: "trading",
+    formSources: {},
+  };
+
+  function getVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  var COLORS = {
+    positive: getVar("--status-good"),
+    neutral: getVar("--status-neutral"),
+    negative: getVar("--status-critical"),
+    accent: getVar("--accent-ink"),
+    muted: getVar("--ink-muted"),
+    grid: getVar("--grid-line"),
+    surface: getVar("--surface"),
+    cat: {
+      trading: getVar("--cat-trading"),
+      investment: getVar("--cat-investment"),
+      ekyc: getVar("--cat-ekyc"),
+      activation: getVar("--cat-activation"),
+      acquisition: getVar("--cat-acquisition"),
+      support: getVar("--cat-support"),
+      other: getVar("--cat-other"),
+    },
+  };
+  function categoryColor(cat) { return COLORS.cat[cat] || COLORS.muted; }
+  function categoryLabel(cat) {
+    var m = CATEGORY_META.filter(function (c) { return c.category === cat; })[0];
+    return m ? m.label : cat;
+  }
+
+  function el(tag, cls, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function fmt(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+    return String(n);
+  }
+  function fmtDate(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "";
+    return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  }
+  function ratingColor(v) {
+    if (!v) return COLORS.muted;
+    if (v >= 4) return COLORS.positive;
+    if (v >= 3) return "var(--status-warn)";
+    return COLORS.negative;
+  }
+
+  function catBreakdownMap(app) {
+    var map = {};
+    (app.combined.categoryBreakdown || []).forEach(function (c) { map[c.category] = c; });
+    return map;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Scoreboard                                                          */
+  /* ------------------------------------------------------------------ */
+
+  function renderScoreboard() {
+    var apps = STATE.data.apps;
+    var table = document.getElementById("scoreboardTable");
+    var thead = "<thead><tr><th>App</th><th>Reviews</th><th>Avg rating</th><th>Sentiment</th>" +
+      CATEGORY_META.map(function (c) { return "<th>" + escapeHtml(c.label) + "</th>"; }).join("") +
+      "</tr></thead>";
+
+    var rows = apps.map(function (app) {
+      var c = app.combined;
+      var s = c.sentimentBuckets;
+      var total = s.positive + s.neutral + s.negative || 1;
+      var pPos = (100 * s.positive / total).toFixed(0);
+      var pNeu = (100 * s.neutral / total).toFixed(0);
+      var pNeg = (100 * s.negative / total).toFixed(0);
+      var cats = catBreakdownMap(app);
+
+      var catCells = CATEGORY_META.map(function (meta) {
+        var cc = cats[meta.category];
+        if (!cc || !cc.count) return '<td class="rate-na">&ndash;</td>';
+        return '<td><span class="rate-cell"><span class="rate-dot" style="background:' + ratingColor(cc.avgRating) + '"></span><span class="tabular">' + cc.avgRating.toFixed(2) + '</span></span></td>';
+      }).join("");
+
+      return (
+        '<tr class="' + (app.role === "own" ? "own-row" : "") + '">' +
+        '<td><span class="app-name-cell">' + escapeHtml(app.name) + (app.role === "own" ? ' <span class="own-badge">Us</span>' : "") + "</span></td>" +
+        '<td class="tabular">' + fmt(c.totalReviews) + "</td>" +
+        '<td><span class="rate-cell"><span class="rate-dot" style="background:' + ratingColor(c.avgRating) + '"></span><span class="tabular">' + c.avgRating.toFixed(2) + "</span></span></td>" +
+        '<td><span class="sent-mini"><span style="width:' + pPos + '%;background:' + COLORS.positive + '"></span><span style="width:' + pNeu + '%;background:' + COLORS.neutral + '"></span><span style="width:' + pNeg + '%;background:' + COLORS.negative + '"></span></span></td>' +
+        catCells +
+        "</tr>"
+      );
+    }).join("");
+
+    table.innerHTML = thead + "<tbody>" + rows + "</tbody>";
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Trading vs Investment chart                                         */
+  /* ------------------------------------------------------------------ */
+
+  function renderTvI() {
+    var apps = STATE.data.apps;
+    document.getElementById("tviLegend").innerHTML =
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.cat.trading + '"></span>Trading</span>' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.cat.investment + '"></span>Investment</span>';
+
+    var wrap = document.getElementById("tviChartWrap");
+    wrap.innerHTML = "";
+    var W = wrap.clientWidth || 900, H = 260;
+    var padL = 34, padR = 14, padT = 14, padB = 46;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var n = apps.length;
+    var groupW = plotW / n;
+    var barW = Math.min(20, groupW * 0.32);
+    var gap = 3;
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+    for (var r = 1; r <= 5; r++) {
+      var y = padT + (1 - (r - 1) / 4) * plotH;
+      svg.appendChild(svgEl("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: COLORS.grid, "stroke-width": 1 }));
+      svg.appendChild(svgEl("text", { x: padL - 8, y: y + 3, "text-anchor": "end", "font-size": 10 }, r));
+    }
+
+    var tooltip = makeTooltip(wrap);
+
+    apps.forEach(function (app, i) {
+      var cats = catBreakdownMap(app);
+      var trading = cats.trading, investment = cats.investment;
+      var groupX = padL + i * groupW;
+      var centerX = groupX + groupW / 2;
+
+      [
+        { key: "trading", data: trading, color: COLORS.cat.trading, dx: -(barW + gap) / 2 },
+        { key: "investment", data: investment, color: COLORS.cat.investment, dx: (barW + gap) / 2 },
+      ].forEach(function (series) {
+        var val = series.data && series.data.count ? series.data.avgRating : 0;
+        var barH = val ? ((val - 1) / 4) * plotH : 0;
+        var x = centerX + series.dx - barW / 2;
+        var y = padT + plotH - barH;
+        if (val) {
+          svg.appendChild(svgEl("rect", { x: x, y: y, width: barW, height: Math.max(barH, 2), rx: 4, fill: series.color }));
+        } else {
+          svg.appendChild(svgEl("rect", { x: x, y: padT + plotH - 3, width: barW, height: 3, rx: 1.5, fill: COLORS.grid }));
+        }
+        var hit = svgEl("rect", { x: x - 2, y: padT, width: barW + 4, height: plotH, fill: "transparent" });
+        svg.appendChild(hit);
+        hit.addEventListener("pointerenter", function (e) { tt(e); });
+        hit.addEventListener("pointermove", function (e) { tt(e); });
+        hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+        function tt(e) {
+          tooltip.show(e, app.name, [
+            { label: categoryLabel(series.key), value: val ? val.toFixed(2) + " (" + series.data.count + " reviews)" : "No data", color: series.color },
+          ]);
+        }
+      });
+
+      var label = app.name.length > 12 ? app.name.slice(0, 11) + "…" : app.name;
+      svg.appendChild(svgEl("text", { x: centerX, y: H - padB + 16, "text-anchor": "middle", "font-size": 10, "font-weight": app.role === "own" ? 700 : 400, fill: app.role === "own" ? COLORS.accent : getVar("--ink-muted") }, label));
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Deep dive                                                           */
+  /* ------------------------------------------------------------------ */
+
+  function renderAppTabs() {
+    var wrap = document.getElementById("appTabs");
+    wrap.innerHTML = "";
+    STATE.data.apps.forEach(function (app) {
+      var tab = el("button", "app-tab" + (STATE.diveApp === app.name ? " active" : ""), escapeHtml(app.name) + (app.role === "own" ? " ★" : ""));
+      tab.addEventListener("click", function () { STATE.diveApp = app.name; renderAppTabs(); renderDive(); });
+      wrap.appendChild(tab);
+    });
+  }
+
+  function pickQuotes(app, kind, n) {
+    var reviews = app.combined.recentReviews || [];
+    var filtered = reviews.filter(function (r) { return kind === "praise" ? r.rating >= 4 : r.rating <= 2; });
+    filtered.sort(function (a, b) { return (b.thumbsUp || 0) - (a.thumbsUp || 0) || new Date(b.date) - new Date(a.date); });
+    return filtered.filter(function (r) { return (r.text || "").length >= 25; }).slice(0, n);
+  }
+
+  function renderDive() {
+    var app = STATE.data.apps.filter(function (a) { return a.name === STATE.diveApp; })[0];
+    if (!app) return;
+    var grid = document.getElementById("diveGrid");
+    grid.innerHTML = "";
+
+    var catCol = el("div", "dive-col");
+    catCol.innerHTML = "<h3>Category mix</h3>";
+    var catList = el("div", "cat-mini-list");
+    var cats = app.combined.categoryBreakdown || [];
+    var maxCount = Math.max.apply(null, cats.map(function (c) { return c.count; }).concat([1]));
+    cats.forEach(function (c) {
+      var pct = Math.max(c.count > 0 ? 3 : 0, Math.round((c.count / maxCount) * 100));
+      var row = el("div", "cat-mini-row");
+      row.innerHTML =
+        '<span class="cat-mini-name"><span class="legend-swatch" style="background:' + categoryColor(c.category) + '"></span>' + escapeHtml(c.label) + "</span>" +
+        '<span class="cat-mini-track"><span class="cat-mini-fill" style="width:' + pct + '%;background:' + categoryColor(c.category) + '"></span></span>' +
+        '<span class="cat-mini-val tabular">' + fmt(c.count) + "</span>";
+      catList.appendChild(row);
+    });
+    catCol.appendChild(catList);
+
+    var praiseCol = el("div", "dive-col");
+    praiseCol.innerHTML = "<h3>Praise &amp; complaints</h3>";
+    var kwWrap = el("div", "cat-mini-list");
+    var praiseWords = (app.combined.topPraiseKeywords || []).slice(0, 6);
+    var complaintWords = (app.combined.topComplaintKeywords || []).slice(0, 6);
+    var kwMax = Math.max.apply(null, praiseWords.concat(complaintWords).map(function (k) { return k.count; }).concat([1]));
+    function kwRow(k, color) {
+      var pct = Math.max(4, Math.round((k.count / kwMax) * 100));
+      var row = el("div", "cat-mini-row");
+      row.innerHTML =
+        '<span class="cat-mini-name">' + escapeHtml(k.word) + "</span>" +
+        '<span class="cat-mini-track"><span class="cat-mini-fill" style="width:' + pct + '%;background:' + color + '"></span></span>' +
+        '<span class="cat-mini-val tabular">' + k.count + "</span>";
+      return row;
+    }
+    praiseWords.forEach(function (k) { kwWrap.appendChild(kwRow(k, COLORS.positive)); });
+    complaintWords.forEach(function (k) { kwWrap.appendChild(kwRow(k, COLORS.negative)); });
+    praiseCol.appendChild(kwWrap);
+
+    var quotesCol = el("div", "dive-col");
+    quotesCol.style.gridColumn = "1 / -1";
+    quotesCol.innerHTML = "<h3>Representative reviews</h3>";
+    var quoteList = el("div", "quote-list");
+    var praiseQuotes = pickQuotes(app, "praise", 2);
+    var complaintQuotes = pickQuotes(app, "complaint", 2);
+    praiseQuotes.concat(complaintQuotes).forEach(function (r) {
+      var kind = r.rating >= 4 ? "praise" : "complaint";
+      var q = el("div", "quote " + kind);
+      q.innerHTML =
+        '<div class="quote-meta">' + r.rating + "★ &middot; " + (r.platform === "play" ? "Play" : "iOS") + " &middot; " + fmtDate(r.date) + "</div>" +
+        '<div>' + escapeHtml((r.text || "").slice(0, 240)) + (r.text && r.text.length > 240 ? "…" : "") + "</div>";
+      quoteList.appendChild(q);
+    });
+    if (!praiseQuotes.length && !complaintQuotes.length) quoteList.innerHTML = '<div class="empty-col">No long-form reviews found.</div>';
+    quotesCol.appendChild(quoteList);
+
+    grid.appendChild(catCol);
+    grid.appendChild(praiseCol);
+    grid.appendChild(quotesCol);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* SVG + tooltip helpers                                               */
+  /* ------------------------------------------------------------------ */
+
+  function svgEl(tag, attrs, text) {
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = String(text);
+    return e;
+  }
+  function makeTooltip(container) {
+    container.style.position = "relative";
+    var tt = el("div", "chart-tooltip");
+    container.appendChild(tt);
+    return {
+      show: function (evt, title, rows) {
+        var rect = container.getBoundingClientRect();
+        var x = evt.clientX - rect.left, y = evt.clientY - rect.top;
+        var html = '<div style="font-weight:700;margin-bottom:4px;">' + escapeHtml(title) + "</div>";
+        rows.forEach(function (r) {
+          html += '<div class="row">' + (r.color ? '<span class="key" style="background:' + r.color + '"></span>' : "") + "<span>" + escapeHtml(r.label) + '</span><span class="val">' + escapeHtml(String(r.value)) + "</span></div>";
+        });
+        tt.innerHTML = html;
+        tt.style.opacity = "1";
+        var left = x + 14, top = y - 10;
+        if (left + tt.offsetWidth > container.clientWidth) left = x - tt.offsetWidth - 14;
+        tt.style.left = left + "px";
+        tt.style.top = Math.max(0, top) + "px";
+      },
+      hide: function () { tt.style.opacity = "0"; },
+    };
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Feature parity backlog (live, shared via db)                        */
+  /* ------------------------------------------------------------------ */
+
+  function renderIdeaFormChips() {
+    var catWrap = document.getElementById("ideaCategoryChips");
+    catWrap.innerHTML = "";
+    CATEGORY_META.forEach(function (c) {
+      var active = STATE.formCategory === c.category;
+      var btn = el("button", active ? "active" : "", escapeHtml(c.label));
+      if (active) { btn.style.background = categoryColor(c.category); btn.style.borderColor = categoryColor(c.category); }
+      btn.addEventListener("click", function () { STATE.formCategory = c.category; renderIdeaFormChips(); });
+      catWrap.appendChild(btn);
+    });
+
+    var srcWrap = document.getElementById("ideaSourceChips");
+    srcWrap.innerHTML = "";
+    var competitorNames = STATE.data.apps.filter(function (a) { return a.role === "competitor"; }).map(function (a) { return a.name; });
+    competitorNames.forEach(function (name) {
+      var active = !!STATE.formSources[name];
+      var btn = el("button", active ? "active" : "", escapeHtml(name));
+      if (active) { btn.style.background = "var(--accent)"; btn.style.borderColor = "var(--accent)"; }
+      btn.addEventListener("click", function () {
+        STATE.formSources[name] = !STATE.formSources[name];
+        renderIdeaFormChips();
+      });
+      srcWrap.appendChild(btn);
+    });
+  }
+
+  function renderBacklog() {
+    var cols = document.getElementById("backlogCols");
+    cols.innerHTML = "";
+
+    STATUS_ORDER.forEach(function (status) {
+      var col = el("div", "status-col");
+      var items = STATE.ideas.filter(function (i) { return (i.status || "idea") === status; });
+      items.sort(function (a, b) { return (b.votes || 0) - (a.votes || 0); });
+      col.innerHTML = "<h3>" + STATUS_LABELS[status] + '<span class="status-count">' + items.length + "</span></h3>";
+      var list = el("div", "idea-list");
+      if (!items.length) {
+        list.innerHTML = '<div class="empty-col">Nothing here yet.</div>';
+      } else {
+        items.forEach(function (idea) { list.appendChild(renderIdeaCard(idea)); });
+      }
+      col.appendChild(list);
+      cols.appendChild(col);
+    });
+  }
+
+  function renderIdeaCard(idea) {
+    var card = el("div", "idea-card");
+    var catColor = categoryColor(idea.category || "other");
+    var sources = (idea.sources || []).join(", ");
+    card.innerHTML =
+      '<div class="idea-title">' + escapeHtml(idea.title || "Untitled") + "</div>" +
+      '<div class="idea-meta"><span class="idea-cat-chip" style="background:' + catColor + '">' + escapeHtml(categoryLabel(idea.category || "other")) + "</span>" +
+      (sources ? '<span class="idea-source">from ' + escapeHtml(sources) + "</span>" : "") + "</div>" +
+      (idea.rationale ? '<div class="idea-rationale">' + escapeHtml(idea.rationale) + "</div>" : "") +
+      '<div class="idea-footer"></div>';
+
+    var footer = card.querySelector(".idea-footer");
+    var voteBtn = el("button", "idea-vote", "▲ " + (idea.votes || 0));
+    voteBtn.addEventListener("click", function () { upvoteIdea(idea); });
+    footer.appendChild(voteBtn);
+
+    var right = el("span");
+    var statusSelect = document.createElement("select");
+    statusSelect.className = "idea-status-select";
+    STATUS_ORDER.forEach(function (s) {
+      var opt = document.createElement("option");
+      opt.value = s; opt.textContent = STATUS_LABELS[s];
+      if ((idea.status || "idea") === s) opt.selected = true;
+      statusSelect.appendChild(opt);
+    });
+    statusSelect.addEventListener("change", function () { setIdeaStatus(idea, statusSelect.value); });
+    right.appendChild(statusSelect);
+
+    var delBtn = el("button", "idea-delete", "Remove");
+    delBtn.style.marginLeft = "8px";
+    delBtn.addEventListener("click", function () { deleteIdea(idea); });
+    right.appendChild(delBtn);
+
+    footer.appendChild(right);
+
+    var byLine = idea.addedBy ? el("div", "idea-source", "added by " + escapeHtml(idea.addedBy)) : null;
+    if (byLine) card.appendChild(byLine);
+
+    return card;
+  }
+
+  function ideasCollection() {
+    return STATE.db ? STATE.db.collection("backlog") : null;
+  }
+
+  function subscribeBacklog() {
+    var coll = ideasCollection();
+    if (!coll) return;
+    coll.onSnapshot(function (snap) {
+      STATE.ideas = snap.docs.filter(function (d) { return d.exists; }).map(function (d) {
+        var data = d.data() || {};
+        return Object.assign({ id: d.id }, data);
+      });
+      renderBacklog();
+    }, function (err) {
+      console.error("backlog subscribe error", err);
+      document.getElementById("backlogCols").innerHTML = '<div class="backlog-offline">Couldn’t load the shared backlog right now.</div>';
+    });
+  }
+
+  function submitIdea() {
+    var coll = ideasCollection();
+    var titleEl = document.getElementById("ideaTitle");
+    var title = titleEl.value.trim();
+    if (!title) { titleEl.focus(); return; }
+    if (!coll) return;
+
+    var sources = Object.keys(STATE.formSources).filter(function (k) { return STATE.formSources[k]; });
+    var payload = {
+      title: title,
+      category: STATE.formCategory,
+      sources: sources,
+      rationale: document.getElementById("ideaRationale").value.trim(),
+      addedBy: document.getElementById("ideaAddedBy").value.trim(),
+      status: "idea",
+      votes: 0,
+      createdAt: new Date().toISOString(),
+    };
+
+    var submitBtn = document.getElementById("ideaSubmit");
+    submitBtn.disabled = true;
+    coll.add(payload).then(function () {
+      titleEl.value = "";
+      document.getElementById("ideaRationale").value = "";
+      document.getElementById("ideaAddedBy").value = "";
+      STATE.formSources = {};
+      renderIdeaFormChips();
+    }).catch(function (e) {
+      console.error("add idea failed", e);
+    }).finally(function () {
+      submitBtn.disabled = false;
+    });
+  }
+
+  function upvoteIdea(idea) {
+    var coll = ideasCollection();
+    if (!coll) return;
+    // Read-then-write: last-writer-wins, so a rare concurrent double-click can
+    // under-count by one. Acceptable here — this is a prioritization signal,
+    // not an audited count.
+    coll.doc(idea.id).get().then(function (snap) {
+      var current = (snap.data() || {}).votes || 0;
+      return coll.doc(idea.id).update({ votes: current + 1 });
+    }).catch(function (e) { console.error("upvote failed", e); });
+  }
+
+  function setIdeaStatus(idea, status) {
+    var coll = ideasCollection();
+    if (!coll) return;
+    coll.doc(idea.id).update({ status: status }).catch(function (e) { console.error("status update failed", e); });
+  }
+
+  function deleteIdea(idea) {
+    var coll = ideasCollection();
+    if (!coll) return;
+    coll.doc(idea.id).delete().catch(function (e) { console.error("delete failed", e); });
+  }
+
+  async function initBacklog() {
+    renderIdeaFormChips();
+    document.getElementById("ideaSubmit").addEventListener("click", submitIdea);
+    document.getElementById("ideaTitle").addEventListener("keydown", function (e) { if (e.key === "Enter") submitIdea(); });
+
+    var db = null;
+    try { db = window.claude ? await window.claude.use("db") : null; } catch (e) { db = null; }
+    STATE.db = db;
+    if (!db) {
+      document.getElementById("backlogHint").textContent = "Live backlog isn't available in this view.";
+      document.getElementById("backlogCols").innerHTML = '<div class="backlog-offline">Open this page in a claude.ai session to add and see shared backlog items.</div>';
+      return;
+    }
+    subscribeBacklog();
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Boot                                                                */
+  /* ------------------------------------------------------------------ */
+
+  function boot(data) {
+    STATE.data = data;
+    STATE.diveApp = data.apps[0] ? data.apps[0].name : null;
+    var gen = new Date(data.generatedAt);
+    document.getElementById("genTime").textContent = "Updated " + gen.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+
+    renderScoreboard();
+    renderTvI();
+    renderAppTabs();
+    renderDive();
+
+    window.addEventListener("resize", debounce(function () { renderTvI(); }, 150));
+  }
+
+  function debounce(fn, ms) {
+    var t;
+    return function () { clearTimeout(t); var args = arguments; t = setTimeout(function () { fn.apply(null, args); }, ms); };
+  }
+
+  fetch("competitor-data.json").then(function (r) { return r.json(); }).then(boot).catch(function (e) {
+    document.getElementById("genTime").textContent = "Failed to load competitor-data.json";
+    console.error(e);
+  });
+
+  initBacklog();
+})();
+</script>
