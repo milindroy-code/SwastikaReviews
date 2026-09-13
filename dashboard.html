@@ -460,7 +460,7 @@
   .review-category .cat-dot { width: 7px; height: 7px; border-radius: 50%; }
 
   .cat-list { display: flex; flex-direction: column; gap: 10px; }
-  .cat-row { display: grid; grid-template-columns: 118px 1fr 46px 52px; align-items: center; gap: 10px; }
+  .cat-row { display: grid; grid-template-columns: 150px 1fr 46px 72px; align-items: center; gap: 10px; }
   .cat-name { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--ink-secondary); }
   .cat-track { height: 14px; background: var(--surface-2); border-radius: 4px; overflow: hidden; position: relative; }
   .cat-fill { height: 100%; border-radius: 4px; }
@@ -592,12 +592,12 @@
   <section class="grid-2b">
     <div class="card summary-card summary-liked">
       <h2><span class="summary-dot" style="background:var(--status-good)"></span>What users like</h2>
-      <p class="card-sub" id="likedSub">Synthesized from praise keywords and top-rated categories</p>
+      <p class="card-sub" id="likedSub">Core themes in praise</p>
       <ul class="summary-list" id="likedList"></ul>
     </div>
     <div class="card summary-card summary-improve">
       <h2><span class="summary-dot" style="background:var(--status-critical)"></span>What can be improved</h2>
-      <p class="card-sub" id="improveSub">Synthesized from complaint keywords and lowest-rated categories</p>
+      <p class="card-sub" id="improveSub">Core themes in complaints</p>
       <ul class="summary-list" id="improveList"></ul>
     </div>
   </section>
@@ -640,9 +640,10 @@
   <section class="card" style="margin-bottom:14px;">
     <div class="card-head">
       <div>
-        <h2>Issue categories</h2>
-        <p class="card-sub" id="catSub">Reviews grouped by product stage</p>
+        <h2>Top themes</h2>
+        <p class="card-sub" id="catSub">Where mention volume concentrates, and its praise/complaint lean</p>
       </div>
+      <div class="sentiment-legend" id="themeLegend"></div>
     </div>
     <div class="cat-list" id="catList" style="margin-top:8px;"></div>
   </section>
@@ -1426,21 +1427,29 @@
 
   function renderCategories() {
     var a = scopedAnalysis();
-    var rows = a.categoryBreakdown || [];
+    document.getElementById("themeLegend").innerHTML =
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.positive + '"></span>Praise-leaning</span>' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.accent + '"></span>Mixed</span>' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.negative + '"></span>Complaint-leaning</span>';
+
+    var rows = buildThemeTable(a);
     var wrap = document.getElementById("catList");
     wrap.innerHTML = "";
-    if (!rows.length) { wrap.innerHTML = '<div class="empty-state">No category data.</div>'; return; }
+    if (!rows.length) { wrap.innerHTML = '<div class="empty-state">Not enough review text yet to detect themes.</div>'; return; }
 
-    var max = Math.max.apply(null, rows.map(function (r) { return r.count; }).concat([1]));
-    rows.forEach(function (r) {
-      var color = categoryColor(r.category);
-      var pct = Math.max(r.count > 0 ? 3 : 0, Math.round((r.count / max) * 100));
+    var max = Math.max.apply(null, rows.map(function (r) { return r.total; }).concat([1]));
+    rows.slice(0, 8).forEach(function (r) {
+      var color;
+      if (r.praise > r.complaint * 1.3) color = COLORS.positive;
+      else if (r.complaint > r.praise * 1.3) color = COLORS.negative;
+      else color = COLORS.accent;
+      var pct = Math.max(3, Math.round((r.total / max) * 100));
       var row = el("div", "cat-row");
       row.innerHTML =
-        '<span class="cat-name"><span class="cat-dot" style="background:' + color + ';width:9px;height:9px;border-radius:50%;display:inline-block;"></span>' + escapeHtml(r.label) + "</span>" +
+        '<span class="cat-name">' + escapeHtml(r.label) + "</span>" +
         '<span class="cat-track"><span class="cat-fill" style="width:' + pct + '%;background:' + color + '"></span></span>' +
-        '<span class="cat-count tabular">' + fmt(r.count) + "</span>" +
-        '<span class="cat-rating tabular" style="color:' + (r.count ? getVar("--ink-secondary") : "var(--ink-muted)") + '">' + (r.count ? r.avgRating.toFixed(2) + "★" : "&ndash;") + "</span>";
+        '<span class="cat-count tabular">' + fmt(r.total) + "</span>" +
+        '<span class="cat-rating tabular" style="font-size:11px;color:var(--ink-muted);">&#9650;' + r.praise + " &#9660;" + r.complaint + "</span>";
       wrap.appendChild(row);
 
       var track = row.querySelector(".cat-track");
@@ -1450,19 +1459,20 @@
       track.addEventListener("pointermove", function (e) { tt(e); });
       track.addEventListener("pointerleave", function () { tooltip.hide(); });
       track.addEventListener("click", function () {
-        STATE.categoryFilter = STATE.categoryFilter === r.category ? "all" : r.category;
-        STATE.bucketIndex = 0;
-        renderCategoryChips();
-        renderReviewsList();
-        document.getElementById("reviewsList").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        if (r.words.length) {
+          STATE.search = r.words[0];
+          document.getElementById("searchInput").value = r.words[0];
+          STATE.bucketIndex = 0;
+          renderReviewsList();
+          document.getElementById("reviewsList").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
       });
       function tt(e) {
-        var s = r.sentimentBuckets;
         tooltip.show(e, r.label, [
-          { label: "Reviews", value: fmt(r.count) + " (" + r.pctOfTotal + "%)", color: color },
-          { label: "Avg rating", value: r.count ? r.avgRating.toFixed(2) : "–", color: null },
-          { label: "Positive", value: s.positive, color: COLORS.positive },
-          { label: "Negative", value: s.negative, color: COLORS.negative },
+          { label: "Total mentions", value: r.total, color: color },
+          { label: "In praise", value: r.praise, color: COLORS.positive },
+          { label: "In complaints", value: r.complaint, color: COLORS.negative },
+          { label: "Words", value: r.words.slice(0, 3).join(", ") || "–", color: null },
         ]);
       }
     });
@@ -1488,28 +1498,92 @@
     return (list || []).filter(function (k) { return !isGenericPhrase(k.word); }).slice(0, n);
   }
 
+  // Core ideas users actually talk about — independent of the funnel-stage
+  // categories (Trading/Investment/eKYC/...) used elsewhere on the page.
+  // A keyword is assigned to the first theme it matches, so it's never
+  // double-counted across themes.
+  var SUMMARY_THEMES = [
+    { label: "Customer support", words: ["support", "service", "team", "customer", "help", "response", "query", "staff"] },
+    { label: "Brokerage & charges", words: ["brokerage", "charges", "charge", "fee", "fees", "cost", "expensive", "cheap"] },
+    { label: "Account opening & KYC", words: ["account", "kyc", "open", "verification", "verify", "document", "demat", "pan", "aadhaar", "nominee"] },
+    { label: "Login & access", words: ["login", "otp", "password", "access", "signin", "sign"] },
+    { label: "Trading execution", words: ["trade", "trading", "order", "execution", "buy", "sell", "price", "slippage", "market"] },
+    { label: "App reliability & performance", words: ["crash", "slow", "lag", "bug", "freeze", "hang", "error", "loading", "update", "version", "glitch", "issue"] },
+    { label: "Ease of use", words: ["easy", "interface", "ui", "design", "simple", "navigation", "smooth", "convenient"] },
+    { label: "Investment options", words: ["mutual", "fund", "sip", "ipo", "invest", "investment", "portfolio", "wealth"] },
+    { label: "Referrals & onboarding", words: ["download", "install", "refer", "referral", "promo", "bonus", "signup"] },
+    { label: "Loss / money concerns", words: ["loss", "money", "fraud", "scam", "refund", "withdraw", "withdrawal"] },
+  ];
+
+  function classifyIntoThemes(keywords) {
+    var scores = {};
+    (keywords || []).forEach(function (k) {
+      if (isGenericPhrase(k.word)) return;
+      var tokens = k.word.split(" ");
+      for (var i = 0; i < SUMMARY_THEMES.length; i++) {
+        var theme = SUMMARY_THEMES[i];
+        if (tokens.some(function (t) { return theme.words.indexOf(t) !== -1; })) {
+          if (!scores[theme.label]) scores[theme.label] = { score: 0, words: [] };
+          scores[theme.label].score += k.count;
+          if (scores[theme.label].words.indexOf(k.word) === -1) scores[theme.label].words.push(k.word);
+          break; // first matching theme only — avoids double-counting a keyword
+        }
+      }
+    });
+    return Object.keys(scores)
+      .map(function (label) { return { label: label, score: scores[label].score, words: scores[label].words.slice(0, 4) }; })
+      .sort(function (a, b) { return b.score - a.score; });
+  }
+
+  function themesByLabel(keywords) {
+    var map = {};
+    classifyIntoThemes(keywords).forEach(function (t) { map[t.label] = t; });
+    return map;
+  }
+
+  /** One row per theme mentioned in praise or complaint keywords, with
+   * "total" defined as praise+complaint mentions (so it can never read as
+   * less than either part — deliberately not reconciled against the
+   * separately-truncated overall topKeywords list). Independent of the
+   * funnel-stage categories used by the reviews-table filter chips. */
+  function buildThemeTable(a) {
+    var praiseMap = themesByLabel(a.topPraiseKeywords);
+    var complaintMap = themesByLabel(a.topComplaintKeywords);
+
+    return SUMMARY_THEMES.map(function (theme) {
+      var p = praiseMap[theme.label];
+      var c = complaintMap[theme.label];
+      var praise = p ? p.score : 0;
+      var complaint = c ? c.score : 0;
+      var words = (p ? p.words : []).slice();
+      (c ? c.words : []).forEach(function (w) { if (words.indexOf(w) === -1) words.push(w); });
+      return {
+        label: theme.label,
+        total: praise + complaint,
+        praise: praise,
+        complaint: complaint,
+        words: words.slice(0, 4),
+      };
+    }).filter(function (r) { return r.total > 0; }).sort(function (a, b) { return b.total - a.total; });
+  }
+
   function buildReviewSummary(a) {
-    var liked = [];
-    var improve = [];
+    var likedThemes = classifyIntoThemes(a.topPraiseKeywords).slice(0, 4);
+    var improveThemes = classifyIntoThemes(a.topComplaintKeywords).slice(0, 4);
 
-    var cats = (a.categoryBreakdown || []).filter(function (c) { return c.category !== "other" && c.count >= 3; });
-    var goodCats = cats.filter(function (c) { return c.avgRating >= 3.5; }).sort(function (x, y) { return y.avgRating - x.avgRating; });
-    var badCats = cats.filter(function (c) { return c.avgRating < 3; }).sort(function (x, y) { return x.avgRating - y.avgRating; });
+    var liked = likedThemes.map(function (t) { return t.label + " — " + t.words.join(", "); });
+    var improve = improveThemes.map(function (t) { return t.label + " — " + t.words.join(", "); });
 
-    goodCats.slice(0, 2).forEach(function (c) {
-      var kw = meaningfulKeywords(c.topKeywords, 3).map(function (k) { return k.word; });
-      liked.push(c.label + (kw.length ? " (" + kw.join(", ") + ")" : "") + " — " + c.avgRating.toFixed(2) + "★ across " + c.count + " reviews");
-    });
-    badCats.slice(0, 2).forEach(function (c) {
-      var kw = meaningfulKeywords(c.topKeywords, 3).map(function (k) { return k.word; });
-      improve.push(c.label + (kw.length ? " (" + kw.join(", ") + ")" : "") + " — " + c.avgRating.toFixed(2) + "★ across " + c.count + " reviews");
-    });
-
-    var praiseWords = meaningfulKeywords(a.topPraiseKeywords, 6).map(function (k) { return k.word; });
-    if (praiseWords.length) liked.push("Frequently praised: " + praiseWords.join(", "));
-
-    var complaintWords = meaningfulKeywords(a.topComplaintKeywords, 6).map(function (k) { return k.word; });
-    if (complaintWords.length) improve.push("Frequently mentioned in complaints: " + complaintWords.join(", "));
+    // Fallback for whatever a fixed theme list doesn't catch, so nothing
+    // meaningful gets silently dropped.
+    if (!liked.length) {
+      var praiseWords = meaningfulKeywords(a.topPraiseKeywords, 6).map(function (k) { return k.word; });
+      if (praiseWords.length) liked.push("Frequently praised: " + praiseWords.join(", "));
+    }
+    if (!improve.length) {
+      var complaintWords = meaningfulKeywords(a.topComplaintKeywords, 6).map(function (k) { return k.word; });
+      if (complaintWords.length) improve.push("Frequently mentioned in complaints: " + complaintWords.join(", "));
+    }
 
     if (!liked.length) liked.push("Not enough positive review text yet to summarize.");
     if (!improve.length) improve.push("No significant complaint pattern detected in this range.");
@@ -1533,8 +1607,8 @@
     fillSummaryList("likedList", s.liked);
     fillSummaryList("improveList", s.improve);
     var desc = rangeDescriptor();
-    setText("likedSub", "From praise keywords and top-rated categories — " + desc);
-    setText("improveSub", "From complaint keywords and lowest-rated categories — " + desc);
+    setText("likedSub", "Core themes in praise — " + desc);
+    setText("improveSub", "Core themes in complaints — " + desc);
   }
 
   /* ----------------------------------------------------------------- */
