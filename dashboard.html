@@ -561,7 +561,7 @@
       <div class="card-head">
         <div>
           <h2>Review volume &amp; sentiment</h2>
-          <p class="card-sub">Monthly reviews, split by tone</p>
+          <p class="card-sub" id="volumeSub">Monthly reviews, split by tone</p>
         </div>
         <div class="sentiment-legend" id="volumeLegend"></div>
       </div>
@@ -581,7 +581,7 @@
   <section class="grid-2b">
     <div class="card">
       <h2>Rating distribution</h2>
-      <p class="card-sub">All reviews in range, by star</p>
+      <p class="card-sub" id="distSub">All reviews, by star</p>
       <div class="chart-wrap" id="distChartWrap" style="margin-top:6px;"></div>
     </div>
     <div class="card">
@@ -595,7 +595,7 @@
     <div class="card-head">
       <div>
         <h2>Issue categories</h2>
-        <p class="card-sub">Reviews grouped by product stage &mdash; all-time in this store view</p>
+        <p class="card-sub" id="catSub">Reviews grouped by product stage</p>
       </div>
     </div>
     <div class="cat-list" id="catList" style="margin-top:8px;"></div>
@@ -604,7 +604,7 @@
   <section class="grid-2b">
     <div class="card">
       <h2>Keyword signal</h2>
-      <p class="card-sub">Most frequent terms across reviews in range</p>
+      <p class="card-sub" id="kwSub">Most frequent terms across reviews</p>
       <div class="kw-tabs" id="kwTabs">
         <button data-kw="top" class="active">&#9679; Top mentioned</button>
         <button data-kw="praise">&#9650; Praise</button>
@@ -614,7 +614,7 @@
     </div>
     <div class="card">
       <h2>Flagged periods</h2>
-      <p class="card-sub">Weeks with a negative-review spike or rating dip</p>
+      <p class="card-sub" id="flagsSub">Weeks with a negative-review spike or rating dip, based on full history</p>
       <div class="flags-list" id="flagsList" style="margin-top:10px;"></div>
     </div>
   </section>
@@ -661,7 +661,7 @@
     data: null,
     appIndex: 0,
     platform: "combined", // combined | play | ios
-    rangeMonths: 12, // 6 | 12 | 24 | 0(all)
+    range: "12m", // 7d | 30d | 6m | 12m | 24m | all
     ratingFilter: new Set([1,2,3,4,5]),
     search: "",
     kwTab: "top",
@@ -720,6 +720,13 @@
     var d = new Date(Date.UTC(+parts[0], +parts[1] - 1, 1));
     return d.toLocaleDateString(undefined, { month: "short", year: "2-digit" });
   }
+  function dayLabel(key) {
+    var d = new Date(key + "T00:00:00Z");
+    return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  }
+  function periodLabel(key) {
+    return isDayRange() ? dayLabel(key) : monthLabel(key);
+  }
   function escapeHtml(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -749,6 +756,157 @@
     if (STATE.platform === "combined") return app.combined;
     var found = app.platforms.filter(function (p) { return p.platform === STATE.platform; })[0];
     return found || app.combined;
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Recent-window range (7D/30D) — client-side recompute over          */
+  /* recentReviews, since only those carry per-review dates/category.   */
+  /* 6M/12M/24M/All keep the original behaviour: they only zoom the two */
+  /* trend charts, everything else in view stays all-time.              */
+  /* ----------------------------------------------------------------- */
+
+  function isDayRange() { return STATE.range === "7d" || STATE.range === "30d"; }
+  function rangeDays() { return STATE.range === "7d" ? 7 : 30; }
+  function rangeMonthsValue() {
+    if (STATE.range === "6m") return 6;
+    if (STATE.range === "12m") return 12;
+    if (STATE.range === "24m") return 24;
+    return 0; // all
+  }
+  function rangeDescriptor() {
+    if (STATE.range === "7d") return "the last 7 days";
+    if (STATE.range === "30d") return "the last 30 days";
+    return "all-time";
+  }
+
+  function ratingBucket(rating) {
+    if (rating <= 2) return "negative";
+    if (rating === 3) return "neutral";
+    return "positive";
+  }
+
+  function cutoffDate(daysAgo) {
+    var d = new Date();
+    d.setUTCDate(d.getUTCDate() - daysAgo);
+    return d;
+  }
+  function windowedReviews(reviews, days) {
+    var cutoff = cutoffDate(days);
+    return reviews.filter(function (r) { return new Date(r.date) >= cutoff; });
+  }
+  function previousWindowReviews(reviews, days) {
+    var cutoffOld = cutoffDate(days * 2);
+    var cutoffRecent = cutoffDate(days);
+    return reviews.filter(function (r) { var d = new Date(r.date); return d >= cutoffOld && d < cutoffRecent; });
+  }
+
+  var CLIENT_STOPWORDS = new Set([
+    "a", "an", "the", "and", "or", "but", "if", "then", "so", "because", "as",
+    "of", "at", "by", "for", "with", "about", "against", "between", "into",
+    "through", "during", "before", "after", "above", "below", "to", "from",
+    "up", "down", "in", "out", "on", "off", "over", "under", "again",
+    "further", "once", "here", "there", "when", "where", "why", "how", "all",
+    "any", "both", "each", "few", "more", "most", "other", "some", "such",
+    "no", "nor", "not", "only", "own", "same", "than", "too", "very", "s",
+    "t", "can", "will", "just", "don", "should", "now", "i", "me", "my",
+    "myself", "we", "our", "ours", "ourselves", "you", "your", "yours",
+    "yourself", "yourselves", "he", "him", "his", "himself", "she", "her",
+    "hers", "herself", "it", "its", "itself", "they", "them", "their",
+    "theirs", "themselves", "what", "which", "who", "whom", "this", "that",
+    "these", "those", "am", "is", "are", "was", "were", "be", "been", "being",
+    "have", "has", "had", "having", "do", "does", "did", "doing", "would",
+    "could", "ought", "im", "youre", "hes", "shes", "were", "theyre",
+    "ive", "youve", "weve", "theyve", "id", "youd", "hed", "shed", "wed",
+    "theyd", "ill", "youll", "hell", "shell", "well", "theyll", "isnt",
+    "arent", "wasnt", "werent", "hasnt", "havent", "hadnt", "doesnt", "dont",
+    "didnt", "wont", "wouldnt", "shant", "shouldnt", "cant", "cannot",
+    "couldnt", "mustnt", "lets", "thats", "whos", "whats", "heres", "theres",
+    "whens", "wheres", "whys", "hows", "get", "got", "getting", "also",
+  ]);
+  function clientTokenize(text) {
+    return (text || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s']/g, " ")
+      .split(/\s+/)
+      .filter(function (w) { return w.length >= 3 && !CLIENT_STOPWORDS.has(w) && !/^\d+$/.test(w); });
+  }
+  function clientTopKeywords(reviews, n) {
+    var counts = {};
+    reviews.forEach(function (r) {
+      var tokens = clientTokenize((r.title || "") + " " + (r.text || ""));
+      tokens.forEach(function (t) { counts[t] = (counts[t] || 0) + 1; });
+      for (var i = 0; i < tokens.length - 1; i++) {
+        var bg = tokens[i] + " " + tokens[i + 1];
+        counts[bg] = (counts[bg] || 0) + 1;
+      }
+    });
+    return Object.keys(counts)
+      .map(function (w) { return { word: w, count: counts[w] }; })
+      .filter(function (x) { return x.count >= 2; })
+      .sort(function (a, b) { return b.count - a.count; })
+      .slice(0, n || 25);
+  }
+
+  function computeCategoryBreakdown(reviews) {
+    var total = reviews.length;
+    var buckets = {};
+    CATEGORY_META.forEach(function (c) { buckets[c.category] = { count: 0, ratingSum: 0, sentiment: { positive: 0, neutral: 0, negative: 0 } }; });
+    reviews.forEach(function (r) {
+      var cat = buckets[r.category] ? r.category : "other";
+      var b = buckets[cat];
+      b.count++;
+      b.ratingSum += r.rating || 0;
+      b.sentiment[ratingBucket(r.rating)]++;
+    });
+    return CATEGORY_META.map(function (c) {
+      var b = buckets[c.category];
+      return {
+        category: c.category,
+        label: c.label,
+        count: b.count,
+        pctOfTotal: total ? Number(((100 * b.count) / total).toFixed(1)) : 0,
+        avgRating: b.count ? Number((b.ratingSum / b.count).toFixed(2)) : 0,
+        sentimentBuckets: b.sentiment,
+      };
+    });
+  }
+
+  /** For 7D/30D, recompute the metrics that need per-review dates from
+   * recentReviews (client-side, since only that array carries dates).
+   * For every other range, return the precomputed all-time analysis
+   * unchanged — 6M/12M/24M/All only ever zoom the two trend charts. */
+  function scopedAnalysis() {
+    var a = currentAnalysis();
+    if (!isDayRange()) return a;
+
+    var reviews = windowedReviews(a.recentReviews, rangeDays());
+    var total = reviews.length;
+    var distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    var sentimentBuckets = { positive: 0, neutral: 0, negative: 0 };
+    var ratingSum = 0;
+    reviews.forEach(function (r) {
+      var rating = Math.round(r.rating) || 0;
+      if (distribution[rating] !== undefined) distribution[rating]++;
+      ratingSum += r.rating || 0;
+      sentimentBuckets[ratingBucket(r.rating)]++;
+    });
+    var negativeReviews = reviews.filter(function (r) { return r.rating <= 2; });
+    var positiveReviews = reviews.filter(function (r) { return r.rating >= 4; });
+
+    return {
+      platform: a.platform,
+      totalReviews: total,
+      avgRating: total ? Number((ratingSum / total).toFixed(2)) : 0,
+      ratingDistribution: distribution,
+      sentimentBuckets: sentimentBuckets,
+      categoryBreakdown: computeCategoryBreakdown(reviews),
+      topKeywords: clientTopKeywords(reviews, 25),
+      topComplaintKeywords: clientTopKeywords(negativeReviews, 20),
+      topPraiseKeywords: clientTopKeywords(positiveReviews, 20),
+      recentReviews: reviews,
+      flags: a.flags, // anomaly detection needs long trailing history — always full history
+      weeklyTrend: a.weeklyTrend,
+    };
   }
 
   function monthKeyFromWeek(period) {
@@ -785,6 +943,27 @@
   function sliceRange(monthly, months) {
     if (!months || monthly.length <= months) return monthly;
     return monthly.slice(monthly.length - months);
+  }
+
+  /** Day-granularity buckets for the 7D/30D charts, built from
+   * recentReviews (weeklyTrend is too coarse for a 7-30 day window). */
+  function dailyBuckets(reviews) {
+    var map = {};
+    var order = [];
+    reviews.forEach(function (r) {
+      var k = (r.date || "").slice(0, 10);
+      if (!k) return;
+      if (!map[k]) { map[k] = { period: k, count: 0, ratingSum: 0, positive: 0, neutral: 0, negative: 0 }; order.push(k); }
+      var m = map[k];
+      m.count++;
+      m.ratingSum += r.rating || 0;
+      m[ratingBucket(r.rating)]++;
+    });
+    order.sort();
+    return order.map(function (k) {
+      var m = map[k];
+      return { period: k, count: m.count, avgRating: m.count ? m.ratingSum / m.count : 0, positive: m.positive, neutral: m.neutral, negative: m.negative };
+    });
   }
 
   function last4vsPrev4(weeklyTrend) {
@@ -855,13 +1034,15 @@
     });
 
     var rangeOptions = [
-      { label: "6M", value: 6 },
-      { label: "12M", value: 12 },
-      { label: "24M", value: 24 },
-      { label: "All", value: 0 },
+      { label: "7D", value: "7d" },
+      { label: "30D", value: "30d" },
+      { label: "6M", value: "6m" },
+      { label: "12M", value: "12m" },
+      { label: "24M", value: "24m" },
+      { label: "All", value: "all" },
     ];
-    renderSegmented("rangeSeg", rangeOptions, STATE.rangeMonths, function (v) {
-      STATE.rangeMonths = v; renderAll();
+    renderSegmented("rangeSeg", rangeOptions, STATE.range, function (v) {
+      STATE.range = v; STATE.tableLimit = 25; renderAll();
     });
   }
 
@@ -873,22 +1054,37 @@
   }
 
   function renderKpis() {
-    var a = currentAnalysis();
+    var a = scopedAnalysis();
     var row = document.getElementById("kpiRow");
     row.innerHTML = "";
 
+    var volDelta, rDelta, deltaSubLabel;
+    if (isDayRange()) {
+      var full = currentAnalysis().recentReviews;
+      var days = rangeDays();
+      var curWin = windowedReviews(full, days);
+      var prevWin = previousWindowReviews(full, days);
+      volDelta = { last: curWin.length, prev: prevWin.length, delta: curWin.length - prevWin.length };
+      var curAvg = curWin.length ? curWin.reduce(function (s, r) { return s + (r.rating || 0); }, 0) / curWin.length : 0;
+      var prevAvg = prevWin.length ? prevWin.reduce(function (s, r) { return s + (r.rating || 0); }, 0) / prevWin.length : 0;
+      rDelta = (curWin.length && prevWin.length) ? { last: curAvg, prev: prevAvg, delta: curAvg - prevAvg } : null;
+      deltaSubLabel = "last " + days + "d: " + volDelta.last + " vs prior " + days + "d: " + volDelta.prev;
+    } else {
+      volDelta = countDeltaLast4vsPrev4(a.weeklyTrend);
+      rDelta = last4vsPrev4(a.weeklyTrend);
+      deltaSubLabel = "last 4 weeks: " + (volDelta ? volDelta.last : "&ndash;") + " vs prior " + (volDelta ? volDelta.prev : "&ndash;");
+    }
+
     // Total reviews + volume delta
-    var volDelta = countDeltaLast4vsPrev4(a.weeklyTrend);
     var volDeltaHtml = "";
     if (volDelta) {
       var dir = volDelta.delta > 0 ? "up" : volDelta.delta < 0 ? "down" : "flat";
       var arrow = dir === "up" ? "&#9650;" : dir === "down" ? "&#9660;" : "&#8212;";
       volDeltaHtml = '<span class="delta ' + dir + '">' + arrow + " " + Math.abs(volDelta.delta) + "</span>";
     }
-    row.appendChild(kpiCard("Total reviews", '<span class="value tabular">' + fmt(a.totalReviews) + "</span>" + volDeltaHtml, '<span class="sub">last 4 weeks: ' + (volDelta ? volDelta.last : "&ndash;") + " vs prior " + (volDelta ? volDelta.prev : "&ndash;") + "</span>"));
+    row.appendChild(kpiCard("Total reviews", '<span class="value tabular">' + fmt(a.totalReviews) + "</span>" + volDeltaHtml, '<span class="sub">' + deltaSubLabel + "</span>"));
 
     // Avg rating + ticker-style delta
-    var rDelta = last4vsPrev4(a.weeklyTrend);
     var rDeltaHtml = "";
     if (rDelta) {
       var rdir = rDelta.delta > 0.02 ? "up" : rDelta.delta < -0.02 ? "down" : "flat";
@@ -918,7 +1114,7 @@
     row.appendChild(kpi4);
 
     // Flags
-    var flagCard = kpiCard("Flagged periods", '<span class="value">' + a.flags.length + "</span>", '<span class="sub">weeks with a spike or dip, in view</span>');
+    var flagCard = kpiCard("Flagged periods", '<span class="value">' + a.flags.length + "</span>", '<span class="sub">weeks with a spike or dip, full history</span>');
     row.appendChild(flagCard);
   }
 
@@ -939,7 +1135,9 @@
 
   function renderVolumeChart() {
     var a = currentAnalysis();
-    var monthly = sliceRange(aggregateMonthly(a.weeklyTrend), STATE.rangeMonths);
+    var monthly = isDayRange()
+      ? dailyBuckets(windowedReviews(a.recentReviews, rangeDays()))
+      : sliceRange(aggregateMonthly(a.weeklyTrend), rangeMonthsValue());
     var wrap = document.getElementById("volumeChartWrap");
     wrap.innerHTML = "";
 
@@ -1001,7 +1199,7 @@
       groupHit.addEventListener("pointerleave", function () { tooltip.hide(); });
 
       function showBarTooltip(e) {
-        tooltip.show(e, monthLabel(m.period), [
+        tooltip.show(e, periodLabel(m.period), [
           { label: "Positive", value: m.positive, color: COLORS.positive },
           { label: "Neutral", value: m.neutral, color: COLORS.neutral },
           { label: "Negative", value: m.negative, color: COLORS.negative },
@@ -1010,7 +1208,7 @@
       }
 
       if (i === 0 || i === n - 1 || i === Math.floor(n / 2)) {
-        svg.appendChild(svgEl("text", { x: x + barW / 2, y: H - 6, "text-anchor": "middle", "font-size": 10 }, monthLabel(m.period)));
+        svg.appendChild(svgEl("text", { x: x + barW / 2, y: H - 6, "text-anchor": "middle", "font-size": 10 }, periodLabel(m.period)));
       }
     });
 
@@ -1031,7 +1229,10 @@
 
   function renderRatingTrend() {
     var a = currentAnalysis();
-    var monthly = sliceRange(aggregateMonthly(a.weeklyTrend), STATE.rangeMonths).filter(function (m) { return m.count > 0; });
+    var monthly = (isDayRange()
+      ? dailyBuckets(windowedReviews(a.recentReviews, rangeDays()))
+      : sliceRange(aggregateMonthly(a.weeklyTrend), rangeMonthsValue())
+    ).filter(function (m) { return m.count > 0; });
     var wrap = document.getElementById("ratingChartWrap");
     wrap.innerHTML = "";
     if (monthly.length < 2) { wrap.innerHTML = '<div class="empty-state">Not enough data in this range.</div>'; return; }
@@ -1076,7 +1277,7 @@
       hit.addEventListener("pointermove", function (e) { tt(e); });
       hit.addEventListener("pointerleave", function () { tooltip.hide(); });
       function tt(e) {
-        tooltip.show(e, monthLabel(m.period), [
+        tooltip.show(e, periodLabel(m.period), [
           { label: "Avg rating", value: m.avgRating.toFixed(2), color: lineColor },
           { label: "Reviews", value: m.count, color: null },
         ]);
@@ -1096,7 +1297,7 @@
   /* ----------------------------------------------------------------- */
 
   function renderDistribution() {
-    var a = currentAnalysis();
+    var a = scopedAnalysis();
     var dist = a.ratingDistribution;
     var wrap = document.getElementById("distChartWrap");
     wrap.innerHTML = "";
@@ -1173,7 +1374,7 @@
   }
 
   function renderCategories() {
-    var a = currentAnalysis();
+    var a = scopedAnalysis();
     var rows = a.categoryBreakdown || [];
     var wrap = document.getElementById("catList");
     wrap.innerHTML = "";
@@ -1221,7 +1422,7 @@
   /* ----------------------------------------------------------------- */
 
   function renderKeywords() {
-    var a = currentAnalysis();
+    var a = scopedAnalysis();
     var map = { top: a.topKeywords, praise: a.topPraiseKeywords, complaints: a.topComplaintKeywords };
     var colorMap = { top: COLORS.play, praise: COLORS.positive, negative: COLORS.negative, complaints: COLORS.negative };
     var list = (map[STATE.kwTab] || []).slice(0, 10);
@@ -1304,7 +1505,7 @@
   /* ----------------------------------------------------------------- */
 
   function filteredReviews() {
-    var a = currentAnalysis();
+    var a = scopedAnalysis();
     var q = STATE.search.trim().toLowerCase();
     return a.recentReviews.filter(function (r) {
       if (!STATE.ratingFilter.has(Math.round(r.rating))) return false;
@@ -1437,9 +1638,24 @@
   /* Orchestration                                                      */
   /* ----------------------------------------------------------------- */
 
+  function renderRangeCaptions() {
+    var desc = rangeDescriptor();
+    var dayMode = isDayRange();
+    setText("volumeSub", dayMode ? "Daily reviews, split by tone — " + desc : "Monthly reviews, split by tone");
+    setText("ratingTrendSub", dayMode ? "Daily average, 1–5 stars — " + desc : "Monthly average, 1–5 stars");
+    setText("distSub", "All reviews, by star — " + desc);
+    setText("catSub", "Reviews grouped by product stage — " + desc);
+    setText("kwSub", "Most frequent terms across reviews — " + desc);
+  }
+  function setText(id, text) {
+    var e = document.getElementById(id);
+    if (e) e.textContent = text;
+  }
+
   function renderAll() {
     renderHeader();
     renderFilters();
+    renderRangeCaptions();
     renderKpis();
     renderVolumeChart();
     renderRatingTrend();
