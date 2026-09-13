@@ -329,6 +329,8 @@
   }
   .idea-source { font-size: 11px; color: var(--ink-muted); }
   .idea-rationale { font-size: 12px; color: var(--ink-secondary); line-height: 1.45; }
+  .idea-impact { font-family: "IBM Plex Mono", monospace; font-size: 11px; padding-top: 2px; }
+  .idea-impact-muted { color: var(--ink-muted); }
   .idea-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
   .idea-vote {
     display: inline-flex;
@@ -1199,6 +1201,24 @@
     });
   }
 
+  function impactHtml(idea) {
+    var current = ownCategorySnapshot(idea.category);
+    var snap = idea.shipSnapshot;
+    if (!current || !snap) {
+      return '<div class="idea-impact idea-impact-muted">Shipped &mdash; not enough current data on ' + escapeHtml(categoryLabel(idea.category)) + " to compare yet.</div>";
+    }
+    var delta = Number((current.avgRating - snap.avgRating).toFixed(2));
+    var dir = delta > 0.05 ? "up" : delta < -0.05 ? "down" : "flat";
+    var color = dir === "up" ? COLORS.positive : dir === "down" ? COLORS.negative : COLORS.muted;
+    var arrow = dir === "up" ? "▲" : dir === "down" ? "▼" : "—";
+    return (
+      '<div class="idea-impact" style="color:' + color + '">' +
+      "Since shipping: " + categoryLabel(idea.category) + " " + snap.avgRating.toFixed(2) + "★ (n=" + snap.count + ") &rarr; " +
+      current.avgRating.toFixed(2) + "★ (n=" + current.count + ") " + arrow + " " + (delta >= 0 ? "+" : "") + delta +
+      "</div>"
+    );
+  }
+
   function renderIdeaCard(idea) {
     var card = el("div", "idea-card");
     var catColor = categoryColor(idea.category || "other");
@@ -1208,6 +1228,7 @@
       '<div class="idea-meta"><span class="idea-cat-chip" style="background:' + catColor + '">' + escapeHtml(categoryLabel(idea.category || "other")) + "</span>" +
       (sources ? '<span class="idea-source">from ' + escapeHtml(sources) + "</span>" : "") + "</div>" +
       (idea.rationale ? '<div class="idea-rationale">' + escapeHtml(idea.rationale) + "</div>" : "") +
+      (idea.status === "shipped" && idea.shipSnapshot ? impactHtml(idea) : "") +
       '<div class="idea-footer"></div>';
 
     var footer = card.querySelector(".idea-footer");
@@ -1305,10 +1326,29 @@
     }).catch(function (e) { console.error("upvote failed", e); });
   }
 
+  /** Current avgRating/count for a funnel category on OUR OWN app, read
+   * live from whatever data is currently loaded — used both to snapshot a
+   * baseline at ship time and to compare against it on every later render. */
+  function ownCategorySnapshot(category) {
+    var ownApp = STATE.data.apps.filter(function (a) { return a.role === "own"; })[0];
+    if (!ownApp) return null;
+    var row = (ownApp.combined.categoryBreakdown || []).filter(function (c) { return c.category === category; })[0];
+    if (!row || !row.count) return null;
+    return { avgRating: row.avgRating, count: row.count };
+  }
+
   function setIdeaStatus(idea, status) {
     var coll = ideasCollection();
     if (!coll) return;
-    coll.doc(idea.id).update({ status: status }).catch(function (e) { console.error("status update failed", e); });
+    var payload = { status: status };
+    if (status === "shipped" && !idea.shipSnapshot) {
+      var snap = ownCategorySnapshot(idea.category);
+      if (snap) {
+        payload.shipSnapshot = snap;
+        payload.shippedAt = new Date().toISOString();
+      }
+    }
+    coll.doc(idea.id).update(payload).catch(function (e) { console.error("status update failed", e); });
   }
 
   function deleteIdea(idea) {
