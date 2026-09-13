@@ -356,6 +356,38 @@
   .idea-delete { font-size: 11px; color: var(--ink-muted); cursor: pointer; background: none; border: none; padding: 0; }
   .idea-delete:hover { color: var(--status-critical); }
   .empty-col { font-size: 11.5px; color: var(--ink-muted); padding: 8px 2px; }
+
+  /* Feedback by theme (per-app accordion) */
+  .theme-feedback-list { display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+  .theme-feedback-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .theme-feedback-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .theme-feedback-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .theme-feedback-meta { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-muted); }
+  .theme-feedback-lean {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+  }
+  .theme-expand-btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    padding: 6px 12px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--ink-secondary);
+    cursor: pointer;
+    margin-top: 8px;
+  }
   .backlog-offline { font-size: 12.5px; color: var(--ink-muted); padding: 10px 0; }
 
   footer.foot {
@@ -508,6 +540,116 @@
   ];
   var STATUS_ORDER = ["idea", "planned", "in_progress", "shipped"];
   var STATUS_LABELS = { idea: "Idea", planned: "Planned", in_progress: "In progress", shipped: "Shipped" };
+
+  // Mirrors src/themes.js — keep both in sync by hand when editing either.
+  var SUMMARY_THEMES = [
+    { label: "Customer support", words: ["support", "service", "team", "customer", "help", "response", "query", "staff"] },
+    { label: "Brokerage & charges", words: ["brokerage", "charges", "charge", "fee", "fees", "cost", "expensive", "cheap"] },
+    { label: "Account opening & KYC", words: ["account", "kyc", "open", "verification", "verify", "document", "demat", "pan", "aadhaar", "nominee"] },
+    { label: "Login & access", words: ["login", "otp", "password", "access", "signin", "sign"] },
+    { label: "Trading execution", words: ["trade", "trading", "order", "execution", "buy", "sell", "price", "slippage", "market"] },
+    { label: "App reliability & performance", words: ["crash", "slow", "lag", "bug", "freeze", "hang", "error", "loading", "update", "version", "glitch", "issue"] },
+    { label: "Ease of use", words: ["easy", "interface", "ui", "design", "simple", "navigation", "smooth", "convenient"] },
+    { label: "Investment options", words: ["mutual", "fund", "sip", "ipo", "invest", "investment", "portfolio", "wealth"] },
+    { label: "Referrals & onboarding", words: ["download", "install", "refer", "referral", "promo", "bonus", "signup"] },
+    { label: "Loss / money concerns", words: ["loss", "money", "fraud", "scam", "refund", "withdraw", "withdrawal"] },
+  ];
+  var GENERIC_SUMMARY_WORDS = new Set([
+    "good", "app", "application", "apps", "best", "nice", "great", "excellent",
+    "awesome", "amazing", "super", "worst", "bad", "poor", "okay", "fine",
+    "love", "like", "one", "also", "please", "work", "works", "working",
+    "really", "much", "lot", "time", "every", "everything", "hai", "yeh",
+    "sir", "thank", "thanks",
+  ]);
+  function isGenericPhrase(word) {
+    return word.split(" ").some(function (w) { return GENERIC_SUMMARY_WORDS.has(w); }) || GENERIC_SUMMARY_WORDS.has(word);
+  }
+  function classifyIntoThemes(keywords) {
+    var scores = {};
+    (keywords || []).forEach(function (k) {
+      if (isGenericPhrase(k.word)) return;
+      var tokens = k.word.split(" ");
+      for (var i = 0; i < SUMMARY_THEMES.length; i++) {
+        var theme = SUMMARY_THEMES[i];
+        if (tokens.some(function (t) { return theme.words.indexOf(t) !== -1; })) {
+          if (!scores[theme.label]) scores[theme.label] = { score: 0, words: [] };
+          scores[theme.label].score += k.count;
+          if (scores[theme.label].words.indexOf(k.word) === -1) scores[theme.label].words.push(k.word);
+          break;
+        }
+      }
+    });
+    return Object.keys(scores)
+      .map(function (label) { return { label: label, score: scores[label].score, words: scores[label].words.slice(0, 4) }; })
+      .sort(function (a, b) { return b.score - a.score; });
+  }
+  var CLIENT_STOPWORDS = new Set([
+    "a", "an", "the", "and", "or", "but", "if", "then", "so", "because", "as",
+    "of", "at", "by", "for", "with", "about", "against", "between", "into",
+    "through", "during", "before", "after", "above", "below", "to", "from",
+    "up", "down", "in", "out", "on", "off", "over", "under", "again",
+    "further", "once", "here", "there", "when", "where", "why", "how", "all",
+    "any", "both", "each", "few", "more", "most", "other", "some", "such",
+    "no", "nor", "not", "only", "own", "same", "than", "too", "very", "s",
+    "t", "can", "will", "just", "don", "should", "now", "i", "me", "my",
+    "myself", "we", "our", "ours", "ourselves", "you", "your", "yours",
+    "yourself", "yourselves", "he", "him", "his", "himself", "she", "her",
+    "hers", "herself", "it", "its", "itself", "they", "them", "their",
+    "theirs", "themselves", "what", "which", "who", "whom", "this", "that",
+    "these", "those", "am", "is", "are", "was", "were", "be", "been", "being",
+    "have", "has", "had", "having", "do", "does", "did", "doing", "would",
+    "could", "ought", "get", "got", "getting", "also",
+  ]);
+  function clientTokenize(text) {
+    return (text || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s']/g, " ")
+      .split(/\s+/)
+      .filter(function (w) { return w.length >= 3 && !CLIENT_STOPWORDS.has(w) && !/^\d+$/.test(w); });
+  }
+  function reviewThemeLabels(r) {
+    var tokens = clientTokenize((r.title || "") + " " + (r.text || ""));
+    var tokenSet = {};
+    tokens.forEach(function (t) { tokenSet[t] = true; });
+    var matched = [];
+    SUMMARY_THEMES.forEach(function (theme) {
+      if (theme.words.some(function (w) { return tokenSet[w]; })) matched.push(theme.label);
+    });
+    return matched;
+  }
+
+  /** Groups an app's recentReviews (most recent 300) by theme, for the
+   * per-theme "good vs bad" summary and drill-down quotes. A review can
+   * belong to more than one theme. */
+  function buildAppThemeSummaries(app) {
+    var reviews = (app.combined.recentReviews || []).slice().sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+    var byTheme = {};
+    SUMMARY_THEMES.forEach(function (t) { byTheme[t.label] = { count: 0, ratingSum: 0, positive: 0, negative: 0, reviews: [] }; });
+    reviews.forEach(function (r) {
+      reviewThemeLabels(r).forEach(function (label) {
+        var b = byTheme[label];
+        b.count++;
+        b.ratingSum += r.rating || 0;
+        if (r.rating >= 4) b.positive++;
+        if (r.rating <= 2) b.negative++;
+        b.reviews.push(r);
+      });
+    });
+    return SUMMARY_THEMES
+      .map(function (t) {
+        var b = byTheme[t.label];
+        return {
+          label: t.label,
+          count: b.count,
+          avgRating: b.count ? b.ratingSum / b.count : 0,
+          positive: b.positive,
+          negative: b.negative,
+          reviews: b.reviews,
+        };
+      })
+      .filter(function (t) { return t.count > 0; })
+      .sort(function (a, b) { return b.count - a.count; });
+  }
 
   var STATE = {
     data: null,
@@ -699,11 +841,39 @@
     });
   }
 
-  function pickQuotes(app, kind, n) {
-    var reviews = app.combined.recentReviews || [];
+  function pickQuotes(reviews, kind, n) {
     var filtered = reviews.filter(function (r) { return kind === "praise" ? r.rating >= 4 : r.rating <= 2; });
+    filtered = filtered.filter(function (r) { return (r.text || "").length >= 25; });
     filtered.sort(function (a, b) { return (b.thumbsUp || 0) - (a.thumbsUp || 0) || new Date(b.date) - new Date(a.date); });
-    return filtered.filter(function (r) { return (r.text || "").length >= 25; }).slice(0, n);
+    return filtered.slice(0, n);
+  }
+
+  function quoteHtml(r) {
+    var kind = r.rating >= 4 ? "praise" : r.rating <= 2 ? "complaint" : "";
+    var q = el("div", "quote " + kind);
+    q.innerHTML =
+      '<div class="quote-meta">' + r.rating + "★ &middot; " + (r.platform === "play" ? "Play" : "iOS") + " &middot; " + fmtDate(r.date) + "</div>" +
+      "<div>" + escapeHtml((r.text || "").slice(0, 260)) + (r.text && r.text.length > 260 ? "…" : "") + "</div>";
+    return q;
+  }
+
+  function buildVsUsComparison(ownApp, app) {
+    if (app.role === "own" || !ownApp) return null;
+    var ownCats = {};
+    (ownApp.combined.categoryBreakdown || []).forEach(function (c) { ownCats[c.category] = c; });
+    var rows = (app.combined.categoryBreakdown || [])
+      .filter(function (c) { return c.category !== "other" && c.count >= 3; })
+      .map(function (c) {
+        var own = ownCats[c.category];
+        if (!own || own.count < 3) return null;
+        return { label: c.label, theirRating: c.avgRating, ourRating: own.avgRating, delta: Number((c.avgRating - own.avgRating).toFixed(2)) };
+      })
+      .filter(Boolean);
+
+    return {
+      ahead: rows.filter(function (r) { return r.delta >= 0.3; }).sort(function (a, b) { return b.delta - a.delta; }).slice(0, 3),
+      behind: rows.filter(function (r) { return r.delta <= -0.3; }).sort(function (a, b) { return a.delta - b.delta; }).slice(0, 3),
+    };
   }
 
   function renderDive() {
@@ -728,24 +898,33 @@
     });
     catCol.appendChild(catList);
 
-    var praiseCol = el("div", "dive-col");
-    praiseCol.innerHTML = "<h3>Praise &amp; complaints</h3>";
-    var kwWrap = el("div", "cat-mini-list");
-    var praiseWords = (app.combined.topPraiseKeywords || []).slice(0, 6);
-    var complaintWords = (app.combined.topComplaintKeywords || []).slice(0, 6);
-    var kwMax = Math.max.apply(null, praiseWords.concat(complaintWords).map(function (k) { return k.count; }).concat([1]));
-    function kwRow(k, color) {
-      var pct = Math.max(4, Math.round((k.count / kwMax) * 100));
-      var row = el("div", "cat-mini-row");
-      row.innerHTML =
-        '<span class="cat-mini-name">' + escapeHtml(k.word) + "</span>" +
-        '<span class="cat-mini-track"><span class="cat-mini-fill" style="width:' + pct + '%;background:' + color + '"></span></span>' +
-        '<span class="cat-mini-val tabular">' + k.count + "</span>";
-      return row;
+    var ownApp = STATE.data.apps.filter(function (a) { return a.role === "own"; })[0];
+    var vsCol = el("div", "dive-col");
+    vsCol.innerHTML = "<h3>Vs. Swastika</h3>";
+    if (app.role === "own") {
+      vsCol.appendChild(el("div", "empty-col", "This is your own app."));
+    } else {
+      var cmp = buildVsUsComparison(ownApp, app);
+      var vsList = el("div", "quote-list");
+      if (cmp.ahead.length) {
+        vsList.appendChild(el("div", "quote-meta", "Ahead of us"));
+        cmp.ahead.forEach(function (r) {
+          var q = el("div", "quote praise");
+          q.innerHTML = "<div>" + escapeHtml(r.label) + " — their " + r.theirRating.toFixed(2) + "★ vs our " + r.ourRating.toFixed(2) + "★</div>";
+          vsList.appendChild(q);
+        });
+      }
+      if (cmp.behind.length) {
+        vsList.appendChild(el("div", "quote-meta", "Behind us"));
+        cmp.behind.forEach(function (r) {
+          var q = el("div", "quote complaint");
+          q.innerHTML = "<div>" + escapeHtml(r.label) + " — their " + r.theirRating.toFixed(2) + "★ vs our " + r.ourRating.toFixed(2) + "★</div>";
+          vsList.appendChild(q);
+        });
+      }
+      if (!cmp.ahead.length && !cmp.behind.length) vsList.appendChild(el("div", "empty-col", "No categories differ meaningfully from us."));
+      vsCol.appendChild(vsList);
     }
-    praiseWords.forEach(function (k) { kwWrap.appendChild(kwRow(k, COLORS.positive)); });
-    complaintWords.forEach(function (k) { kwWrap.appendChild(kwRow(k, COLORS.negative)); });
-    praiseCol.appendChild(kwWrap);
 
     var versionCol = el("div", "dive-col");
     versionCol.innerHTML = "<h3>Version regressions</h3>";
@@ -764,27 +943,68 @@
     }
     versionCol.appendChild(regressionList);
 
-    var quotesCol = el("div", "dive-col");
-    quotesCol.style.gridColumn = "1 / -1";
-    quotesCol.innerHTML = "<h3>Representative reviews</h3>";
-    var quoteList = el("div", "quote-list");
-    var praiseQuotes = pickQuotes(app, "praise", 2);
-    var complaintQuotes = pickQuotes(app, "complaint", 2);
-    praiseQuotes.concat(complaintQuotes).forEach(function (r) {
-      var kind = r.rating >= 4 ? "praise" : "complaint";
-      var q = el("div", "quote " + kind);
-      q.innerHTML =
-        '<div class="quote-meta">' + r.rating + "★ &middot; " + (r.platform === "play" ? "Play" : "iOS") + " &middot; " + fmtDate(r.date) + "</div>" +
-        '<div>' + escapeHtml((r.text || "").slice(0, 240)) + (r.text && r.text.length > 240 ? "…" : "") + "</div>";
-      quoteList.appendChild(q);
-    });
-    if (!praiseQuotes.length && !complaintQuotes.length) quoteList.innerHTML = '<div class="empty-col">No long-form reviews found.</div>';
-    quotesCol.appendChild(quoteList);
+    var themeCol = el("div", "dive-col");
+    themeCol.style.gridColumn = "1 / -1";
+    themeCol.innerHTML = "<h3>Feedback by theme</h3>";
+    themeCol.appendChild(renderThemeFeedbackList(app));
 
     grid.appendChild(catCol);
-    grid.appendChild(praiseCol);
+    grid.appendChild(vsCol);
     grid.appendChild(versionCol);
-    grid.appendChild(quotesCol);
+    grid.appendChild(themeCol);
+  }
+
+  /** Per-theme accordion: a one-line good/bad summary plus a couple of
+   * sample quotes, expandable to every matching review in recentReviews. */
+  function renderThemeFeedbackList(app) {
+    var themes = buildAppThemeSummaries(app).slice(0, 6);
+    var wrap = el("div", "theme-feedback-list");
+    if (!themes.length) {
+      wrap.innerHTML = '<div class="empty-col">Not enough review text yet to detect themes.</div>';
+      return wrap;
+    }
+
+    themes.forEach(function (t) {
+      var lean = t.positive > t.negative * 1.3 ? "praise" : t.negative > t.positive * 1.3 ? "complaint" : "mixed";
+      var leanLabel = lean === "praise" ? "Mostly praised" : lean === "complaint" ? "Mostly criticized" : "Mixed feedback";
+      var leanColor = lean === "praise" ? COLORS.positive : lean === "complaint" ? COLORS.negative : COLORS.accent;
+
+      var block = el("div", "theme-feedback-block");
+      block.innerHTML =
+        '<div class="theme-feedback-head">' +
+          '<span class="theme-feedback-label">' + escapeHtml(t.label) + "</span>" +
+          '<span class="theme-feedback-meta">' + t.count + " mentions &middot; " + t.avgRating.toFixed(2) + "★</span>" +
+          '<span class="theme-feedback-lean" style="background:' + leanColor + '20;color:' + leanColor + '">' + leanLabel + "</span>" +
+        "</div>";
+
+      var quotesWrap = el("div", "quote-list");
+      var shownIds = {};
+      var initial = pickQuotes(t.reviews, "praise", 1).concat(pickQuotes(t.reviews, "complaint", 1));
+      if (!initial.length) initial = t.reviews.slice(0, 2);
+      initial.forEach(function (r) { shownIds[r.id] = true; quotesWrap.appendChild(quoteHtml(r)); });
+      block.appendChild(quotesWrap);
+
+      var remaining = t.reviews.filter(function (r) { return !shownIds[r.id]; });
+      if (remaining.length) {
+        var moreBtn = el("button", "theme-expand-btn", "Show " + remaining.length + " more review" + (remaining.length === 1 ? "" : "s"));
+        var expanded = false;
+        moreBtn.addEventListener("click", function () {
+          expanded = !expanded;
+          if (expanded) {
+            remaining.forEach(function (r) { quotesWrap.appendChild(quoteHtml(r)); });
+            moreBtn.textContent = "Show fewer reviews";
+          } else {
+            while (quotesWrap.children.length > initial.length) quotesWrap.removeChild(quotesWrap.lastChild);
+            moreBtn.textContent = "Show " + remaining.length + " more review" + (remaining.length === 1 ? "" : "s");
+          }
+        });
+        block.appendChild(moreBtn);
+      }
+
+      wrap.appendChild(block);
+    });
+
+    return wrap;
   }
 
   /* ------------------------------------------------------------------ */
