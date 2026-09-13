@@ -1,6 +1,7 @@
 const Sentiment = require('sentiment');
 const STOPWORDS = require('./stopwords');
 const { categorize, CATEGORY_ORDER, CATEGORY_LABELS } = require('./categorize');
+const { SUMMARY_THEMES, themesForTokens } = require('./themes');
 
 const sentiment = new Sentiment();
 
@@ -86,6 +87,104 @@ function categoryBreakdown(reviews, total) {
       topKeywords: topKeywords(b.reviews, { n: 8 }),
     };
   });
+}
+
+/** Per-(platform,version) rollup, ordered by when that version first shows
+ * up in reviews (a proxy for release order, since we don't have the store's
+ * actual release dates). Flags a version as a likely regression when its
+ * avg rating drops >= 0.4 vs the prior version on the SAME platform, with
+ * both having enough reviews (>=3) to not be noise. */
+function computeVersionTrend(reviews) {
+  const buckets = new Map();
+  for (const r of reviews) {
+    if (!r.version || !r.date) continue;
+    const key = `${r.platform}:${r.version}`;
+    if (!buckets.has(key)) {
+      buckets.set(key, {
+        key,
+        platform: r.platform,
+        version: r.version,
+        count: 0,
+        ratingSum: 0,
+        sentimentBuckets: { positive: 0, neutral: 0, negative: 0 },
+        firstSeen: r.date,
+        lastSeen: r.date,
+      });
+    }
+    const b = buckets.get(key);
+    b.count++;
+    b.ratingSum += r.rating || 0;
+    b.sentimentBuckets[ratingBucket(r.rating)]++;
+    if (r.date < b.firstSeen) b.firstSeen = r.date;
+    if (r.date > b.lastSeen) b.lastSeen = r.date;
+  }
+
+  const rows = [...buckets.values()]
+    .map((b) => ({
+      key: b.key,
+      platform: b.platform,
+      version: b.version,
+      count: b.count,
+      avgRating: Number((b.ratingSum / b.count).toFixed(2)),
+      sentimentBuckets: b.sentimentBuckets,
+      firstSeen: b.firstSeen,
+      lastSeen: b.lastSeen,
+    }))
+    .sort((a, b) => (a.firstSeen < b.firstSeen ? -1 : 1));
+
+  const MIN_RELIABLE_COUNT = 5;
+  const lastReliableByPlatform = {};
+  for (const row of rows) {
+    const prev = lastReliableByPlatform[row.platform];
+    row.deltaVsPrevious = prev && row.count >= MIN_RELIABLE_COUNT && prev.count >= MIN_RELIABLE_COUNT
+      ? Number((row.avgRating - prev.avgRating).toFixed(2))
+      : null;
+    row.isRegression = row.deltaVsPrevious !== null && row.deltaVsPrevious <= -0.5;
+    if (row.count >= MIN_RELIABLE_COUNT) lastReliableByPlatform[row.platform] = row;
+  }
+
+  return rows;
+}
+
+/** Monthly mention-volume trend per core theme (SUMMARY_THEMES), across the
+ * full review history — unlike the "Top themes" keyword-frequency ranking,
+ * this classifies every review directly so it can be plotted over time. A
+ * review can count toward more than one theme. */
+function computeThemeTrend(reviews) {
+  const byTheme = {};
+  for (const theme of SUMMARY_THEMES) byTheme[theme.label] = new Map();
+
+  for (const r of reviews) {
+    if (!r.date) continue;
+    const month = r.date.slice(0, 7);
+    const tokens = tokenize(`${r.title || ''} ${r.text || ''}`);
+    const matched = themesForTokens(tokens);
+    for (const label of matched) {
+      const map = byTheme[label];
+      if (!map.has(month)) map.set(month, { period: month, count: 0, ratingSum: 0, positive: 0, neutral: 0, negative: 0 });
+      const m = map.get(month);
+      const bucket = ratingBucket(r.rating);
+      m.count++;
+      m.ratingSum += r.rating || 0;
+      m[bucket]++;
+    }
+  }
+
+  const result = {};
+  for (const label of Object.keys(byTheme)) {
+    const arr = [...byTheme[label].values()]
+      .sort((a, b) => (a.period < b.period ? -1 : 1))
+      .map((m) => ({
+        period: m.period,
+        count: m.count,
+        avgRating: Number((m.ratingSum / m.count).toFixed(2)),
+        positive: m.positive,
+        neutral: m.neutral,
+        negative: m.negative,
+      }));
+    if (arr.length) result[label] = arr;
+  }
+  return result;
 }
 
 function analyzeReviews(rawReviews, meta) {
@@ -180,6 +279,8 @@ function analyzeReviews(rawReviews, meta) {
     topComplaintKeywords: topKeywords(negativeReviews, { n: 20 }),
     topPraiseKeywords: topKeywords(positiveReviews, { n: 20 }),
     categoryBreakdown: categoryBreakdown(reviews, total),
+    versionTrend: computeVersionTrend(reviews),
+    themeTrend: computeThemeTrend(reviews),
     recentReviews: reviews
       .slice()
       .sort((a, b) => new Date(b.date) - new Date(a.date))

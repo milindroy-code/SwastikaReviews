@@ -482,6 +482,26 @@
   .cat-count { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-muted); text-align: right; }
   .cat-rating { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; text-align: right; }
 
+  /* Theme trends (small multiples) */
+  .theme-trend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .theme-trend-cell {
+    background: var(--surface-2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .theme-trend-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .theme-trend-label { font-size: 12px; font-weight: 600; color: var(--ink-secondary); }
+  .theme-trend-delta { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600; }
+  @media (max-width: 900px) {
+    .theme-trend-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .theme-trend-grid { grid-template-columns: 1fr; }
+  }
+
   .reviews-list { display: flex; flex-direction: column; }
   .review-row {
     display: grid;
@@ -655,12 +675,33 @@
   <section class="card" style="margin-bottom:14px;">
     <div class="card-head">
       <div>
+        <h2>Rating by app version</h2>
+        <p class="card-sub">Most recent versions with &ge;5 reviews &mdash; full history, not scoped to the range above</p>
+      </div>
+    </div>
+    <div class="chart-wrap" id="versionChartWrap" style="margin-top:6px;"></div>
+    <div class="flags-list" id="versionFlagsList" style="margin-top:14px;"></div>
+  </section>
+
+  <section class="card" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
         <h2>Top themes</h2>
         <p class="card-sub" id="catSub">Where mention volume concentrates, and its praise/complaint lean</p>
       </div>
       <div class="sentiment-legend" id="themeLegend"></div>
     </div>
     <div class="cat-list" id="catList" style="margin-top:8px;"></div>
+  </section>
+
+  <section class="card" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2>Theme trends</h2>
+        <p class="card-sub" id="themeTrendSub">Monthly mention volume per theme &mdash; is each one rising or falling?</p>
+      </div>
+    </div>
+    <div class="theme-trend-grid" id="themeTrendGrid"></div>
   </section>
 
   <section class="grid-2b">
@@ -778,6 +819,9 @@
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
 
+  function mean(arr) {
+    return arr.length ? arr.reduce(function (a, b) { return a + b; }, 0) / arr.length : 0;
+  }
   function fmt(n) {
     if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
     if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "K";
@@ -820,6 +864,18 @@
     if (STATE.platform === "play") return COLORS.play;
     if (STATE.platform === "ios") return COLORS.ios;
     return COLORS.accent;
+  }
+
+  function ratingTierColor(v) {
+    if (!v) return COLORS.muted;
+    if (v >= 4) return COLORS.positive;
+    if (v >= 3) return "var(--status-warn)";
+    return COLORS.negative;
+  }
+
+  function versionLabel(v) {
+    if (STATE.platform === "combined" && v.platform === "ios") return "iOS " + v.version;
+    return v.version;
   }
 
   function currentApp() { return STATE.data.apps[STATE.appIndex]; }
@@ -1690,6 +1746,168 @@
   }
 
   /* ----------------------------------------------------------------- */
+  /* Rating by app version — always full-history, independent of Range  */
+  /* ----------------------------------------------------------------- */
+
+  function renderVersionChart() {
+    var a = currentAnalysis();
+    var versions = (a.versionTrend || []).filter(function (v) { return v.count >= 5; }).slice(-20);
+    var wrap = document.getElementById("versionChartWrap");
+    wrap.innerHTML = "";
+    if (!versions.length) { wrap.innerHTML = '<div class="empty-state">Not enough per-version data yet (need &ge;5 reviews on a version).</div>'; return; }
+
+    var W = wrap.clientWidth || 900, H = 230;
+    var padL = 30, padR = 14, padT = 20, padB = 30;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var n = versions.length;
+    var slot = plotW / n;
+    var barW = Math.min(22, slot * 0.6);
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+    for (var r = 1; r <= 5; r++) {
+      var y = padT + (1 - (r - 1) / 4) * plotH;
+      svg.appendChild(svgEl("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: COLORS.grid, "stroke-width": 1 }));
+      svg.appendChild(svgEl("text", { x: padL - 8, y: y + 3, "text-anchor": "end", "font-size": 10 }, r));
+    }
+
+    var tooltip = makeTooltip(wrap);
+    var labelEvery = Math.max(1, Math.ceil(n / 10));
+
+    versions.forEach(function (v, i) {
+      var x = padL + i * slot + (slot - barW) / 2;
+      var barH = Math.max(((v.avgRating - 1) / 4) * plotH, 2);
+      var y = padT + plotH - barH;
+      var color = ratingTierColor(v.avgRating);
+      svg.appendChild(svgEl("rect", { x: x, y: y, width: barW, height: barH, rx: 4, fill: color }));
+
+      if (v.isRegression) {
+        svg.appendChild(svgEl("text", { x: x + barW / 2, y: y - 6, "text-anchor": "middle", "font-size": 11, fill: COLORS.negative }, "▼"));
+      }
+
+      var hit = svgEl("rect", { x: x - 2, y: padT, width: barW + 4, height: plotH, fill: "transparent" });
+      svg.appendChild(hit);
+      hit.addEventListener("pointerenter", function (e) { tt(e); });
+      hit.addEventListener("pointermove", function (e) { tt(e); });
+      hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+      function tt(e) {
+        var rows = [
+          { label: "Avg rating", value: v.avgRating.toFixed(2), color: color },
+          { label: "Reviews", value: v.count, color: null },
+        ];
+        if (v.deltaVsPrevious !== null) {
+          rows.push({ label: "vs previous version", value: (v.deltaVsPrevious >= 0 ? "+" : "") + v.deltaVsPrevious, color: v.isRegression ? COLORS.negative : null });
+        }
+        tooltip.show(e, versionLabel(v), rows);
+      }
+
+      if (i % labelEvery === 0 || i === n - 1) {
+        svg.appendChild(svgEl("text", { x: x + barW / 2, y: H - padB + 14, "text-anchor": "middle", "font-size": 9.5 }, versionLabel(v)));
+      }
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  function renderVersionFlags() {
+    var a = currentAnalysis();
+    var wrap = document.getElementById("versionFlagsList");
+    wrap.innerHTML = "";
+    var regressions = (a.versionTrend || []).filter(function (v) { return v.isRegression; }).slice(-8).reverse();
+    if (!regressions.length) { wrap.innerHTML = '<div class="flags-empty">No version-over-version rating drops detected.</div>'; return; }
+    regressions.forEach(function (v) {
+      var row = el("div", "flag-row critical");
+      row.innerHTML =
+        '<span class="flag-icon">▼</span>' +
+        '<span class="flag-body"><span class="flag-period">' + escapeHtml(versionLabel(v)) + " &middot; Version regression</span>" +
+        '<span class="flag-detail">Avg rating ' + v.avgRating.toFixed(2) + " (" + (v.deltaVsPrevious >= 0 ? "+" : "") + v.deltaVsPrevious.toFixed(2) + " vs previous version, n=" + v.count + ")</span></span>";
+      wrap.appendChild(row);
+    });
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Theme trends — monthly, always full-history                       */
+  /* ----------------------------------------------------------------- */
+
+  function drawSparkline(container, series, color) {
+    if (!series.length) { container.innerHTML = '<div style="font-size:11px;color:var(--ink-muted);padding:10px 0;">No data in range</div>'; return; }
+    var W = container.clientWidth || 200, H = 52;
+    var padX = 4, padY = 6;
+    var plotW = W - padX * 2, plotH = H - padY * 2;
+    var maxCount = Math.max.apply(null, series.map(function (m) { return m.count; }).concat([1]));
+    var n = series.length;
+    function xAt(i) { return padX + (n === 1 ? plotW / 2 : (i / (n - 1)) * plotW); }
+    function yAt(c) { return padY + (1 - c / maxCount) * plotH; }
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+    var pathD = series.map(function (m, i) { return (i === 0 ? "M" : "L") + xAt(i).toFixed(1) + " " + yAt(m.count).toFixed(1); }).join(" ");
+    svg.appendChild(svgEl("path", { d: pathD, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+    svg.appendChild(svgEl("circle", { cx: xAt(n - 1), cy: yAt(series[n - 1].count), r: 3, fill: color }));
+
+    container.appendChild(svg);
+    var tooltip = makeTooltip(container);
+    series.forEach(function (m, i) {
+      var hit = svgEl("circle", { cx: xAt(i), cy: yAt(m.count), r: 8, fill: "transparent" });
+      svg.appendChild(hit);
+      hit.addEventListener("pointerenter", function (e) { tt(e); });
+      hit.addEventListener("pointermove", function (e) { tt(e); });
+      hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+      function tt(e) {
+        tooltip.show(e, monthLabel(m.period), [
+          { label: "Mentions", value: m.count, color: color },
+          { label: "Avg rating", value: m.avgRating.toFixed(2), color: null },
+        ]);
+      }
+    });
+  }
+
+  function renderThemeTrends() {
+    var wrap = document.getElementById("themeTrendGrid");
+    var sub = document.getElementById("themeTrendSub");
+    wrap.innerHTML = "";
+
+    if (isDayRange()) {
+      setText("themeTrendSub", "Switch to a monthly range (6M/12M/24M/All) to see theme trends over time.");
+      return;
+    }
+    setText("themeTrendSub", "Monthly mention volume per theme — is each one rising or falling?");
+
+    var a = currentAnalysis();
+    var themeStats = buildThemeTable(a).slice(0, 6);
+    if (!themeStats.length) { wrap.innerHTML = '<div class="empty-state">Not enough data to trend themes yet.</div>'; return; }
+
+    themeStats.forEach(function (t) {
+      var full = (a.themeTrend && a.themeTrend[t.label]) || [];
+      var series = sliceRange(full, rangeMonthsValue());
+      var color = t.praise > t.complaint * 1.3 ? COLORS.positive : t.complaint > t.praise * 1.3 ? COLORS.negative : COLORS.accent;
+
+      var deltaHtml = "";
+      if (series.length >= 4) {
+        var span = Math.max(1, Math.min(3, Math.floor(series.length / 2)));
+        var recent = series.slice(-span);
+        var prior = series.slice(-span * 2, -span);
+        if (prior.length) {
+          var recentAvg = mean(recent.map(function (m) { return m.count; }));
+          var priorAvg = mean(prior.map(function (m) { return m.count; }));
+          if (recentAvg !== priorAvg) {
+            var rising = recentAvg > priorAvg;
+            var worse = (rising && color === COLORS.negative) || (!rising && color === COLORS.positive);
+            var better = (rising && color === COLORS.positive) || (!rising && color === COLORS.negative);
+            var deltaColor = worse ? COLORS.negative : better ? COLORS.positive : COLORS.muted;
+            deltaHtml = '<span class="theme-trend-delta" style="color:' + deltaColor + '">' + (rising ? "▲" : "▼") + " " + (rising ? "rising" : "falling") + "</span>";
+          }
+        }
+      }
+
+      var cell = el("div", "theme-trend-cell");
+      cell.innerHTML = '<div class="theme-trend-head"><span class="theme-trend-label">' + escapeHtml(t.label) + "</span>" + deltaHtml + "</div>";
+      var sparkWrap = el("div");
+      cell.appendChild(sparkWrap);
+      wrap.appendChild(cell);
+      drawSparkline(sparkWrap, series, color);
+    });
+  }
+
+  /* ----------------------------------------------------------------- */
   /* Narrative                                                          */
   /* ----------------------------------------------------------------- */
 
@@ -1968,7 +2186,10 @@
     renderRatingTrend();
     renderDistribution();
     renderComparison();
+    renderVersionChart();
+    renderVersionFlags();
     renderCategories();
+    renderThemeTrends();
     renderKeywords();
     renderFlags();
     renderNarrative();
@@ -1997,7 +2218,7 @@
       STATE.bucketIndex++; renderReviewsList();
     });
     window.addEventListener("resize", debounce(function () {
-      renderVolumeChart(); renderRatingTrend(); renderDistribution();
+      renderVolumeChart(); renderRatingTrend(); renderDistribution(); renderVersionChart(); renderThemeTrends();
     }, 150));
     renderAll();
   }
