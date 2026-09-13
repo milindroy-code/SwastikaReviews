@@ -223,6 +223,20 @@
     gap: 14px;
     margin-bottom: 18px;
   }
+
+  /* Review summary (liked / to improve) */
+  .summary-card h2 { display: flex; align-items: center; gap: 8px; font-size: 14.5px; }
+  .summary-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .summary-list { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .summary-list li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+    padding-left: 16px;
+    position: relative;
+  }
+  .summary-liked .summary-list li::before { content: "+"; position: absolute; left: 0; color: var(--status-good-text); font-weight: 700; }
+  .summary-improve .summary-list li::before { content: "\2192"; position: absolute; left: 0; color: var(--status-critical); font-weight: 700; }
   .kpi {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -490,17 +504,36 @@
   }
   .review-text.expanded { -webkit-line-clamp: unset; }
   .review-version { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-muted); text-align: right; padding-top: 2px; }
-  .load-more-row { display: flex; justify-content: center; padding-top: 16px; }
-  .load-more-btn {
+  .reviews-pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding-top: 16px;
+    flex-wrap: wrap;
+  }
+  .pager-btn {
     font-family: "IBM Plex Mono", monospace;
     font-size: 12.5px;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 8px;
     border: 1px solid var(--border);
     background: var(--surface-2);
     color: var(--ink);
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
+  .pager-btn:disabled { opacity: 0.35; cursor: default; }
+  .pager-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+  .pager-label strong { color: var(--ink-secondary); font-weight: 600; }
+  .pager-window-note { font-size: 11px; color: var(--ink-muted); text-align: center; padding-top: 4px; }
   .empty-state { font-size: 13px; color: var(--ink-muted); padding: 24px 0; text-align: center; }
 
   footer.foot {
@@ -555,6 +588,19 @@
   </div>
 
   <section class="kpi-row" id="kpiRow"></section>
+
+  <section class="grid-2b">
+    <div class="card summary-card summary-liked">
+      <h2><span class="summary-dot" style="background:var(--status-good)"></span>What users like</h2>
+      <p class="card-sub" id="likedSub">Synthesized from praise keywords and top-rated categories</p>
+      <ul class="summary-list" id="likedList"></ul>
+    </div>
+    <div class="card summary-card summary-improve">
+      <h2><span class="summary-dot" style="background:var(--status-critical)"></span>What can be improved</h2>
+      <p class="card-sub" id="improveSub">Synthesized from complaint keywords and lowest-rated categories</p>
+      <ul class="summary-list" id="improveList"></ul>
+    </div>
+  </section>
 
   <section class="grid-2">
     <div class="card">
@@ -642,9 +688,12 @@
       <div class="category-chips" id="categoryChips"></div>
     </div>
     <div class="reviews-list" id="reviewsList"></div>
-    <div class="load-more-row" id="loadMoreRow" hidden>
-      <button class="load-more-btn" id="loadMoreBtn"></button>
+    <div class="reviews-pager" id="reviewsPager" hidden>
+      <button class="pager-btn" id="pagerNewer">&#9664; Newer</button>
+      <span class="pager-label" id="pagerLabel"></span>
+      <button class="pager-btn" id="pagerOlder">Older &#9654;</button>
     </div>
+    <div class="pager-window-note" id="pagerNote" hidden></div>
   </section>
 
   <footer class="foot">
@@ -665,7 +714,7 @@
     ratingFilter: new Set([1,2,3,4,5]),
     search: "",
     kwTab: "top",
-    tableLimit: 25,
+    bucketIndex: 0,
     categoryFilter: "all",
   };
 
@@ -850,13 +899,14 @@
   function computeCategoryBreakdown(reviews) {
     var total = reviews.length;
     var buckets = {};
-    CATEGORY_META.forEach(function (c) { buckets[c.category] = { count: 0, ratingSum: 0, sentiment: { positive: 0, neutral: 0, negative: 0 } }; });
+    CATEGORY_META.forEach(function (c) { buckets[c.category] = { count: 0, ratingSum: 0, sentiment: { positive: 0, neutral: 0, negative: 0 }, reviews: [] }; });
     reviews.forEach(function (r) {
       var cat = buckets[r.category] ? r.category : "other";
       var b = buckets[cat];
       b.count++;
       b.ratingSum += r.rating || 0;
       b.sentiment[ratingBucket(r.rating)]++;
+      b.reviews.push(r);
     });
     return CATEGORY_META.map(function (c) {
       var b = buckets[c.category];
@@ -867,6 +917,7 @@
         pctOfTotal: total ? Number(((100 * b.count) / total).toFixed(1)) : 0,
         avgRating: b.count ? Number((b.ratingSum / b.count).toFixed(2)) : 0,
         sentimentBuckets: b.sentiment,
+        topKeywords: clientTopKeywords(b.reviews, 8),
       };
     });
   }
@@ -1030,7 +1081,7 @@
     if (app.play) platformOptions.push({ label: "Play", value: "play" });
     if (app.ios) platformOptions.push({ label: "iOS", value: "ios" });
     renderSegmented("platformSeg", platformOptions, STATE.platform, function (v) {
-      STATE.platform = v; STATE.tableLimit = 25; renderAll();
+      STATE.platform = v; STATE.bucketIndex = 0; renderAll();
     });
 
     var rangeOptions = [
@@ -1042,7 +1093,7 @@
       { label: "All", value: "all" },
     ];
     renderSegmented("rangeSeg", rangeOptions, STATE.range, function (v) {
-      STATE.range = v; STATE.tableLimit = 25; renderAll();
+      STATE.range = v; STATE.bucketIndex = 0; renderAll();
     });
   }
 
@@ -1400,7 +1451,7 @@
       track.addEventListener("pointerleave", function () { tooltip.hide(); });
       track.addEventListener("click", function () {
         STATE.categoryFilter = STATE.categoryFilter === r.category ? "all" : r.category;
-        STATE.tableLimit = 25;
+        STATE.bucketIndex = 0;
         renderCategoryChips();
         renderReviewsList();
         document.getElementById("reviewsList").scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -1415,6 +1466,75 @@
         ]);
       }
     });
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Review summary (liked / to improve) — synthesized from the same     */
+  /* keyword + category stats, no LLM required.                         */
+  /* ----------------------------------------------------------------- */
+
+  var GENERIC_SUMMARY_WORDS = new Set([
+    "good", "app", "application", "apps", "best", "nice", "great", "excellent",
+    "awesome", "amazing", "super", "worst", "bad", "poor", "okay", "fine",
+    "love", "like", "one", "also", "please", "work", "works", "working",
+    "really", "much", "lot", "time", "every", "everything", "very good",
+    "nice app", "good app", "best app", "hai", "yeh", "sir", "thank",
+    "thanks", "thank you",
+  ]);
+  function isGenericPhrase(word) {
+    return word.split(" ").some(function (w) { return GENERIC_SUMMARY_WORDS.has(w); }) || GENERIC_SUMMARY_WORDS.has(word);
+  }
+  function meaningfulKeywords(list, n) {
+    return (list || []).filter(function (k) { return !isGenericPhrase(k.word); }).slice(0, n);
+  }
+
+  function buildReviewSummary(a) {
+    var liked = [];
+    var improve = [];
+
+    var cats = (a.categoryBreakdown || []).filter(function (c) { return c.category !== "other" && c.count >= 3; });
+    var goodCats = cats.filter(function (c) { return c.avgRating >= 3.5; }).sort(function (x, y) { return y.avgRating - x.avgRating; });
+    var badCats = cats.filter(function (c) { return c.avgRating < 3; }).sort(function (x, y) { return x.avgRating - y.avgRating; });
+
+    goodCats.slice(0, 2).forEach(function (c) {
+      var kw = meaningfulKeywords(c.topKeywords, 3).map(function (k) { return k.word; });
+      liked.push(c.label + (kw.length ? " (" + kw.join(", ") + ")" : "") + " — " + c.avgRating.toFixed(2) + "★ across " + c.count + " reviews");
+    });
+    badCats.slice(0, 2).forEach(function (c) {
+      var kw = meaningfulKeywords(c.topKeywords, 3).map(function (k) { return k.word; });
+      improve.push(c.label + (kw.length ? " (" + kw.join(", ") + ")" : "") + " — " + c.avgRating.toFixed(2) + "★ across " + c.count + " reviews");
+    });
+
+    var praiseWords = meaningfulKeywords(a.topPraiseKeywords, 6).map(function (k) { return k.word; });
+    if (praiseWords.length) liked.push("Frequently praised: " + praiseWords.join(", "));
+
+    var complaintWords = meaningfulKeywords(a.topComplaintKeywords, 6).map(function (k) { return k.word; });
+    if (complaintWords.length) improve.push("Frequently mentioned in complaints: " + complaintWords.join(", "));
+
+    if (!liked.length) liked.push("Not enough positive review text yet to summarize.");
+    if (!improve.length) improve.push("No significant complaint pattern detected in this range.");
+
+    return { liked: liked, improve: improve };
+  }
+
+  function fillSummaryList(id, items) {
+    var ul = document.getElementById(id);
+    ul.innerHTML = "";
+    items.forEach(function (text) {
+      var li = document.createElement("li");
+      li.textContent = text;
+      ul.appendChild(li);
+    });
+  }
+
+  function renderReviewSummary() {
+    var a = scopedAnalysis();
+    var s = buildReviewSummary(a);
+    fillSummaryList("likedList", s.liked);
+    fillSummaryList("improveList", s.improve);
+    var desc = rangeDescriptor();
+    setText("likedSub", "From praise keywords and top-rated categories — " + desc);
+    setText("improveSub", "From complaint keywords and lowest-rated categories — " + desc);
   }
 
   /* ----------------------------------------------------------------- */
@@ -1522,7 +1642,7 @@
       var chip = el("button", "rating-chip" + (STATE.ratingFilter.has(r) ? " active" : ""), r + "★");
       chip.addEventListener("click", function () {
         if (STATE.ratingFilter.has(r)) STATE.ratingFilter.delete(r); else STATE.ratingFilter.add(r);
-        STATE.tableLimit = 25;
+        STATE.bucketIndex = 0;
         renderRatingChips();
         renderReviewsList();
       });
@@ -1539,7 +1659,7 @@
       allChip.style.background = "var(--accent)";
       allChip.style.borderColor = "var(--accent)";
     }
-    allChip.addEventListener("click", function () { STATE.categoryFilter = "all"; STATE.tableLimit = 25; renderCategoryChips(); renderReviewsList(); });
+    allChip.addEventListener("click", function () { STATE.categoryFilter = "all"; STATE.bucketIndex = 0; renderCategoryChips(); renderReviewsList(); });
     wrap.appendChild(allChip);
 
     CATEGORY_META.forEach(function (c) {
@@ -1553,7 +1673,7 @@
       }
       chip.addEventListener("click", function () {
         STATE.categoryFilter = active ? "all" : c.category;
-        STATE.tableLimit = 25;
+        STATE.bucketIndex = 0;
         renderCategoryChips();
         renderReviewsList();
       });
@@ -1561,13 +1681,59 @@
     });
   }
 
-  function renderReviewsList() {
-    var list = filteredReviews();
-    var wrap = document.getElementById("reviewsList");
-    wrap.innerHTML = "";
-    if (!list.length) { wrap.innerHTML = '<div class="empty-state">No reviews match these filters.</div>'; document.getElementById("loadMoreRow").hidden = true; return; }
+  /** Groups an already newest-first list into rolling ~7-day windows,
+   * anchored to the newest not-yet-bucketed review each time — so sparse
+   * stretches of history don't produce empty pages, and browsing always
+   * starts at the most recent window. */
+  function buildTimeBuckets(reviews) {
+    var buckets = [];
+    var i = 0;
+    while (i < reviews.length) {
+      var anchor = new Date(reviews[i].date);
+      var cutoff = new Date(anchor);
+      cutoff.setUTCDate(cutoff.getUTCDate() - 7);
+      var items = [];
+      while (i < reviews.length && new Date(reviews[i].date) > cutoff) {
+        items.push(reviews[i]);
+        i++;
+      }
+      buckets.push({ items: items, newest: items[0].date, oldest: items[items.length - 1].date });
+    }
+    return buckets;
+  }
 
-    var shown = list.slice(0, STATE.tableLimit);
+  function bucketLabel(bucket) {
+    var newest = new Date(bucket.newest), oldest = new Date(bucket.oldest);
+    var opt = { month: "short", day: "numeric" };
+    if (newest.toDateString() === oldest.toDateString()) return newest.toLocaleDateString(undefined, opt);
+    var sameYear = newest.getFullYear() === oldest.getFullYear();
+    var oldStr = oldest.toLocaleDateString(undefined, sameYear ? opt : Object.assign({ year: "numeric" }, opt));
+    var newStr = newest.toLocaleDateString(undefined, opt);
+    return oldStr + " – " + newStr;
+  }
+
+  var MAX_REVIEWS_PER_BUCKET = 60;
+
+  function renderReviewsList() {
+    var list = filteredReviews(); // newest first
+    var wrap = document.getElementById("reviewsList");
+    var pager = document.getElementById("reviewsPager");
+    var note = document.getElementById("pagerNote");
+    wrap.innerHTML = "";
+
+    if (!list.length) {
+      wrap.innerHTML = '<div class="empty-state">No reviews match these filters.</div>';
+      pager.hidden = true;
+      note.hidden = true;
+      return;
+    }
+
+    var buckets = buildTimeBuckets(list);
+    if (STATE.bucketIndex >= buckets.length) STATE.bucketIndex = buckets.length - 1;
+    if (STATE.bucketIndex < 0) STATE.bucketIndex = 0;
+    var bucket = buckets[STATE.bucketIndex];
+
+    var shown = bucket.items.slice(0, MAX_REVIEWS_PER_BUCKET);
     shown.forEach(function (r) {
       var row = el("div", "review-row");
       var platformClass = r.platform === "play" ? "play" : "ios";
@@ -1588,15 +1754,19 @@
       wrap.appendChild(row);
     });
 
-    var remaining = list.length - shown.length;
-    var moreRow = document.getElementById("loadMoreRow");
-    var moreBtn = document.getElementById("loadMoreBtn");
-    if (remaining > 0) {
-      moreRow.hidden = false;
-      moreBtn.textContent = "Show " + Math.min(25, remaining) + " more (" + remaining + " remaining)";
+    if (bucket.items.length > MAX_REVIEWS_PER_BUCKET) {
+      note.hidden = false;
+      note.textContent = "Showing the first " + MAX_REVIEWS_PER_BUCKET + " of " + bucket.items.length + " reviews in this window.";
     } else {
-      moreRow.hidden = true;
+      note.hidden = true;
     }
+
+    pager.hidden = buckets.length <= 1;
+    document.getElementById("pagerLabel").innerHTML =
+      "<strong>" + escapeHtml(bucketLabel(bucket)) + "</strong> &middot; " + bucket.items.length + " review" + (bucket.items.length === 1 ? "" : "s") +
+      " &middot; window " + (STATE.bucketIndex + 1) + " of " + buckets.length;
+    document.getElementById("pagerNewer").disabled = STATE.bucketIndex === 0;
+    document.getElementById("pagerOlder").disabled = STATE.bucketIndex === buckets.length - 1;
   }
 
   /* ----------------------------------------------------------------- */
@@ -1657,6 +1827,7 @@
     renderFilters();
     renderRangeCaptions();
     renderKpis();
+    renderReviewSummary();
     renderVolumeChart();
     renderRatingTrend();
     renderDistribution();
@@ -1675,15 +1846,18 @@
     document.getElementById("appSelect").addEventListener("change", function (e) {
       STATE.appIndex = +e.target.value;
       STATE.platform = "combined";
-      STATE.tableLimit = 25;
+      STATE.bucketIndex = 0;
       renderAll();
     });
     bindKwTabs();
     document.getElementById("searchInput").addEventListener("input", function (e) {
-      STATE.search = e.target.value; STATE.tableLimit = 25; renderReviewsList();
+      STATE.search = e.target.value; STATE.bucketIndex = 0; renderReviewsList();
     });
-    document.getElementById("loadMoreBtn").addEventListener("click", function () {
-      STATE.tableLimit += 25; renderReviewsList();
+    document.getElementById("pagerNewer").addEventListener("click", function () {
+      if (STATE.bucketIndex > 0) { STATE.bucketIndex--; renderReviewsList(); }
+    });
+    document.getElementById("pagerOlder").addEventListener("click", function () {
+      STATE.bucketIndex++; renderReviewsList();
     });
     window.addEventListener("resize", debounce(function () {
       renderVolumeChart(); renderRatingTrend(); renderDistribution();
