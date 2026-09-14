@@ -315,69 +315,6 @@
 
   svg text { font-family: "IBM Plex Mono", monospace; fill: var(--ink-muted); }
 
-  /* Event annotations on the rating trend chart */
-  .annotate-btn {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 11.5px;
-    padding: 5px 10px;
-    border-radius: 7px;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    color: var(--ink-secondary);
-    cursor: pointer;
-    height: fit-content;
-  }
-  .annotate-panel { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
-  .annotate-form { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-  .annotate-input {
-    font-family: inherit;
-    font-size: 12.5px;
-    padding: 7px 10px;
-    border-radius: 7px;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    color: var(--ink);
-  }
-  .annotate-input-wide { flex: 1; min-width: 160px; }
-  .annotate-note {
-    width: 100%;
-    font-family: inherit;
-    font-size: 12.5px;
-    padding: 8px 10px;
-    border-radius: 7px;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    color: var(--ink);
-    min-height: 50px;
-    resize: vertical;
-    margin-bottom: 10px;
-  }
-  .annotate-submit {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 12.5px;
-    font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 7px;
-    border: none;
-    background: var(--accent);
-    color: #fff;
-    cursor: pointer;
-  }
-  .annotate-list { display: flex; flex-direction: column; gap: 6px; }
-  .annotate-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--ink-secondary);
-    padding: 6px 8px;
-    border-radius: 7px;
-    background: var(--surface-2);
-  }
-  .annotate-row .annotate-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-  .annotate-row .annotate-date { font-family: "IBM Plex Mono", monospace; color: var(--ink-muted); flex: none; }
-  .annotate-row .annotate-remove { margin-left: auto; background: none; border: none; color: var(--ink-muted); cursor: pointer; font-size: 13px; padding: 0 4px; }
-  .annotate-row .annotate-remove:hover { color: var(--status-critical); }
 
   .chart-tooltip {
     position: absolute;
@@ -757,24 +694,8 @@
           <h2>Average rating trend</h2>
           <p class="card-sub" id="ratingTrendSub">Monthly average, 1&ndash;5 stars</p>
         </div>
-        <button class="annotate-btn" id="annotateToggleBtn" hidden>+ Annotate</button>
       </div>
       <div class="chart-wrap" id="ratingChartWrap"></div>
-      <div class="annotate-panel" id="annotatePanel" hidden>
-        <div class="annotate-form">
-          <input type="date" id="annotateDate" class="annotate-input">
-          <select id="annotateType" class="annotate-input">
-            <option value="release">Release</option>
-            <option value="outage">Outage</option>
-            <option value="marketing">Marketing push</option>
-            <option value="other">Other</option>
-          </select>
-          <input type="text" id="annotateLabel" class="annotate-input annotate-input-wide" placeholder="Short label, e.g. v1.9.3 release">
-          <button class="annotate-submit" id="annotateSubmit">Add</button>
-        </div>
-        <textarea id="annotateNote" class="annotate-note" placeholder="Optional note (what happened, why it matters)"></textarea>
-        <div class="annotate-list" id="annotateList"></div>
-      </div>
     </div>
   </section>
 
@@ -901,8 +822,6 @@
     categoryFilter: "all",
     themeFilter: "all",
     marketData: null,
-    db: null,
-    annotations: [],
   };
 
   var CATEGORY_META = [
@@ -914,8 +833,6 @@
     { category: "support", label: "Support" },
     { category: "other", label: "Other" },
   ];
-
-  var ANNOTATION_TYPE_LABELS = { release: "Release", outage: "Outage", marketing: "Marketing push", other: "Other" };
 
   var COLORS = {
     positive: getVar("--status-good"),
@@ -1544,50 +1461,7 @@
 
     svg.appendChild(svgEl("text", { x: W - padR + 6, y: refY + 3, "text-anchor": "start", "font-size": 9.5, fill: COLORS.muted }, "avg"));
 
-    STATE.annotations.forEach(function (ann) {
-      var idx = annotationXPosition(ann.date, monthly, isDayRange());
-      if (idx === null) return;
-      var mx = xAt(idx);
-      var color = annotationColor(ann.type);
-      svg.appendChild(svgEl("path", { d: "M " + mx + " " + (padT + 2) + " L " + (mx - 5) + " " + (padT - 6) + " L " + (mx + 5) + " " + (padT - 6) + " Z", fill: color }));
-      var hit = svgEl("rect", { x: mx - 8, y: padT - 10, width: 16, height: 16, fill: "transparent" });
-      svg.appendChild(hit);
-      hit.addEventListener("pointerenter", function (e) { tt(e); });
-      hit.addEventListener("pointermove", function (e) { tt(e); });
-      hit.addEventListener("pointerleave", function () { tooltip.hide(); });
-      function tt(e) {
-        var rows = [
-          { label: "Date", value: ann.date, color: color },
-          { label: "Type", value: ANNOTATION_TYPE_LABELS[ann.type] || ann.type, color: null },
-        ];
-        if (ann.note) rows.push({ label: "Note", value: ann.note.slice(0, 60), color: null });
-        tooltip.show(e, ann.label, rows);
-      }
-    });
-
     wrap.appendChild(svg);
-  }
-
-  /** Maps an annotation's date to the nearest period index in the
-   * currently-rendered monthly/daily bucket array — exact match if the
-   * period has data, otherwise the closest period after it (or the last
-   * one, if the annotation is more recent than any bucket). */
-  function annotationXPosition(annDate, periods, isDayMode) {
-    if (!periods.length || !annDate) return null;
-    var key = isDayMode ? annDate.slice(0, 10) : annDate.slice(0, 7);
-    for (var i = 0; i < periods.length; i++) {
-      if (periods[i].period === key) return i;
-    }
-    var idx = periods.findIndex(function (m) { return m.period > key; });
-    if (idx === -1) return periods.length - 1;
-    return idx;
-  }
-
-  function annotationColor(type) {
-    if (type === "release") return COLORS.accent;
-    if (type === "outage") return COLORS.negative;
-    if (type === "marketing") return "var(--status-warn)";
-    return COLORS.muted;
   }
 
   /* ----------------------------------------------------------------- */
@@ -2028,79 +1902,6 @@
   }
 
   /* ----------------------------------------------------------------- */
-  /* Event annotations (live, shared via db) — mark a point on the        */
-  /* rating trend chart as a known cause, so flags read as explained.     */
-  /* ----------------------------------------------------------------- */
-
-  function annotationsCollection() {
-    return STATE.db ? STATE.db.collection("annotations") : null;
-  }
-
-  function renderAnnotateList() {
-    var wrap = document.getElementById("annotateList");
-    wrap.innerHTML = "";
-    var sorted = STATE.annotations.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
-    if (!sorted.length) { wrap.innerHTML = '<div class="empty-state" style="padding:8px 0;">No annotations yet.</div>'; return; }
-    sorted.forEach(function (ann) {
-      var row = el("div", "annotate-row");
-      row.innerHTML =
-        '<span class="annotate-dot" style="background:' + annotationColor(ann.type) + '"></span>' +
-        '<span class="annotate-date">' + escapeHtml(ann.date) + "</span>" +
-        "<span>" + escapeHtml(ann.label) + (ann.note ? " — " + escapeHtml(ann.note.slice(0, 80)) : "") + "</span>";
-      var removeBtn = el("button", "annotate-remove", "×");
-      removeBtn.addEventListener("click", function () { deleteAnnotation(ann.id); });
-      row.appendChild(removeBtn);
-      wrap.appendChild(row);
-    });
-  }
-
-  function subscribeAnnotations() {
-    var coll = annotationsCollection();
-    if (!coll) return;
-    coll.onSnapshot(function (snap) {
-      STATE.annotations = snap.docs.filter(function (d) { return d.exists; }).map(function (d) { return Object.assign({ id: d.id }, d.data()); });
-      renderAnnotateList();
-      renderRatingTrend();
-    }, function (err) { console.error("annotations subscribe error", err); });
-  }
-
-  function submitAnnotation() {
-    var coll = annotationsCollection();
-    if (!coll) return;
-    var dateEl = document.getElementById("annotateDate");
-    var labelEl = document.getElementById("annotateLabel");
-    var typeEl = document.getElementById("annotateType");
-    var noteEl = document.getElementById("annotateNote");
-    var date = dateEl.value;
-    var label = labelEl.value.trim();
-    if (!date) { dateEl.focus(); return; }
-    if (!label) { labelEl.focus(); return; }
-    coll.add({ date: date, label: label, type: typeEl.value, note: noteEl.value.trim(), createdAt: new Date().toISOString() })
-      .then(function () { labelEl.value = ""; noteEl.value = ""; })
-      .catch(function (e) { console.error("add annotation failed", e); });
-  }
-
-  function deleteAnnotation(id) {
-    var coll = annotationsCollection();
-    if (!coll) return;
-    coll.doc(id).delete().catch(function (e) { console.error("delete annotation failed", e); });
-  }
-
-  async function initAnnotations() {
-    var toggleBtn = document.getElementById("annotateToggleBtn");
-    var panel = document.getElementById("annotatePanel");
-    document.getElementById("annotateSubmit").addEventListener("click", submitAnnotation);
-    toggleBtn.addEventListener("click", function () { panel.hidden = !panel.hidden; });
-
-    var db = null;
-    try { db = window.claude ? await window.claude.use("db") : null; } catch (e) { db = null; }
-    STATE.db = db;
-    if (!db) return; // stays hidden — no live annotations available in this view
-    toggleBtn.hidden = false;
-    subscribeAnnotations();
-  }
-
-  /* ----------------------------------------------------------------- */
   /* Market position — reads Battlecard's competitor-data.json, if it     */
   /* loaded; degrades to hidden if not (best-effort, non-blocking).       */
   /* ----------------------------------------------------------------- */
@@ -2525,7 +2326,5 @@
     document.getElementById("appName").textContent = "Failed to load data.json";
     console.error(e);
   });
-
-  initAnnotations();
 })();
 </script>

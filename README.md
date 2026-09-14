@@ -68,16 +68,11 @@ Battlecard:
 ```
 npm run all:competitors
 ```
-then republish `battlecard.html` (same file, same artifact URL) with the
-updated `data/out/competitor-data.json` as the `competitor-data.json`
-companion file. The feature-parity backlog itself is live (stored in the
-artifact's own database) and does not need a republish to update — only
-the scoreboard/keyword/quote data does.
-
-Only Review Desk's refresh is on the daily automated schedule right now
-(see "Automated refresh" below) — Battlecard's competitor data is
-manual/on-request since it's a heavier pull (6 extra apps) on a slower-
-moving comparison. Ask to have it scheduled too if you want it automatic.
+then republish `battlecard.html` with the updated
+`data/out/competitor-data.json` as the `competitor-data.json` companion
+file — and republish that same file to Review Desk's copy too, so its
+"Market position" section stays in sync (see "Automated refresh" below;
+the weekly routine already does both).
 
 ## Configuring apps
 
@@ -119,23 +114,28 @@ first app as "own" and everything in `competitors.json` as "competitor":
 
 ## Automated refresh
 
-A scheduled cloud routine (**Swastika Review Agent — Daily Refresh**,
-https://claude.ai/code/routines/trig_01Bht7nSU1rUCqUkBqeaXvoB) runs
-`npm run all` and republishes Review Desk every day at 7:00 AM IST against
-the `milindroy-code/SwastikaReviews` GitHub repo, then commits the refreshed
-`data/` back. Battlecard/competitor data is not on this schedule yet.
+Two scheduled cloud routines run against the `milindroy-code/SwastikaReviews`
+GitHub repo, committing refreshed `data/` back after each run:
 
-## Battlecard's feature-parity backlog
+- **Swastika Review Agent — Daily Refresh**
+  (https://claude.ai/code/routines/trig_01Bht7nSU1rUCqUkBqeaXvoB) — runs
+  `npm run all` and republishes Review Desk every day at 7:00 AM IST.
+- **Swastika Battlecard — Weekly Competitor Refresh**
+  (https://claude.ai/code/routines/trig_01QhznpESdJHesXZSQ5EcVbs) — runs
+  `npm run all:competitors` every Monday at 7:00 AM IST and republishes the
+  refreshed `competitor-data.json` to both Battlecard and Review Desk (so
+  Review Desk's "Market position" section stays current too).
 
-Battlecard declares the `db` runtime capability, so the backlog board is a
-live, shared document store owned by that artifact — anyone who opens the
-page can add, upvote, re-status, or remove an entry, and it persists for
-everyone without a republish. Two things follow from that:
-- **Because it declares `db`, the artifact is organization-internal** — it
-  can't be shared publicly outside your claude.ai organization.
-- Entries live in a `backlog` collection on the artifact itself, not in this
-  repo — there's nothing to back up here, and deleting the artifact deletes
-  the backlog with it.
+## Sharing
+
+Neither dashboard declares any runtime capability that would restrict
+sharing — both are plain published Artifacts, shareable the same as any
+other (private by default; share from the page's share menu). Earlier
+versions of Battlecard and Review Desk had live, shared features (a
+feature-parity backlog with outcome tracking, and event annotations on the
+rating trend chart) built on the `db` capability, which ties an artifact to
+organization-only sharing as a platform rule. Those were removed in favor
+of unrestricted sharing — ask if you'd like them added back.
 
 ## Turning on LLM narrative summaries
 

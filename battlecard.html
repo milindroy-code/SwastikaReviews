@@ -261,102 +261,6 @@
     .theme-cmp-grid { grid-template-columns: 1fr; }
   }
 
-  /* Backlog */
-  .backlog-layout { display: grid; grid-template-columns: 340px 1fr; gap: 16px; align-items: start; }
-  .backlog-form { display: flex; flex-direction: column; gap: 12px; }
-  .field label { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 6px; }
-  .field input[type="text"], .field textarea, .field select {
-    width: 100%;
-    font-family: inherit;
-    font-size: 13px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    color: var(--ink);
-  }
-  .field textarea { resize: vertical; min-height: 60px; }
-  .chip-select { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip-select button {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 11.5px;
-    padding: 5px 9px;
-    border-radius: 7px;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    color: var(--ink-secondary);
-    cursor: pointer;
-  }
-  .chip-select button.active { color: #fff; border-color: transparent; }
-  .submit-btn {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 9px 14px;
-    border-radius: 8px;
-    border: none;
-    background: var(--accent);
-    color: #fff;
-    cursor: pointer;
-  }
-  .submit-btn:disabled { opacity: 0.5; cursor: default; }
-  .form-hint { font-size: 11.5px; color: var(--ink-muted); }
-
-  .backlog-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .status-col h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 10px; display: flex; justify-content: space-between; }
-  .status-count { font-family: "IBM Plex Mono", monospace; color: var(--ink-muted); }
-  .idea-list { display: flex; flex-direction: column; gap: 9px; min-height: 40px; }
-  .idea-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 11px 12px;
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .idea-title { font-size: 13px; font-weight: 600; }
-  .idea-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-  .idea-cat-chip {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 9.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 2px 6px;
-    border-radius: 5px;
-    color: #fff;
-  }
-  .idea-source { font-size: 11px; color: var(--ink-muted); }
-  .idea-rationale { font-size: 12px; color: var(--ink-secondary); line-height: 1.45; }
-  .idea-impact { font-family: "IBM Plex Mono", monospace; font-size: 11px; padding-top: 2px; }
-  .idea-impact-muted { color: var(--ink-muted); }
-  .idea-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
-  .idea-vote {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 12px;
-    padding: 4px 9px;
-    border-radius: 7px;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    color: var(--ink-secondary);
-    cursor: pointer;
-  }
-  .idea-vote:hover { border-color: var(--accent); color: var(--accent-ink); }
-  .idea-status-select {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 10.5px;
-    padding: 3px 6px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--ink-secondary);
-  }
-  .idea-delete { font-size: 11px; color: var(--ink-muted); cursor: pointer; background: none; border: none; padding: 0; }
-  .idea-delete:hover { color: var(--status-critical); }
   .empty-col { font-size: 11.5px; color: var(--ink-muted); padding: 8px 2px; }
 
   /* Feedback by theme (per-app accordion) */
@@ -390,7 +294,6 @@
     cursor: pointer;
     margin-top: 8px;
   }
-  .backlog-offline { font-size: 12.5px; color: var(--ink-muted); padding: 10px 0; }
 
   footer.foot {
     margin-top: 28px;
@@ -405,11 +308,7 @@
   }
 
   @media (max-width: 900px) {
-    .dive-grid, .backlog-layout { grid-template-columns: 1fr; }
-    .backlog-cols { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 480px) {
-    .backlog-cols { grid-template-columns: 1fr; }
+    .dive-grid { grid-template-columns: 1fr; }
   }
 </style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -479,48 +378,6 @@
     </div>
   </section>
 
-  <section class="block">
-    <div class="block-head">
-      <div>
-        <h2>Feature parity backlog</h2>
-        <p class="block-sub">Things competitors do that could help Swastika Investmart &mdash; shared and editable by anyone with this page</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="backlog-layout">
-        <div>
-          <div class="backlog-form" id="backlogForm">
-            <div class="field">
-              <label for="ideaTitle">Feature / idea</label>
-              <input type="text" id="ideaTitle" placeholder="e.g. One-tap SIP step-up">
-            </div>
-            <div class="field">
-              <label>Category</label>
-              <div class="chip-select" id="ideaCategoryChips"></div>
-            </div>
-            <div class="field">
-              <label>Seen in</label>
-              <div class="chip-select" id="ideaSourceChips"></div>
-            </div>
-            <div class="field">
-              <label for="ideaRationale">Why it helps Swastika</label>
-              <textarea id="ideaRationale" placeholder="What problem this solves, or what it would let us match/beat"></textarea>
-            </div>
-            <div class="field">
-              <label for="ideaAddedBy">Your name (optional)</label>
-              <input type="text" id="ideaAddedBy" placeholder="e.g. Milind">
-            </div>
-            <button class="submit-btn" id="ideaSubmit">Add to backlog</button>
-            <p class="form-hint" id="backlogHint">Visible to everyone who opens this page, and persists across sessions.</p>
-          </div>
-        </div>
-        <div>
-          <div class="backlog-cols" id="backlogCols"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer class="foot">
     <span>Reviews pulled from each store's public review feed &mdash; same pipeline as the Review Desk dashboard.</span>
     <span>Re-run <code class="mono">npm run all:competitors</code> and republish to refresh the scoreboard.</span>
@@ -540,9 +397,6 @@
     { category: "support", label: "Support" },
     { category: "other", label: "Other" },
   ];
-  var STATUS_ORDER = ["idea", "planned", "in_progress", "shipped"];
-  var STATUS_LABELS = { idea: "Idea", planned: "Planned", in_progress: "In progress", shipped: "Shipped" };
-
   // Mirrors src/themes.js — keep both in sync by hand when editing either.
   var SUMMARY_THEMES = [
     { label: "Customer support", words: ["support", "service", "team", "customer", "help", "response", "query", "staff"] },
@@ -656,10 +510,6 @@
   var STATE = {
     data: null,
     diveApp: null,
-    db: null,
-    ideas: [],
-    formCategory: "trading",
-    formSources: {},
     themeCmpCompetitor: null,
   };
 
@@ -1152,228 +1002,6 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Feature parity backlog (live, shared via db)                        */
-  /* ------------------------------------------------------------------ */
-
-  function renderIdeaFormChips() {
-    var catWrap = document.getElementById("ideaCategoryChips");
-    catWrap.innerHTML = "";
-    CATEGORY_META.forEach(function (c) {
-      var active = STATE.formCategory === c.category;
-      var btn = el("button", active ? "active" : "", escapeHtml(c.label));
-      if (active) { btn.style.background = categoryColor(c.category); btn.style.borderColor = categoryColor(c.category); }
-      btn.addEventListener("click", function () { STATE.formCategory = c.category; renderIdeaFormChips(); });
-      catWrap.appendChild(btn);
-    });
-
-    var srcWrap = document.getElementById("ideaSourceChips");
-    srcWrap.innerHTML = "";
-    var competitorNames = STATE.data.apps.filter(function (a) { return a.role === "competitor"; }).map(function (a) { return a.name; });
-    competitorNames.forEach(function (name) {
-      var active = !!STATE.formSources[name];
-      var btn = el("button", active ? "active" : "", escapeHtml(name));
-      if (active) { btn.style.background = "var(--accent)"; btn.style.borderColor = "var(--accent)"; }
-      btn.addEventListener("click", function () {
-        STATE.formSources[name] = !STATE.formSources[name];
-        renderIdeaFormChips();
-      });
-      srcWrap.appendChild(btn);
-    });
-  }
-
-  function renderBacklog() {
-    var cols = document.getElementById("backlogCols");
-    cols.innerHTML = "";
-
-    STATUS_ORDER.forEach(function (status) {
-      var col = el("div", "status-col");
-      var items = STATE.ideas.filter(function (i) { return (i.status || "idea") === status; });
-      items.sort(function (a, b) { return (b.votes || 0) - (a.votes || 0); });
-      col.innerHTML = "<h3>" + STATUS_LABELS[status] + '<span class="status-count">' + items.length + "</span></h3>";
-      var list = el("div", "idea-list");
-      if (!items.length) {
-        list.innerHTML = '<div class="empty-col">Nothing here yet.</div>';
-      } else {
-        items.forEach(function (idea) { list.appendChild(renderIdeaCard(idea)); });
-      }
-      col.appendChild(list);
-      cols.appendChild(col);
-    });
-  }
-
-  function impactHtml(idea) {
-    var current = ownCategorySnapshot(idea.category);
-    var snap = idea.shipSnapshot;
-    if (!current || !snap) {
-      return '<div class="idea-impact idea-impact-muted">Shipped &mdash; not enough current data on ' + escapeHtml(categoryLabel(idea.category)) + " to compare yet.</div>";
-    }
-    var delta = Number((current.avgRating - snap.avgRating).toFixed(2));
-    var dir = delta > 0.05 ? "up" : delta < -0.05 ? "down" : "flat";
-    var color = dir === "up" ? COLORS.positive : dir === "down" ? COLORS.negative : COLORS.muted;
-    var arrow = dir === "up" ? "▲" : dir === "down" ? "▼" : "—";
-    return (
-      '<div class="idea-impact" style="color:' + color + '">' +
-      "Since shipping: " + categoryLabel(idea.category) + " " + snap.avgRating.toFixed(2) + "★ (n=" + snap.count + ") &rarr; " +
-      current.avgRating.toFixed(2) + "★ (n=" + current.count + ") " + arrow + " " + (delta >= 0 ? "+" : "") + delta +
-      "</div>"
-    );
-  }
-
-  function renderIdeaCard(idea) {
-    var card = el("div", "idea-card");
-    var catColor = categoryColor(idea.category || "other");
-    var sources = (idea.sources || []).join(", ");
-    card.innerHTML =
-      '<div class="idea-title">' + escapeHtml(idea.title || "Untitled") + "</div>" +
-      '<div class="idea-meta"><span class="idea-cat-chip" style="background:' + catColor + '">' + escapeHtml(categoryLabel(idea.category || "other")) + "</span>" +
-      (sources ? '<span class="idea-source">from ' + escapeHtml(sources) + "</span>" : "") + "</div>" +
-      (idea.rationale ? '<div class="idea-rationale">' + escapeHtml(idea.rationale) + "</div>" : "") +
-      (idea.status === "shipped" && idea.shipSnapshot ? impactHtml(idea) : "") +
-      '<div class="idea-footer"></div>';
-
-    var footer = card.querySelector(".idea-footer");
-    var voteBtn = el("button", "idea-vote", "▲ " + (idea.votes || 0));
-    voteBtn.addEventListener("click", function () { upvoteIdea(idea); });
-    footer.appendChild(voteBtn);
-
-    var right = el("span");
-    var statusSelect = document.createElement("select");
-    statusSelect.className = "idea-status-select";
-    STATUS_ORDER.forEach(function (s) {
-      var opt = document.createElement("option");
-      opt.value = s; opt.textContent = STATUS_LABELS[s];
-      if ((idea.status || "idea") === s) opt.selected = true;
-      statusSelect.appendChild(opt);
-    });
-    statusSelect.addEventListener("change", function () { setIdeaStatus(idea, statusSelect.value); });
-    right.appendChild(statusSelect);
-
-    var delBtn = el("button", "idea-delete", "Remove");
-    delBtn.style.marginLeft = "8px";
-    delBtn.addEventListener("click", function () { deleteIdea(idea); });
-    right.appendChild(delBtn);
-
-    footer.appendChild(right);
-
-    var byLine = idea.addedBy ? el("div", "idea-source", "added by " + escapeHtml(idea.addedBy)) : null;
-    if (byLine) card.appendChild(byLine);
-
-    return card;
-  }
-
-  function ideasCollection() {
-    return STATE.db ? STATE.db.collection("backlog") : null;
-  }
-
-  function subscribeBacklog() {
-    var coll = ideasCollection();
-    if (!coll) return;
-    coll.onSnapshot(function (snap) {
-      STATE.ideas = snap.docs.filter(function (d) { return d.exists; }).map(function (d) {
-        var data = d.data() || {};
-        return Object.assign({ id: d.id }, data);
-      });
-      renderBacklog();
-    }, function (err) {
-      console.error("backlog subscribe error", err);
-      document.getElementById("backlogCols").innerHTML = '<div class="backlog-offline">Couldn’t load the shared backlog right now.</div>';
-    });
-  }
-
-  function submitIdea() {
-    var coll = ideasCollection();
-    var titleEl = document.getElementById("ideaTitle");
-    var title = titleEl.value.trim();
-    if (!title) { titleEl.focus(); return; }
-    if (!coll) return;
-
-    var sources = Object.keys(STATE.formSources).filter(function (k) { return STATE.formSources[k]; });
-    var payload = {
-      title: title,
-      category: STATE.formCategory,
-      sources: sources,
-      rationale: document.getElementById("ideaRationale").value.trim(),
-      addedBy: document.getElementById("ideaAddedBy").value.trim(),
-      status: "idea",
-      votes: 0,
-      createdAt: new Date().toISOString(),
-    };
-
-    var submitBtn = document.getElementById("ideaSubmit");
-    submitBtn.disabled = true;
-    coll.add(payload).then(function () {
-      titleEl.value = "";
-      document.getElementById("ideaRationale").value = "";
-      document.getElementById("ideaAddedBy").value = "";
-      STATE.formSources = {};
-      renderIdeaFormChips();
-    }).catch(function (e) {
-      console.error("add idea failed", e);
-    }).finally(function () {
-      submitBtn.disabled = false;
-    });
-  }
-
-  function upvoteIdea(idea) {
-    var coll = ideasCollection();
-    if (!coll) return;
-    // Read-then-write: last-writer-wins, so a rare concurrent double-click can
-    // under-count by one. Acceptable here — this is a prioritization signal,
-    // not an audited count.
-    coll.doc(idea.id).get().then(function (snap) {
-      var current = (snap.data() || {}).votes || 0;
-      return coll.doc(idea.id).update({ votes: current + 1 });
-    }).catch(function (e) { console.error("upvote failed", e); });
-  }
-
-  /** Current avgRating/count for a funnel category on OUR OWN app, read
-   * live from whatever data is currently loaded — used both to snapshot a
-   * baseline at ship time and to compare against it on every later render. */
-  function ownCategorySnapshot(category) {
-    var ownApp = STATE.data.apps.filter(function (a) { return a.role === "own"; })[0];
-    if (!ownApp) return null;
-    var row = (ownApp.combined.categoryBreakdown || []).filter(function (c) { return c.category === category; })[0];
-    if (!row || !row.count) return null;
-    return { avgRating: row.avgRating, count: row.count };
-  }
-
-  function setIdeaStatus(idea, status) {
-    var coll = ideasCollection();
-    if (!coll) return;
-    var payload = { status: status };
-    if (status === "shipped" && !idea.shipSnapshot) {
-      var snap = ownCategorySnapshot(idea.category);
-      if (snap) {
-        payload.shipSnapshot = snap;
-        payload.shippedAt = new Date().toISOString();
-      }
-    }
-    coll.doc(idea.id).update(payload).catch(function (e) { console.error("status update failed", e); });
-  }
-
-  function deleteIdea(idea) {
-    var coll = ideasCollection();
-    if (!coll) return;
-    coll.doc(idea.id).delete().catch(function (e) { console.error("delete failed", e); });
-  }
-
-  async function initBacklog() {
-    renderIdeaFormChips();
-    document.getElementById("ideaSubmit").addEventListener("click", submitIdea);
-    document.getElementById("ideaTitle").addEventListener("keydown", function (e) { if (e.key === "Enter") submitIdea(); });
-
-    var db = null;
-    try { db = window.claude ? await window.claude.use("db") : null; } catch (e) { db = null; }
-    STATE.db = db;
-    if (!db) {
-      document.getElementById("backlogHint").textContent = "Live backlog isn't available in this view.";
-      document.getElementById("backlogCols").innerHTML = '<div class="backlog-offline">Open this page in a claude.ai session to add and see shared backlog items.</div>';
-      return;
-    }
-    subscribeBacklog();
-  }
-
-  /* ------------------------------------------------------------------ */
   /* Boot                                                                */
   /* ------------------------------------------------------------------ */
 
@@ -1402,7 +1030,5 @@
     document.getElementById("genTime").textContent = "Failed to load competitor-data.json";
     console.error(e);
   });
-
-  initBacklog();
 })();
 </script>
