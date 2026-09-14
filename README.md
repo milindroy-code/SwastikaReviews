@@ -3,7 +3,7 @@
 Pulls Google Play and App Store reviews for your app(s), turns them into
 ratings/sentiment/keyword/anomaly insights, and feeds two published dashboards.
 
-**Combined dashboard (live, public, permanent):** https://swastika-reviews.vercel.app
+**Combined dashboard (live, public, permanent, auto-updating):** https://swastika-reviews-milind-roy.vercel.app
 — both Review Desk and Battlecard in one page, switchable by tab.
 
 Each also has its own standalone link, if you want to share just one:
@@ -80,27 +80,35 @@ the weekly routine already does both).
 
 ## Vercel deployment
 
-https://swastika-reviews.vercel.app is a Vercel static deployment of the
-`site/` folder (Vercel project `swastika-reviews`, root directory set to
-`site`) — a small `index.html` shell with a tab bar that shows either
-dashboard in an iframe (`dashboard.html` / `battlecard.html`, each fetching
-its own `data.json` / `competitor-data.json`, all copied verbatim into
-`site/`). Both dashboards keep working exactly as they do standalone; the
-shell just adds tabbed navigation on top, so nothing about their own
-styling or scripts had to be merged or rewritten.
+https://swastika-reviews-milind-roy.vercel.app is a Vercel static deployment
+of the `site/` folder (Vercel project `swastika-reviews`, root directory set
+to `site`, Git-connected to `milindroy-code/SwastikaReviews`) — a small
+`index.html` shell with a tab bar that shows either dashboard in an iframe
+(`dashboard.html` / `battlecard.html`, each fetching its own `data.json` /
+`competitor-data.json`, all copied verbatim into `site/`). Both dashboards
+keep working exactly as they do standalone; the shell just adds tabbed
+navigation on top, so nothing about their own styling or scripts had to be
+merged or rewritten.
 
-To refresh what's live:
+**It auto-deploys on every push to `main` that changes `site/`** — both
+scheduled routines run `npm run build:site` before committing, so the daily
+and weekly data refreshes flow straight through to the live site with no
+manual step.
+
+Note on URLs: `swastika-reviews-milind-roy.vercel.app` is the one that
+always tracks the latest deployment (Vercel manages it automatically).
+`swastika-reviews.vercel.app` is a prettier alias that was pointed at the
+site manually — it works right now, but won't move forward on its own with
+future deploys unless re-aliased (`vercel alias set <latest-deployment-url>
+swastika-reviews.vercel.app`) each time. Use the `-milind-roy` URL as the
+one to link to going forward.
+
+To refresh manually (rarely needed, since the routines already do this):
 ```
 npm run all               # or npm run all:competitors, or both
 npm run build:site        # copies the latest HTML + data into site/
-cd site && vercel --prod --yes
+git add site && git commit -m "Refresh site" && git push
 ```
-
-This isn't wired to auto-deploy on git push yet — `vercel git connect`
-needs the Vercel GitHub App authorized for this repo first, which is a
-one-time step in the Vercel dashboard (Project Settings → Git). Once that's
-done, every push that updates `site/` (e.g. from the scheduled routines,
-if `npm run build:site` gets added to their steps) redeploys automatically.
 
 ## Configuring apps
 
