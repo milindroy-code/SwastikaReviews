@@ -1,0 +1,2330 @@
+<!doctype html>
+<title>Review Desk</title>
+<style>
+  /* ---------------------------------------------------------------------
+     Tokens
+  --------------------------------------------------------------------- */
+  :root {
+    color-scheme: light;
+    --bg: #f2f4f7;
+    --surface: #ffffff;
+    --surface-2: #e8ecf1;
+    --surface-3: #dde4ec;
+    --border: #d7dee6;
+    --ink: #101825;
+    --ink-secondary: #3d4a5c;
+    --ink-muted: #647186;
+    --accent: #2f4b9e;
+    --accent-ink: #2f4b9e;
+    --accent-soft: #e3e9fb;
+
+    --series-play: #2a78d6;
+    --series-ios: #eb6834;
+    --status-good: #0ca30c;
+    --status-good-text: #006300;
+    --status-warn: #b8791a;
+    --status-critical: #d03b3b;
+    --status-neutral: #8b96a8;
+
+    --cat-trading: #2a78d6;
+    --cat-investment: #eb6834;
+    --cat-ekyc: #1baf7a;
+    --cat-activation: #eda100;
+    --cat-acquisition: #e87ba4;
+    --cat-support: #008300;
+    --cat-other: #4a3aa7;
+
+    --grid-line: #e1e5ea;
+    --baseline: #c7cfd9;
+
+    --shadow-card: 0 1px 2px rgba(16, 24, 37, 0.04), 0 1px 14px rgba(16, 24, 37, 0.05);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0b0f16;
+      --surface: #121a25;
+      --surface-2: #182231;
+      --surface-3: #1e2a3b;
+      --border: #263344;
+      --ink: #eef2f7;
+      --ink-secondary: #c2ccda;
+      --ink-muted: #8695ab;
+      --accent: #8ca2f0;
+      --accent-ink: #93a8f2;
+      --accent-soft: #1c2740;
+
+      --series-play: #3987e5;
+      --series-ios: #d95926;
+      --status-good: #26bd6b;
+      --status-good-text: #35d17c;
+      --status-warn: #e0a940;
+      --status-critical: #ef6a6a;
+      --status-neutral: #7b87a0;
+
+      --cat-trading: #3987e5;
+      --cat-investment: #d95926;
+      --cat-ekyc: #199e70;
+      --cat-activation: #c98500;
+      --cat-acquisition: #d55181;
+      --cat-support: #008300;
+      --cat-other: #9085e9;
+
+      --grid-line: #232e3d;
+      --baseline: #34404f;
+
+      --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.28);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0b0f16;
+    --surface: #121a25;
+    --surface-2: #182231;
+    --surface-3: #1e2a3b;
+    --border: #263344;
+    --ink: #eef2f7;
+    --ink-secondary: #c2ccda;
+    --ink-muted: #8695ab;
+    --accent: #8ca2f0;
+    --accent-ink: #93a8f2;
+    --accent-soft: #1c2740;
+
+    --series-play: #3987e5;
+    --series-ios: #d95926;
+    --status-good: #26bd6b;
+    --status-good-text: #35d17c;
+    --status-warn: #e0a940;
+    --status-critical: #ef6a6a;
+    --status-neutral: #7b87a0;
+
+    --cat-trading: #3987e5;
+    --cat-ekyc: #d95926;
+    --cat-activation: #199e70;
+    --cat-acquisition: #c98500;
+    --cat-support: #d55181;
+    --cat-other: #008300;
+
+    --grid-line: #232e3d;
+    --baseline: #34404f;
+
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.28);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 0 20px 64px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace; }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  a { color: var(--accent-ink); }
+
+  /* ---------------------------------------------------------------------
+     Shell
+  --------------------------------------------------------------------- */
+  .shell { max-width: 1240px; margin: 0 auto; }
+
+  header.top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 28px 0 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 0 0 6px;
+  }
+  h1.title { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+  .app-select {
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-left: 8px;
+  }
+  .meta-line {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .dot-sep::before { content: "\2022"; margin-right: 14px; color: var(--border); }
+
+  /* ---------------------------------------------------------------------
+     Filter row
+  --------------------------------------------------------------------- */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 0;
+  }
+  .segmented {
+    display: inline-flex;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 2px;
+    gap: 2px;
+  }
+  .segmented button {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    padding: 6px 12px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--ink-secondary);
+    cursor: pointer;
+  }
+  .segmented button.active {
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(16, 24, 37, 0.12);
+    font-weight: 600;
+  }
+  .segmented button:hover:not(.active) { color: var(--ink); }
+  .filter-label {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-right: 8px;
+  }
+  .filter-group { display: flex; align-items: center; }
+
+  /* ---------------------------------------------------------------------
+     KPI row
+  --------------------------------------------------------------------- */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  /* Market position (vs. Battlecard competitors) */
+  .market-link { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--accent-ink); white-space: nowrap; }
+  .market-body { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; margin-top: 8px; }
+  .market-rank-value { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; }
+  .market-rank-sub { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+  .market-lead-trail { display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; color: var(--ink-secondary); }
+  .market-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border-radius: 5px;
+    margin-right: 8px;
+  }
+  .market-tag.lead { background: color-mix(in srgb, var(--status-good) 16%, transparent); color: var(--status-good-text); }
+  .market-tag.trail { background: color-mix(in srgb, var(--status-critical) 16%, transparent); color: var(--status-critical); }
+
+  /* Review summary (liked / to improve) */
+  .summary-card h2 { display: flex; align-items: center; gap: 8px; font-size: 14.5px; }
+  .summary-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .summary-list { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .summary-list li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+    padding-left: 16px;
+    position: relative;
+  }
+  .summary-liked .summary-list li::before { content: "+"; position: absolute; left: 0; color: var(--status-good-text); font-weight: 700; }
+  .summary-improve .summary-list li::before { content: "\2192"; position: absolute; left: 0; color: var(--status-critical); font-weight: 700; }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  .kpi .label {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink-muted);
+  }
+  .kpi .value-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .kpi .value { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; }
+  .delta { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-weight: 600; padding: 2px 6px; border-radius: 5px; }
+  .delta.up { color: var(--status-good-text); background: color-mix(in srgb, var(--status-good) 14%, transparent); }
+  .delta.down { color: var(--status-critical); background: color-mix(in srgb, var(--status-critical) 14%, transparent); }
+  .delta.flat { color: var(--ink-muted); background: var(--surface-2); }
+  .kpi .sub { font-size: 12.5px; color: var(--ink-muted); }
+
+  .stars { color: var(--status-warn); letter-spacing: 1px; font-size: 14px; }
+  .stars .empty { color: var(--border); }
+
+  .sentiment-bar {
+    display: flex;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    background: var(--surface-2);
+  }
+  .sentiment-bar span:first-child { border-radius: 5px 0 0 5px; }
+  .sentiment-bar span:last-child { border-radius: 0 5px 5px 0; }
+  .sentiment-legend { display: flex; gap: 12px; font-size: 11.5px; color: var(--ink-muted); flex-wrap: wrap; }
+  .legend-key { display: inline-flex; align-items: center; gap: 5px; }
+  .legend-swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+  /* ---------------------------------------------------------------------
+     Cards / grid
+  --------------------------------------------------------------------- */
+  .grid-2 { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .grid-2b { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 18px 20px 16px;
+    min-width: 0;
+  }
+  .card h2 { font-size: 14.5px; font-weight: 600; }
+  .card .card-sub { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+  .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 10px; }
+
+  svg text { font-family: "IBM Plex Mono", monospace; fill: var(--ink-muted); }
+
+
+  .chart-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    line-height: 1.5;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.08s ease;
+    z-index: 5;
+    white-space: nowrap;
+  }
+  .chart-tooltip .row { display: flex; gap: 8px; align-items: center; }
+  .chart-tooltip .key { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+  .chart-tooltip .val { font-weight: 700; margin-left: auto; padding-left: 10px; }
+  .chart-wrap { position: relative; }
+
+  /* ---------------------------------------------------------------------
+     Comparison scoreboard
+  --------------------------------------------------------------------- */
+  .cmp-row {
+    display: grid;
+    grid-template-columns: 20px 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cmp-row:last-child { border-bottom: none; }
+  .cmp-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .cmp-name { font-size: 13.5px; font-weight: 600; }
+  .cmp-count { font-size: 12px; color: var(--ink-muted); }
+  .cmp-rating { font-family: "IBM Plex Mono", monospace; font-size: 15px; font-weight: 700; text-align: right; }
+
+  /* ---------------------------------------------------------------------
+     Keyword lists
+  --------------------------------------------------------------------- */
+  .kw-tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+  .kw-tabs button {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    padding: 6px 11px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-secondary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .kw-tabs button.active { border-color: transparent; color: #fff; }
+  .kw-tabs button[data-kw="top"].active { background: var(--series-play); }
+  .kw-tabs button[data-kw="praise"].active { background: var(--status-good); }
+  .kw-tabs button[data-kw="complaints"].active { background: var(--status-critical); }
+  .kw-list { display: flex; flex-direction: column; gap: 7px; }
+  .kw-item { display: grid; grid-template-columns: 108px 1fr 34px; align-items: center; gap: 10px; }
+  .kw-word {
+    font-size: 12.5px;
+    color: var(--ink-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .kw-track { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  .kw-fill { height: 100%; border-radius: 4px; }
+  .kw-count { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-muted); text-align: right; }
+
+  /* ---------------------------------------------------------------------
+     Flags panel
+  --------------------------------------------------------------------- */
+  .flags-list { display: flex; flex-direction: column; gap: 8px; }
+  .flag-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 12px;
+    border-radius: 9px;
+    background: var(--surface-2);
+    border-left: 3px solid var(--status-warn);
+  }
+  .flag-row.critical { border-left-color: var(--status-critical); }
+  .flag-icon { font-size: 13px; line-height: 1.4; }
+  .flag-body { display: flex; flex-direction: column; gap: 1px; }
+  .flag-period { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-muted); }
+  .flag-detail { font-size: 12.5px; color: var(--ink-secondary); }
+  .flags-empty { font-size: 12.5px; color: var(--ink-muted); padding: 6px 0; }
+
+  /* ---------------------------------------------------------------------
+     Narrative
+  --------------------------------------------------------------------- */
+  .narrative-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 12px; }
+  .narrative-summary { font-size: 14px; line-height: 1.6; color: var(--ink-secondary); margin-bottom: 14px; }
+  .narrative-block h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-muted); margin-bottom: 8px; }
+  .narrative-block ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink-secondary); line-height: 1.6; }
+  .badge-ai {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  /* ---------------------------------------------------------------------
+     Reviews table
+  --------------------------------------------------------------------- */
+  .table-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .filter-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .filter-line-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink-muted);
+    flex: none;
+  }
+  .filter-line:last-of-type { margin-bottom: 14px; }
+  .search-input {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--ink);
+    min-width: 220px;
+    flex: 1;
+    max-width: 340px;
+  }
+  .rating-chips, .category-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .rating-chip, .category-chip {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-secondary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rating-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .category-chip .cat-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .category-chip.active { border-color: transparent; color: #fff; }
+
+  .review-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    margin-bottom: 4px;
+  }
+  .review-category .cat-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  .cat-list { display: flex; flex-direction: column; gap: 10px; }
+  .cat-row { display: grid; grid-template-columns: 150px 1fr 46px 72px; align-items: center; gap: 10px; }
+  .cat-name { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--ink-secondary); }
+  .cat-track { height: 14px; background: var(--surface-2); border-radius: 4px; overflow: hidden; position: relative; }
+  .cat-fill { height: 100%; border-radius: 4px; }
+  .cat-count { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-muted); text-align: right; }
+  .cat-rating { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; text-align: right; }
+
+  /* Theme trends (small multiples) */
+  .theme-trend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .theme-trend-cell {
+    background: var(--surface-2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .theme-trend-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .theme-trend-label { font-size: 12px; font-weight: 600; color: var(--ink-secondary); }
+  .theme-trend-delta { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600; }
+  @media (max-width: 900px) {
+    .theme-trend-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .theme-trend-grid { grid-template-columns: 1fr; }
+  }
+
+  .reviews-list { display: flex; flex-direction: column; }
+  .review-row {
+    display: grid;
+    grid-template-columns: 92px 60px 74px 1fr 70px;
+    gap: 14px;
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .review-row:last-child { border-bottom: none; }
+  .review-date { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-muted); padding-top: 2px; }
+  .platform-badge {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 7px;
+    border-radius: 5px;
+    text-align: center;
+    height: fit-content;
+  }
+  .platform-badge.play { background: color-mix(in srgb, var(--series-play) 16%, transparent); color: var(--series-play); }
+  .platform-badge.ios { background: color-mix(in srgb, var(--series-ios) 16%, transparent); color: var(--series-ios); }
+  .review-rating { font-size: 12.5px; }
+  .review-body .review-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+  .review-text {
+    font-size: 13px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .review-text.expanded { -webkit-line-clamp: unset; }
+  .review-version { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-muted); text-align: right; padding-top: 2px; }
+  .reviews-pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding-top: 16px;
+    flex-wrap: wrap;
+  }
+  .pager-btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--ink);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pager-btn:disabled { opacity: 0.35; cursor: default; }
+  .pager-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+  .pager-label strong { color: var(--ink-secondary); font-weight: 600; }
+  .pager-window-note { font-size: 11px; color: var(--ink-muted); text-align: center; padding-top: 4px; }
+  .empty-state { font-size: 13px; color: var(--ink-muted); padding: 24px 0; text-align: center; }
+
+  footer.foot {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .grid-2, .grid-2b, .narrative-grid { grid-template-columns: 1fr; }
+    .review-row { grid-template-columns: 1fr; gap: 4px; }
+    .review-version, .review-date { text-align: left; }
+  }
+  @media (max-width: 480px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+
+<div class="shell">
+  <header class="top">
+    <div>
+      <p class="brand-eyebrow">Review Desk</p>
+      <h1 class="title">
+        <span id="appName">Loading&hellip;</span><select id="appSelect" class="app-select" hidden></select>
+      </h1>
+    </div>
+    <div class="meta-line">
+      <span id="genTime">&nbsp;</span>
+      <span class="dot-sep" id="totalMeta"></span>
+      <span class="dot-sep" id="sourceMeta">Sources: Google Play &amp; App Store public review feeds</span>
+    </div>
+  </header>
+
+  <div class="filters">
+    <div class="filter-group">
+      <span class="filter-label">Store</span>
+      <div class="segmented" id="platformSeg"></div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Range</span>
+      <div class="segmented" id="rangeSeg"></div>
+    </div>
+  </div>
+
+  <section class="kpi-row" id="kpiRow"></section>
+
+  <section class="card market-position" id="marketPositionSection" hidden style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2>Market position</h2>
+        <p class="card-sub">All-time, vs. the competitors tracked in Battlecard</p>
+      </div>
+      <a href="https://claude.ai/code/artifact/847f2468-97e6-4363-88ba-cfb5cf24c36d" target="_blank" rel="noopener" class="market-link">Full comparison in Battlecard &rarr;</a>
+    </div>
+    <div class="market-body">
+      <div class="market-rank">
+        <div class="market-rank-value" id="marketRankValue">&ndash;</div>
+        <div class="market-rank-sub" id="marketRankSub"></div>
+      </div>
+      <div class="market-lead-trail">
+        <div><span class="market-tag lead">Leading on</span><span id="marketLeading">&ndash;</span></div>
+        <div><span class="market-tag trail">Trailing on</span><span id="marketTrailing">&ndash;</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-2b">
+    <div class="card summary-card summary-liked">
+      <h2><span class="summary-dot" style="background:var(--status-good)"></span>What users like</h2>
+      <p class="card-sub" id="likedSub">Core themes in praise</p>
+      <ul class="summary-list" id="likedList"></ul>
+    </div>
+    <div class="card summary-card summary-improve">
+      <h2><span class="summary-dot" style="background:var(--status-critical)"></span>What can be improved</h2>
+      <p class="card-sub" id="improveSub">Core themes in complaints</p>
+      <ul class="summary-list" id="improveList"></ul>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Review volume &amp; sentiment</h2>
+          <p class="card-sub" id="volumeSub">Monthly reviews, split by tone</p>
+        </div>
+        <div class="sentiment-legend" id="volumeLegend"></div>
+      </div>
+      <div class="chart-wrap" id="volumeChartWrap"></div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Average rating trend</h2>
+          <p class="card-sub" id="ratingTrendSub">Monthly average, 1&ndash;5 stars</p>
+        </div>
+      </div>
+      <div class="chart-wrap" id="ratingChartWrap"></div>
+    </div>
+  </section>
+
+  <section class="grid-2b">
+    <div class="card">
+      <h2>Rating distribution</h2>
+      <p class="card-sub" id="distSub">All reviews, by star</p>
+      <div class="chart-wrap" id="distChartWrap" style="margin-top:6px;"></div>
+    </div>
+    <div class="card">
+      <h2>Store comparison</h2>
+      <p class="card-sub">Play vs App Store, all-time</p>
+      <div id="cmpRows" style="margin-top:6px;"></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2>Rating by app version</h2>
+        <p class="card-sub">Most recent versions with &ge;5 reviews &mdash; full history, not scoped to the range above</p>
+      </div>
+    </div>
+    <div class="chart-wrap" id="versionChartWrap" style="margin-top:6px;"></div>
+    <div class="flags-list" id="versionFlagsList" style="margin-top:14px;"></div>
+  </section>
+
+  <section class="card" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2>Top themes</h2>
+        <p class="card-sub" id="catSub">Where mention volume concentrates, and its praise/complaint lean</p>
+      </div>
+      <div class="sentiment-legend" id="themeLegend"></div>
+    </div>
+    <div class="cat-list" id="catList" style="margin-top:8px;"></div>
+  </section>
+
+  <section class="card" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2>Theme trends</h2>
+        <p class="card-sub" id="themeTrendSub">Monthly mention volume per theme &mdash; is each one rising or falling?</p>
+      </div>
+    </div>
+    <div class="theme-trend-grid" id="themeTrendGrid"></div>
+  </section>
+
+  <section class="grid-2b">
+    <div class="card">
+      <h2>Keyword signal</h2>
+      <p class="card-sub" id="kwSub">Most frequent terms across reviews</p>
+      <div class="kw-tabs" id="kwTabs">
+        <button data-kw="top" class="active">&#9679; Top mentioned</button>
+        <button data-kw="praise">&#9650; Praise</button>
+        <button data-kw="complaints">&#9660; Complaints</button>
+      </div>
+      <div class="kw-list" id="kwList"></div>
+    </div>
+    <div class="card">
+      <h2>Flagged periods</h2>
+      <p class="card-sub" id="flagsSub">Weeks with a negative-review spike or rating dip, based on full history</p>
+      <div class="flags-list" id="flagsList" style="margin-top:10px;"></div>
+    </div>
+  </section>
+
+  <section class="card" id="narrativeCard" hidden>
+    <div class="card-head">
+      <h2>AI narrative summary</h2>
+      <span class="badge-ai">Claude</span>
+    </div>
+    <p class="narrative-summary" id="narrativeSummary"></p>
+    <div class="narrative-grid">
+      <div class="narrative-block"><h3>Top complaints</h3><ul id="nComplaints"></ul></div>
+      <div class="narrative-block"><h3>Top praise</h3><ul id="nPraise"></ul></div>
+      <div class="narrative-block"><h3>Feature requests</h3><ul id="nFeatures"></ul></div>
+      <div class="narrative-block"><h3>Suggested actions</h3><ul id="nActions"></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Recent reviews</h2>
+    <p class="card-sub" style="margin-bottom:14px;">Newest first &mdash; scoped to the store and range above</p>
+    <div class="table-controls">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search review text&hellip;">
+      <div class="rating-chips" id="ratingChips"></div>
+    </div>
+    <div class="filter-line">
+      <span class="filter-line-label">Category</span>
+      <div class="category-chips" id="categoryChips"></div>
+    </div>
+    <div class="filter-line">
+      <span class="filter-line-label">Theme</span>
+      <div class="category-chips" id="themeChips"></div>
+    </div>
+    <div class="reviews-list" id="reviewsList"></div>
+    <div class="reviews-pager" id="reviewsPager" hidden>
+      <button class="pager-btn" id="pagerNewer">&#9664; Newer</button>
+      <span class="pager-label" id="pagerLabel"></span>
+      <button class="pager-btn" id="pagerOlder">Older &#9654;</button>
+    </div>
+    <div class="pager-window-note" id="pagerNote" hidden></div>
+  </section>
+
+  <footer class="foot">
+    <span>Data pulled directly from each store's public review feed &mdash; no developer API key required.</span>
+    <span>Re-run <code class="mono">npm run all</code> and republish to refresh.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var STATE = {
+    data: null,
+    appIndex: 0,
+    platform: "combined", // combined | play | ios
+    range: "12m", // 7d | 30d | 6m | 12m | 24m | all
+    ratingFilter: new Set([1,2,3,4,5]),
+    search: "",
+    kwTab: "top",
+    bucketIndex: 0,
+    categoryFilter: "all",
+    themeFilter: "all",
+    marketData: null,
+  };
+
+  var CATEGORY_META = [
+    { category: "trading", label: "Trading" },
+    { category: "investment", label: "Investment" },
+    { category: "ekyc", label: "eKYC" },
+    { category: "activation", label: "Activation" },
+    { category: "acquisition", label: "Acquisition" },
+    { category: "support", label: "Support" },
+    { category: "other", label: "Other" },
+  ];
+
+  var COLORS = {
+    positive: getVar("--status-good"),
+    neutral: getVar("--status-neutral"),
+    negative: getVar("--status-critical"),
+    play: getVar("--series-play"),
+    ios: getVar("--series-ios"),
+    accent: getVar("--accent-ink"),
+    muted: getVar("--ink-muted"),
+    grid: getVar("--grid-line"),
+    baseline: getVar("--baseline"),
+    surface: getVar("--surface"),
+    cat: {
+      trading: getVar("--cat-trading"),
+      investment: getVar("--cat-investment"),
+      ekyc: getVar("--cat-ekyc"),
+      activation: getVar("--cat-activation"),
+      acquisition: getVar("--cat-acquisition"),
+      support: getVar("--cat-support"),
+      other: getVar("--cat-other"),
+    },
+  };
+
+  function getVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function mean(arr) {
+    return arr.length ? arr.reduce(function (a, b) { return a + b; }, 0) / arr.length : 0;
+  }
+  function fmt(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+    return String(n);
+  }
+  function fmtDate(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "";
+    return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  }
+  function monthLabel(key) {
+    var parts = key.split("-");
+    var d = new Date(Date.UTC(+parts[0], +parts[1] - 1, 1));
+    return d.toLocaleDateString(undefined, { month: "short", year: "2-digit" });
+  }
+  function dayLabel(key) {
+    var d = new Date(key + "T00:00:00Z");
+    return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  }
+  function periodLabel(key) {
+    return isDayRange() ? dayLabel(key) : monthLabel(key);
+  }
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function el(tag, cls, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Data helpers                                                       */
+  /* ----------------------------------------------------------------- */
+
+  function viewAccent() {
+    if (STATE.platform === "play") return COLORS.play;
+    if (STATE.platform === "ios") return COLORS.ios;
+    return COLORS.accent;
+  }
+
+  function ratingTierColor(v) {
+    if (!v) return COLORS.muted;
+    if (v >= 4) return COLORS.positive;
+    if (v >= 3) return "var(--status-warn)";
+    return COLORS.negative;
+  }
+
+  function versionLabel(v) {
+    if (STATE.platform === "combined" && v.platform === "ios") return "iOS " + v.version;
+    return v.version;
+  }
+
+  function currentApp() { return STATE.data.apps[STATE.appIndex]; }
+
+  function currentAnalysis() {
+    var app = currentApp();
+    if (STATE.platform === "combined") return app.combined;
+    var found = app.platforms.filter(function (p) { return p.platform === STATE.platform; })[0];
+    return found || app.combined;
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Recent-window range (7D/30D) — client-side recompute over          */
+  /* recentReviews, since only those carry per-review dates/category.   */
+  /* 6M/12M/24M/All keep the original behaviour: they only zoom the two */
+  /* trend charts, everything else in view stays all-time.              */
+  /* ----------------------------------------------------------------- */
+
+  function isDayRange() { return STATE.range === "7d" || STATE.range === "30d"; }
+  function rangeDays() { return STATE.range === "7d" ? 7 : 30; }
+  function rangeMonthsValue() {
+    if (STATE.range === "6m") return 6;
+    if (STATE.range === "12m") return 12;
+    if (STATE.range === "24m") return 24;
+    return 0; // all
+  }
+  function rangeDescriptor() {
+    if (STATE.range === "7d") return "the last 7 days";
+    if (STATE.range === "30d") return "the last 30 days";
+    return "all-time";
+  }
+
+  function ratingBucket(rating) {
+    if (rating <= 2) return "negative";
+    if (rating === 3) return "neutral";
+    return "positive";
+  }
+
+  function cutoffDate(daysAgo) {
+    var d = new Date();
+    d.setUTCDate(d.getUTCDate() - daysAgo);
+    return d;
+  }
+  function windowedReviews(reviews, days) {
+    var cutoff = cutoffDate(days);
+    return reviews.filter(function (r) { return new Date(r.date) >= cutoff; });
+  }
+  function previousWindowReviews(reviews, days) {
+    var cutoffOld = cutoffDate(days * 2);
+    var cutoffRecent = cutoffDate(days);
+    return reviews.filter(function (r) { var d = new Date(r.date); return d >= cutoffOld && d < cutoffRecent; });
+  }
+
+  var CLIENT_STOPWORDS = new Set([
+    "a", "an", "the", "and", "or", "but", "if", "then", "so", "because", "as",
+    "of", "at", "by", "for", "with", "about", "against", "between", "into",
+    "through", "during", "before", "after", "above", "below", "to", "from",
+    "up", "down", "in", "out", "on", "off", "over", "under", "again",
+    "further", "once", "here", "there", "when", "where", "why", "how", "all",
+    "any", "both", "each", "few", "more", "most", "other", "some", "such",
+    "no", "nor", "not", "only", "own", "same", "than", "too", "very", "s",
+    "t", "can", "will", "just", "don", "should", "now", "i", "me", "my",
+    "myself", "we", "our", "ours", "ourselves", "you", "your", "yours",
+    "yourself", "yourselves", "he", "him", "his", "himself", "she", "her",
+    "hers", "herself", "it", "its", "itself", "they", "them", "their",
+    "theirs", "themselves", "what", "which", "who", "whom", "this", "that",
+    "these", "those", "am", "is", "are", "was", "were", "be", "been", "being",
+    "have", "has", "had", "having", "do", "does", "did", "doing", "would",
+    "could", "ought", "im", "youre", "hes", "shes", "were", "theyre",
+    "ive", "youve", "weve", "theyve", "id", "youd", "hed", "shed", "wed",
+    "theyd", "ill", "youll", "hell", "shell", "well", "theyll", "isnt",
+    "arent", "wasnt", "werent", "hasnt", "havent", "hadnt", "doesnt", "dont",
+    "didnt", "wont", "wouldnt", "shant", "shouldnt", "cant", "cannot",
+    "couldnt", "mustnt", "lets", "thats", "whos", "whats", "heres", "theres",
+    "whens", "wheres", "whys", "hows", "get", "got", "getting", "also",
+  ]);
+  function clientTokenize(text) {
+    return (text || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s']/g, " ")
+      .split(/\s+/)
+      .filter(function (w) { return w.length >= 3 && !CLIENT_STOPWORDS.has(w) && !/^\d+$/.test(w); });
+  }
+  function clientTopKeywords(reviews, n) {
+    var counts = {};
+    reviews.forEach(function (r) {
+      var tokens = clientTokenize((r.title || "") + " " + (r.text || ""));
+      tokens.forEach(function (t) { counts[t] = (counts[t] || 0) + 1; });
+      for (var i = 0; i < tokens.length - 1; i++) {
+        var bg = tokens[i] + " " + tokens[i + 1];
+        counts[bg] = (counts[bg] || 0) + 1;
+      }
+    });
+    return Object.keys(counts)
+      .map(function (w) { return { word: w, count: counts[w] }; })
+      .filter(function (x) { return x.count >= 2; })
+      .sort(function (a, b) { return b.count - a.count; })
+      .slice(0, n || 25);
+  }
+
+  function computeCategoryBreakdown(reviews) {
+    var total = reviews.length;
+    var buckets = {};
+    CATEGORY_META.forEach(function (c) { buckets[c.category] = { count: 0, ratingSum: 0, sentiment: { positive: 0, neutral: 0, negative: 0 }, reviews: [] }; });
+    reviews.forEach(function (r) {
+      var cat = buckets[r.category] ? r.category : "other";
+      var b = buckets[cat];
+      b.count++;
+      b.ratingSum += r.rating || 0;
+      b.sentiment[ratingBucket(r.rating)]++;
+      b.reviews.push(r);
+    });
+    return CATEGORY_META.map(function (c) {
+      var b = buckets[c.category];
+      return {
+        category: c.category,
+        label: c.label,
+        count: b.count,
+        pctOfTotal: total ? Number(((100 * b.count) / total).toFixed(1)) : 0,
+        avgRating: b.count ? Number((b.ratingSum / b.count).toFixed(2)) : 0,
+        sentimentBuckets: b.sentiment,
+        topKeywords: clientTopKeywords(b.reviews, 8),
+      };
+    });
+  }
+
+  /** For 7D/30D, recompute the metrics that need per-review dates from
+   * recentReviews (client-side, since only that array carries dates).
+   * For every other range, return the precomputed all-time analysis
+   * unchanged — 6M/12M/24M/All only ever zoom the two trend charts. */
+  function scopedAnalysis() {
+    var a = currentAnalysis();
+    if (!isDayRange()) return a;
+
+    var reviews = windowedReviews(a.recentReviews, rangeDays());
+    var total = reviews.length;
+    var distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    var sentimentBuckets = { positive: 0, neutral: 0, negative: 0 };
+    var ratingSum = 0;
+    reviews.forEach(function (r) {
+      var rating = Math.round(r.rating) || 0;
+      if (distribution[rating] !== undefined) distribution[rating]++;
+      ratingSum += r.rating || 0;
+      sentimentBuckets[ratingBucket(r.rating)]++;
+    });
+    var negativeReviews = reviews.filter(function (r) { return r.rating <= 2; });
+    var positiveReviews = reviews.filter(function (r) { return r.rating >= 4; });
+
+    return {
+      platform: a.platform,
+      totalReviews: total,
+      avgRating: total ? Number((ratingSum / total).toFixed(2)) : 0,
+      ratingDistribution: distribution,
+      sentimentBuckets: sentimentBuckets,
+      categoryBreakdown: computeCategoryBreakdown(reviews),
+      topKeywords: clientTopKeywords(reviews, 25),
+      topComplaintKeywords: clientTopKeywords(negativeReviews, 20),
+      topPraiseKeywords: clientTopKeywords(positiveReviews, 20),
+      recentReviews: reviews,
+      flags: a.flags, // anomaly detection needs long trailing history — always full history
+      weeklyTrend: a.weeklyTrend,
+    };
+  }
+
+  function monthKeyFromWeek(period) {
+    return period.slice(0, 7);
+  }
+
+  function aggregateMonthly(weeklyTrend) {
+    var map = {};
+    var order = [];
+    weeklyTrend.forEach(function (w) {
+      var k = monthKeyFromWeek(w.period);
+      if (!map[k]) { map[k] = { period: k, count: 0, ratingSum: 0, positive: 0, neutral: 0, negative: 0 }; order.push(k); }
+      var m = map[k];
+      m.count += w.count;
+      m.ratingSum += w.avgRating * w.count;
+      m.positive += w.positive;
+      m.neutral += w.neutral;
+      m.negative += w.negative;
+    });
+    order.sort();
+    return order.map(function (k) {
+      var m = map[k];
+      return {
+        period: k,
+        count: m.count,
+        avgRating: m.count ? m.ratingSum / m.count : 0,
+        positive: m.positive,
+        neutral: m.neutral,
+        negative: m.negative,
+      };
+    });
+  }
+
+  function sliceRange(monthly, months) {
+    if (!months || monthly.length <= months) return monthly;
+    return monthly.slice(monthly.length - months);
+  }
+
+  /** Day-granularity buckets for the 7D/30D charts, built from
+   * recentReviews (weeklyTrend is too coarse for a 7-30 day window). */
+  function dailyBuckets(reviews) {
+    var map = {};
+    var order = [];
+    reviews.forEach(function (r) {
+      var k = (r.date || "").slice(0, 10);
+      if (!k) return;
+      if (!map[k]) { map[k] = { period: k, count: 0, ratingSum: 0, positive: 0, neutral: 0, negative: 0 }; order.push(k); }
+      var m = map[k];
+      m.count++;
+      m.ratingSum += r.rating || 0;
+      m[ratingBucket(r.rating)]++;
+    });
+    order.sort();
+    return order.map(function (k) {
+      var m = map[k];
+      return { period: k, count: m.count, avgRating: m.count ? m.ratingSum / m.count : 0, positive: m.positive, neutral: m.neutral, negative: m.negative };
+    });
+  }
+
+  function last4vsPrev4(weeklyTrend) {
+    var withData = weeklyTrend.filter(function (w) { return w.count > 0; });
+    if (withData.length < 2) return null;
+    var last4 = withData.slice(-4);
+    var prev4 = withData.slice(-8, -4);
+    if (!prev4.length) return null;
+    var lastAvg = weighted(last4);
+    var prevAvg = weighted(prev4);
+    return { last: lastAvg, prev: prevAvg, delta: lastAvg - prevAvg };
+  }
+  function weighted(weeks) {
+    var sum = 0, n = 0;
+    weeks.forEach(function (w) { sum += w.avgRating * w.count; n += w.count; });
+    return n ? sum / n : 0;
+  }
+  function countDeltaLast4vsPrev4(weeklyTrend) {
+    if (weeklyTrend.length < 8) return null;
+    var last4 = weeklyTrend.slice(-4).reduce(function (a, w) { return a + w.count; }, 0);
+    var prev4 = weeklyTrend.slice(-8, -4).reduce(function (a, w) { return a + w.count; }, 0);
+    return { last: last4, prev: prev4, delta: last4 - prev4 };
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Rendering: header / KPIs                                           */
+  /* ----------------------------------------------------------------- */
+
+  function renderHeader() {
+    var app = currentApp();
+    document.getElementById("appName").textContent = app.name;
+    var gen = new Date(STATE.data.generatedAt);
+    document.getElementById("genTime").textContent = "Updated " + gen.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+    document.getElementById("totalMeta").textContent = fmt(app.combined.totalReviews) + " reviews analyzed";
+
+    var sel = document.getElementById("appSelect");
+    if (STATE.data.apps.length > 1) {
+      sel.hidden = false;
+      sel.innerHTML = STATE.data.apps.map(function (a, i) {
+        return '<option value="' + i + '"' + (i === STATE.appIndex ? " selected" : "") + '>' + escapeHtml(a.name) + "</option>";
+      }).join("");
+    } else {
+      sel.hidden = true;
+    }
+  }
+
+  function renderSegmented(containerId, options, current, onPick) {
+    var wrap = document.getElementById(containerId);
+    wrap.innerHTML = "";
+    options.forEach(function (opt) {
+      var b = document.createElement("button");
+      b.textContent = opt.label;
+      b.className = opt.value === current ? "active" : "";
+      b.disabled = !!opt.disabled;
+      if (opt.disabled) b.style.opacity = "0.35";
+      b.addEventListener("click", function () { onPick(opt.value); });
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderFilters() {
+    var app = currentApp();
+    var platformOptions = [{ label: "All", value: "combined" }];
+    if (app.play) platformOptions.push({ label: "Play", value: "play" });
+    if (app.ios) platformOptions.push({ label: "iOS", value: "ios" });
+    renderSegmented("platformSeg", platformOptions, STATE.platform, function (v) {
+      STATE.platform = v; STATE.bucketIndex = 0; renderAll();
+    });
+
+    var rangeOptions = [
+      { label: "7D", value: "7d" },
+      { label: "30D", value: "30d" },
+      { label: "6M", value: "6m" },
+      { label: "12M", value: "12m" },
+      { label: "24M", value: "24m" },
+      { label: "All", value: "all" },
+    ];
+    renderSegmented("rangeSeg", rangeOptions, STATE.range, function (v) {
+      STATE.range = v; STATE.bucketIndex = 0; renderAll();
+    });
+  }
+
+  function starsHTML(rating) {
+    var full = Math.round(rating);
+    var out = "";
+    for (var i = 1; i <= 5; i++) out += '<span class="' + (i <= full ? "" : "empty") + '">&#9733;</span>';
+    return out;
+  }
+
+  function renderKpis() {
+    var a = scopedAnalysis();
+    var row = document.getElementById("kpiRow");
+    row.innerHTML = "";
+
+    var volDelta, rDelta, deltaSubLabel;
+    if (isDayRange()) {
+      var full = currentAnalysis().recentReviews;
+      var days = rangeDays();
+      var curWin = windowedReviews(full, days);
+      var prevWin = previousWindowReviews(full, days);
+      volDelta = { last: curWin.length, prev: prevWin.length, delta: curWin.length - prevWin.length };
+      var curAvg = curWin.length ? curWin.reduce(function (s, r) { return s + (r.rating || 0); }, 0) / curWin.length : 0;
+      var prevAvg = prevWin.length ? prevWin.reduce(function (s, r) { return s + (r.rating || 0); }, 0) / prevWin.length : 0;
+      rDelta = (curWin.length && prevWin.length) ? { last: curAvg, prev: prevAvg, delta: curAvg - prevAvg } : null;
+      deltaSubLabel = "last " + days + "d: " + volDelta.last + " vs prior " + days + "d: " + volDelta.prev;
+    } else {
+      volDelta = countDeltaLast4vsPrev4(a.weeklyTrend);
+      rDelta = last4vsPrev4(a.weeklyTrend);
+      deltaSubLabel = "last 4 weeks: " + (volDelta ? volDelta.last : "&ndash;") + " vs prior " + (volDelta ? volDelta.prev : "&ndash;");
+    }
+
+    // Total reviews + volume delta
+    var volDeltaHtml = "";
+    if (volDelta) {
+      var dir = volDelta.delta > 0 ? "up" : volDelta.delta < 0 ? "down" : "flat";
+      var arrow = dir === "up" ? "&#9650;" : dir === "down" ? "&#9660;" : "&#8212;";
+      volDeltaHtml = '<span class="delta ' + dir + '">' + arrow + " " + Math.abs(volDelta.delta) + "</span>";
+    }
+    row.appendChild(kpiCard("Total reviews", '<span class="value tabular">' + fmt(a.totalReviews) + "</span>" + volDeltaHtml, '<span class="sub">' + deltaSubLabel + "</span>"));
+
+    // Avg rating + ticker-style delta
+    var rDeltaHtml = "";
+    if (rDelta) {
+      var rdir = rDelta.delta > 0.02 ? "up" : rDelta.delta < -0.02 ? "down" : "flat";
+      var rarrow = rdir === "up" ? "&#9650;" : rdir === "down" ? "&#9660;" : "&#8212;";
+      rDeltaHtml = '<span class="delta ' + rdir + '">' + rarrow + " " + (rDelta.delta >= 0 ? "+" : "") + rDelta.delta.toFixed(2) + "</span>";
+    }
+    row.appendChild(kpiCard("Average rating", '<span class="value tabular">' + a.avgRating.toFixed(2) + "</span>" + rDeltaHtml, '<span class="stars">' + starsHTML(a.avgRating) + "</span>"));
+
+    // Sentiment split
+    var s = a.sentimentBuckets;
+    var total = s.positive + s.neutral + s.negative || 1;
+    var pPos = (100 * s.positive / total).toFixed(0);
+    var pNeu = (100 * s.neutral / total).toFixed(0);
+    var pNeg = (100 * s.negative / total).toFixed(0);
+    var sentHtml =
+      '<div class="sentiment-bar" style="margin-top:2px;">' +
+      '<span style="width:' + pPos + '%;background:' + COLORS.positive + '"></span>' +
+      '<span style="width:' + pNeu + '%;background:' + COLORS.neutral + '"></span>' +
+      '<span style="width:' + pNeg + '%;background:' + COLORS.negative + '"></span>' +
+      "</div>" +
+      '<div class="sentiment-legend" style="margin-top:8px;">' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.positive + '"></span>Positive ' + pPos + "%</span>" +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.neutral + '"></span>Neutral ' + pNeu + "%</span>" +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.negative + '"></span>Negative ' + pNeg + "%</span>" +
+      "</div>";
+    var kpi4 = kpiCardRaw("Sentiment split (by rating)", sentHtml);
+    row.appendChild(kpi4);
+
+    // Flags
+    var flagCard = kpiCard("Flagged periods", '<span class="value">' + a.flags.length + "</span>", '<span class="sub">weeks with a spike or dip, full history</span>');
+    row.appendChild(flagCard);
+  }
+
+  function kpiCard(label, valueHtml, subHtml) {
+    var c = el("div", "kpi");
+    c.innerHTML = '<div class="label">' + label + '</div><div class="value-row">' + valueHtml + '</div><div>' + subHtml + '</div>';
+    return c;
+  }
+  function kpiCardRaw(label, bodyHtml) {
+    var c = el("div", "kpi");
+    c.innerHTML = '<div class="label">' + label + '</div>' + bodyHtml;
+    return c;
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Chart: stacked monthly volume/sentiment bar                       */
+  /* ----------------------------------------------------------------- */
+
+  function renderVolumeChart() {
+    var a = currentAnalysis();
+    var monthly = isDayRange()
+      ? dailyBuckets(windowedReviews(a.recentReviews, rangeDays()))
+      : sliceRange(aggregateMonthly(a.weeklyTrend), rangeMonthsValue());
+    var wrap = document.getElementById("volumeChartWrap");
+    wrap.innerHTML = "";
+
+    document.getElementById("volumeLegend").innerHTML =
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.positive + '"></span>Positive</span>' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.neutral + '"></span>Neutral</span>' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.negative + '"></span>Negative</span>';
+
+    if (!monthly.length) { wrap.innerHTML = '<div class="empty-state">No data in this range.</div>'; return; }
+
+    var W = wrap.clientWidth || 560, H = 230;
+    var padL = 34, padR = 10, padT = 10, padB = 24;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var maxCount = Math.max.apply(null, monthly.map(function (m) { return m.count; }).concat([1]));
+    var niceMax = niceNumber(maxCount);
+    var n = monthly.length;
+    var slot = plotW / n;
+    var barW = Math.min(24, slot * 0.62);
+    var gap = 2;
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+
+    // gridlines (0, mid, max)
+    [0, 0.5, 1].forEach(function (f) {
+      var y = padT + plotH * (1 - f);
+      svg.appendChild(svgEl("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: COLORS.grid, "stroke-width": 1 }));
+      svg.appendChild(svgEl("text", { x: padL - 8, y: y + 3, "text-anchor": "end", "font-size": 10 }, fmt(Math.round(niceMax * f))));
+    });
+
+    var tooltip = makeTooltip(wrap);
+
+    monthly.forEach(function (m, i) {
+      var x = padL + i * slot + (slot - barW) / 2;
+      var segs = [
+        { key: "negative", value: m.negative, color: COLORS.negative },
+        { key: "neutral", value: m.neutral, color: COLORS.neutral },
+        { key: "positive", value: m.positive, color: COLORS.positive },
+      ];
+      var yCursor = padT + plotH;
+      var groupHit = svgEl("rect", {
+        x: x - 2, y: padT, width: barW + 4, height: plotH, fill: "transparent",
+      });
+      segs.forEach(function (seg) {
+        var h = niceMax > 0 ? (seg.value / niceMax) * plotH : 0;
+        if (h <= 0) return;
+        h = Math.max(h - gap, 0);
+        yCursor -= (h + gap);
+        var rectY = yCursor;
+        var isTop = seg.key === "positive";
+        var rect = svgEl("rect", {
+          x: x, y: rectY, width: barW, height: h, fill: seg.color,
+          rx: isTop ? 4 : 0, ry: isTop ? 4 : 0,
+        });
+        svg.appendChild(rect);
+      });
+      svg.appendChild(groupHit);
+      groupHit.addEventListener("pointerenter", function (e) { showBarTooltip(e); });
+      groupHit.addEventListener("pointermove", function (e) { showBarTooltip(e); });
+      groupHit.addEventListener("pointerleave", function () { tooltip.hide(); });
+
+      function showBarTooltip(e) {
+        tooltip.show(e, periodLabel(m.period), [
+          { label: "Positive", value: m.positive, color: COLORS.positive },
+          { label: "Neutral", value: m.neutral, color: COLORS.neutral },
+          { label: "Negative", value: m.negative, color: COLORS.negative },
+          { label: "Total", value: m.count, color: null },
+        ]);
+      }
+
+      if (i === 0 || i === n - 1 || i === Math.floor(n / 2)) {
+        svg.appendChild(svgEl("text", { x: x + barW / 2, y: H - 6, "text-anchor": "middle", "font-size": 10 }, periodLabel(m.period)));
+      }
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  function niceNumber(v) {
+    if (v <= 5) return 5;
+    var mag = Math.pow(10, Math.floor(Math.log10(v)));
+    var norm = v / mag;
+    var nice = norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 5 ? 5 : 10;
+    return nice * mag;
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Chart: rating trend line                                          */
+  /* ----------------------------------------------------------------- */
+
+  function renderRatingTrend() {
+    var a = currentAnalysis();
+    var monthly = (isDayRange()
+      ? dailyBuckets(windowedReviews(a.recentReviews, rangeDays()))
+      : sliceRange(aggregateMonthly(a.weeklyTrend), rangeMonthsValue())
+    ).filter(function (m) { return m.count > 0; });
+    var wrap = document.getElementById("ratingChartWrap");
+    wrap.innerHTML = "";
+    if (monthly.length < 2) { wrap.innerHTML = '<div class="empty-state">Not enough data in this range.</div>'; return; }
+
+    var W = wrap.clientWidth || 560, H = 230;
+    var padL = 30, padR = 46, padT = 16, padB = 24;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var minR = 1, maxR = 5;
+    var n = monthly.length;
+
+    function xAt(i) { return padL + (n === 1 ? plotW / 2 : (i / (n - 1)) * plotW); }
+    function yAt(r) { return padT + (1 - (r - minR) / (maxR - minR)) * plotH; }
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+
+    // gridlines at 1..5
+    for (var r = 1; r <= 5; r++) {
+      var y = yAt(r);
+      svg.appendChild(svgEl("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: COLORS.grid, "stroke-width": 1 }));
+      svg.appendChild(svgEl("text", { x: padL - 8, y: y + 3, "text-anchor": "end", "font-size": 10 }, r));
+    }
+
+    // overall average reference line
+    var overallAvg = a.avgRating;
+    var refY = yAt(Math.min(5, Math.max(1, overallAvg)));
+    svg.appendChild(svgEl("line", { x1: padL, x2: W - padR, y1: refY, y2: refY, stroke: COLORS.baseline, "stroke-width": 1, "stroke-dasharray": "3 3" }));
+
+    var lineColor = viewAccent();
+    var pathD = monthly.map(function (m, i) {
+      return (i === 0 ? "M" : "L") + xAt(i).toFixed(1) + " " + yAt(m.avgRating).toFixed(1);
+    }).join(" ");
+    svg.appendChild(svgEl("path", { d: pathD, fill: "none", stroke: lineColor, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+
+    var tooltip = makeTooltip(wrap);
+    monthly.forEach(function (m, i) {
+      var cx = xAt(i), cy = yAt(m.avgRating);
+      var hit = svgEl("circle", { cx: cx, cy: cy, r: 12, fill: "transparent" });
+      var dot = svgEl("circle", { cx: cx, cy: cy, r: 4, fill: lineColor, stroke: COLORS.surface, "stroke-width": 2 });
+      svg.appendChild(dot);
+      svg.appendChild(hit);
+      hit.addEventListener("pointerenter", function (e) { tt(e); });
+      hit.addEventListener("pointermove", function (e) { tt(e); });
+      hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+      function tt(e) {
+        tooltip.show(e, periodLabel(m.period), [
+          { label: "Avg rating", value: m.avgRating.toFixed(2), color: lineColor },
+          { label: "Reviews", value: m.count, color: null },
+        ]);
+      }
+      if (i === n - 1) {
+        svg.appendChild(svgEl("text", { x: cx + 6, y: cy - 8, "text-anchor": "start", "font-size": 11, "font-weight": 700, fill: lineColor }, m.avgRating.toFixed(2)));
+      }
+    });
+
+    svg.appendChild(svgEl("text", { x: W - padR + 6, y: refY + 3, "text-anchor": "start", "font-size": 9.5, fill: COLORS.muted }, "avg"));
+
+    wrap.appendChild(svg);
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Chart: rating distribution                                        */
+  /* ----------------------------------------------------------------- */
+
+  function renderDistribution() {
+    var a = scopedAnalysis();
+    var dist = a.ratingDistribution;
+    var wrap = document.getElementById("distChartWrap");
+    wrap.innerHTML = "";
+    var W = wrap.clientWidth || 540, H = 190;
+    var padL = 20, padR = 44, padT = 6, padB = 6;
+    var rows = [5, 4, 3, 2, 1];
+    var rowH = (H - padT - padB) / rows.length;
+    var max = Math.max.apply(null, rows.map(function (r) { return dist[r] || 0; }).concat([1]));
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+    var tooltip = makeTooltip(wrap);
+
+    rows.forEach(function (star, i) {
+      var val = dist[star] || 0;
+      var y = padT + i * rowH;
+      var barH = Math.min(20, rowH * 0.55);
+      var barY = y + (rowH - barH) / 2;
+      var maxBarW = W - padL - padR;
+      var barW = max > 0 ? (val / max) * maxBarW : 0;
+
+      svg.appendChild(svgEl("text", { x: padL - 8, y: barY + barH / 2 + 3.5, "text-anchor": "end", "font-size": 11 }, star + "★"));
+      var barColor = viewAccent();
+      svg.appendChild(svgEl("rect", { x: padL, y: barY, width: maxBarW, height: barH, rx: 4, fill: COLORS.grid, opacity: 0.5 }));
+      var bar = svgEl("rect", { x: padL, y: barY, width: Math.max(barW, 2), height: barH, rx: 4, fill: barColor });
+      svg.appendChild(bar);
+      svg.appendChild(svgEl("text", { x: padL + Math.max(barW, 2) + 8, y: barY + barH / 2 + 3.5, "text-anchor": "start", "font-size": 10.5, fill: getVar("--ink-secondary") }, fmt(val)));
+
+      var hit = svgEl("rect", { x: padL, y: y, width: maxBarW + padR, height: rowH, fill: "transparent" });
+      svg.appendChild(hit);
+      hit.addEventListener("pointerenter", function (e) { tt(e); });
+      hit.addEventListener("pointermove", function (e) { tt(e); });
+      hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+      function tt(e) {
+        var pct = a.totalReviews ? (100 * val / a.totalReviews).toFixed(1) : "0";
+        tooltip.show(e, star + " star", [{ label: "Reviews", value: fmt(val) + " (" + pct + "%)", color: barColor }]);
+      }
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Store comparison scoreboard                                       */
+  /* ----------------------------------------------------------------- */
+
+  function renderComparison() {
+    var app = currentApp();
+    var wrap = document.getElementById("cmpRows");
+    wrap.innerHTML = "";
+    var order = { play: 0, ios: 1 };
+    var platforms = app.platforms.slice().sort(function (x, y) { return (order[x.platform] || 9) - (order[y.platform] || 9); });
+    platforms.forEach(function (p) {
+      var color = p.platform === "play" ? COLORS.play : COLORS.ios;
+      var name = p.platform === "play" ? "Google Play" : "App Store";
+      var row = el("div", "cmp-row");
+      row.innerHTML =
+        '<span class="cmp-dot" style="background:' + color + '"></span>' +
+        '<span><span class="cmp-name">' + name + '</span><br><span class="cmp-count">' + fmt(p.totalReviews) + " reviews</span></span>" +
+        '<span class="stars">' + starsHTML(p.avgRating) + "</span>" +
+        '<span class="cmp-rating">' + p.avgRating.toFixed(2) + "</span>";
+      wrap.appendChild(row);
+    });
+    if (!platforms.length) wrap.innerHTML = '<div class="empty-state">No platform data.</div>';
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Issue categories                                                   */
+  /* ----------------------------------------------------------------- */
+
+  function categoryColor(cat) { return COLORS.cat[cat] || COLORS.muted; }
+  function categoryLabel(cat) {
+    var m = CATEGORY_META.filter(function (c) { return c.category === cat; })[0];
+    return m ? m.label : cat;
+  }
+
+  function renderCategories() {
+    var a = scopedAnalysis();
+    document.getElementById("themeLegend").innerHTML =
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.positive + '"></span>Praise-leaning</span>' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.accent + '"></span>Mixed</span>' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.negative + '"></span>Complaint-leaning</span>';
+
+    var rows = buildThemeTable(a);
+    var wrap = document.getElementById("catList");
+    wrap.innerHTML = "";
+    if (!rows.length) { wrap.innerHTML = '<div class="empty-state">Not enough review text yet to detect themes.</div>'; return; }
+
+    var max = Math.max.apply(null, rows.map(function (r) { return r.total; }).concat([1]));
+    rows.slice(0, 8).forEach(function (r) {
+      var color;
+      if (r.praise > r.complaint * 1.3) color = COLORS.positive;
+      else if (r.complaint > r.praise * 1.3) color = COLORS.negative;
+      else color = COLORS.accent;
+      var pct = Math.max(3, Math.round((r.total / max) * 100));
+      var row = el("div", "cat-row");
+      row.innerHTML =
+        '<span class="cat-name">' + escapeHtml(r.label) + "</span>" +
+        '<span class="cat-track"><span class="cat-fill" style="width:' + pct + '%;background:' + color + '"></span></span>' +
+        '<span class="cat-count tabular">' + fmt(r.total) + "</span>" +
+        '<span class="cat-rating tabular" style="font-size:11px;color:var(--ink-muted);">&#9650;' + r.praise + " &#9660;" + r.complaint + "</span>";
+      wrap.appendChild(row);
+
+      var track = row.querySelector(".cat-track");
+      var tooltip = makeTooltip(row);
+      track.style.cursor = "pointer";
+      track.addEventListener("pointerenter", function (e) { tt(e); });
+      track.addEventListener("pointermove", function (e) { tt(e); });
+      track.addEventListener("pointerleave", function () { tooltip.hide(); });
+      track.addEventListener("click", function () {
+        STATE.themeFilter = STATE.themeFilter === r.label ? "all" : r.label;
+        STATE.bucketIndex = 0;
+        renderThemeChips();
+        renderReviewsList();
+        document.getElementById("reviewsList").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+      function tt(e) {
+        tooltip.show(e, r.label, [
+          { label: "Total mentions", value: r.total, color: color },
+          { label: "In praise", value: r.praise, color: COLORS.positive },
+          { label: "In complaints", value: r.complaint, color: COLORS.negative },
+          { label: "Words", value: r.words.slice(0, 3).join(", ") || "–", color: null },
+        ]);
+      }
+    });
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Review summary (liked / to improve) — synthesized from the same     */
+  /* keyword + category stats, no LLM required.                         */
+  /* ----------------------------------------------------------------- */
+
+  var GENERIC_SUMMARY_WORDS = new Set([
+    "good", "app", "application", "apps", "best", "nice", "great", "excellent",
+    "awesome", "amazing", "super", "worst", "bad", "poor", "okay", "fine",
+    "love", "like", "one", "also", "please", "work", "works", "working",
+    "really", "much", "lot", "time", "every", "everything", "very good",
+    "nice app", "good app", "best app", "hai", "yeh", "sir", "thank",
+    "thanks", "thank you",
+  ]);
+  function isGenericPhrase(word) {
+    return word.split(" ").some(function (w) { return GENERIC_SUMMARY_WORDS.has(w); }) || GENERIC_SUMMARY_WORDS.has(word);
+  }
+  function meaningfulKeywords(list, n) {
+    return (list || []).filter(function (k) { return !isGenericPhrase(k.word); }).slice(0, n);
+  }
+
+  // Core ideas users actually talk about — independent of the funnel-stage
+  // categories (Trading/Investment/eKYC/...) used elsewhere on the page.
+  // A keyword is assigned to the first theme it matches, so it's never
+  // double-counted across themes.
+  var SUMMARY_THEMES = [
+    { label: "Customer support", words: ["support", "service", "team", "customer", "help", "response", "query", "staff"] },
+    { label: "Brokerage & charges", words: ["brokerage", "charges", "charge", "fee", "fees", "cost", "expensive", "cheap"] },
+    { label: "Account opening & KYC", words: ["account", "kyc", "open", "verification", "verify", "document", "demat", "pan", "aadhaar", "nominee"] },
+    { label: "Login & access", words: ["login", "otp", "password", "access", "signin", "sign"] },
+    { label: "Trading execution", words: ["trade", "trading", "order", "execution", "buy", "sell", "price", "slippage", "market"] },
+    { label: "App reliability & performance", words: ["crash", "slow", "lag", "bug", "freeze", "hang", "error", "loading", "update", "version", "glitch", "issue"] },
+    { label: "Ease of use", words: ["easy", "interface", "ui", "design", "simple", "navigation", "smooth", "convenient"] },
+    { label: "Investment options", words: ["mutual", "fund", "sip", "ipo", "invest", "investment", "portfolio", "wealth"] },
+    { label: "Referrals & onboarding", words: ["download", "install", "refer", "referral", "promo", "bonus", "signup"] },
+    { label: "Loss / money concerns", words: ["loss", "money", "fraud", "scam", "refund", "withdraw", "withdrawal"] },
+  ];
+
+  function classifyIntoThemes(keywords) {
+    var scores = {};
+    (keywords || []).forEach(function (k) {
+      if (isGenericPhrase(k.word)) return;
+      var tokens = k.word.split(" ");
+      for (var i = 0; i < SUMMARY_THEMES.length; i++) {
+        var theme = SUMMARY_THEMES[i];
+        if (tokens.some(function (t) { return theme.words.indexOf(t) !== -1; })) {
+          if (!scores[theme.label]) scores[theme.label] = { score: 0, words: [] };
+          scores[theme.label].score += k.count;
+          if (scores[theme.label].words.indexOf(k.word) === -1) scores[theme.label].words.push(k.word);
+          break; // first matching theme only — avoids double-counting a keyword
+        }
+      }
+    });
+    return Object.keys(scores)
+      .map(function (label) { return { label: label, score: scores[label].score, words: scores[label].words.slice(0, 4) }; })
+      .sort(function (a, b) { return b.score - a.score; });
+  }
+
+  function themesByLabel(keywords) {
+    var map = {};
+    classifyIntoThemes(keywords).forEach(function (t) { map[t.label] = t; });
+    return map;
+  }
+
+  /** One row per theme mentioned in praise or complaint keywords, with
+   * "total" defined as praise+complaint mentions (so it can never read as
+   * less than either part — deliberately not reconciled against the
+   * separately-truncated overall topKeywords list). Independent of the
+   * funnel-stage categories used by the reviews-table filter chips. */
+  function buildThemeTable(a) {
+    var praiseMap = themesByLabel(a.topPraiseKeywords);
+    var complaintMap = themesByLabel(a.topComplaintKeywords);
+
+    return SUMMARY_THEMES.map(function (theme) {
+      var p = praiseMap[theme.label];
+      var c = complaintMap[theme.label];
+      var praise = p ? p.score : 0;
+      var complaint = c ? c.score : 0;
+      var words = (p ? p.words : []).slice();
+      (c ? c.words : []).forEach(function (w) { if (words.indexOf(w) === -1) words.push(w); });
+      return {
+        label: theme.label,
+        total: praise + complaint,
+        praise: praise,
+        complaint: complaint,
+        words: words.slice(0, 4),
+      };
+    }).filter(function (r) { return r.total > 0; }).sort(function (a, b) { return b.total - a.total; });
+  }
+
+  function buildReviewSummary(a) {
+    var likedThemes = classifyIntoThemes(a.topPraiseKeywords).slice(0, 4);
+    var improveThemes = classifyIntoThemes(a.topComplaintKeywords).slice(0, 4);
+
+    var liked = likedThemes.map(function (t) { return t.label + " — " + t.words.join(", "); });
+    var improve = improveThemes.map(function (t) { return t.label + " — " + t.words.join(", "); });
+
+    // Fallback for whatever a fixed theme list doesn't catch, so nothing
+    // meaningful gets silently dropped.
+    if (!liked.length) {
+      var praiseWords = meaningfulKeywords(a.topPraiseKeywords, 6).map(function (k) { return k.word; });
+      if (praiseWords.length) liked.push("Frequently praised: " + praiseWords.join(", "));
+    }
+    if (!improve.length) {
+      var complaintWords = meaningfulKeywords(a.topComplaintKeywords, 6).map(function (k) { return k.word; });
+      if (complaintWords.length) improve.push("Frequently mentioned in complaints: " + complaintWords.join(", "));
+    }
+
+    if (!liked.length) liked.push("Not enough positive review text yet to summarize.");
+    if (!improve.length) improve.push("No significant complaint pattern detected in this range.");
+
+    return { liked: liked, improve: improve };
+  }
+
+  function fillSummaryList(id, items) {
+    var ul = document.getElementById(id);
+    ul.innerHTML = "";
+    items.forEach(function (text) {
+      var li = document.createElement("li");
+      li.textContent = text;
+      ul.appendChild(li);
+    });
+  }
+
+  function renderReviewSummary() {
+    var a = scopedAnalysis();
+    var s = buildReviewSummary(a);
+    fillSummaryList("likedList", s.liked);
+    fillSummaryList("improveList", s.improve);
+    var desc = rangeDescriptor();
+    setText("likedSub", "Core themes in praise — " + desc);
+    setText("improveSub", "Core themes in complaints — " + desc);
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Keywords                                                           */
+  /* ----------------------------------------------------------------- */
+
+  function renderKeywords() {
+    var a = scopedAnalysis();
+    var map = { top: a.topKeywords, praise: a.topPraiseKeywords, complaints: a.topComplaintKeywords };
+    var colorMap = { top: COLORS.play, praise: COLORS.positive, negative: COLORS.negative, complaints: COLORS.negative };
+    var list = (map[STATE.kwTab] || []).slice(0, 10);
+    var wrap = document.getElementById("kwList");
+    wrap.innerHTML = "";
+    if (!list.length) { wrap.innerHTML = '<div class="empty-state">Not enough data.</div>'; return; }
+    var max = list[0].count;
+    var color = STATE.kwTab === "top" ? COLORS.play : STATE.kwTab === "praise" ? COLORS.positive : COLORS.negative;
+    list.forEach(function (kw) {
+      var row = el("div", "kw-item");
+      var pct = Math.max(6, Math.round((kw.count / max) * 100));
+      row.innerHTML =
+        '<span class="kw-word" title="' + escapeHtml(kw.word) + '">' + escapeHtml(kw.word) + "</span>" +
+        '<span class="kw-track"><span class="kw-fill" style="width:' + pct + '%;background:' + color + '"></span></span>' +
+        '<span class="kw-count tabular">' + kw.count + "</span>";
+      wrap.appendChild(row);
+    });
+  }
+
+  function bindKwTabs() {
+    document.querySelectorAll("#kwTabs button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        STATE.kwTab = b.getAttribute("data-kw");
+        document.querySelectorAll("#kwTabs button").forEach(function (x) { x.classList.remove("active"); });
+        b.classList.add("active");
+        renderKeywords();
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Flags                                                              */
+  /* ----------------------------------------------------------------- */
+
+  function renderFlags() {
+    var a = currentAnalysis();
+    var wrap = document.getElementById("flagsList");
+    wrap.innerHTML = "";
+    var flags = a.flags.slice().sort(function (x, y) { return x.period < y.period ? 1 : -1; }).slice(0, 8);
+    if (!flags.length) { wrap.innerHTML = '<div class="flags-empty">No anomalies detected in the available history.</div>'; return; }
+    flags.forEach(function (f) {
+      var row = el("div", "flag-row" + (f.type === "negative_spike" ? " critical" : ""));
+      var icon = f.type === "negative_spike" ? "&#9650;" : "&#9678;";
+      var label = f.type === "negative_spike" ? "Negative spike" : "Rating dip";
+      row.innerHTML =
+        '<span class="flag-icon">' + icon + "</span>" +
+        '<span class="flag-body"><span class="flag-period">' + f.period + " &middot; " + label + '</span><span class="flag-detail">' + escapeHtml(f.detail) + "</span></span>";
+      wrap.appendChild(row);
+    });
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Rating by app version — always full-history, independent of Range  */
+  /* ----------------------------------------------------------------- */
+
+  function renderVersionChart() {
+    var a = currentAnalysis();
+    var versions = (a.versionTrend || []).filter(function (v) { return v.count >= 5; }).slice(-20);
+    var wrap = document.getElementById("versionChartWrap");
+    wrap.innerHTML = "";
+    if (!versions.length) { wrap.innerHTML = '<div class="empty-state">Not enough per-version data yet (need &ge;5 reviews on a version).</div>'; return; }
+
+    var W = wrap.clientWidth || 900, H = 230;
+    var padL = 30, padR = 14, padT = 20, padB = 30;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var n = versions.length;
+    var slot = plotW / n;
+    var barW = Math.min(22, slot * 0.6);
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+    for (var r = 1; r <= 5; r++) {
+      var y = padT + (1 - (r - 1) / 4) * plotH;
+      svg.appendChild(svgEl("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: COLORS.grid, "stroke-width": 1 }));
+      svg.appendChild(svgEl("text", { x: padL - 8, y: y + 3, "text-anchor": "end", "font-size": 10 }, r));
+    }
+
+    var tooltip = makeTooltip(wrap);
+    var labelEvery = Math.max(1, Math.ceil(n / 10));
+
+    versions.forEach(function (v, i) {
+      var x = padL + i * slot + (slot - barW) / 2;
+      var barH = Math.max(((v.avgRating - 1) / 4) * plotH, 2);
+      var y = padT + plotH - barH;
+      var color = ratingTierColor(v.avgRating);
+      svg.appendChild(svgEl("rect", { x: x, y: y, width: barW, height: barH, rx: 4, fill: color }));
+
+      if (v.isRegression) {
+        svg.appendChild(svgEl("text", { x: x + barW / 2, y: y - 6, "text-anchor": "middle", "font-size": 11, fill: COLORS.negative }, "▼"));
+      }
+
+      var hit = svgEl("rect", { x: x - 2, y: padT, width: barW + 4, height: plotH, fill: "transparent" });
+      svg.appendChild(hit);
+      hit.addEventListener("pointerenter", function (e) { tt(e); });
+      hit.addEventListener("pointermove", function (e) { tt(e); });
+      hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+      function tt(e) {
+        var rows = [
+          { label: "Avg rating", value: v.avgRating.toFixed(2), color: color },
+          { label: "Reviews", value: v.count, color: null },
+        ];
+        if (v.deltaVsPrevious !== null) {
+          rows.push({ label: "vs previous version", value: (v.deltaVsPrevious >= 0 ? "+" : "") + v.deltaVsPrevious, color: v.isRegression ? COLORS.negative : null });
+        }
+        tooltip.show(e, versionLabel(v), rows);
+      }
+
+      if (i % labelEvery === 0 || i === n - 1) {
+        svg.appendChild(svgEl("text", { x: x + barW / 2, y: H - padB + 14, "text-anchor": "middle", "font-size": 9.5 }, versionLabel(v)));
+      }
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  function renderVersionFlags() {
+    var a = currentAnalysis();
+    var wrap = document.getElementById("versionFlagsList");
+    wrap.innerHTML = "";
+    var regressions = (a.versionTrend || []).filter(function (v) { return v.isRegression; }).slice(-8).reverse();
+    if (!regressions.length) { wrap.innerHTML = '<div class="flags-empty">No version-over-version rating drops detected.</div>'; return; }
+    regressions.forEach(function (v) {
+      var row = el("div", "flag-row critical");
+      row.innerHTML =
+        '<span class="flag-icon">▼</span>' +
+        '<span class="flag-body"><span class="flag-period">' + escapeHtml(versionLabel(v)) + " &middot; Version regression</span>" +
+        '<span class="flag-detail">Avg rating ' + v.avgRating.toFixed(2) + " (" + (v.deltaVsPrevious >= 0 ? "+" : "") + v.deltaVsPrevious.toFixed(2) + " vs previous version, n=" + v.count + ")</span></span>";
+      wrap.appendChild(row);
+    });
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Theme trends — monthly, always full-history                       */
+  /* ----------------------------------------------------------------- */
+
+  function drawSparkline(container, series, color) {
+    if (!series.length) { container.innerHTML = '<div style="font-size:11px;color:var(--ink-muted);padding:10px 0;">No data in range</div>'; return; }
+    var W = container.clientWidth || 200, H = 52;
+    var padX = 4, padY = 6;
+    var plotW = W - padX * 2, plotH = H - padY * 2;
+    var maxCount = Math.max.apply(null, series.map(function (m) { return m.count; }).concat([1]));
+    var n = series.length;
+    function xAt(i) { return padX + (n === 1 ? plotW / 2 : (i / (n - 1)) * plotW); }
+    function yAt(c) { return padY + (1 - c / maxCount) * plotH; }
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+    var pathD = series.map(function (m, i) { return (i === 0 ? "M" : "L") + xAt(i).toFixed(1) + " " + yAt(m.count).toFixed(1); }).join(" ");
+    svg.appendChild(svgEl("path", { d: pathD, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+    svg.appendChild(svgEl("circle", { cx: xAt(n - 1), cy: yAt(series[n - 1].count), r: 3, fill: color }));
+
+    container.appendChild(svg);
+    var tooltip = makeTooltip(container);
+    series.forEach(function (m, i) {
+      var hit = svgEl("circle", { cx: xAt(i), cy: yAt(m.count), r: 8, fill: "transparent" });
+      svg.appendChild(hit);
+      hit.addEventListener("pointerenter", function (e) { tt(e); });
+      hit.addEventListener("pointermove", function (e) { tt(e); });
+      hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+      function tt(e) {
+        tooltip.show(e, monthLabel(m.period), [
+          { label: "Mentions", value: m.count, color: color },
+          { label: "Avg rating", value: m.avgRating.toFixed(2), color: null },
+        ]);
+      }
+    });
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Market position — reads Battlecard's competitor-data.json, if it     */
+  /* loaded; degrades to hidden if not (best-effort, non-blocking).       */
+  /* ----------------------------------------------------------------- */
+
+  function renderMarketPosition() {
+    var section = document.getElementById("marketPositionSection");
+    var apps = STATE.marketData && STATE.marketData.apps;
+    if (!apps || apps.length < 2) { section.hidden = true; return; }
+
+    var ranked = apps.slice().sort(function (a, b) { return b.combined.avgRating - a.combined.avgRating; });
+    var ownIndex = ranked.findIndex(function (a) { return a.role === "own"; });
+    if (ownIndex === -1) { section.hidden = true; return; }
+    var own = ranked[ownIndex];
+    section.hidden = false;
+
+    document.getElementById("marketRankValue").textContent = "#" + (ownIndex + 1) + " of " + ranked.length;
+    document.getElementById("marketRankSub").textContent = own.combined.avgRating.toFixed(2) + "★ average, across " + ranked.length + " apps compared";
+
+    var ownCats = {};
+    (own.combined.categoryBreakdown || []).forEach(function (c) { ownCats[c.category] = c; });
+    var leading = [], trailing = [];
+    CATEGORY_META.forEach(function (meta) {
+      if (meta.category === "other") return;
+      var ownRow = ownCats[meta.category];
+      if (!ownRow || ownRow.count < 3) return;
+      var comparable = apps.filter(function (a) {
+        var row = (a.combined.categoryBreakdown || []).filter(function (c) { return c.category === meta.category; })[0];
+        return row && row.count >= 3;
+      });
+      if (comparable.length < 2) return;
+      var sorted = comparable.slice().sort(function (a, b) {
+        var ra = (a.combined.categoryBreakdown || []).filter(function (c) { return c.category === meta.category; })[0].avgRating;
+        var rb = (b.combined.categoryBreakdown || []).filter(function (c) { return c.category === meta.category; })[0].avgRating;
+        return rb - ra;
+      });
+      var ownPos = sorted.findIndex(function (a) { return a.role === "own"; });
+      if (ownPos === 0) leading.push(meta.label);
+      else if (ownPos === sorted.length - 1) trailing.push(meta.label);
+    });
+
+    setText("marketLeading", leading.length ? leading.join(", ") : "None currently");
+    setText("marketTrailing", trailing.length ? trailing.join(", ") : "None currently");
+  }
+
+  function renderThemeTrends() {
+    var wrap = document.getElementById("themeTrendGrid");
+    var sub = document.getElementById("themeTrendSub");
+    wrap.innerHTML = "";
+
+    if (isDayRange()) {
+      setText("themeTrendSub", "Switch to a monthly range (6M/12M/24M/All) to see theme trends over time.");
+      return;
+    }
+    setText("themeTrendSub", "Monthly mention volume per theme — is each one rising or falling?");
+
+    var a = currentAnalysis();
+    var themeStats = buildThemeTable(a).slice(0, 6);
+    if (!themeStats.length) { wrap.innerHTML = '<div class="empty-state">Not enough data to trend themes yet.</div>'; return; }
+
+    themeStats.forEach(function (t) {
+      var full = (a.themeTrend && a.themeTrend[t.label]) || [];
+      var series = sliceRange(full, rangeMonthsValue());
+      var color = t.praise > t.complaint * 1.3 ? COLORS.positive : t.complaint > t.praise * 1.3 ? COLORS.negative : COLORS.accent;
+
+      var deltaHtml = "";
+      if (series.length >= 4) {
+        var span = Math.max(1, Math.min(3, Math.floor(series.length / 2)));
+        var recent = series.slice(-span);
+        var prior = series.slice(-span * 2, -span);
+        if (prior.length) {
+          var recentAvg = mean(recent.map(function (m) { return m.count; }));
+          var priorAvg = mean(prior.map(function (m) { return m.count; }));
+          if (recentAvg !== priorAvg) {
+            var rising = recentAvg > priorAvg;
+            var worse = (rising && color === COLORS.negative) || (!rising && color === COLORS.positive);
+            var better = (rising && color === COLORS.positive) || (!rising && color === COLORS.negative);
+            var deltaColor = worse ? COLORS.negative : better ? COLORS.positive : COLORS.muted;
+            deltaHtml = '<span class="theme-trend-delta" style="color:' + deltaColor + '">' + (rising ? "▲" : "▼") + " " + (rising ? "rising" : "falling") + "</span>";
+          }
+        }
+      }
+
+      var cell = el("div", "theme-trend-cell");
+      cell.innerHTML = '<div class="theme-trend-head"><span class="theme-trend-label">' + escapeHtml(t.label) + "</span>" + deltaHtml + "</div>";
+      var sparkWrap = el("div");
+      cell.appendChild(sparkWrap);
+      wrap.appendChild(cell);
+      drawSparkline(sparkWrap, series, color);
+    });
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Narrative                                                          */
+  /* ----------------------------------------------------------------- */
+
+  function renderNarrative() {
+    var app = currentApp();
+    var card = document.getElementById("narrativeCard");
+    if (!app.narrative) { card.hidden = true; return; }
+    card.hidden = false;
+    document.getElementById("narrativeSummary").textContent = app.narrative.summary || "";
+    fillList("nComplaints", app.narrative.topComplaints);
+    fillList("nPraise", app.narrative.topPraise);
+    fillList("nFeatures", app.narrative.featureRequests);
+    fillList("nActions", app.narrative.suggestedActions);
+  }
+  function fillList(id, arr) {
+    var ul = document.getElementById(id);
+    ul.innerHTML = "";
+    (arr || []).forEach(function (item) {
+      var li = document.createElement("li");
+      li.textContent = item;
+      ul.appendChild(li);
+    });
+    if (!arr || !arr.length) ul.innerHTML = '<li style="color:var(--ink-muted)">None noted</li>';
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Reviews table                                                      */
+  /* ----------------------------------------------------------------- */
+
+  function reviewMatchesTheme(r, themeLabel) {
+    var theme = SUMMARY_THEMES.filter(function (t) { return t.label === themeLabel; })[0];
+    if (!theme) return false;
+    var tokens = clientTokenize((r.title || "") + " " + (r.text || ""));
+    return tokens.some(function (t) { return theme.words.indexOf(t) !== -1; });
+  }
+
+  function filteredReviews() {
+    var a = scopedAnalysis();
+    var q = STATE.search.trim().toLowerCase();
+    return a.recentReviews.filter(function (r) {
+      if (!STATE.ratingFilter.has(Math.round(r.rating))) return false;
+      if (STATE.categoryFilter !== "all" && r.category !== STATE.categoryFilter) return false;
+      if (STATE.themeFilter !== "all" && !reviewMatchesTheme(r, STATE.themeFilter)) return false;
+      if (q && !((r.text || "").toLowerCase().indexOf(q) >= 0 || (r.title || "").toLowerCase().indexOf(q) >= 0)) return false;
+      return true;
+    });
+  }
+
+  function renderRatingChips() {
+    var wrap = document.getElementById("ratingChips");
+    wrap.innerHTML = "";
+    [5, 4, 3, 2, 1].forEach(function (r) {
+      var chip = el("button", "rating-chip" + (STATE.ratingFilter.has(r) ? " active" : ""), r + "★");
+      chip.addEventListener("click", function () {
+        if (STATE.ratingFilter.has(r)) STATE.ratingFilter.delete(r); else STATE.ratingFilter.add(r);
+        STATE.bucketIndex = 0;
+        renderRatingChips();
+        renderReviewsList();
+      });
+      wrap.appendChild(chip);
+    });
+  }
+
+  function renderCategoryChips() {
+    var wrap = document.getElementById("categoryChips");
+    wrap.innerHTML = "";
+    var allChip = el("button", "category-chip" + (STATE.categoryFilter === "all" ? " active" : ""));
+    allChip.textContent = "All categories";
+    if (STATE.categoryFilter === "all") {
+      allChip.style.background = "var(--accent)";
+      allChip.style.borderColor = "var(--accent)";
+    }
+    allChip.addEventListener("click", function () { STATE.categoryFilter = "all"; STATE.bucketIndex = 0; renderCategoryChips(); renderReviewsList(); });
+    wrap.appendChild(allChip);
+
+    CATEGORY_META.forEach(function (c) {
+      var active = STATE.categoryFilter === c.category;
+      var chip = el("button", "category-chip" + (active ? " active" : ""));
+      var color = categoryColor(c.category);
+      chip.innerHTML = '<span class="cat-dot" style="background:' + color + '"></span>' + escapeHtml(c.label);
+      if (active) {
+        chip.style.background = color;
+        chip.style.borderColor = color;
+      }
+      chip.addEventListener("click", function () {
+        STATE.categoryFilter = active ? "all" : c.category;
+        STATE.bucketIndex = 0;
+        renderCategoryChips();
+        renderReviewsList();
+      });
+      wrap.appendChild(chip);
+    });
+  }
+
+  function renderThemeChips() {
+    var wrap = document.getElementById("themeChips");
+    wrap.innerHTML = "";
+    var allChip = el("button", "category-chip" + (STATE.themeFilter === "all" ? " active" : ""));
+    allChip.textContent = "All themes";
+    if (STATE.themeFilter === "all") {
+      allChip.style.background = "var(--accent)";
+      allChip.style.borderColor = "var(--accent)";
+    }
+    allChip.addEventListener("click", function () { STATE.themeFilter = "all"; STATE.bucketIndex = 0; renderThemeChips(); renderReviewsList(); });
+    wrap.appendChild(allChip);
+
+    var rows = buildThemeTable(scopedAnalysis());
+    rows.forEach(function (r) {
+      var active = STATE.themeFilter === r.label;
+      var color = r.praise > r.complaint * 1.3 ? COLORS.positive : r.complaint > r.praise * 1.3 ? COLORS.negative : COLORS.accent;
+      var chip = el("button", "category-chip" + (active ? " active" : ""));
+      chip.innerHTML = '<span class="cat-dot" style="background:' + color + '"></span>' + escapeHtml(r.label);
+      if (active) {
+        chip.style.background = color;
+        chip.style.borderColor = color;
+      }
+      chip.addEventListener("click", function () {
+        STATE.themeFilter = active ? "all" : r.label;
+        STATE.bucketIndex = 0;
+        renderThemeChips();
+        renderReviewsList();
+      });
+      wrap.appendChild(chip);
+    });
+    if (!rows.length) wrap.appendChild(el("span", null, '<span style="font-size:11.5px;color:var(--ink-muted);">No themes detected in this range.</span>'));
+  }
+
+  /** Groups an already newest-first list into rolling ~7-day windows,
+   * anchored to the newest not-yet-bucketed review each time — so sparse
+   * stretches of history don't produce empty pages, and browsing always
+   * starts at the most recent window. */
+  function buildTimeBuckets(reviews) {
+    var buckets = [];
+    var i = 0;
+    while (i < reviews.length) {
+      var anchor = new Date(reviews[i].date);
+      var cutoff = new Date(anchor);
+      cutoff.setUTCDate(cutoff.getUTCDate() - 7);
+      var items = [];
+      while (i < reviews.length && new Date(reviews[i].date) > cutoff) {
+        items.push(reviews[i]);
+        i++;
+      }
+      buckets.push({ items: items, newest: items[0].date, oldest: items[items.length - 1].date });
+    }
+    return buckets;
+  }
+
+  function bucketLabel(bucket) {
+    var newest = new Date(bucket.newest), oldest = new Date(bucket.oldest);
+    var opt = { month: "short", day: "numeric" };
+    if (newest.toDateString() === oldest.toDateString()) return newest.toLocaleDateString(undefined, opt);
+    var sameYear = newest.getFullYear() === oldest.getFullYear();
+    var oldStr = oldest.toLocaleDateString(undefined, sameYear ? opt : Object.assign({ year: "numeric" }, opt));
+    var newStr = newest.toLocaleDateString(undefined, opt);
+    return oldStr + " – " + newStr;
+  }
+
+  var MAX_REVIEWS_PER_BUCKET = 60;
+
+  function renderReviewsList() {
+    var list = filteredReviews(); // newest first
+    var wrap = document.getElementById("reviewsList");
+    var pager = document.getElementById("reviewsPager");
+    var note = document.getElementById("pagerNote");
+    wrap.innerHTML = "";
+
+    if (!list.length) {
+      wrap.innerHTML = '<div class="empty-state">No reviews match these filters.</div>';
+      pager.hidden = true;
+      note.hidden = true;
+      return;
+    }
+
+    var buckets = buildTimeBuckets(list);
+    if (STATE.bucketIndex >= buckets.length) STATE.bucketIndex = buckets.length - 1;
+    if (STATE.bucketIndex < 0) STATE.bucketIndex = 0;
+    var bucket = buckets[STATE.bucketIndex];
+
+    var shown = bucket.items.slice(0, MAX_REVIEWS_PER_BUCKET);
+    shown.forEach(function (r) {
+      var row = el("div", "review-row");
+      var platformClass = r.platform === "play" ? "play" : "ios";
+      var platformLabel = r.platform === "play" ? "Play" : "iOS";
+      var catColor = categoryColor(r.category);
+      row.innerHTML =
+        '<span class="review-date">' + fmtDate(r.date) + "</span>" +
+        '<span class="platform-badge ' + platformClass + '">' + platformLabel + "</span>" +
+        '<span class="review-rating stars">' + starsHTML(r.rating) + "</span>" +
+        '<span class="review-body">' +
+          '<div class="review-category"><span class="cat-dot" style="background:' + catColor + '"></span>' + escapeHtml(categoryLabel(r.category)) + "</div>" +
+          (r.title ? '<div class="review-title">' + escapeHtml(r.title) + "</div>" : "") +
+          '<div class="review-text">' + escapeHtml(r.text || "(no text)") + "</div>" +
+        "</span>" +
+        '<span class="review-version">' + (r.version ? "v" + escapeHtml(r.version) : "&ndash;") + "</span>";
+      var textEl = row.querySelector(".review-text");
+      textEl.addEventListener("click", function () { textEl.classList.toggle("expanded"); });
+      wrap.appendChild(row);
+    });
+
+    if (bucket.items.length > MAX_REVIEWS_PER_BUCKET) {
+      note.hidden = false;
+      note.textContent = "Showing the first " + MAX_REVIEWS_PER_BUCKET + " of " + bucket.items.length + " reviews in this window.";
+    } else {
+      note.hidden = true;
+    }
+
+    pager.hidden = buckets.length <= 1;
+    document.getElementById("pagerLabel").innerHTML =
+      "<strong>" + escapeHtml(bucketLabel(bucket)) + "</strong> &middot; " + bucket.items.length + " review" + (bucket.items.length === 1 ? "" : "s") +
+      " &middot; window " + (STATE.bucketIndex + 1) + " of " + buckets.length;
+    document.getElementById("pagerNewer").disabled = STATE.bucketIndex === 0;
+    document.getElementById("pagerOlder").disabled = STATE.bucketIndex === buckets.length - 1;
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* SVG + tooltip helpers                                              */
+  /* ----------------------------------------------------------------- */
+
+  function svgEl(tag, attrs, text) {
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = String(text);
+    return e;
+  }
+
+  function makeTooltip(container) {
+    container.style.position = "relative";
+    var tt = el("div", "chart-tooltip");
+    container.appendChild(tt);
+    return {
+      show: function (evt, title, rows) {
+        var rect = container.getBoundingClientRect();
+        var x = evt.clientX - rect.left;
+        var y = evt.clientY - rect.top;
+        var html = '<div style="font-weight:700;margin-bottom:4px;">' + escapeHtml(title) + "</div>";
+        rows.forEach(function (r) {
+          html += '<div class="row">' + (r.color ? '<span class="key" style="background:' + r.color + '"></span>' : "") + "<span>" + escapeHtml(r.label) + '</span><span class="val">' + escapeHtml(String(r.value)) + "</span></div>";
+        });
+        tt.innerHTML = html;
+        tt.style.opacity = "1";
+        var left = x + 14, top = y - 10;
+        if (left + tt.offsetWidth > container.clientWidth) left = x - tt.offsetWidth - 14;
+        tt.style.left = left + "px";
+        tt.style.top = Math.max(0, top) + "px";
+      },
+      hide: function () { tt.style.opacity = "0"; },
+    };
+  }
+
+  /* ----------------------------------------------------------------- */
+  /* Orchestration                                                      */
+  /* ----------------------------------------------------------------- */
+
+  function renderRangeCaptions() {
+    var desc = rangeDescriptor();
+    var dayMode = isDayRange();
+    setText("volumeSub", dayMode ? "Daily reviews, split by tone — " + desc : "Monthly reviews, split by tone");
+    setText("ratingTrendSub", dayMode ? "Daily average, 1–5 stars — " + desc : "Monthly average, 1–5 stars");
+    setText("distSub", "All reviews, by star — " + desc);
+    setText("catSub", "Reviews grouped by product stage — " + desc);
+    setText("kwSub", "Most frequent terms across reviews — " + desc);
+  }
+  function setText(id, text) {
+    var e = document.getElementById(id);
+    if (e) e.textContent = text;
+  }
+
+  function renderAll() {
+    renderHeader();
+    renderFilters();
+    renderRangeCaptions();
+    renderKpis();
+    renderReviewSummary();
+    renderVolumeChart();
+    renderRatingTrend();
+    renderDistribution();
+    renderComparison();
+    renderVersionChart();
+    renderVersionFlags();
+    renderCategories();
+    renderThemeTrends();
+    renderKeywords();
+    renderFlags();
+    renderNarrative();
+    renderRatingChips();
+    renderCategoryChips();
+    renderThemeChips();
+    renderReviewsList();
+  }
+
+  function boot(data) {
+    STATE.data = data;
+    document.getElementById("appSelect").addEventListener("change", function (e) {
+      STATE.appIndex = +e.target.value;
+      STATE.platform = "combined";
+      STATE.bucketIndex = 0;
+      renderAll();
+    });
+    bindKwTabs();
+    document.getElementById("searchInput").addEventListener("input", function (e) {
+      STATE.search = e.target.value; STATE.bucketIndex = 0; renderReviewsList();
+    });
+    document.getElementById("pagerNewer").addEventListener("click", function () {
+      if (STATE.bucketIndex > 0) { STATE.bucketIndex--; renderReviewsList(); }
+    });
+    document.getElementById("pagerOlder").addEventListener("click", function () {
+      STATE.bucketIndex++; renderReviewsList();
+    });
+    window.addEventListener("resize", debounce(function () {
+      renderVolumeChart(); renderRatingTrend(); renderDistribution(); renderVersionChart(); renderThemeTrends();
+    }, 150));
+    renderAll();
+  }
+
+  function debounce(fn, ms) {
+    var t;
+    return function () { clearTimeout(t); var args = arguments; t = setTimeout(function () { fn.apply(null, args); }, ms); };
+  }
+
+  var marketDataPromise = fetch("competitor-data.json").then(function (r) { return r.json(); }).catch(function () { return null; });
+
+  fetch("data.json").then(function (r) { return r.json(); }).then(function (data) {
+    boot(data);
+    marketDataPromise.then(function (md) {
+      STATE.marketData = md;
+      renderMarketPosition();
+    });
+  }).catch(function (e) {
+    document.getElementById("appName").textContent = "Failed to load data.json";
+    console.error(e);
+  });
+})();
+</script>

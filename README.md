@@ -3,6 +3,10 @@
 Pulls Google Play and App Store reviews for your app(s), turns them into
 ratings/sentiment/keyword/anomaly insights, and feeds two published dashboards.
 
+**Combined dashboard (live, public, permanent):** https://swastika-reviews.vercel.app
+— both Review Desk and Battlecard in one page, switchable by tab.
+
+Each also has its own standalone link, if you want to share just one:
 **Review Desk (own-app monitoring):** https://claude.ai/code/artifact/5a00898a-0f6d-4dc3-8a4b-c1683a1c04ad
 **Battlecard (competitive tracker):** https://claude.ai/code/artifact/847f2468-97e6-4363-88ba-cfb5cf24c36d
 
@@ -73,6 +77,30 @@ then republish `battlecard.html` with the updated
 file — and republish that same file to Review Desk's copy too, so its
 "Market position" section stays in sync (see "Automated refresh" below;
 the weekly routine already does both).
+
+## Vercel deployment
+
+https://swastika-reviews.vercel.app is a Vercel static deployment of the
+`site/` folder (Vercel project `swastika-reviews`, root directory set to
+`site`) — a small `index.html` shell with a tab bar that shows either
+dashboard in an iframe (`dashboard.html` / `battlecard.html`, each fetching
+its own `data.json` / `competitor-data.json`, all copied verbatim into
+`site/`). Both dashboards keep working exactly as they do standalone; the
+shell just adds tabbed navigation on top, so nothing about their own
+styling or scripts had to be merged or rewritten.
+
+To refresh what's live:
+```
+npm run all               # or npm run all:competitors, or both
+npm run build:site        # copies the latest HTML + data into site/
+cd site && vercel --prod --yes
+```
+
+This isn't wired to auto-deploy on git push yet — `vercel git connect`
+needs the Vercel GitHub App authorized for this repo first, which is a
+one-time step in the Vercel dashboard (Project Settings → Git). Once that's
+done, every push that updates `site/` (e.g. from the scheduled routines,
+if `npm run build:site` gets added to their steps) redeploys automatically.
 
 ## Configuring apps
 

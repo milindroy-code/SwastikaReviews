@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review Desk &amp; Battlecard</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f2f4f7;
+    --surface: #ffffff;
+    --border: #d7dee6;
+    --ink: #101825;
+    --ink-muted: #647186;
+    --accent: #2f4b9e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0b0f16;
+      --surface: #121a25;
+      --border: #263344;
+      --ink: #eef2f7;
+      --ink-muted: #8695ab;
+      --accent: #8ca2f0;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0b0f16;
+    --surface: #121a25;
+    --border: #263344;
+    --ink: #eef2f7;
+    --ink-muted: #8695ab;
+    --accent: #8ca2f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+  header.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    flex: none;
+  }
+  .brand {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .tabs { display: flex; gap: 6px; }
+  .tabs button {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--ink-muted);
+    cursor: pointer;
+  }
+  .tabs button:hover:not(.active) { color: var(--ink); }
+  .tabs button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+  .frame-wrap { flex: 1; position: relative; min-height: 0; }
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: var(--bg);
+  }
+  iframe[hidden] { display: none; }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+</head>
+<body>
+
+<header class="top-bar">
+  <span class="brand">Swastika</span>
+  <nav class="tabs" id="tabs">
+    <button type="button" data-tab="review-desk">Review Desk</button>
+    <button type="button" data-tab="battlecard">Battlecard</button>
+  </nav>
+</header>
+
+<div class="frame-wrap">
+  <iframe id="frame-review-desk" src="dashboard.html" title="Review Desk"></iframe>
+  <iframe id="frame-battlecard" src="battlecard.html" title="Battlecard" hidden></iframe>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var frames = {
+    "review-desk": document.getElementById("frame-review-desk"),
+    "battlecard": document.getElementById("frame-battlecard"),
+  };
+  var buttons = document.querySelectorAll("#tabs button");
+
+  function activate(name, pushHash) {
+    if (!frames[name]) name = "review-desk";
+    Object.keys(frames).forEach(function (k) { frames[k].hidden = k !== name; });
+    buttons.forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-tab") === name); });
+    if (pushHash !== false && location.hash !== "#" + name) history.replaceState(null, "", "#" + name);
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { activate(b.getAttribute("data-tab")); });
+  });
+  window.addEventListener("hashchange", function () { activate(location.hash.slice(1)); });
+
+  activate((location.hash || "#review-desk").slice(1), false);
+})();
+</script>
+
+</body>
+</html>

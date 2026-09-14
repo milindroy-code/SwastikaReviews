@@ -1,0 +1,1034 @@
+<!doctype html>
+<title>Battlecard</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f2f4f7;
+    --surface: #ffffff;
+    --surface-2: #e8ecf1;
+    --surface-3: #dde4ec;
+    --border: #d7dee6;
+    --ink: #101825;
+    --ink-secondary: #3d4a5c;
+    --ink-muted: #647186;
+    --accent: #2f4b9e;
+    --accent-ink: #2f4b9e;
+    --accent-soft: #e3e9fb;
+
+    --status-good: #0ca30c;
+    --status-good-text: #006300;
+    --status-warn: #b8791a;
+    --status-critical: #d03b3b;
+    --status-neutral: #8b96a8;
+
+    --cat-trading: #2a78d6;
+    --cat-investment: #eb6834;
+    --cat-ekyc: #1baf7a;
+    --cat-activation: #eda100;
+    --cat-acquisition: #e87ba4;
+    --cat-support: #008300;
+    --cat-other: #4a3aa7;
+
+    --grid-line: #e1e5ea;
+    --baseline: #c7cfd9;
+    --shadow-card: 0 1px 2px rgba(16, 24, 37, 0.04), 0 1px 14px rgba(16, 24, 37, 0.05);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0b0f16;
+      --surface: #121a25;
+      --surface-2: #182231;
+      --surface-3: #1e2a3b;
+      --border: #263344;
+      --ink: #eef2f7;
+      --ink-secondary: #c2ccda;
+      --ink-muted: #8695ab;
+      --accent: #8ca2f0;
+      --accent-ink: #93a8f2;
+      --accent-soft: #1c2740;
+
+      --status-good: #26bd6b;
+      --status-good-text: #35d17c;
+      --status-warn: #e0a940;
+      --status-critical: #ef6a6a;
+      --status-neutral: #7b87a0;
+
+      --cat-trading: #3987e5;
+      --cat-investment: #d95926;
+      --cat-ekyc: #199e70;
+      --cat-activation: #c98500;
+      --cat-acquisition: #d55181;
+      --cat-support: #008300;
+      --cat-other: #9085e9;
+
+      --grid-line: #232e3d;
+      --baseline: #34404f;
+      --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.28);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0b0f16;
+    --surface: #121a25;
+    --surface-2: #182231;
+    --surface-3: #1e2a3b;
+    --border: #263344;
+    --ink: #eef2f7;
+    --ink-secondary: #c2ccda;
+    --ink-muted: #8695ab;
+    --accent: #8ca2f0;
+    --accent-ink: #93a8f2;
+    --accent-soft: #1c2740;
+
+    --status-good: #26bd6b;
+    --status-good-text: #35d17c;
+    --status-warn: #e0a940;
+    --status-critical: #ef6a6a;
+    --status-neutral: #7b87a0;
+
+    --cat-trading: #3987e5;
+    --cat-investment: #d95926;
+    --cat-ekyc: #199e70;
+    --cat-activation: #c98500;
+    --cat-acquisition: #d55181;
+    --cat-support: #008300;
+    --cat-other: #9085e9;
+
+    --grid-line: #232e3d;
+    --baseline: #34404f;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.28);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 0 20px 64px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  a { color: var(--accent-ink); }
+
+  .shell { max-width: 1240px; margin: 0 auto; }
+
+  header.top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 28px 0 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 0 0 6px;
+  }
+  h1.title { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+  .meta-line { font-size: 12.5px; color: var(--ink-muted); display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .dot-sep::before { content: "\2022"; margin-right: 14px; color: var(--border); }
+
+  section.block { margin: 22px 0; }
+  .block-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .block-head h2 { font-size: 16px; font-weight: 600; }
+  .block-sub { font-size: 12.5px; color: var(--ink-muted); margin-top: 2px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 18px 20px;
+  }
+
+  /* Scoreboard table */
+  .table-scroll { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-card); }
+  table.scoreboard { border-collapse: collapse; width: 100%; min-width: 860px; font-size: 12.8px; }
+  table.scoreboard th, table.scoreboard td { padding: 11px 14px; text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.scoreboard th:first-child, table.scoreboard td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); }
+  table.scoreboard thead th {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    font-weight: 600;
+    background: var(--surface-2);
+  }
+  table.scoreboard thead th:first-child { background: var(--surface-2); }
+  table.scoreboard tbody tr:last-child td { border-bottom: none; }
+  table.scoreboard tbody tr.own-row td { background: var(--accent-soft); }
+  table.scoreboard tbody tr.own-row td:first-child { background: var(--accent-soft); border-left: 3px solid var(--accent); }
+  .app-name-cell { display: flex; align-items: center; gap: 8px; }
+  .own-badge {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--accent);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 5px;
+  }
+  .rate-cell { display: inline-flex; align-items: center; gap: 5px; }
+  .rate-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+  .rate-na { color: var(--ink-muted); }
+  .sent-mini { display: inline-flex; width: 54px; height: 8px; border-radius: 4px; overflow: hidden; vertical-align: middle; }
+
+  /* Trading vs Investment chart */
+  svg text { font-family: "IBM Plex Mono", monospace; fill: var(--ink-muted); }
+  .chart-wrap { position: relative; }
+  .chart-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    line-height: 1.5;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.08s ease;
+    z-index: 5;
+    white-space: nowrap;
+  }
+  .chart-tooltip .row { display: flex; gap: 8px; align-items: center; }
+  .chart-tooltip .key { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+  .chart-tooltip .val { font-weight: 700; margin-left: auto; padding-left: 10px; }
+  .legend-row { display: flex; gap: 14px; font-size: 11.5px; color: var(--ink-muted); flex-wrap: wrap; }
+  .legend-key { display: inline-flex; align-items: center; gap: 5px; }
+  .legend-swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+  /* Deep dive tabs */
+  .app-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .app-tab {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    padding: 7px 13px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-secondary);
+    cursor: pointer;
+  }
+  .app-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .dive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .dive-col h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-muted); margin-bottom: 10px; }
+  .quote-list { display: flex; flex-direction: column; gap: 10px; }
+  .quote {
+    padding: 10px 12px;
+    background: var(--surface-2);
+    border-radius: 9px;
+    font-size: 12.8px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+    border-left: 3px solid var(--border);
+  }
+  .quote.praise { border-left-color: var(--status-good); }
+  .quote.complaint { border-left-color: var(--status-critical); }
+  .quote-meta { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--ink-muted); margin-bottom: 4px; }
+  .cat-mini-list { display: flex; flex-direction: column; gap: 8px; }
+  .cat-mini-row { display: grid; grid-template-columns: 92px 1fr 40px; align-items: center; gap: 8px; }
+  .cat-mini-name { font-size: 12px; color: var(--ink-secondary); display: flex; align-items: center; gap: 6px; }
+  .cat-mini-track { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  .cat-mini-fill { height: 100%; border-radius: 4px; }
+  .cat-mini-val { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-muted); text-align: right; }
+
+  /* Theme trend comparison (us vs. a competitor) */
+  .theme-cmp-legend { display: flex; gap: 16px; font-size: 11.5px; color: var(--ink-muted); margin-bottom: 12px; }
+  .theme-cmp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .theme-cmp-cell {
+    background: var(--surface-2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .theme-cmp-label { font-size: 12.5px; font-weight: 600; color: var(--ink-secondary); }
+  @media (max-width: 900px) {
+    .theme-cmp-grid { grid-template-columns: 1fr; }
+  }
+
+  .empty-col { font-size: 11.5px; color: var(--ink-muted); padding: 8px 2px; }
+
+  /* Feedback by theme (per-app accordion) */
+  .theme-feedback-list { display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+  .theme-feedback-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .theme-feedback-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .theme-feedback-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .theme-feedback-meta { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-muted); }
+  .theme-feedback-lean {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+  }
+  .theme-expand-btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    padding: 6px 12px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--ink-secondary);
+    cursor: pointer;
+    margin-top: 8px;
+  }
+
+  footer.foot {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .dive-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+
+<div class="shell">
+  <header class="top">
+    <div>
+      <p class="brand-eyebrow">Battlecard</p>
+      <h1 class="title">Swastika Investmart vs. the market</h1>
+    </div>
+    <div class="meta-line">
+      <span id="genTime">&nbsp;</span>
+      <span class="dot-sep">Reviews compared across 7 apps, Play + App Store combined</span>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <h2>Scoreboard</h2>
+        <p class="block-sub">All-time, by review-funnel category &mdash; trading and investment tracked separately on purpose</p>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table class="scoreboard" id="scoreboardTable"></table>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <h2>Trading vs. investment rating</h2>
+        <p class="block-sub">Average rating from reviews tagged to each concept &mdash; never blended into one number</p>
+      </div>
+      <div class="legend-row" id="tviLegend"></div>
+    </div>
+    <div class="card">
+      <div class="chart-wrap" id="tviChartWrap"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <h2>What users say</h2>
+        <p class="block-sub">Top praise and complaint terms, and a few representative reviews, per app</p>
+      </div>
+    </div>
+    <div class="app-tabs" id="appTabs"></div>
+    <div class="card">
+      <div class="dive-grid" id="diveGrid"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <h2>Theme trends: us vs. them</h2>
+        <p class="block-sub" id="themeCmpSub">Monthly mention volume for shared top themes, full history</p>
+      </div>
+    </div>
+    <div class="app-tabs" id="competitorTabs"></div>
+    <div class="card">
+      <div class="theme-cmp-legend" id="themeCmpLegend"></div>
+      <div class="theme-cmp-grid" id="themeCmpGrid"></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Reviews pulled from each store's public review feed &mdash; same pipeline as the Review Desk dashboard.</span>
+    <span>Re-run <code class="mono">npm run all:competitors</code> and republish to refresh the scoreboard.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var CATEGORY_META = [
+    { category: "trading", label: "Trading" },
+    { category: "investment", label: "Investment" },
+    { category: "ekyc", label: "eKYC" },
+    { category: "activation", label: "Activation" },
+    { category: "acquisition", label: "Acquisition" },
+    { category: "support", label: "Support" },
+    { category: "other", label: "Other" },
+  ];
+  // Mirrors src/themes.js — keep both in sync by hand when editing either.
+  var SUMMARY_THEMES = [
+    { label: "Customer support", words: ["support", "service", "team", "customer", "help", "response", "query", "staff"] },
+    { label: "Brokerage & charges", words: ["brokerage", "charges", "charge", "fee", "fees", "cost", "expensive", "cheap"] },
+    { label: "Account opening & KYC", words: ["account", "kyc", "open", "verification", "verify", "document", "demat", "pan", "aadhaar", "nominee"] },
+    { label: "Login & access", words: ["login", "otp", "password", "access", "signin", "sign"] },
+    { label: "Trading execution", words: ["trade", "trading", "order", "execution", "buy", "sell", "price", "slippage", "market"] },
+    { label: "App reliability & performance", words: ["crash", "slow", "lag", "bug", "freeze", "hang", "error", "loading", "update", "version", "glitch", "issue"] },
+    { label: "Ease of use", words: ["easy", "interface", "ui", "design", "simple", "navigation", "smooth", "convenient"] },
+    { label: "Investment options", words: ["mutual", "fund", "sip", "ipo", "invest", "investment", "portfolio", "wealth"] },
+    { label: "Referrals & onboarding", words: ["download", "install", "refer", "referral", "promo", "bonus", "signup"] },
+    { label: "Loss / money concerns", words: ["loss", "money", "fraud", "scam", "refund", "withdraw", "withdrawal"] },
+  ];
+  var GENERIC_SUMMARY_WORDS = new Set([
+    "good", "app", "application", "apps", "best", "nice", "great", "excellent",
+    "awesome", "amazing", "super", "worst", "bad", "poor", "okay", "fine",
+    "love", "like", "one", "also", "please", "work", "works", "working",
+    "really", "much", "lot", "time", "every", "everything", "hai", "yeh",
+    "sir", "thank", "thanks",
+  ]);
+  function isGenericPhrase(word) {
+    return word.split(" ").some(function (w) { return GENERIC_SUMMARY_WORDS.has(w); }) || GENERIC_SUMMARY_WORDS.has(word);
+  }
+  function classifyIntoThemes(keywords) {
+    var scores = {};
+    (keywords || []).forEach(function (k) {
+      if (isGenericPhrase(k.word)) return;
+      var tokens = k.word.split(" ");
+      for (var i = 0; i < SUMMARY_THEMES.length; i++) {
+        var theme = SUMMARY_THEMES[i];
+        if (tokens.some(function (t) { return theme.words.indexOf(t) !== -1; })) {
+          if (!scores[theme.label]) scores[theme.label] = { score: 0, words: [] };
+          scores[theme.label].score += k.count;
+          if (scores[theme.label].words.indexOf(k.word) === -1) scores[theme.label].words.push(k.word);
+          break;
+        }
+      }
+    });
+    return Object.keys(scores)
+      .map(function (label) { return { label: label, score: scores[label].score, words: scores[label].words.slice(0, 4) }; })
+      .sort(function (a, b) { return b.score - a.score; });
+  }
+  var CLIENT_STOPWORDS = new Set([
+    "a", "an", "the", "and", "or", "but", "if", "then", "so", "because", "as",
+    "of", "at", "by", "for", "with", "about", "against", "between", "into",
+    "through", "during", "before", "after", "above", "below", "to", "from",
+    "up", "down", "in", "out", "on", "off", "over", "under", "again",
+    "further", "once", "here", "there", "when", "where", "why", "how", "all",
+    "any", "both", "each", "few", "more", "most", "other", "some", "such",
+    "no", "nor", "not", "only", "own", "same", "than", "too", "very", "s",
+    "t", "can", "will", "just", "don", "should", "now", "i", "me", "my",
+    "myself", "we", "our", "ours", "ourselves", "you", "your", "yours",
+    "yourself", "yourselves", "he", "him", "his", "himself", "she", "her",
+    "hers", "herself", "it", "its", "itself", "they", "them", "their",
+    "theirs", "themselves", "what", "which", "who", "whom", "this", "that",
+    "these", "those", "am", "is", "are", "was", "were", "be", "been", "being",
+    "have", "has", "had", "having", "do", "does", "did", "doing", "would",
+    "could", "ought", "get", "got", "getting", "also",
+  ]);
+  function clientTokenize(text) {
+    return (text || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s']/g, " ")
+      .split(/\s+/)
+      .filter(function (w) { return w.length >= 3 && !CLIENT_STOPWORDS.has(w) && !/^\d+$/.test(w); });
+  }
+  function reviewThemeLabels(r) {
+    var tokens = clientTokenize((r.title || "") + " " + (r.text || ""));
+    var tokenSet = {};
+    tokens.forEach(function (t) { tokenSet[t] = true; });
+    var matched = [];
+    SUMMARY_THEMES.forEach(function (theme) {
+      if (theme.words.some(function (w) { return tokenSet[w]; })) matched.push(theme.label);
+    });
+    return matched;
+  }
+
+  /** Groups an app's recentReviews (most recent 300) by theme, for the
+   * per-theme "good vs bad" summary and drill-down quotes. A review can
+   * belong to more than one theme. */
+  function buildAppThemeSummaries(app) {
+    var reviews = (app.combined.recentReviews || []).slice().sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+    var byTheme = {};
+    SUMMARY_THEMES.forEach(function (t) { byTheme[t.label] = { count: 0, ratingSum: 0, positive: 0, negative: 0, reviews: [] }; });
+    reviews.forEach(function (r) {
+      reviewThemeLabels(r).forEach(function (label) {
+        var b = byTheme[label];
+        b.count++;
+        b.ratingSum += r.rating || 0;
+        if (r.rating >= 4) b.positive++;
+        if (r.rating <= 2) b.negative++;
+        b.reviews.push(r);
+      });
+    });
+    return SUMMARY_THEMES
+      .map(function (t) {
+        var b = byTheme[t.label];
+        return {
+          label: t.label,
+          count: b.count,
+          avgRating: b.count ? b.ratingSum / b.count : 0,
+          positive: b.positive,
+          negative: b.negative,
+          reviews: b.reviews,
+        };
+      })
+      .filter(function (t) { return t.count > 0; })
+      .sort(function (a, b) { return b.count - a.count; });
+  }
+
+  var STATE = {
+    data: null,
+    diveApp: null,
+    themeCmpCompetitor: null,
+  };
+
+  function getVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  var COLORS = {
+    positive: getVar("--status-good"),
+    neutral: getVar("--status-neutral"),
+    negative: getVar("--status-critical"),
+    accent: getVar("--accent-ink"),
+    muted: getVar("--ink-muted"),
+    grid: getVar("--grid-line"),
+    surface: getVar("--surface"),
+    cat: {
+      trading: getVar("--cat-trading"),
+      investment: getVar("--cat-investment"),
+      ekyc: getVar("--cat-ekyc"),
+      activation: getVar("--cat-activation"),
+      acquisition: getVar("--cat-acquisition"),
+      support: getVar("--cat-support"),
+      other: getVar("--cat-other"),
+    },
+  };
+  function categoryColor(cat) { return COLORS.cat[cat] || COLORS.muted; }
+  function categoryLabel(cat) {
+    var m = CATEGORY_META.filter(function (c) { return c.category === cat; })[0];
+    return m ? m.label : cat;
+  }
+
+  function el(tag, cls, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function fmt(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+    return String(n);
+  }
+  function fmtDate(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "";
+    return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  }
+  function ratingColor(v) {
+    if (!v) return COLORS.muted;
+    if (v >= 4) return COLORS.positive;
+    if (v >= 3) return "var(--status-warn)";
+    return COLORS.negative;
+  }
+
+  function catBreakdownMap(app) {
+    var map = {};
+    (app.combined.categoryBreakdown || []).forEach(function (c) { map[c.category] = c; });
+    return map;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Scoreboard                                                          */
+  /* ------------------------------------------------------------------ */
+
+  function renderScoreboard() {
+    var apps = STATE.data.apps;
+    var table = document.getElementById("scoreboardTable");
+    var thead = "<thead><tr><th>App</th><th>Reviews</th><th>Avg rating</th><th>Sentiment</th>" +
+      CATEGORY_META.map(function (c) { return "<th>" + escapeHtml(c.label) + "</th>"; }).join("") +
+      "</tr></thead>";
+
+    var rows = apps.map(function (app) {
+      var c = app.combined;
+      var s = c.sentimentBuckets;
+      var total = s.positive + s.neutral + s.negative || 1;
+      var pPos = (100 * s.positive / total).toFixed(0);
+      var pNeu = (100 * s.neutral / total).toFixed(0);
+      var pNeg = (100 * s.negative / total).toFixed(0);
+      var cats = catBreakdownMap(app);
+
+      var catCells = CATEGORY_META.map(function (meta) {
+        var cc = cats[meta.category];
+        if (!cc || !cc.count) return '<td class="rate-na">&ndash;</td>';
+        return '<td><span class="rate-cell"><span class="rate-dot" style="background:' + ratingColor(cc.avgRating) + '"></span><span class="tabular">' + cc.avgRating.toFixed(2) + '</span></span></td>';
+      }).join("");
+
+      return (
+        '<tr class="' + (app.role === "own" ? "own-row" : "") + '">' +
+        '<td><span class="app-name-cell">' + escapeHtml(app.name) + (app.role === "own" ? ' <span class="own-badge">Us</span>' : "") + "</span></td>" +
+        '<td class="tabular">' + fmt(c.totalReviews) + "</td>" +
+        '<td><span class="rate-cell"><span class="rate-dot" style="background:' + ratingColor(c.avgRating) + '"></span><span class="tabular">' + c.avgRating.toFixed(2) + "</span></span></td>" +
+        '<td><span class="sent-mini"><span style="width:' + pPos + '%;background:' + COLORS.positive + '"></span><span style="width:' + pNeu + '%;background:' + COLORS.neutral + '"></span><span style="width:' + pNeg + '%;background:' + COLORS.negative + '"></span></span></td>' +
+        catCells +
+        "</tr>"
+      );
+    }).join("");
+
+    table.innerHTML = thead + "<tbody>" + rows + "</tbody>";
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Trading vs Investment chart                                         */
+  /* ------------------------------------------------------------------ */
+
+  function renderTvI() {
+    var apps = STATE.data.apps;
+    document.getElementById("tviLegend").innerHTML =
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.cat.trading + '"></span>Trading</span>' +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + COLORS.cat.investment + '"></span>Investment</span>';
+
+    var wrap = document.getElementById("tviChartWrap");
+    wrap.innerHTML = "";
+    var W = wrap.clientWidth || 900, H = 260;
+    var padL = 34, padR = 14, padT = 14, padB = 46;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var n = apps.length;
+    var groupW = plotW / n;
+    var barW = Math.min(20, groupW * 0.32);
+    var gap = 3;
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+    for (var r = 1; r <= 5; r++) {
+      var y = padT + (1 - (r - 1) / 4) * plotH;
+      svg.appendChild(svgEl("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: COLORS.grid, "stroke-width": 1 }));
+      svg.appendChild(svgEl("text", { x: padL - 8, y: y + 3, "text-anchor": "end", "font-size": 10 }, r));
+    }
+
+    var tooltip = makeTooltip(wrap);
+
+    apps.forEach(function (app, i) {
+      var cats = catBreakdownMap(app);
+      var trading = cats.trading, investment = cats.investment;
+      var groupX = padL + i * groupW;
+      var centerX = groupX + groupW / 2;
+
+      [
+        { key: "trading", data: trading, color: COLORS.cat.trading, dx: -(barW + gap) / 2 },
+        { key: "investment", data: investment, color: COLORS.cat.investment, dx: (barW + gap) / 2 },
+      ].forEach(function (series) {
+        var val = series.data && series.data.count ? series.data.avgRating : 0;
+        var barH = val ? ((val - 1) / 4) * plotH : 0;
+        var x = centerX + series.dx - barW / 2;
+        var y = padT + plotH - barH;
+        if (val) {
+          svg.appendChild(svgEl("rect", { x: x, y: y, width: barW, height: Math.max(barH, 2), rx: 4, fill: series.color }));
+        } else {
+          svg.appendChild(svgEl("rect", { x: x, y: padT + plotH - 3, width: barW, height: 3, rx: 1.5, fill: COLORS.grid }));
+        }
+        var hit = svgEl("rect", { x: x - 2, y: padT, width: barW + 4, height: plotH, fill: "transparent" });
+        svg.appendChild(hit);
+        hit.addEventListener("pointerenter", function (e) { tt(e); });
+        hit.addEventListener("pointermove", function (e) { tt(e); });
+        hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+        function tt(e) {
+          tooltip.show(e, app.name, [
+            { label: categoryLabel(series.key), value: val ? val.toFixed(2) + " (" + series.data.count + " reviews)" : "No data", color: series.color },
+          ]);
+        }
+      });
+
+      var label = app.name.length > 12 ? app.name.slice(0, 11) + "…" : app.name;
+      svg.appendChild(svgEl("text", { x: centerX, y: H - padB + 16, "text-anchor": "middle", "font-size": 10, "font-weight": app.role === "own" ? 700 : 400, fill: app.role === "own" ? COLORS.accent : getVar("--ink-muted") }, label));
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Deep dive                                                           */
+  /* ------------------------------------------------------------------ */
+
+  function renderAppTabs() {
+    var wrap = document.getElementById("appTabs");
+    wrap.innerHTML = "";
+    STATE.data.apps.forEach(function (app) {
+      var tab = el("button", "app-tab" + (STATE.diveApp === app.name ? " active" : ""), escapeHtml(app.name) + (app.role === "own" ? " ★" : ""));
+      tab.addEventListener("click", function () { STATE.diveApp = app.name; renderAppTabs(); renderDive(); });
+      wrap.appendChild(tab);
+    });
+  }
+
+  function pickQuotes(reviews, kind, n) {
+    var filtered = reviews.filter(function (r) { return kind === "praise" ? r.rating >= 4 : r.rating <= 2; });
+    filtered = filtered.filter(function (r) { return (r.text || "").length >= 25; });
+    filtered.sort(function (a, b) { return (b.thumbsUp || 0) - (a.thumbsUp || 0) || new Date(b.date) - new Date(a.date); });
+    return filtered.slice(0, n);
+  }
+
+  function quoteHtml(r) {
+    var kind = r.rating >= 4 ? "praise" : r.rating <= 2 ? "complaint" : "";
+    var q = el("div", "quote " + kind);
+    q.innerHTML =
+      '<div class="quote-meta">' + r.rating + "★ &middot; " + (r.platform === "play" ? "Play" : "iOS") + " &middot; " + fmtDate(r.date) + "</div>" +
+      "<div>" + escapeHtml((r.text || "").slice(0, 260)) + (r.text && r.text.length > 260 ? "…" : "") + "</div>";
+    return q;
+  }
+
+  function buildVsUsComparison(ownApp, app) {
+    if (app.role === "own" || !ownApp) return null;
+    var ownCats = {};
+    (ownApp.combined.categoryBreakdown || []).forEach(function (c) { ownCats[c.category] = c; });
+    var rows = (app.combined.categoryBreakdown || [])
+      .filter(function (c) { return c.category !== "other" && c.count >= 3; })
+      .map(function (c) {
+        var own = ownCats[c.category];
+        if (!own || own.count < 3) return null;
+        return { label: c.label, theirRating: c.avgRating, ourRating: own.avgRating, delta: Number((c.avgRating - own.avgRating).toFixed(2)) };
+      })
+      .filter(Boolean);
+
+    return {
+      ahead: rows.filter(function (r) { return r.delta >= 0.3; }).sort(function (a, b) { return b.delta - a.delta; }).slice(0, 3),
+      behind: rows.filter(function (r) { return r.delta <= -0.3; }).sort(function (a, b) { return a.delta - b.delta; }).slice(0, 3),
+    };
+  }
+
+  function renderDive() {
+    var app = STATE.data.apps.filter(function (a) { return a.name === STATE.diveApp; })[0];
+    if (!app) return;
+    var grid = document.getElementById("diveGrid");
+    grid.innerHTML = "";
+
+    var catCol = el("div", "dive-col");
+    catCol.innerHTML = "<h3>Category mix</h3>";
+    var catList = el("div", "cat-mini-list");
+    var cats = app.combined.categoryBreakdown || [];
+    var maxCount = Math.max.apply(null, cats.map(function (c) { return c.count; }).concat([1]));
+    cats.forEach(function (c) {
+      var pct = Math.max(c.count > 0 ? 3 : 0, Math.round((c.count / maxCount) * 100));
+      var row = el("div", "cat-mini-row");
+      row.innerHTML =
+        '<span class="cat-mini-name"><span class="legend-swatch" style="background:' + categoryColor(c.category) + '"></span>' + escapeHtml(c.label) + "</span>" +
+        '<span class="cat-mini-track"><span class="cat-mini-fill" style="width:' + pct + '%;background:' + categoryColor(c.category) + '"></span></span>' +
+        '<span class="cat-mini-val tabular">' + fmt(c.count) + "</span>";
+      catList.appendChild(row);
+    });
+    catCol.appendChild(catList);
+
+    var ownApp = STATE.data.apps.filter(function (a) { return a.role === "own"; })[0];
+    var vsCol = el("div", "dive-col");
+    vsCol.innerHTML = "<h3>Vs. Swastika</h3>";
+    if (app.role === "own") {
+      vsCol.appendChild(el("div", "empty-col", "This is your own app."));
+    } else {
+      var cmp = buildVsUsComparison(ownApp, app);
+      var vsList = el("div", "quote-list");
+      if (cmp.ahead.length) {
+        vsList.appendChild(el("div", "quote-meta", "Ahead of us"));
+        cmp.ahead.forEach(function (r) {
+          var q = el("div", "quote praise");
+          q.innerHTML = "<div>" + escapeHtml(r.label) + " — their " + r.theirRating.toFixed(2) + "★ vs our " + r.ourRating.toFixed(2) + "★</div>";
+          vsList.appendChild(q);
+        });
+      }
+      if (cmp.behind.length) {
+        vsList.appendChild(el("div", "quote-meta", "Behind us"));
+        cmp.behind.forEach(function (r) {
+          var q = el("div", "quote complaint");
+          q.innerHTML = "<div>" + escapeHtml(r.label) + " — their " + r.theirRating.toFixed(2) + "★ vs our " + r.ourRating.toFixed(2) + "★</div>";
+          vsList.appendChild(q);
+        });
+      }
+      if (!cmp.ahead.length && !cmp.behind.length) vsList.appendChild(el("div", "empty-col", "No categories differ meaningfully from us."));
+      vsCol.appendChild(vsList);
+    }
+
+    var versionCol = el("div", "dive-col");
+    versionCol.innerHTML = "<h3>Version regressions</h3>";
+    var regressions = (app.combined.versionTrend || []).filter(function (v) { return v.isRegression; }).slice(-5).reverse();
+    var regressionList = el("div", "quote-list");
+    if (!regressions.length) {
+      regressionList.innerHTML = '<div class="empty-col">No flagged version-over-version rating drops.</div>';
+    } else {
+      regressions.forEach(function (v) {
+        var q = el("div", "quote complaint");
+        q.innerHTML =
+          '<div class="quote-meta">' + escapeHtml(v.platform === "ios" ? "iOS " + v.version : v.version) + "</div>" +
+          "<div>" + v.avgRating.toFixed(2) + "★ (" + (v.deltaVsPrevious >= 0 ? "+" : "") + v.deltaVsPrevious.toFixed(2) + " vs previous version, n=" + v.count + ")</div>";
+        regressionList.appendChild(q);
+      });
+    }
+    versionCol.appendChild(regressionList);
+
+    var themeCol = el("div", "dive-col");
+    themeCol.style.gridColumn = "1 / -1";
+    themeCol.innerHTML = "<h3>Feedback by theme</h3>";
+    themeCol.appendChild(renderThemeFeedbackList(app));
+
+    grid.appendChild(catCol);
+    grid.appendChild(vsCol);
+    grid.appendChild(versionCol);
+    grid.appendChild(themeCol);
+  }
+
+  /** Per-theme accordion: a one-line good/bad summary plus a couple of
+   * sample quotes, expandable to every matching review in recentReviews. */
+  function renderThemeFeedbackList(app) {
+    var themes = buildAppThemeSummaries(app).slice(0, 6);
+    var wrap = el("div", "theme-feedback-list");
+    if (!themes.length) {
+      wrap.innerHTML = '<div class="empty-col">Not enough review text yet to detect themes.</div>';
+      return wrap;
+    }
+
+    themes.forEach(function (t) {
+      var lean = t.positive > t.negative * 1.3 ? "praise" : t.negative > t.positive * 1.3 ? "complaint" : "mixed";
+      var leanLabel = lean === "praise" ? "Mostly praised" : lean === "complaint" ? "Mostly criticized" : "Mixed feedback";
+      var leanColor = lean === "praise" ? COLORS.positive : lean === "complaint" ? COLORS.negative : COLORS.accent;
+
+      var block = el("div", "theme-feedback-block");
+      block.innerHTML =
+        '<div class="theme-feedback-head">' +
+          '<span class="theme-feedback-label">' + escapeHtml(t.label) + "</span>" +
+          '<span class="theme-feedback-meta">' + t.count + " mentions &middot; " + t.avgRating.toFixed(2) + "★</span>" +
+          '<span class="theme-feedback-lean" style="background:' + leanColor + '20;color:' + leanColor + '">' + leanLabel + "</span>" +
+        "</div>";
+
+      var quotesWrap = el("div", "quote-list");
+      var shownIds = {};
+      var initial = pickQuotes(t.reviews, "praise", 1).concat(pickQuotes(t.reviews, "complaint", 1));
+      if (!initial.length) initial = t.reviews.slice(0, 2);
+      initial.forEach(function (r) { shownIds[r.id] = true; quotesWrap.appendChild(quoteHtml(r)); });
+      block.appendChild(quotesWrap);
+
+      var remaining = t.reviews.filter(function (r) { return !shownIds[r.id]; });
+      if (remaining.length) {
+        var moreBtn = el("button", "theme-expand-btn", "Show " + remaining.length + " more review" + (remaining.length === 1 ? "" : "s"));
+        var expanded = false;
+        moreBtn.addEventListener("click", function () {
+          expanded = !expanded;
+          if (expanded) {
+            remaining.forEach(function (r) { quotesWrap.appendChild(quoteHtml(r)); });
+            moreBtn.textContent = "Show fewer reviews";
+          } else {
+            while (quotesWrap.children.length > initial.length) quotesWrap.removeChild(quotesWrap.lastChild);
+            moreBtn.textContent = "Show " + remaining.length + " more review" + (remaining.length === 1 ? "" : "s");
+          }
+        });
+        block.appendChild(moreBtn);
+      }
+
+      wrap.appendChild(block);
+    });
+
+    return wrap;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Theme trends: us vs. a chosen competitor                            */
+  /* ------------------------------------------------------------------ */
+
+  function monthLabel(key) {
+    var parts = key.split("-");
+    var d = new Date(Date.UTC(+parts[0], +parts[1] - 1, 1));
+    return d.toLocaleDateString(undefined, { month: "short", year: "2-digit" });
+  }
+
+  function mergeSeriesByPeriod(seriesA, seriesB) {
+    var mapA = {}, mapB = {};
+    (seriesA || []).forEach(function (m) { mapA[m.period] = m; });
+    (seriesB || []).forEach(function (m) { mapB[m.period] = m; });
+    var periods = Object.keys(mapA).concat(Object.keys(mapB));
+    var uniq = periods.filter(function (p, i) { return periods.indexOf(p) === i; }).sort();
+    return uniq.map(function (p) {
+      return { period: p, a: mapA[p] ? mapA[p].count : 0, b: mapB[p] ? mapB[p].count : 0 };
+    });
+  }
+
+  function drawDualSparkline(container, merged, colorA, colorB) {
+    if (!merged.length) { container.innerHTML = '<div style="font-size:11px;color:var(--ink-muted);padding:10px 0;">No data</div>'; return; }
+    var W = container.clientWidth || 260, H = 60;
+    var padX = 4, padY = 6;
+    var plotW = W - padX * 2, plotH = H - padY * 2;
+    var maxCount = Math.max.apply(null, merged.map(function (m) { return Math.max(m.a, m.b); }).concat([1]));
+    var n = merged.length;
+    function xAt(i) { return padX + (n === 1 ? plotW / 2 : (i / (n - 1)) * plotW); }
+    function yAt(c) { return padY + (1 - c / maxCount) * plotH; }
+
+    var svg = svgEl("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H });
+    function drawLine(key, color) {
+      var d = merged.map(function (m, i) { return (i === 0 ? "M" : "L") + xAt(i).toFixed(1) + " " + yAt(m[key]).toFixed(1); }).join(" ");
+      svg.appendChild(svgEl("path", { d: d, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+      svg.appendChild(svgEl("circle", { cx: xAt(n - 1), cy: yAt(merged[n - 1][key]), r: 3, fill: color }));
+    }
+    drawLine("a", colorA);
+    drawLine("b", colorB);
+    container.appendChild(svg);
+
+    var tooltip = makeTooltip(container);
+    merged.forEach(function (m, i) {
+      var hit = svgEl("rect", { x: xAt(i) - 8, y: 0, width: 16, height: H, fill: "transparent" });
+      svg.appendChild(hit);
+      hit.addEventListener("pointerenter", function (e) { tt(e); });
+      hit.addEventListener("pointermove", function (e) { tt(e); });
+      hit.addEventListener("pointerleave", function () { tooltip.hide(); });
+      function tt(e) {
+        tooltip.show(e, monthLabel(m.period), [
+          { label: "Us", value: m.a, color: colorA },
+          { label: "Them", value: m.b, color: colorB },
+        ]);
+      }
+    });
+  }
+
+  function renderCompetitorTabs() {
+    var wrap = document.getElementById("competitorTabs");
+    wrap.innerHTML = "";
+    var competitors = STATE.data.apps.filter(function (a) { return a.role === "competitor"; });
+    if (!STATE.themeCmpCompetitor && competitors.length) STATE.themeCmpCompetitor = competitors[0].name;
+    competitors.forEach(function (c) {
+      var tab = el("button", "app-tab" + (STATE.themeCmpCompetitor === c.name ? " active" : ""), escapeHtml(c.name));
+      tab.addEventListener("click", function () { STATE.themeCmpCompetitor = c.name; renderCompetitorTabs(); renderThemeComparison(); });
+      wrap.appendChild(tab);
+    });
+  }
+
+  function renderThemeComparison() {
+    var ownApp = STATE.data.apps.filter(function (a) { return a.role === "own"; })[0];
+    var competitor = STATE.data.apps.filter(function (a) { return a.name === STATE.themeCmpCompetitor; })[0];
+    var grid = document.getElementById("themeCmpGrid");
+    grid.innerHTML = "";
+    if (!ownApp || !competitor) return;
+
+    var colorUs = COLORS.accent, colorThem = COLORS.cat.investment;
+    document.getElementById("themeCmpLegend").innerHTML =
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + colorUs + '"></span>' + escapeHtml(ownApp.name) + "</span>" +
+      '<span class="legend-key"><span class="legend-swatch" style="background:' + colorThem + '"></span>' + escapeHtml(competitor.name) + "</span>";
+
+    var ownTrend = ownApp.combined.themeTrend || {};
+    var cmpTrend = competitor.combined.themeTrend || {};
+    function totalVolume(trend, label) {
+      return (trend[label] || []).reduce(function (s, m) { return s + m.count; }, 0);
+    }
+
+    var labelSet = {};
+    Object.keys(ownTrend).forEach(function (l) { labelSet[l] = true; });
+    Object.keys(cmpTrend).forEach(function (l) { labelSet[l] = true; });
+    var ranked = Object.keys(labelSet)
+      .map(function (label) { return { label: label, total: totalVolume(ownTrend, label) + totalVolume(cmpTrend, label) }; })
+      .filter(function (r) { return r.total > 0; })
+      .sort(function (a, b) { return b.total - a.total; })
+      .slice(0, 4);
+
+    if (!ranked.length) { grid.innerHTML = '<div class="empty-state">Not enough theme data for this comparison.</div>'; return; }
+
+    ranked.forEach(function (r) {
+      var merged = mergeSeriesByPeriod(ownTrend[r.label], cmpTrend[r.label]);
+      var cell = el("div", "theme-cmp-cell");
+      cell.innerHTML = '<span class="theme-cmp-label">' + escapeHtml(r.label) + "</span>";
+      var sparkWrap = el("div");
+      cell.appendChild(sparkWrap);
+      grid.appendChild(cell);
+      drawDualSparkline(sparkWrap, merged, colorUs, colorThem);
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* SVG + tooltip helpers                                               */
+  /* ------------------------------------------------------------------ */
+
+  function svgEl(tag, attrs, text) {
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = String(text);
+    return e;
+  }
+  function makeTooltip(container) {
+    container.style.position = "relative";
+    var tt = el("div", "chart-tooltip");
+    container.appendChild(tt);
+    return {
+      show: function (evt, title, rows) {
+        var rect = container.getBoundingClientRect();
+        var x = evt.clientX - rect.left, y = evt.clientY - rect.top;
+        var html = '<div style="font-weight:700;margin-bottom:4px;">' + escapeHtml(title) + "</div>";
+        rows.forEach(function (r) {
+          html += '<div class="row">' + (r.color ? '<span class="key" style="background:' + r.color + '"></span>' : "") + "<span>" + escapeHtml(r.label) + '</span><span class="val">' + escapeHtml(String(r.value)) + "</span></div>";
+        });
+        tt.innerHTML = html;
+        tt.style.opacity = "1";
+        var left = x + 14, top = y - 10;
+        if (left + tt.offsetWidth > container.clientWidth) left = x - tt.offsetWidth - 14;
+        tt.style.left = left + "px";
+        tt.style.top = Math.max(0, top) + "px";
+      },
+      hide: function () { tt.style.opacity = "0"; },
+    };
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Boot                                                                */
+  /* ------------------------------------------------------------------ */
+
+  function boot(data) {
+    STATE.data = data;
+    STATE.diveApp = data.apps[0] ? data.apps[0].name : null;
+    var gen = new Date(data.generatedAt);
+    document.getElementById("genTime").textContent = "Updated " + gen.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+
+    renderScoreboard();
+    renderTvI();
+    renderAppTabs();
+    renderDive();
+    renderCompetitorTabs();
+    renderThemeComparison();
+
+    window.addEventListener("resize", debounce(function () { renderTvI(); renderThemeComparison(); }, 150));
+  }
+
+  function debounce(fn, ms) {
+    var t;
+    return function () { clearTimeout(t); var args = arguments; t = setTimeout(function () { fn.apply(null, args); }, ms); };
+  }
+
+  fetch("competitor-data.json").then(function (r) { return r.json(); }).then(boot).catch(function (e) {
+    document.getElementById("genTime").textContent = "Failed to load competitor-data.json";
+    console.error(e);
+  });
+})();
+</script>

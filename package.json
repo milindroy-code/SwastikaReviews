@@ -10,6 +10,7 @@
     "fetch:competitors": "node src/fetchCompetitors.js",
     "analyze:competitors": "node src/buildCompetitorData.js",
     "all:competitors": "npm run fetch:competitors && npm run analyze:competitors",
+    "build:site": "node src/buildSite.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
