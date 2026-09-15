@@ -1,0 +1,43 @@
+name: Weekly competitor refresh
+
+on:
+  schedule:
+    # 00:30 UTC Monday = 6:00 AM IST Monday — an hour ahead of the Claude
+    # routine that republishes Battlecard, so fresh data is already pushed.
+    - cron: "30 0 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch competitor reviews and rebuild competitor data
+        run: npm run all:competitors
+
+      - name: Build site/ for Vercel
+        run: npm run build:site
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/raw data/out site
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Automated competitor data refresh - $(date -u +%Y-%m-%d)"
+            git push
+          fi

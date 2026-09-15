@@ -150,17 +150,42 @@ first app as "own" and everything in `competitors.json` as "competitor":
 
 ## Automated refresh
 
-Two scheduled cloud routines run against the `milindroy-code/SwastikaReviews`
-GitHub repo, committing refreshed `data/` back after each run:
+Two separate systems split the work, because the fetch step doesn't work
+from Anthropic's cloud sandbox (see "Why two systems" below):
 
+**GitHub Actions** (`.github/workflows/`) — runs on GitHub's own runners,
+does the actual fetching, and pushes the result:
+- `daily-refresh.yml` — 6:30 AM IST daily: `npm run all` + `npm run build:site`,
+  commits `data/` and `site/`, pushes (which also triggers the Vercel deploy).
+- `weekly-competitor-refresh.yml` — 6:00 AM IST Mondays: same, but
+  `npm run all:competitors`.
+
+Check run history / trigger manually at
+https://github.com/milindroy-code/SwastikaReviews/actions.
+
+**Claude scheduled routines** — run ~30–60 min later, pull whatever Actions
+already pushed, and republish the Claude Artifacts (they no longer fetch or
+push anything themselves):
 - **Swastika Review Agent — Daily Refresh**
-  (https://claude.ai/code/routines/trig_01Bht7nSU1rUCqUkBqeaXvoB) — runs
-  `npm run all` and republishes Review Desk every day at 7:00 AM IST.
+  (https://claude.ai/code/routines/trig_01Bht7nSU1rUCqUkBqeaXvoB) — 7:00 AM
+  IST daily, republishes Review Desk.
 - **Swastika Battlecard — Weekly Competitor Refresh**
-  (https://claude.ai/code/routines/trig_01QhznpESdJHesXZSQ5EcVbs) — runs
-  `npm run all:competitors` every Monday at 7:00 AM IST and republishes the
-  refreshed `competitor-data.json` to both Battlecard and Review Desk (so
-  Review Desk's "Market position" section stays current too).
+  (https://claude.ai/code/routines/trig_01QhznpESdJHesXZSQ5EcVbs) — 7:00 AM
+  IST Mondays, republishes Battlecard and Review Desk's "Market position" copy.
+
+### Why two systems
+
+The Claude routines originally did everything (fetch, build, commit, push,
+republish) — but from Anthropic's cloud sandbox, Google Play returns HTTP 403
+(anti-bot blocking of that IP range) and the sandbox's own network policy
+blocks `itunes.apple.com` outright, so fetching has never actually worked
+from there. On top of that, the sandbox also didn't have git push permission
+on this repo. Both failures were silently swallowed (the routine still
+"succeeded" by republishing stale data), so this went unnoticed for a couple
+of days. GitHub Actions runners have normal internet egress and native push
+access to their own repo via `GITHUB_TOKEN`, so moving fetch+push there
+fixes both problems at once — if `data/out/*.json`'s `generatedAt` timestamp
+ever looks stale, check the Actions run history first, not the Claude routines.
 
 ## Sharing
 
