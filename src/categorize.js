@@ -1,35 +1,26 @@
-// Rule-based categorization of a review into a product-funnel stage, using
-// simple phrase matching (no ML, no external calls — consistent with the
-// rest of the offline analysis pipeline). Each review is assigned exactly
-// one category: whichever stage's phrase list has the most distinct hits,
-// tie-broken by TIE_BREAK_PRIORITY; "other" if nothing matches.
-//
-// "trading" and "investment" are deliberately kept as separate categories,
-// never merged: trading is short-horizon order execution (buy/sell, F&O,
-// intraday, margin, brokerage/charges, market data); investment is
-// long-horizon wealth building (mutual funds, SIPs, IPOs, bonds, goal
-// planning). A review can only land in one, never both.
+// Rule-based classification of a review into exactly one of: trading,
+// investment, or other. Kept deliberately narrow — this used to be a
+// 7-way product-funnel taxonomy (trading/investment/eKYC/activation/
+// acquisition/support/other), but everywhere that taxonomy was displayed
+// has moved to the core-idea "themes" system (src/themes.js) instead.
+// Trading vs. investment stays as its own special case (not a theme)
+// because it was explicitly asked to never be blended into one number:
+// trading is short-horizon order execution (buy/sell, F&O, intraday,
+// margin, brokerage/charges, market data); investment is long-horizon
+// wealth building (mutual funds, SIPs, IPOs, bonds, goal planning).
 
-// Fixed display/color order — never re-sorted by volume, so a category's
-// identity (and chart color) stays stable across filters and time ranges.
-const CATEGORY_ORDER = ['trading', 'investment', 'ekyc', 'activation', 'acquisition', 'support', 'other'];
+const CATEGORY_ORDER = ['trading', 'investment', 'other'];
 
 const CATEGORY_LABELS = {
   trading: 'Trading',
   investment: 'Investment',
-  ekyc: 'eKYC',
-  activation: 'Activation',
-  acquisition: 'Acquisition',
-  support: 'Support',
   other: 'Other',
 };
 
-// Priority used only to break ties when two categories match the same
-// number of distinct phrases in a review. Investment is checked ahead of
-// trading so an explicit "mutual fund" / "SIP" mention doesn't fall back
-// into trading just because generic words like "order" or "portfolio" also
-// matched.
-const TIE_BREAK_PRIORITY = ['ekyc', 'investment', 'trading', 'support', 'activation', 'acquisition'];
+// Investment is checked ahead of trading on a tie so an explicit "mutual
+// fund" / "SIP" mention doesn't fall back into trading just because a
+// generic word like "order" or "portfolio" also matched.
+const TIE_BREAK_PRIORITY = ['investment', 'trading'];
 
 const PHRASES = {
   trading: [
@@ -48,30 +39,6 @@ const PHRASES = {
     'index fund', 'index funds', 'diversify', 'diversification',
     'compounding', 'lumpsum', 'lump sum', 'asset allocation',
     'financial planning', 'save for', 'savings plan',
-  ],
-  ekyc: [
-    'kyc', 'e-kyc', 'ekyc', 'pan card', 'pan number', 'aadhaar', 'aadhar',
-    'verification', 'verify', 'document', 'digilocker', 'esign', 'e-sign',
-    'video kyc', 'demat', 'bank account link', 'nominee', 'signature',
-    'income proof', 'cvl', 'kra', 'kyc pending', 'kyc rejected',
-  ],
-  activation: [
-    'login', 'log in', 'sign up', 'signup', 'register', 'registration',
-    'otp', 'password', 'create account', 'new account', 'first time',
-    'onboarding', 'set up', 'setup', 'welcome', 'getting started',
-    'activate', 'activation', 'account opening', 'open account',
-  ],
-  acquisition: [
-    'download', 'install', 'installation', 'referral', 'refer a friend',
-    'refer and earn', 'invite', 'promo code', 'playstore', 'play store',
-    'app store', 'advertisement', 'reward', 'bonus', 'recommended by',
-    'found this app', 'why i chose', 'switching from',
-  ],
-  support: [
-    'customer care', 'customer service', 'customer support', 'helpline',
-    'complaint', 'response', 'reply', 'refund', 'call center', 'call centre',
-    'ticket', 'chat support', 'resolve', 'resolved', 'no response',
-    'contact', 'support team', 'raised a', 'escalate',
   ],
 };
 

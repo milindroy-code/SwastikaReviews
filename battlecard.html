@@ -23,11 +23,6 @@
 
     --cat-trading: #2a78d6;
     --cat-investment: #eb6834;
-    --cat-ekyc: #1baf7a;
-    --cat-activation: #eda100;
-    --cat-acquisition: #e87ba4;
-    --cat-support: #008300;
-    --cat-other: #4a3aa7;
 
     --grid-line: #e1e5ea;
     --baseline: #c7cfd9;
@@ -57,11 +52,6 @@
 
       --cat-trading: #3987e5;
       --cat-investment: #d95926;
-      --cat-ekyc: #199e70;
-      --cat-activation: #c98500;
-      --cat-acquisition: #d55181;
-      --cat-support: #008300;
-      --cat-other: #9085e9;
 
       --grid-line: #232e3d;
       --baseline: #34404f;
@@ -90,11 +80,6 @@
 
     --cat-trading: #3987e5;
     --cat-investment: #d95926;
-    --cat-ekyc: #199e70;
-    --cat-activation: #c98500;
-    --cat-acquisition: #d55181;
-    --cat-support: #008300;
-    --cat-other: #9085e9;
 
     --grid-line: #232e3d;
     --baseline: #34404f;
@@ -330,7 +315,7 @@
     <div class="block-head">
       <div>
         <h2>Scoreboard</h2>
-        <p class="block-sub">All-time, by review-funnel category &mdash; trading and investment tracked separately on purpose</p>
+        <p class="block-sub">All-time &mdash; trading and investment tracked separately on purpose, never blended into one number</p>
       </div>
     </div>
     <div class="table-scroll">
@@ -388,14 +373,12 @@
 (function () {
   "use strict";
 
+  // Trading vs. Investment stays as its own special case, kept separate
+  // from the theme system below — used only for the Scoreboard columns
+  // and the "Trading vs. investment rating" chart.
   var CATEGORY_META = [
     { category: "trading", label: "Trading" },
     { category: "investment", label: "Investment" },
-    { category: "ekyc", label: "eKYC" },
-    { category: "activation", label: "Activation" },
-    { category: "acquisition", label: "Acquisition" },
-    { category: "support", label: "Support" },
-    { category: "other", label: "Other" },
   ];
   // Mirrors src/themes.js — keep both in sync by hand when editing either.
   var SUMMARY_THEMES = [
@@ -525,14 +508,8 @@
     cat: {
       trading: getVar("--cat-trading"),
       investment: getVar("--cat-investment"),
-      ekyc: getVar("--cat-ekyc"),
-      activation: getVar("--cat-activation"),
-      acquisition: getVar("--cat-acquisition"),
-      support: getVar("--cat-support"),
-      other: getVar("--cat-other"),
     },
   };
-  function categoryColor(cat) { return COLORS.cat[cat] || COLORS.muted; }
   function categoryLabel(cat) {
     var m = CATEGORY_META.filter(function (c) { return c.category === cat; })[0];
     return m ? m.label : cat;
@@ -711,14 +688,14 @@
 
   function buildVsUsComparison(ownApp, app) {
     if (app.role === "own" || !ownApp) return null;
-    var ownCats = {};
-    (ownApp.combined.categoryBreakdown || []).forEach(function (c) { ownCats[c.category] = c; });
-    var rows = (app.combined.categoryBreakdown || [])
-      .filter(function (c) { return c.category !== "other" && c.count >= 3; })
-      .map(function (c) {
-        var own = ownCats[c.category];
+    var ownThemes = {};
+    buildAppThemeSummaries(ownApp).forEach(function (t) { ownThemes[t.label] = t; });
+    var rows = buildAppThemeSummaries(app)
+      .filter(function (t) { return t.count >= 3; })
+      .map(function (t) {
+        var own = ownThemes[t.label];
         if (!own || own.count < 3) return null;
-        return { label: c.label, theirRating: c.avgRating, ourRating: own.avgRating, delta: Number((c.avgRating - own.avgRating).toFixed(2)) };
+        return { label: t.label, theirRating: t.avgRating, ourRating: own.avgRating, delta: Number((t.avgRating - own.avgRating).toFixed(2)) };
       })
       .filter(Boolean);
 
@@ -735,17 +712,18 @@
     grid.innerHTML = "";
 
     var catCol = el("div", "dive-col");
-    catCol.innerHTML = "<h3>Category mix</h3>";
+    catCol.innerHTML = "<h3>Theme mix</h3>";
     var catList = el("div", "cat-mini-list");
-    var cats = app.combined.categoryBreakdown || [];
-    var maxCount = Math.max.apply(null, cats.map(function (c) { return c.count; }).concat([1]));
-    cats.forEach(function (c) {
-      var pct = Math.max(c.count > 0 ? 3 : 0, Math.round((c.count / maxCount) * 100));
+    var themes = buildAppThemeSummaries(app);
+    var maxCount = Math.max.apply(null, themes.map(function (t) { return t.count; }).concat([1]));
+    themes.forEach(function (t) {
+      var color = t.positive > t.negative * 1.3 ? COLORS.positive : t.negative > t.positive * 1.3 ? COLORS.negative : COLORS.accent;
+      var pct = Math.max(t.count > 0 ? 3 : 0, Math.round((t.count / maxCount) * 100));
       var row = el("div", "cat-mini-row");
       row.innerHTML =
-        '<span class="cat-mini-name"><span class="legend-swatch" style="background:' + categoryColor(c.category) + '"></span>' + escapeHtml(c.label) + "</span>" +
-        '<span class="cat-mini-track"><span class="cat-mini-fill" style="width:' + pct + '%;background:' + categoryColor(c.category) + '"></span></span>' +
-        '<span class="cat-mini-val tabular">' + fmt(c.count) + "</span>";
+        '<span class="cat-mini-name"><span class="legend-swatch" style="background:' + color + '"></span>' + escapeHtml(t.label) + "</span>" +
+        '<span class="cat-mini-track"><span class="cat-mini-fill" style="width:' + pct + '%;background:' + color + '"></span></span>' +
+        '<span class="cat-mini-val tabular">' + fmt(t.count) + "</span>";
       catList.appendChild(row);
     });
     catCol.appendChild(catList);
@@ -774,7 +752,7 @@
           vsList.appendChild(q);
         });
       }
-      if (!cmp.ahead.length && !cmp.behind.length) vsList.appendChild(el("div", "empty-col", "No categories differ meaningfully from us."));
+      if (!cmp.ahead.length && !cmp.behind.length) vsList.appendChild(el("div", "empty-col", "No themes differ meaningfully from us."));
       vsCol.appendChild(vsList);
     }
 

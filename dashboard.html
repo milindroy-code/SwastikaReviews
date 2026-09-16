@@ -26,14 +26,6 @@
     --status-critical: #d03b3b;
     --status-neutral: #8b96a8;
 
-    --cat-trading: #2a78d6;
-    --cat-investment: #eb6834;
-    --cat-ekyc: #1baf7a;
-    --cat-activation: #eda100;
-    --cat-acquisition: #e87ba4;
-    --cat-support: #008300;
-    --cat-other: #4a3aa7;
-
     --grid-line: #e1e5ea;
     --baseline: #c7cfd9;
 
@@ -63,14 +55,6 @@
       --status-critical: #ef6a6a;
       --status-neutral: #7b87a0;
 
-      --cat-trading: #3987e5;
-      --cat-investment: #d95926;
-      --cat-ekyc: #199e70;
-      --cat-activation: #c98500;
-      --cat-acquisition: #d55181;
-      --cat-support: #008300;
-      --cat-other: #9085e9;
-
       --grid-line: #232e3d;
       --baseline: #34404f;
 
@@ -98,13 +82,6 @@
     --status-warn: #e0a940;
     --status-critical: #ef6a6a;
     --status-neutral: #7b87a0;
-
-    --cat-trading: #3987e5;
-    --cat-ekyc: #d95926;
-    --cat-activation: #199e70;
-    --cat-acquisition: #c98500;
-    --cat-support: #d55181;
-    --cat-other: #008300;
 
     --grid-line: #232e3d;
     --baseline: #34404f;
@@ -784,10 +761,6 @@
       <div class="rating-chips" id="ratingChips"></div>
     </div>
     <div class="filter-line">
-      <span class="filter-line-label">Category</span>
-      <div class="category-chips" id="categoryChips"></div>
-    </div>
-    <div class="filter-line">
       <span class="filter-line-label">Theme</span>
       <div class="category-chips" id="themeChips"></div>
     </div>
@@ -819,20 +792,9 @@
     search: "",
     kwTab: "top",
     bucketIndex: 0,
-    categoryFilter: "all",
     themeFilter: "all",
     marketData: null,
   };
-
-  var CATEGORY_META = [
-    { category: "trading", label: "Trading" },
-    { category: "investment", label: "Investment" },
-    { category: "ekyc", label: "eKYC" },
-    { category: "activation", label: "Activation" },
-    { category: "acquisition", label: "Acquisition" },
-    { category: "support", label: "Support" },
-    { category: "other", label: "Other" },
-  ];
 
   var COLORS = {
     positive: getVar("--status-good"),
@@ -845,15 +807,6 @@
     grid: getVar("--grid-line"),
     baseline: getVar("--baseline"),
     surface: getVar("--surface"),
-    cat: {
-      trading: getVar("--cat-trading"),
-      investment: getVar("--cat-investment"),
-      ekyc: getVar("--cat-ekyc"),
-      activation: getVar("--cat-activation"),
-      acquisition: getVar("--cat-acquisition"),
-      support: getVar("--cat-support"),
-      other: getVar("--cat-other"),
-    },
   };
 
   function getVar(name) {
@@ -1017,32 +970,6 @@
       .slice(0, n || 25);
   }
 
-  function computeCategoryBreakdown(reviews) {
-    var total = reviews.length;
-    var buckets = {};
-    CATEGORY_META.forEach(function (c) { buckets[c.category] = { count: 0, ratingSum: 0, sentiment: { positive: 0, neutral: 0, negative: 0 }, reviews: [] }; });
-    reviews.forEach(function (r) {
-      var cat = buckets[r.category] ? r.category : "other";
-      var b = buckets[cat];
-      b.count++;
-      b.ratingSum += r.rating || 0;
-      b.sentiment[ratingBucket(r.rating)]++;
-      b.reviews.push(r);
-    });
-    return CATEGORY_META.map(function (c) {
-      var b = buckets[c.category];
-      return {
-        category: c.category,
-        label: c.label,
-        count: b.count,
-        pctOfTotal: total ? Number(((100 * b.count) / total).toFixed(1)) : 0,
-        avgRating: b.count ? Number((b.ratingSum / b.count).toFixed(2)) : 0,
-        sentimentBuckets: b.sentiment,
-        topKeywords: clientTopKeywords(b.reviews, 8),
-      };
-    });
-  }
-
   /** For 7D/30D, recompute the metrics that need per-review dates from
    * recentReviews (client-side, since only that array carries dates).
    * For every other range, return the precomputed all-time analysis
@@ -1071,7 +998,6 @@
       avgRating: total ? Number((ratingSum / total).toFixed(2)) : 0,
       ratingDistribution: distribution,
       sentimentBuckets: sentimentBuckets,
-      categoryBreakdown: computeCategoryBreakdown(reviews),
       topKeywords: clientTopKeywords(reviews, 25),
       topComplaintKeywords: clientTopKeywords(negativeReviews, 20),
       topPraiseKeywords: clientTopKeywords(positiveReviews, 20),
@@ -1536,14 +1462,8 @@
   }
 
   /* ----------------------------------------------------------------- */
-  /* Issue categories                                                   */
+  /* Themes                                                             */
   /* ----------------------------------------------------------------- */
-
-  function categoryColor(cat) { return COLORS.cat[cat] || COLORS.muted; }
-  function categoryLabel(cat) {
-    var m = CATEGORY_META.filter(function (c) { return c.category === cat; })[0];
-    return m ? m.label : cat;
-  }
 
   function renderCategories() {
     var a = scopedAnalysis();
@@ -1616,10 +1536,8 @@
     return (list || []).filter(function (k) { return !isGenericPhrase(k.word); }).slice(0, n);
   }
 
-  // Core ideas users actually talk about — independent of the funnel-stage
-  // categories (Trading/Investment/eKYC/...) used elsewhere on the page.
-  // A keyword is assigned to the first theme it matches, so it's never
-  // double-counted across themes.
+  // Core ideas users actually talk about. A keyword is assigned to the
+  // first theme it matches, so it's never double-counted across themes.
   var SUMMARY_THEMES = [
     { label: "Customer support", words: ["support", "service", "team", "customer", "help", "response", "query", "staff"] },
     { label: "Brokerage & charges", words: ["brokerage", "charges", "charge", "fee", "fees", "cost", "expensive", "cheap"] },
@@ -1920,26 +1838,34 @@
     document.getElementById("marketRankValue").textContent = "#" + (ownIndex + 1) + " of " + ranked.length;
     document.getElementById("marketRankSub").textContent = own.combined.avgRating.toFixed(2) + "★ average, across " + ranked.length + " apps compared";
 
-    var ownCats = {};
-    (own.combined.categoryBreakdown || []).forEach(function (c) { ownCats[c.category] = c; });
+    // Aggregate each app's monthly themeTrend into an overall {count, avgRating}
+    // per theme, then compare Swastika's position against every other app
+    // that has enough volume in that theme to be comparable.
+    function themeOverall(app) {
+      var trend = (app.combined && app.combined.themeTrend) || {};
+      var overall = {};
+      SUMMARY_THEMES.forEach(function (t) {
+        var months = trend[t.label] || [];
+        var count = 0, ratingSum = 0;
+        months.forEach(function (m) { count += m.count; ratingSum += m.avgRating * m.count; });
+        overall[t.label] = { count: count, avgRating: count ? ratingSum / count : 0 };
+      });
+      return overall;
+    }
+
+    var ownThemes = themeOverall(own);
     var leading = [], trailing = [];
-    CATEGORY_META.forEach(function (meta) {
-      if (meta.category === "other") return;
-      var ownRow = ownCats[meta.category];
+    SUMMARY_THEMES.forEach(function (t) {
+      var ownRow = ownThemes[t.label];
       if (!ownRow || ownRow.count < 3) return;
-      var comparable = apps.filter(function (a) {
-        var row = (a.combined.categoryBreakdown || []).filter(function (c) { return c.category === meta.category; })[0];
-        return row && row.count >= 3;
-      });
+      var comparable = apps
+        .map(function (a) { return { app: a, row: themeOverall(a)[t.label] }; })
+        .filter(function (x) { return x.row && x.row.count >= 3; });
       if (comparable.length < 2) return;
-      var sorted = comparable.slice().sort(function (a, b) {
-        var ra = (a.combined.categoryBreakdown || []).filter(function (c) { return c.category === meta.category; })[0].avgRating;
-        var rb = (b.combined.categoryBreakdown || []).filter(function (c) { return c.category === meta.category; })[0].avgRating;
-        return rb - ra;
-      });
-      var ownPos = sorted.findIndex(function (a) { return a.role === "own"; });
-      if (ownPos === 0) leading.push(meta.label);
-      else if (ownPos === sorted.length - 1) trailing.push(meta.label);
+      var sorted = comparable.slice().sort(function (a, b) { return b.row.avgRating - a.row.avgRating; });
+      var ownPos = sorted.findIndex(function (x) { return x.app.role === "own"; });
+      if (ownPos === 0) leading.push(t.label);
+      else if (ownPos === sorted.length - 1) trailing.push(t.label);
     });
 
     setText("marketLeading", leading.length ? leading.join(", ") : "None currently");
@@ -2030,12 +1956,19 @@
     return tokens.some(function (t) { return theme.words.indexOf(t) !== -1; });
   }
 
+  // Multi-membership: a review can land in more than one theme.
+  function reviewThemeLabels(r) {
+    var tokens = clientTokenize((r.title || "") + " " + (r.text || ""));
+    return SUMMARY_THEMES.filter(function (theme) {
+      return tokens.some(function (t) { return theme.words.indexOf(t) !== -1; });
+    }).map(function (t) { return t.label; });
+  }
+
   function filteredReviews() {
     var a = scopedAnalysis();
     var q = STATE.search.trim().toLowerCase();
     return a.recentReviews.filter(function (r) {
       if (!STATE.ratingFilter.has(Math.round(r.rating))) return false;
-      if (STATE.categoryFilter !== "all" && r.category !== STATE.categoryFilter) return false;
       if (STATE.themeFilter !== "all" && !reviewMatchesTheme(r, STATE.themeFilter)) return false;
       if (q && !((r.text || "").toLowerCase().indexOf(q) >= 0 || (r.title || "").toLowerCase().indexOf(q) >= 0)) return false;
       return true;
@@ -2051,37 +1984,6 @@
         if (STATE.ratingFilter.has(r)) STATE.ratingFilter.delete(r); else STATE.ratingFilter.add(r);
         STATE.bucketIndex = 0;
         renderRatingChips();
-        renderReviewsList();
-      });
-      wrap.appendChild(chip);
-    });
-  }
-
-  function renderCategoryChips() {
-    var wrap = document.getElementById("categoryChips");
-    wrap.innerHTML = "";
-    var allChip = el("button", "category-chip" + (STATE.categoryFilter === "all" ? " active" : ""));
-    allChip.textContent = "All categories";
-    if (STATE.categoryFilter === "all") {
-      allChip.style.background = "var(--accent)";
-      allChip.style.borderColor = "var(--accent)";
-    }
-    allChip.addEventListener("click", function () { STATE.categoryFilter = "all"; STATE.bucketIndex = 0; renderCategoryChips(); renderReviewsList(); });
-    wrap.appendChild(allChip);
-
-    CATEGORY_META.forEach(function (c) {
-      var active = STATE.categoryFilter === c.category;
-      var chip = el("button", "category-chip" + (active ? " active" : ""));
-      var color = categoryColor(c.category);
-      chip.innerHTML = '<span class="cat-dot" style="background:' + color + '"></span>' + escapeHtml(c.label);
-      if (active) {
-        chip.style.background = color;
-        chip.style.borderColor = color;
-      }
-      chip.addEventListener("click", function () {
-        STATE.categoryFilter = active ? "all" : c.category;
-        STATE.bucketIndex = 0;
-        renderCategoryChips();
         renderReviewsList();
       });
       wrap.appendChild(chip);
@@ -2178,13 +2080,17 @@
       var row = el("div", "review-row");
       var platformClass = r.platform === "play" ? "play" : "ios";
       var platformLabel = r.platform === "play" ? "Play" : "iOS";
-      var catColor = categoryColor(r.category);
+      var themeLabels = reviewThemeLabels(r);
+      var themeBadge = themeLabels.length
+        ? '<div class="review-category"><span class="cat-dot" style="background:' + COLORS.accent + '"></span>' +
+          escapeHtml(themeLabels[0]) + (themeLabels.length > 1 ? " +" + (themeLabels.length - 1) : "") + "</div>"
+        : "";
       row.innerHTML =
         '<span class="review-date">' + fmtDate(r.date) + "</span>" +
         '<span class="platform-badge ' + platformClass + '">' + platformLabel + "</span>" +
         '<span class="review-rating stars">' + starsHTML(r.rating) + "</span>" +
         '<span class="review-body">' +
-          '<div class="review-category"><span class="cat-dot" style="background:' + catColor + '"></span>' + escapeHtml(categoryLabel(r.category)) + "</div>" +
+          themeBadge +
           (r.title ? '<div class="review-title">' + escapeHtml(r.title) + "</div>" : "") +
           '<div class="review-text">' + escapeHtml(r.text || "(no text)") + "</div>" +
         "</span>" +
@@ -2254,7 +2160,7 @@
     setText("volumeSub", dayMode ? "Daily reviews, split by tone — " + desc : "Monthly reviews, split by tone");
     setText("ratingTrendSub", dayMode ? "Daily average, 1–5 stars — " + desc : "Monthly average, 1–5 stars");
     setText("distSub", "All reviews, by star — " + desc);
-    setText("catSub", "Reviews grouped by product stage — " + desc);
+    setText("catSub", "Where mention volume concentrates, and its praise/complaint lean — " + desc);
     setText("kwSub", "Most frequent terms across reviews — " + desc);
   }
   function setText(id, text) {
@@ -2280,7 +2186,6 @@
     renderFlags();
     renderNarrative();
     renderRatingChips();
-    renderCategoryChips();
     renderThemeChips();
     renderReviewsList();
   }

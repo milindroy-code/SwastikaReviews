@@ -29,13 +29,21 @@ Each also has its own standalone link, if you want to share just one:
      (1–2★) reviews
    - Anomaly flags: weeks with a negative-review spike or a rating dip,
      relative to the app's own trailing mean/stddev
-   - Issue categorization (`src/categorize.js`): every review is tagged into
-     exactly one of **Trading**, **Investment**, **eKYC**, **Activation**,
-     **Acquisition**, **Support**, or **Other** by phrase-matching its text.
-     Trading (order execution, F&O, intraday, margin, brokerage/charges) and
-     Investment (mutual funds, SIPs, IPOs, long-term/goal-based investing)
-     are kept as separate categories on purpose — they are different
-     concepts and are never merged into one bucket, in either dashboard.
+   - **Trading vs. Investment** (`src/categorize.js`): every review is
+     tagged into exactly one of **Trading** (order execution, F&O,
+     intraday, margin, brokerage/charges), **Investment** (mutual funds,
+     SIPs, IPOs, long-term/goal-based investing), or **Other** by
+     phrase-matching its text. Kept as its own special case, separate from
+     the theme system below, and never blended into one number in either
+     dashboard.
+   - **Themes** (`src/themes.js`): every review is also independently
+     matched (soft, multi-label — a review can match several) against ten
+     core-idea themes (Customer support, Brokerage & charges, Account
+     opening & KYC, Login & access, Trading execution, App reliability &
+     performance, Ease of use, Investment options, Referrals & onboarding,
+     Loss/money concerns). This is the primary breakdown shown across both
+     dashboards; Trading vs. Investment above is the one exception kept
+     separate.
 
 3. **Optional LLM narrative** (`src/llmSummarize.js`) — skipped entirely
    unless `ANTHROPIC_API_KEY` is set. When enabled, sends a rating-balanced

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T01:04:13.661Z",
+  "generatedAt": "2026-09-16T05:17:43.492Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -1888,26 +1888,26 @@
             {
               "category": "trading",
               "label": "Trading",
-              "count": 454,
-              "pctOfTotal": 25.2,
-              "avgRating": 2.81,
+              "count": 464,
+              "pctOfTotal": 25.8,
+              "avgRating": 2.8,
               "sentimentBuckets": {
-                "positive": 203,
+                "positive": 206,
                 "neutral": 12,
-                "negative": 239
+                "negative": 246
               },
               "topKeywords": [
                 {
                   "word": "app",
-                  "count": 272
+                  "count": 279
                 },
                 {
                   "word": "trading",
-                  "count": 199
+                  "count": 203
                 },
                 {
                   "word": "good",
-                  "count": 135
+                  "count": 136
                 },
                 {
                   "word": "trade",
@@ -1915,49 +1915,49 @@
                 },
                 {
                   "word": "hai",
-                  "count": 122
+                  "count": 123
                 },
                 {
                   "word": "brokerage",
-                  "count": 119
+                  "count": 122
                 },
                 {
                   "word": "swastika",
-                  "count": 95
+                  "count": 100
                 },
                 {
                   "word": "charges",
-                  "count": 87
+                  "count": 88
                 }
               ]
             },
             {
               "category": "investment",
               "label": "Investment",
-              "count": 111,
-              "pctOfTotal": 6.2,
-              "avgRating": 3.75,
+              "count": 115,
+              "pctOfTotal": 6.4,
+              "avgRating": 3.76,
               "sentimentBuckets": {
-                "positive": 77,
+                "positive": 80,
                 "neutral": 1,
-                "negative": 33
+                "negative": 34
               },
               "topKeywords": [
                 {
-                  "word": "app",
-                  "count": 80
+                  "word": "swastika",
+                  "count": 83
                 },
                 {
-                  "word": "swastika",
-                  "count": 80
+                  "word": "app",
+                  "count": 81
                 },
                 {
                   "word": "investment",
-                  "count": 64
+                  "count": 65
                 },
                 {
                   "word": "good",
-                  "count": 50
+                  "count": 53
                 },
                 {
                   "word": "support",
@@ -1965,7 +1965,7 @@
                 },
                 {
                   "word": "hai",
-                  "count": 23
+                  "count": 26
                 },
                 {
                   "word": "trading",
@@ -1978,232 +1978,48 @@
               ]
             },
             {
-              "category": "ekyc",
-              "label": "eKYC",
-              "count": 39,
-              "pctOfTotal": 2.2,
-              "avgRating": 2.62,
-              "sentimentBuckets": {
-                "positive": 15,
-                "neutral": 2,
-                "negative": 22
-              },
-              "topKeywords": [
-                {
-                  "word": "account",
-                  "count": 22
-                },
-                {
-                  "word": "demat",
-                  "count": 19
-                },
-                {
-                  "word": "swastika",
-                  "count": 14
-                },
-                {
-                  "word": "open",
-                  "count": 14
-                },
-                {
-                  "word": "demat account",
-                  "count": 14
-                },
-                {
-                  "word": "app",
-                  "count": 13
-                },
-                {
-                  "word": "company",
-                  "count": 10
-                },
-                {
-                  "word": "don't",
-                  "count": 8
-                }
-              ]
-            },
-            {
-              "category": "activation",
-              "label": "Activation",
-              "count": 24,
-              "pctOfTotal": 1.3,
-              "avgRating": 1.96,
-              "sentimentBuckets": {
-                "positive": 6,
-                "neutral": 0,
-                "negative": 18
-              },
-              "topKeywords": [
-                {
-                  "word": "account",
-                  "count": 13
-                },
-                {
-                  "word": "app",
-                  "count": 13
-                },
-                {
-                  "word": "open",
-                  "count": 9
-                },
-                {
-                  "word": "login",
-                  "count": 8
-                },
-                {
-                  "word": "open account",
-                  "count": 6
-                },
-                {
-                  "word": "don't",
-                  "count": 5
-                },
-                {
-                  "word": "broker",
-                  "count": 5
-                },
-                {
-                  "word": "hai",
-                  "count": 5
-                }
-              ]
-            },
-            {
-              "category": "acquisition",
-              "label": "Acquisition",
-              "count": 16,
-              "pctOfTotal": 0.9,
-              "avgRating": 1,
-              "sentimentBuckets": {
-                "positive": 0,
-                "neutral": 0,
-                "negative": 16
-              },
-              "topKeywords": [
-                {
-                  "word": "app",
-                  "count": 15
-                },
-                {
-                  "word": "download",
-                  "count": 9
-                },
-                {
-                  "word": "hai",
-                  "count": 9
-                },
-                {
-                  "word": "don't",
-                  "count": 5
-                },
-                {
-                  "word": "download app",
-                  "count": 4
-                },
-                {
-                  "word": "nahi",
-                  "count": 4
-                },
-                {
-                  "word": "bhai",
-                  "count": 3
-                },
-                {
-                  "word": "money",
-                  "count": 3
-                }
-              ]
-            },
-            {
-              "category": "support",
-              "label": "Support",
-              "count": 52,
-              "pctOfTotal": 2.9,
-              "avgRating": 3.88,
-              "sentimentBuckets": {
-                "positive": 37,
-                "neutral": 1,
-                "negative": 14
-              },
-              "topKeywords": [
-                {
-                  "word": "customer",
-                  "count": 37
-                },
-                {
-                  "word": "support",
-                  "count": 30
-                },
-                {
-                  "word": "good",
-                  "count": 27
-                },
-                {
-                  "word": "service",
-                  "count": 22
-                },
-                {
-                  "word": "app",
-                  "count": 22
-                },
-                {
-                  "word": "customer support",
-                  "count": 16
-                },
-                {
-                  "word": "team",
-                  "count": 15
-                },
-                {
-                  "word": "swastika",
-                  "count": 12
-                }
-              ]
-            },
-            {
               "category": "other",
               "label": "Other",
-              "count": 1105,
-              "pctOfTotal": 61.4,
-              "avgRating": 4.01,
+              "count": 1222,
+              "pctOfTotal": 67.9,
+              "avgRating": 3.9,
               "sentimentBuckets": {
-                "positive": 832,
-                "neutral": 38,
-                "negative": 235
+                "positive": 884,
+                "neutral": 41,
+                "negative": 297
               },
               "topKeywords": [
                 {
                   "word": "good",
-                  "count": 508
+                  "count": 542
                 },
                 {
                   "word": "app",
-                  "count": 275
+                  "count": 330
                 },
                 {
                   "word": "nice",
-                  "count": 131
-                },
-                {
-                  "word": "swastika",
-                  "count": 106
-                },
-                {
-                  "word": "application",
-                  "count": 105
+                  "count": 139
                 },
                 {
                   "word": "support",
-                  "count": 94
+                  "count": 128
                 },
                 {
-                  "word": "best",
-                  "count": 87
+                  "word": "swastika",
+                  "count": 128
+                },
+                {
+                  "word": "application",
+                  "count": 118
                 },
                 {
                   "word": "service",
-                  "count": 86
+                  "count": 112
+                },
+                {
+                  "word": "best",
+                  "count": 96
                 }
               ]
             }
@@ -6443,7 +6259,7 @@
               "userName": "shekar c",
               "thumbsUp": 4,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=2a5e739b-7404-4f0c-80e6-ae466723baa7",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "f514bd02-e845-423c-9219-6254bff11b09",
@@ -6485,7 +6301,7 @@
               "userName": "Bholaram Bagwan",
               "thumbsUp": 2,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=688ee9ed-f33c-4b08-8203-eb015dbf858e",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "9f2f8ca3-fdd9-4eed-a5cc-95b3f8235c0c",
@@ -6849,7 +6665,7 @@
               "userName": "Shripad Lehagaonkar",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=c38b080d-eb35-4e7e-97d1-686c45a7db8b",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "4adaf63f-ad24-40e0-8122-98e196c95399",
@@ -7059,7 +6875,7 @@
               "userName": "Kajal Parmar",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=ad04361c-a235-4851-aa58-cd3364591a4d",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "05b14b5e-22b7-46e3-b812-3ea3488b7d5b",
@@ -7255,7 +7071,7 @@
               "userName": "Nikhil Patil",
               "thumbsUp": 10,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=834a0b6c-6a67-4138-b180-f39ce59d8d8d",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "3836cde8-22a7-4ca7-bfd2-1f217a9c4129",
@@ -7521,7 +7337,7 @@
               "userName": "Durjan Jsm",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=20bdc1f3-a263-4f63-af9e-a4956ce0e643",
-              "category": "acquisition"
+              "category": "other"
             },
             {
               "id": "4a83eb92-3dc7-482f-92e1-2958126e7f08",
@@ -7535,7 +7351,7 @@
               "userName": "Anurag Chourasiya",
               "thumbsUp": 12,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=4a83eb92-3dc7-482f-92e1-2958126e7f08",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "0135b505-894e-44c2-bac2-d947df430425",
@@ -7619,7 +7435,7 @@
               "userName": "Mukesh Sahu",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=92d33045-77a6-4f73-aae4-d6322500598e",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "e428ee63-7767-4b48-8c78-aebd1aa85b13",
@@ -7773,7 +7589,7 @@
               "userName": "Mohd Saklain",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=01309a88-170f-4f66-abc2-4eb59b829e99",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "970d811f-4aac-4500-b566-3fd28a54672f",
@@ -8067,7 +7883,7 @@
               "userName": "Kapil Kumar",
               "thumbsUp": 1,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=be84a4aa-c641-41b3-95cd-df3028f573f6",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "c1e1a731-8dea-4f5f-8a7b-7e0d7b402776",
@@ -8109,7 +7925,7 @@
               "userName": "srikanth baldwa",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8c760335-d51d-4d3a-a99c-cf4b29201393",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "a25bbdf1-e4a7-4c4a-a1a8-a3e68059d242",
@@ -8151,7 +7967,7 @@
               "userName": "Aaruu Sharma",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=635b2e79-be50-4b0a-bedf-0c26cfc6d22c",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "1f3a8500-0326-431e-b99e-353372b4a5d2",
@@ -8571,7 +8387,7 @@
               "userName": "Rinkey Goyal",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=812b8793-52d6-43be-8574-9da125a6c03a",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "5e666e2a-4e0c-493b-8a1a-3d81d7247360",
@@ -8823,7 +8639,7 @@
               "userName": "Vijay Mishra",
               "thumbsUp": 2,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=61a4df7b-35bb-40d6-948c-15f2a4f31ae1",
-              "category": "support"
+              "category": "trading"
             },
             {
               "id": "b522fbeb-7a2c-4bd0-ba36-fdf2b6d93cc2",
@@ -8865,7 +8681,7 @@
               "userName": "Ravi Kumar",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=5d7c5cd1-dd6e-42b6-be1e-7dfb3f75a7bf",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "a2fe813a-ca2d-4b90-8a3e-621b727f00e3",
@@ -8879,7 +8695,7 @@
               "userName": "nataraj c",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=a2fe813a-ca2d-4b90-8a3e-621b727f00e3",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "e20905f4-dae3-4984-aeaa-acbf1debf342",
@@ -8893,7 +8709,7 @@
               "userName": "Shahid Ashraf",
               "thumbsUp": 10,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e20905f4-dae3-4984-aeaa-acbf1debf342",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "1edafddd-ffe1-4c30-95cc-41c656943f96",
@@ -9033,7 +8849,7 @@
               "userName": "Aliakbar Vhora",
               "thumbsUp": 14,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8fb58497-98e0-47a8-af5e-8b11b5d2bf42",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "cbe7db8d-db57-4838-8b97-390f069621f2",
@@ -9243,7 +9059,7 @@
               "userName": "Paras",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b56daebb-e023-44bf-9a04-7cc175cb02c2",
-              "category": "ekyc"
+              "category": "trading"
             },
             {
               "id": "0a3ea342-5eab-42d2-b618-a3547002674e",
@@ -9327,7 +9143,7 @@
               "userName": "Shantaram Kale",
               "thumbsUp": 1,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=27b42d92-3407-4576-89ed-31429615d5f1",
-              "category": "acquisition"
+              "category": "other"
             },
             {
               "id": "5a2efa05-0a03-4920-8634-d7e824375614",
@@ -9467,7 +9283,7 @@
               "userName": "VAIBHAV KARCHE",
               "thumbsUp": 1,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=d58dc1f3-62c5-4f9d-ae92-5a256f73d1a8",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "cde84de8-090f-45a6-bb50-4b16a53c56ad",
@@ -9509,7 +9325,7 @@
               "userName": "Monu Khan",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e4f1f662-0460-442b-9665-5c749a466daf",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "0b5a27dc-c574-4988-bd32-9c8f9f547503",
@@ -9607,7 +9423,7 @@
               "userName": "Shivam Sharma",
               "thumbsUp": 1,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=96bc4924-f5ca-4b29-a0b8-ef2619e696ce",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "20a07a72-df55-4c1f-bf9b-b56de8adc9fa",
@@ -10181,7 +9997,7 @@
               "userName": "Suraj Nikunj",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=7c52fa92-0d87-43cc-8c8e-79c4da39e3e6",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "b41c1ab8-41bf-4d92-a768-e762a6f5bb62",
@@ -10195,7 +10011,7 @@
               "userName": "Amba Naresh",
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b41c1ab8-41bf-4d92-a768-e762a6f5bb62",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "113564b7-b828-4458-a66e-572c1a720b75",
@@ -11077,46 +10893,46 @@
             {
               "category": "trading",
               "label": "Trading",
-              "count": 37,
-              "pctOfTotal": 38.9,
-              "avgRating": 3.43,
+              "count": 39,
+              "pctOfTotal": 41.1,
+              "avgRating": 3.51,
               "sentimentBuckets": {
-                "positive": 24,
+                "positive": 26,
                 "neutral": 0,
                 "negative": 13
               },
               "topKeywords": [
                 {
                   "word": "app",
-                  "count": 33
+                  "count": 40
                 },
                 {
                   "word": "swastika",
                   "count": 23
                 },
                 {
-                  "word": "trading",
-                  "count": 21
+                  "word": "good",
+                  "count": 22
                 },
                 {
-                  "word": "good",
-                  "count": 20
+                  "word": "trading",
+                  "count": 21
                 },
                 {
                   "word": "charges",
                   "count": 16
                 },
                 {
-                  "word": "support",
-                  "count": 14
-                },
-                {
                   "word": "trade",
-                  "count": 14
+                  "count": 16
                 },
                 {
                   "word": "best",
-                  "count": 11
+                  "count": 15
+                },
+                {
+                  "word": "support",
+                  "count": 14
                 }
               ]
             },
@@ -11167,220 +10983,48 @@
               ]
             },
             {
-              "category": "ekyc",
-              "label": "eKYC",
-              "count": 5,
-              "pctOfTotal": 5.3,
-              "avgRating": 4.2,
+              "category": "other",
+              "label": "Other",
+              "count": 45,
+              "pctOfTotal": 47.4,
+              "avgRating": 3.8,
               "sentimentBuckets": {
-                "positive": 4,
-                "neutral": 0,
-                "negative": 1
+                "positive": 32,
+                "neutral": 1,
+                "negative": 12
               },
               "topKeywords": [
-                {
-                  "word": "app",
-                  "count": 8
-                },
-                {
-                  "word": "best",
-                  "count": 5
-                },
-                {
-                  "word": "demat",
-                  "count": 5
-                },
                 {
                   "word": "good",
-                  "count": 5
-                },
-                {
-                  "word": "deposit",
-                  "count": 2
-                },
-                {
-                  "word": "problem",
-                  "count": 2
-                },
-                {
-                  "word": "withdraw",
-                  "count": 2
-                },
-                {
-                  "word": "trade",
-                  "count": 2
-                }
-              ]
-            },
-            {
-              "category": "activation",
-              "label": "Activation",
-              "count": 2,
-              "pctOfTotal": 2.1,
-              "avgRating": 2,
-              "sentimentBuckets": {
-                "positive": 0,
-                "neutral": 1,
-                "negative": 1
-              },
-              "topKeywords": [
-                {
-                  "word": "account",
-                  "count": 5
-                },
-                {
-                  "word": "everyday",
-                  "count": 3
-                },
-                {
-                  "word": "login",
-                  "count": 3
+                  "count": 35
                 },
                 {
                   "word": "app",
-                  "count": 3
-                },
-                {
-                  "word": "issue",
-                  "count": 2
-                },
-                {
-                  "word": "mobile",
-                  "count": 2
-                },
-                {
-                  "word": "everyday login",
-                  "count": 2
-                },
-                {
-                  "word": "open",
-                  "count": 2
-                }
-              ]
-            },
-            {
-              "category": "acquisition",
-              "label": "Acquisition",
-              "count": 3,
-              "pctOfTotal": 3.2,
-              "avgRating": 2,
-              "sentimentBuckets": {
-                "positive": 1,
-                "neutral": 0,
-                "negative": 2
-              },
-              "topKeywords": [
-                {
-                  "word": "app",
-                  "count": 4
-                },
-                {
-                  "word": "worst",
-                  "count": 2
-                },
-                {
-                  "word": "download",
-                  "count": 2
-                },
-                {
-                  "word": "open",
-                  "count": 2
-                },
-                {
-                  "word": "app open",
-                  "count": 2
-                }
-              ]
-            },
-            {
-              "category": "support",
-              "label": "Support",
-              "count": 8,
-              "pctOfTotal": 8.4,
-              "avgRating": 3,
-              "sentimentBuckets": {
-                "positive": 4,
-                "neutral": 0,
-                "negative": 4
-              },
-              "topKeywords": [
-                {
-                  "word": "app",
-                  "count": 7
-                },
-                {
-                  "word": "money",
-                  "count": 7
-                },
-                {
-                  "word": "customer",
-                  "count": 6
+                  "count": 32
                 },
                 {
                   "word": "service",
-                  "count": 5
-                },
-                {
-                  "word": "support",
-                  "count": 5
-                },
-                {
-                  "word": "hai",
-                  "count": 3
-                },
-                {
-                  "word": "worst",
-                  "count": 3
-                },
-                {
-                  "word": "experience",
-                  "count": 3
-                }
-              ]
-            },
-            {
-              "category": "other",
-              "label": "Other",
-              "count": 29,
-              "pctOfTotal": 30.5,
-              "avgRating": 4.34,
-              "sentimentBuckets": {
-                "positive": 25,
-                "neutral": 0,
-                "negative": 4
-              },
-              "topKeywords": [
-                {
-                  "word": "good",
-                  "count": 30
-                },
-                {
-                  "word": "app",
-                  "count": 17
+                  "count": 15
                 },
                 {
                   "word": "swastika",
-                  "count": 8
+                  "count": 13
+                },
+                {
+                  "word": "worst",
+                  "count": 9
                 },
                 {
                   "word": "application",
-                  "count": 7
+                  "count": 8
                 },
                 {
-                  "word": "service",
-                  "count": 7
+                  "word": "money",
+                  "count": 8
                 },
                 {
-                  "word": "nice",
-                  "count": 6
-                },
-                {
-                  "word": "review",
-                  "count": 6
-                },
-                {
-                  "word": "good app",
-                  "count": 5
+                  "word": "support",
+                  "count": 8
                 }
               ]
             }
@@ -12864,7 +12508,7 @@
               "userName": "BK_019",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "13736896318",
@@ -12892,7 +12536,7 @@
               "userName": "Ramngs",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "13304045518",
@@ -12920,7 +12564,7 @@
               "userName": "CheatedBySwastika",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "12990429135",
@@ -12934,7 +12578,7 @@
               "userName": "RC VERMA",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "12850005457",
@@ -13074,7 +12718,7 @@
               "userName": "Sharad Banale",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "acquisition"
+              "category": "other"
             },
             {
               "id": "12332965452",
@@ -13298,7 +12942,7 @@
               "userName": "Kuhu Pandey",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "12107125696",
@@ -13340,7 +12984,7 @@
               "userName": "Anubhav Choudhary (Ashu)",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "ekyc"
+              "category": "trading"
             },
             {
               "id": "12095672457",
@@ -13368,7 +13012,7 @@
               "userName": "Pankajkeswani",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "12054594332",
@@ -13438,7 +13082,7 @@
               "userName": "Ajitshedge",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "ekyc"
+              "category": "trading"
             },
             {
               "id": "11971345099",
@@ -13480,7 +13124,7 @@
               "userName": "Abhishek D Jain",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "11948021489",
@@ -13606,7 +13250,7 @@
               "userName": "Chaudhary dhVal",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "11299994556",
@@ -13648,7 +13292,7 @@
               "userName": "Pam8607",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "11169923442",
@@ -13662,7 +13306,7 @@
               "userName": "Dipuu pr",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "ekyc"
+              "category": "other"
             },
             {
               "id": "11065549519",
@@ -13704,7 +13348,7 @@
               "userName": "Shivam_Singh3219",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "acquisition"
+              "category": "other"
             },
             {
               "id": "10918717592",
@@ -13816,7 +13460,7 @@
               "userName": "Ahwwiiqnnqi",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "activation"
+              "category": "other"
             },
             {
               "id": "10366668273",
@@ -13830,7 +13474,7 @@
               "userName": "A1M2I3T",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "10293712137",
@@ -13872,7 +13516,7 @@
               "userName": "sandipatil1984",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "acquisition"
+              "category": "other"
             },
             {
               "id": "9767220781",
@@ -14012,7 +13656,7 @@
               "userName": "Smash patva",
               "thumbsUp": 0,
               "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-              "category": "support"
+              "category": "other"
             },
             {
               "id": "9712051923",
@@ -16029,76 +15673,76 @@
           {
             "category": "trading",
             "label": "Trading",
-            "count": 491,
-            "pctOfTotal": 25.9,
-            "avgRating": 2.86,
+            "count": 503,
+            "pctOfTotal": 26.5,
+            "avgRating": 2.85,
             "sentimentBuckets": {
-              "positive": 227,
+              "positive": 232,
               "neutral": 12,
-              "negative": 252
+              "negative": 259
             },
             "topKeywords": [
               {
                 "word": "app",
-                "count": 305
+                "count": 319
               },
               {
                 "word": "trading",
-                "count": 220
+                "count": 224
               },
               {
                 "word": "good",
-                "count": 155
+                "count": 158
               },
               {
                 "word": "trade",
-                "count": 141
+                "count": 143
               },
               {
                 "word": "brokerage",
-                "count": 126
+                "count": 129
               },
               {
                 "word": "hai",
-                "count": 123
+                "count": 125
               },
               {
                 "word": "swastika",
-                "count": 118
+                "count": 123
               },
               {
                 "word": "charges",
-                "count": 103
+                "count": 104
               }
             ]
           },
           {
             "category": "investment",
             "label": "Investment",
-            "count": 122,
-            "pctOfTotal": 6.4,
-            "avgRating": 3.85,
+            "count": 126,
+            "pctOfTotal": 6.6,
+            "avgRating": 3.86,
             "sentimentBuckets": {
-              "positive": 88,
+              "positive": 91,
               "neutral": 1,
-              "negative": 33
+              "negative": 34
             },
             "topKeywords": [
               {
                 "word": "swastika",
-                "count": 91
+                "count": 94
               },
               {
                 "word": "app",
-                "count": 86
+                "count": 87
               },
               {
                 "word": "investment",
-                "count": 71
+                "count": 72
               },
               {
                 "word": "good",
-                "count": 56
+                "count": 59
               },
               {
                 "word": "support",
@@ -16106,7 +15750,7 @@
               },
               {
                 "word": "hai",
-                "count": 24
+                "count": 27
               },
               {
                 "word": "best",
@@ -16119,232 +15763,48 @@
             ]
           },
           {
-            "category": "ekyc",
-            "label": "eKYC",
-            "count": 44,
-            "pctOfTotal": 2.3,
-            "avgRating": 2.8,
-            "sentimentBuckets": {
-              "positive": 19,
-              "neutral": 2,
-              "negative": 23
-            },
-            "topKeywords": [
-              {
-                "word": "demat",
-                "count": 24
-              },
-              {
-                "word": "account",
-                "count": 23
-              },
-              {
-                "word": "app",
-                "count": 21
-              },
-              {
-                "word": "swastika",
-                "count": 15
-              },
-              {
-                "word": "open",
-                "count": 15
-              },
-              {
-                "word": "demat account",
-                "count": 15
-              },
-              {
-                "word": "good",
-                "count": 12
-              },
-              {
-                "word": "company",
-                "count": 10
-              }
-            ]
-          },
-          {
-            "category": "activation",
-            "label": "Activation",
-            "count": 26,
-            "pctOfTotal": 1.4,
-            "avgRating": 1.96,
-            "sentimentBuckets": {
-              "positive": 6,
-              "neutral": 1,
-              "negative": 19
-            },
-            "topKeywords": [
-              {
-                "word": "account",
-                "count": 18
-              },
-              {
-                "word": "app",
-                "count": 16
-              },
-              {
-                "word": "open",
-                "count": 11
-              },
-              {
-                "word": "login",
-                "count": 11
-              },
-              {
-                "word": "open account",
-                "count": 8
-              },
-              {
-                "word": "swastika",
-                "count": 6
-              },
-              {
-                "word": "don't",
-                "count": 5
-              },
-              {
-                "word": "broker",
-                "count": 5
-              }
-            ]
-          },
-          {
-            "category": "acquisition",
-            "label": "Acquisition",
-            "count": 19,
-            "pctOfTotal": 1,
-            "avgRating": 1.16,
-            "sentimentBuckets": {
-              "positive": 1,
-              "neutral": 0,
-              "negative": 18
-            },
-            "topKeywords": [
-              {
-                "word": "app",
-                "count": 19
-              },
-              {
-                "word": "download",
-                "count": 11
-              },
-              {
-                "word": "hai",
-                "count": 9
-              },
-              {
-                "word": "don't",
-                "count": 5
-              },
-              {
-                "word": "download app",
-                "count": 5
-              },
-              {
-                "word": "nahi",
-                "count": 4
-              },
-              {
-                "word": "open",
-                "count": 4
-              },
-              {
-                "word": "bhai",
-                "count": 3
-              }
-            ]
-          },
-          {
-            "category": "support",
-            "label": "Support",
-            "count": 60,
-            "pctOfTotal": 3.2,
-            "avgRating": 3.77,
-            "sentimentBuckets": {
-              "positive": 41,
-              "neutral": 1,
-              "negative": 18
-            },
-            "topKeywords": [
-              {
-                "word": "customer",
-                "count": 43
-              },
-              {
-                "word": "support",
-                "count": 35
-              },
-              {
-                "word": "good",
-                "count": 29
-              },
-              {
-                "word": "app",
-                "count": 29
-              },
-              {
-                "word": "service",
-                "count": 27
-              },
-              {
-                "word": "team",
-                "count": 18
-              },
-              {
-                "word": "customer support",
-                "count": 17
-              },
-              {
-                "word": "swastika",
-                "count": 13
-              }
-            ]
-          },
-          {
             "category": "other",
             "label": "Other",
-            "count": 1134,
-            "pctOfTotal": 59.8,
-            "avgRating": 4.02,
+            "count": 1267,
+            "pctOfTotal": 66.8,
+            "avgRating": 3.89,
             "sentimentBuckets": {
-              "positive": 857,
-              "neutral": 38,
-              "negative": 239
+              "positive": 916,
+              "neutral": 42,
+              "negative": 309
             },
             "topKeywords": [
               {
                 "word": "good",
-                "count": 538
+                "count": 577
               },
               {
                 "word": "app",
-                "count": 292
+                "count": 362
               },
               {
                 "word": "nice",
-                "count": 137
+                "count": 145
               },
               {
                 "word": "swastika",
-                "count": 114
-              },
-              {
-                "word": "application",
-                "count": 112
+                "count": 141
               },
               {
                 "word": "support",
-                "count": 97
+                "count": 136
               },
               {
                 "word": "service",
-                "count": 93
+                "count": 127
+              },
+              {
+                "word": "application",
+                "count": 126
               },
               {
                 "word": "best",
-                "count": 88
+                "count": 98
               }
             ]
           }
@@ -21334,7 +20794,7 @@
             "userName": "shekar c",
             "thumbsUp": 4,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=2a5e739b-7404-4f0c-80e6-ae466723baa7",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "f514bd02-e845-423c-9219-6254bff11b09",
@@ -21376,7 +20836,7 @@
             "userName": "Bholaram Bagwan",
             "thumbsUp": 2,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=688ee9ed-f33c-4b08-8203-eb015dbf858e",
-            "category": "ekyc"
+            "category": "other"
           },
           {
             "id": "9f2f8ca3-fdd9-4eed-a5cc-95b3f8235c0c",
@@ -21740,7 +21200,7 @@
             "userName": "Shripad Lehagaonkar",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=c38b080d-eb35-4e7e-97d1-686c45a7db8b",
-            "category": "activation"
+            "category": "other"
           },
           {
             "id": "4adaf63f-ad24-40e0-8122-98e196c95399",
@@ -21978,7 +21438,7 @@
             "userName": "Kajal Parmar",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=ad04361c-a235-4851-aa58-cd3364591a4d",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "05b14b5e-22b7-46e3-b812-3ea3488b7d5b",
@@ -22230,7 +21690,7 @@
             "userName": "Nikhil Patil",
             "thumbsUp": 10,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=834a0b6c-6a67-4138-b180-f39ce59d8d8d",
-            "category": "activation"
+            "category": "other"
           },
           {
             "id": "3836cde8-22a7-4ca7-bfd2-1f217a9c4129",
@@ -22426,7 +21886,7 @@
             "userName": "BK_019",
             "thumbsUp": 0,
             "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-            "category": "activation"
+            "category": "other"
           },
           {
             "id": "2d729931-bcd2-44a6-9035-601b7436803e",
@@ -22524,7 +21984,7 @@
             "userName": "Durjan Jsm",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=20bdc1f3-a263-4f63-af9e-a4956ce0e643",
-            "category": "acquisition"
+            "category": "other"
           },
           {
             "id": "4a83eb92-3dc7-482f-92e1-2958126e7f08",
@@ -22538,7 +21998,7 @@
             "userName": "Anurag Chourasiya",
             "thumbsUp": 12,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=4a83eb92-3dc7-482f-92e1-2958126e7f08",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "0135b505-894e-44c2-bac2-d947df430425",
@@ -22622,7 +22082,7 @@
             "userName": "Mukesh Sahu",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=92d33045-77a6-4f73-aae4-d6322500598e",
-            "category": "activation"
+            "category": "other"
           },
           {
             "id": "e428ee63-7767-4b48-8c78-aebd1aa85b13",
@@ -22776,7 +22236,7 @@
             "userName": "Mohd Saklain",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=01309a88-170f-4f66-abc2-4eb59b829e99",
-            "category": "ekyc"
+            "category": "other"
           },
           {
             "id": "970d811f-4aac-4500-b566-3fd28a54672f",
@@ -23070,7 +22530,7 @@
             "userName": "Kapil Kumar",
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=be84a4aa-c641-41b3-95cd-df3028f573f6",
-            "category": "activation"
+            "category": "other"
           },
           {
             "id": "c1e1a731-8dea-4f5f-8a7b-7e0d7b402776",
@@ -23112,7 +22572,7 @@
             "userName": "srikanth baldwa",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8c760335-d51d-4d3a-a99c-cf4b29201393",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "a25bbdf1-e4a7-4c4a-a1a8-a3e68059d242",
@@ -23154,7 +22614,7 @@
             "userName": "Ramngs",
             "thumbsUp": 0,
             "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "635b2e79-be50-4b0a-bedf-0c26cfc6d22c",
@@ -23168,7 +22628,7 @@
             "userName": "Aaruu Sharma",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=635b2e79-be50-4b0a-bedf-0c26cfc6d22c",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "1f3a8500-0326-431e-b99e-353372b4a5d2",
@@ -23602,7 +23062,7 @@
             "userName": "Rinkey Goyal",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=812b8793-52d6-43be-8574-9da125a6c03a",
-            "category": "ekyc"
+            "category": "other"
           },
           {
             "id": "5e666e2a-4e0c-493b-8a1a-3d81d7247360",
@@ -23700,7 +23160,7 @@
             "userName": "CheatedBySwastika",
             "thumbsUp": 0,
             "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "a53c6d34-c9ad-41db-8b05-f1a1e0d0ca19",
@@ -23868,7 +23328,7 @@
             "userName": "Vijay Mishra",
             "thumbsUp": 2,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=61a4df7b-35bb-40d6-948c-15f2a4f31ae1",
-            "category": "support"
+            "category": "trading"
           },
           {
             "id": "b522fbeb-7a2c-4bd0-ba36-fdf2b6d93cc2",
@@ -23910,7 +23370,7 @@
             "userName": "Ravi Kumar",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=5d7c5cd1-dd6e-42b6-be1e-7dfb3f75a7bf",
-            "category": "ekyc"
+            "category": "other"
           },
           {
             "id": "12990429135",
@@ -23924,7 +23384,7 @@
             "userName": "RC VERMA",
             "thumbsUp": 0,
             "url": "https://itunes.apple.com/in/review?id=1627649963&type=Purple%20Software",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "a2fe813a-ca2d-4b90-8a3e-621b727f00e3",
@@ -23938,7 +23398,7 @@
             "userName": "nataraj c",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=a2fe813a-ca2d-4b90-8a3e-621b727f00e3",
-            "category": "ekyc"
+            "category": "other"
           },
           {
             "id": "e20905f4-dae3-4984-aeaa-acbf1debf342",
@@ -23952,7 +23412,7 @@
             "userName": "Shahid Ashraf",
             "thumbsUp": 10,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e20905f4-dae3-4984-aeaa-acbf1debf342",
-            "category": "ekyc"
+            "category": "other"
           },
           {
             "id": "1edafddd-ffe1-4c30-95cc-41c656943f96",
@@ -24092,7 +23552,7 @@
             "userName": "Aliakbar Vhora",
             "thumbsUp": 14,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8fb58497-98e0-47a8-af5e-8b11b5d2bf42",
-            "category": "activation"
+            "category": "other"
           },
           {
             "id": "cbe7db8d-db57-4838-8b97-390f069621f2",
@@ -24302,7 +23762,7 @@
             "userName": "Paras",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b56daebb-e023-44bf-9a04-7cc175cb02c2",
-            "category": "ekyc"
+            "category": "trading"
           },
           {
             "id": "0a3ea342-5eab-42d2-b618-a3547002674e",
@@ -24386,7 +23846,7 @@
             "userName": "Shantaram Kale",
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=27b42d92-3407-4576-89ed-31429615d5f1",
-            "category": "acquisition"
+            "category": "other"
           },
           {
             "id": "5a2efa05-0a03-4920-8634-d7e824375614",
@@ -24526,7 +23986,7 @@
             "userName": "VAIBHAV KARCHE",
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=d58dc1f3-62c5-4f9d-ae92-5a256f73d1a8",
-            "category": "ekyc"
+            "category": "other"
           },
           {
             "id": "cde84de8-090f-45a6-bb50-4b16a53c56ad",
@@ -24582,7 +24042,7 @@
             "userName": "Monu Khan",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e4f1f662-0460-442b-9665-5c749a466daf",
-            "category": "support"
+            "category": "other"
           },
           {
             "id": "0b5a27dc-c574-4988-bd32-9c8f9f547503",
@@ -24680,7 +24140,7 @@
             "userName": "Shivam Sharma",
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=96bc4924-f5ca-4b29-a0b8-ef2619e696ce",
-            "category": "ekyc"
+            "category": "other"
           },
           {
             "id": "20a07a72-df55-4c1f-bf9b-b56de8adc9fa",
@@ -25254,7 +24714,7 @@
             "userName": "Suraj Nikunj",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=7c52fa92-0d87-43cc-8c8e-79c4da39e3e6",
-            "category": "activation"
+            "category": "other"
           },
           {
             "id": "b41c1ab8-41bf-4d92-a768-e762a6f5bb62",
@@ -25268,7 +24728,7 @@
             "userName": "Amba Naresh",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b41c1ab8-41bf-4d92-a768-e762a6f5bb62",
-            "category": "activation"
+            "category": "other"
           }
         ]
       },
