@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T05:17:43.492Z",
+  "generatedAt": "2026-09-17T01:04:58.404Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -16,11 +16,11 @@
       "platforms": [
         {
           "platform": "play",
-          "totalReviews": 1801,
+          "totalReviews": 1802,
           "avgRating": 3.6,
-          "avgTextSentiment": 0.645,
+          "avgTextSentiment": 0.644,
           "ratingDistribution": {
-            "1": 546,
+            "1": 547,
             "2": 31,
             "3": 54,
             "4": 129,
@@ -29,7 +29,7 @@
           "sentimentBuckets": {
             "positive": 1170,
             "neutral": 54,
-            "negative": 577
+            "negative": 578
           },
           "weeklyTrend": [
             {
@@ -1354,11 +1354,11 @@
             },
             {
               "period": "2026-09-14",
-              "count": 1,
+              "count": 2,
               "avgRating": 1,
               "positive": 0,
               "neutral": 0,
-              "negative": 1
+              "negative": 2
             }
           ],
           "flags": [
@@ -1641,7 +1641,7 @@
             },
             {
               "word": "hai",
-              "count": 215
+              "count": 216
             },
             {
               "word": "application",
@@ -1727,7 +1727,7 @@
             },
             {
               "word": "hai",
-              "count": 177
+              "count": 178
             },
             {
               "word": "don't",
@@ -1786,6 +1786,10 @@
               "count": 66
             },
             {
+              "word": "call",
+              "count": 64
+            },
+            {
               "word": "experience",
               "count": 64
             },
@@ -1796,10 +1800,6 @@
             {
               "word": "high",
               "count": 64
-            },
-            {
-              "word": "charge",
-              "count": 63
             }
           ],
           "topPraiseKeywords": [
@@ -1889,7 +1889,7 @@
               "category": "trading",
               "label": "Trading",
               "count": 464,
-              "pctOfTotal": 25.8,
+              "pctOfTotal": 25.7,
               "avgRating": 2.8,
               "sentimentBuckets": {
                 "positive": 206,
@@ -1980,13 +1980,13 @@
             {
               "category": "other",
               "label": "Other",
-              "count": 1222,
+              "count": 1223,
               "pctOfTotal": 67.9,
-              "avgRating": 3.9,
+              "avgRating": 3.89,
               "sentimentBuckets": {
                 "positive": 884,
                 "neutral": 41,
-                "negative": 297
+                "negative": 298
               },
               "topKeywords": [
                 {
@@ -3677,17 +3677,17 @@
               "key": "play:1.9.3",
               "platform": "play",
               "version": "1.9.3",
-              "count": 4,
-              "avgRating": 2.5,
+              "count": 5,
+              "avgRating": 2.2,
               "sentimentBuckets": {
                 "positive": 1,
                 "neutral": 1,
-                "negative": 2
+                "negative": 3
               },
               "firstSeen": "2026-09-02T07:06:29.411Z",
-              "lastSeen": "2026-09-14T08:50:19.580Z",
-              "deltaVsPrevious": null,
-              "isRegression": false
+              "lastSeen": "2026-09-15T08:11:05.295Z",
+              "deltaVsPrevious": -1.8,
+              "isRegression": true
             }
           ],
           "themeTrend": {
@@ -6010,6 +6010,20 @@
           },
           "recentReviews": [
             {
+              "id": "4ba763f7-6219-49d0-bbec-8e039155bfe3",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 1,
+              "title": null,
+              "text": "head office Wale time pr call nhi receive karte hai",
+              "date": "2026-09-15T08:11:05.295Z",
+              "version": "1.9.3",
+              "userName": "Vikram Bapna",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=4ba763f7-6219-49d0-bbec-8e039155bfe3",
+              "category": "other"
+            },
+            {
               "id": "af6be259-b4f2-4d4b-bf07-2003eb8ebbdf",
               "platform": "play",
               "appName": "Swastika Stocks & Investments",
@@ -6929,7 +6943,7 @@
               "date": "2026-05-22T15:40:42.951Z",
               "version": "1.8.85",
               "userName": "Vishal Shinde",
-              "thumbsUp": 18,
+              "thumbsUp": 19,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=6d26280a-4949-4241-a575-5bd5c74f6f6b",
               "category": "other"
             },
@@ -10194,20 +10208,6 @@
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e4107eaf-2157-43ea-bf9c-67e211e9f40b",
               "category": "other"
-            },
-            {
-              "id": "b6d9ae3f-4fd9-469c-91e4-427df34b4dfd",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 1,
-              "title": null,
-              "text": "बहुत ही खतरनाक लोक है लुट लेंगे फोन करके सबसे ज्यादा चार्ज है जो angel one 20/- kotak me free or esme put ya call ko by krne par 100rs or sell krne par fir 100 rs",
-              "date": "2025-04-03T05:44:13.653Z",
-              "version": "1.7.72",
-              "userName": "godara study",
-              "thumbsUp": 0,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b6d9ae3f-4fd9-469c-91e4-427df34b4dfd",
-              "category": "trading"
             }
           ]
         },
@@ -13733,11 +13733,11 @@
       ],
       "combined": {
         "platform": "combined",
-        "totalReviews": 1896,
+        "totalReviews": 1897,
         "avgRating": 3.61,
         "avgTextSentiment": 0.625,
         "ratingDistribution": {
-          "1": 570,
+          "1": 571,
           "2": 32,
           "3": 55,
           "4": 141,
@@ -13746,7 +13746,7 @@
         "sentimentBuckets": {
           "positive": 1239,
           "neutral": 55,
-          "negative": 602
+          "negative": 603
         },
         "weeklyTrend": [
           {
@@ -15119,11 +15119,11 @@
           },
           {
             "period": "2026-09-14",
-            "count": 1,
+            "count": 2,
             "avgRating": 1,
             "positive": 0,
             "neutral": 0,
-            "negative": 1
+            "negative": 2
           }
         ],
         "flags": [
@@ -15426,7 +15426,7 @@
           },
           {
             "word": "hai",
-            "count": 221
+            "count": 222
           },
           {
             "word": "application",
@@ -15512,7 +15512,7 @@
           },
           {
             "word": "hai",
-            "count": 181
+            "count": 182
           },
           {
             "word": "account",
@@ -15571,12 +15571,12 @@
             "count": 70
           },
           {
-            "word": "use",
+            "word": "call",
             "count": 69
           },
           {
-            "word": "call",
-            "count": 68
+            "word": "use",
+            "count": 69
           },
           {
             "word": "service",
@@ -15765,13 +15765,13 @@
           {
             "category": "other",
             "label": "Other",
-            "count": 1267,
+            "count": 1268,
             "pctOfTotal": 66.8,
             "avgRating": 3.89,
             "sentimentBuckets": {
               "positive": 916,
               "neutral": 42,
-              "negative": 309
+              "negative": 310
             },
             "topKeywords": [
               {
@@ -18054,17 +18054,17 @@
             "key": "play:1.9.3",
             "platform": "play",
             "version": "1.9.3",
-            "count": 4,
-            "avgRating": 2.5,
+            "count": 5,
+            "avgRating": 2.2,
             "sentimentBuckets": {
               "positive": 1,
               "neutral": 1,
-              "negative": 2
+              "negative": 3
             },
             "firstSeen": "2026-09-02T07:06:29.411Z",
-            "lastSeen": "2026-09-14T08:50:19.580Z",
-            "deltaVsPrevious": null,
-            "isRegression": false
+            "lastSeen": "2026-09-15T08:11:05.295Z",
+            "deltaVsPrevious": -1.8,
+            "isRegression": true
           },
           {
             "key": "ios:4.1.5",
@@ -20531,6 +20531,20 @@
         },
         "recentReviews": [
           {
+            "id": "4ba763f7-6219-49d0-bbec-8e039155bfe3",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 1,
+            "title": null,
+            "text": "head office Wale time pr call nhi receive karte hai",
+            "date": "2026-09-15T08:11:05.295Z",
+            "version": "1.9.3",
+            "userName": "Vikram Bapna",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=4ba763f7-6219-49d0-bbec-8e039155bfe3",
+            "category": "other"
+          },
+          {
             "id": "af6be259-b4f2-4d4b-bf07-2003eb8ebbdf",
             "platform": "play",
             "appName": "Swastika Stocks & Investments",
@@ -21520,7 +21534,7 @@
             "date": "2026-05-22T15:40:42.951Z",
             "version": "1.8.85",
             "userName": "Vishal Shinde",
-            "thumbsUp": 18,
+            "thumbsUp": 19,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=6d26280a-4949-4241-a575-5bd5c74f6f6b",
             "category": "other"
           },
@@ -24714,20 +24728,6 @@
             "userName": "Suraj Nikunj",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=7c52fa92-0d87-43cc-8c8e-79c4da39e3e6",
-            "category": "other"
-          },
-          {
-            "id": "b41c1ab8-41bf-4d92-a768-e762a6f5bb62",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 5,
-            "title": null,
-            "text": "very good support from the team for account opening, doubt clearance, call support and in all the means",
-            "date": "2025-04-22T14:03:21.660Z",
-            "version": null,
-            "userName": "Amba Naresh",
-            "thumbsUp": 0,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b41c1ab8-41bf-4d92-a768-e762a6f5bb62",
             "category": "other"
           }
         ]
