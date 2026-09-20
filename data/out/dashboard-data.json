@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T01:03:45.196Z",
+  "generatedAt": "2026-09-20T01:04:00.951Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -16,11 +16,11 @@
       "platforms": [
         {
           "platform": "play",
-          "totalReviews": 1804,
+          "totalReviews": 1805,
           "avgRating": 3.6,
           "avgTextSentiment": 0.645,
           "ratingDistribution": {
-            "1": 547,
+            "1": 548,
             "2": 31,
             "3": 54,
             "4": 130,
@@ -29,7 +29,7 @@
           "sentimentBuckets": {
             "positive": 1172,
             "neutral": 54,
-            "negative": 578
+            "negative": 579
           },
           "weeklyTrend": [
             {
@@ -1354,11 +1354,11 @@
             },
             {
               "period": "2026-09-14",
-              "count": 4,
-              "avgRating": 2.75,
+              "count": 5,
+              "avgRating": 2.4,
               "positive": 2,
               "neutral": 0,
-              "negative": 2
+              "negative": 3
             }
           ],
           "flags": [
@@ -1563,11 +1563,6 @@
               "detail": "avg rating 2.5 vs overall 3.27"
             },
             {
-              "period": "2024-12-09",
-              "type": "rating_dip",
-              "detail": "avg rating 2.67 vs overall 3.27"
-            },
-            {
               "period": "2025-02-03",
               "type": "rating_dip",
               "detail": "avg rating 1 vs overall 3.27"
@@ -1621,6 +1616,11 @@
               "period": "2026-09-07",
               "type": "rating_dip",
               "detail": "avg rating 2.25 vs overall 3.27"
+            },
+            {
+              "period": "2026-09-14",
+              "type": "rating_dip",
+              "detail": "avg rating 2.4 vs overall 3.27"
             }
           ],
           "topKeywords": [
@@ -1630,7 +1630,7 @@
             },
             {
               "word": "app",
-              "count": 691
+              "count": 692
             },
             {
               "word": "swastika",
@@ -1666,7 +1666,7 @@
             },
             {
               "word": "account",
-              "count": 156
+              "count": 157
             },
             {
               "word": "use",
@@ -1678,7 +1678,7 @@
             },
             {
               "word": "don't",
-              "count": 135
+              "count": 136
             },
             {
               "word": "experience",
@@ -1710,7 +1710,7 @@
             },
             {
               "word": "open",
-              "count": 94
+              "count": 95
             },
             {
               "word": "excellent",
@@ -1728,7 +1728,7 @@
           "topComplaintKeywords": [
             {
               "word": "app",
-              "count": 295
+              "count": 296
             },
             {
               "word": "hai",
@@ -1736,11 +1736,11 @@
             },
             {
               "word": "don't",
-              "count": 132
+              "count": 133
             },
             {
               "word": "account",
-              "count": 131
+              "count": 132
             },
             {
               "word": "loss",
@@ -1760,11 +1760,11 @@
             },
             {
               "word": "open",
-              "count": 86
+              "count": 87
             },
             {
               "word": "worst",
-              "count": 84
+              "count": 85
             },
             {
               "word": "charges",
@@ -1985,13 +1985,13 @@
             {
               "category": "other",
               "label": "Other",
-              "count": 1225,
+              "count": 1226,
               "pctOfTotal": 67.9,
               "avgRating": 3.89,
               "sentimentBuckets": {
                 "positive": 886,
                 "neutral": 41,
-                "negative": 298
+                "negative": 299
               },
               "topKeywords": [
                 {
@@ -2000,7 +2000,7 @@
                 },
                 {
                   "word": "app",
-                  "count": 331
+                  "count": 332
                 },
                 {
                   "word": "nice",
@@ -3522,16 +3522,16 @@
               "key": "play:1.8.88",
               "platform": "play",
               "version": "1.8.88",
-              "count": 7,
-              "avgRating": 2.86,
+              "count": 8,
+              "avgRating": 2.63,
               "sentimentBuckets": {
                 "positive": 3,
                 "neutral": 1,
-                "negative": 3
+                "negative": 4
               },
               "firstSeen": "2026-06-16T02:49:23.655Z",
-              "lastSeen": "2026-06-24T06:07:10.264Z",
-              "deltaVsPrevious": -1.31,
+              "lastSeen": "2026-09-18T03:59:31.914Z",
+              "deltaVsPrevious": -1.54,
               "isRegression": true
             },
             {
@@ -3611,7 +3611,7 @@
               },
               "firstSeen": "2026-07-21T06:03:28.671Z",
               "lastSeen": "2026-07-30T12:54:01.580Z",
-              "deltaVsPrevious": 1.31,
+              "deltaVsPrevious": 1.54,
               "isRegression": false
             },
             {
@@ -3995,11 +3995,11 @@
               },
               {
                 "period": "2026-09",
-                "count": 1,
+                "count": 2,
                 "avgRating": 1,
                 "positive": 0,
                 "neutral": 0,
-                "negative": 1
+                "negative": 2
               }
             ],
             "Brokerage & charges": [
@@ -4519,11 +4519,11 @@
               },
               {
                 "period": "2026-09",
-                "count": 1,
+                "count": 2,
                 "avgRating": 1,
                 "positive": 0,
                 "neutral": 0,
-                "negative": 1
+                "negative": 2
               }
             ],
             "Login & access": [
@@ -6014,6 +6014,20 @@
             ]
           },
           "recentReviews": [
+            {
+              "id": "32a5f0b7-95ab-4cea-a160-547759c143b3",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 1,
+              "title": null,
+              "text": "worst app, they force to open demat account and they also makes false promises and don't even help.",
+              "date": "2026-09-18T03:59:31.914Z",
+              "version": "1.8.88",
+              "userName": "Pravin Kumar",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=32a5f0b7-95ab-4cea-a160-547759c143b3",
+              "category": "other"
+            },
             {
               "id": "d62f2f24-0844-444c-b667-3002f814499e",
               "platform": "play",
@@ -10199,20 +10213,6 @@
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=92c8eab4-b588-403b-b8f8-c5d33f43efac",
               "category": "other"
-            },
-            {
-              "id": "08efc52e-2db3-4b5c-9b95-64355d0ed3dd",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 3,
-              "title": null,
-              "text": "good",
-              "date": "2025-04-07T11:02:56.828Z",
-              "version": "1.7.79",
-              "userName": "anup kumar",
-              "thumbsUp": 0,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=08efc52e-2db3-4b5c-9b95-64355d0ed3dd",
-              "category": "other"
             }
           ]
         },
@@ -13784,11 +13784,11 @@
       ],
       "combined": {
         "platform": "combined",
-        "totalReviews": 1900,
+        "totalReviews": 1901,
         "avgRating": 3.61,
         "avgTextSentiment": 0.625,
         "ratingDistribution": {
-          "1": 572,
+          "1": 573,
           "2": 32,
           "3": 55,
           "4": 142,
@@ -13797,7 +13797,7 @@
         "sentimentBuckets": {
           "positive": 1241,
           "neutral": 55,
-          "negative": 604
+          "negative": 605
         },
         "weeklyTrend": [
           {
@@ -15170,11 +15170,11 @@
           },
           {
             "period": "2026-09-14",
-            "count": 5,
-            "avgRating": 2.4,
+            "count": 6,
+            "avgRating": 2.17,
             "positive": 2,
             "neutral": 0,
-            "negative": 3
+            "negative": 4
           }
         ],
         "flags": [
@@ -15461,7 +15461,7 @@
           {
             "period": "2026-09-14",
             "type": "rating_dip",
-            "detail": "avg rating 2.4 vs overall 3.28"
+            "detail": "avg rating 2.17 vs overall 3.28"
           }
         ],
         "topKeywords": [
@@ -15471,7 +15471,7 @@
           },
           {
             "word": "app",
-            "count": 771
+            "count": 772
           },
           {
             "word": "swastika",
@@ -15507,7 +15507,7 @@
           },
           {
             "word": "account",
-            "count": 169
+            "count": 170
           },
           {
             "word": "trade",
@@ -15531,7 +15531,7 @@
           },
           {
             "word": "don't",
-            "count": 135
+            "count": 136
           },
           {
             "word": "brokerage",
@@ -15547,7 +15547,7 @@
           },
           {
             "word": "open",
-            "count": 105
+            "count": 106
           },
           {
             "word": "company",
@@ -15555,7 +15555,7 @@
           },
           {
             "word": "worst",
-            "count": 101
+            "count": 102
           },
           {
             "word": "customer",
@@ -15569,7 +15569,7 @@
         "topComplaintKeywords": [
           {
             "word": "app",
-            "count": 321
+            "count": 322
           },
           {
             "word": "hai",
@@ -15577,11 +15577,11 @@
           },
           {
             "word": "account",
-            "count": 142
+            "count": 143
           },
           {
             "word": "don't",
-            "count": 132
+            "count": 133
           },
           {
             "word": "loss",
@@ -15593,7 +15593,7 @@
           },
           {
             "word": "worst",
-            "count": 100
+            "count": 101
           },
           {
             "word": "trade",
@@ -15605,7 +15605,7 @@
           },
           {
             "word": "open",
-            "count": 96
+            "count": 97
           },
           {
             "word": "bad",
@@ -15826,13 +15826,13 @@
           {
             "category": "other",
             "label": "Other",
-            "count": 1270,
-            "pctOfTotal": 66.8,
+            "count": 1271,
+            "pctOfTotal": 66.9,
             "avgRating": 3.89,
             "sentimentBuckets": {
               "positive": 918,
               "neutral": 42,
-              "negative": 310
+              "negative": 311
             },
             "topKeywords": [
               {
@@ -15841,7 +15841,7 @@
               },
               {
                 "word": "app",
-                "count": 363
+                "count": 364
               },
               {
                 "word": "nice",
@@ -17939,16 +17939,16 @@
             "key": "play:1.8.88",
             "platform": "play",
             "version": "1.8.88",
-            "count": 7,
-            "avgRating": 2.86,
+            "count": 8,
+            "avgRating": 2.63,
             "sentimentBuckets": {
               "positive": 3,
               "neutral": 1,
-              "negative": 3
+              "negative": 4
             },
             "firstSeen": "2026-06-16T02:49:23.655Z",
-            "lastSeen": "2026-06-24T06:07:10.264Z",
-            "deltaVsPrevious": -1.31,
+            "lastSeen": "2026-09-18T03:59:31.914Z",
+            "deltaVsPrevious": -1.54,
             "isRegression": true
           },
           {
@@ -18044,7 +18044,7 @@
             },
             "firstSeen": "2026-07-21T06:03:28.671Z",
             "lastSeen": "2026-07-30T12:54:01.580Z",
-            "deltaVsPrevious": 1.31,
+            "deltaVsPrevious": 1.54,
             "isRegression": false
           },
           {
@@ -18460,11 +18460,11 @@
             },
             {
               "period": "2026-09",
-              "count": 1,
+              "count": 2,
               "avgRating": 1,
               "positive": 0,
               "neutral": 0,
-              "negative": 1
+              "negative": 2
             }
           ],
           "Brokerage & charges": [
@@ -19008,11 +19008,11 @@
             },
             {
               "period": "2026-09",
-              "count": 1,
+              "count": 2,
               "avgRating": 1,
               "positive": 0,
               "neutral": 0,
-              "negative": 1
+              "negative": 2
             }
           ],
           "Login & access": [
@@ -20599,6 +20599,20 @@
           ]
         },
         "recentReviews": [
+          {
+            "id": "32a5f0b7-95ab-4cea-a160-547759c143b3",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 1,
+            "title": null,
+            "text": "worst app, they force to open demat account and they also makes false promises and don't even help.",
+            "date": "2026-09-18T03:59:31.914Z",
+            "version": "1.8.88",
+            "userName": "Pravin Kumar",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=32a5f0b7-95ab-4cea-a160-547759c143b3",
+            "category": "other"
+          },
           {
             "id": "d62f2f24-0844-444c-b667-3002f814499e",
             "platform": "play",
@@ -24783,20 +24797,6 @@
             "userName": "DEVENDRA WAKODIKAR",
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b6ddc4ec-4852-4a3e-ab72-fabcbed2d140",
-            "category": "trading"
-          },
-          {
-            "id": "511480a6-3289-4d44-a33d-ca9149d1b241",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 1,
-            "title": null,
-            "text": "price refresh issue",
-            "date": "2025-04-29T09:01:30.673Z",
-            "version": "1.7.89",
-            "userName": "Nitinkumar Jitendra Shah",
-            "thumbsUp": 1,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=511480a6-3289-4d44-a33d-ca9149d1b241",
             "category": "trading"
           }
         ]
