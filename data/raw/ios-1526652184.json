@@ -1,5 +1,44 @@
 [
   {
+    "id": "14610668893",
+    "platform": "ios",
+    "appName": "Fyers",
+    "rating": 5,
+    "title": "Exceptionally Good",
+    "text": "Quick execution of trades and Automation with AI is distinct and unique from other platforms. Response time is impressive.",
+    "date": "2026-09-30T04:54:55-07:00",
+    "version": "3.20.11",
+    "userName": "Mohana Kumar S",
+    "thumbsUp": 0,
+    "url": "https://itunes.apple.com/in/review?id=1526652184&type=Purple%20Software"
+  },
+  {
+    "id": "14609533571",
+    "platform": "ios",
+    "appName": "Fyers",
+    "rating": 1,
+    "title": "Slippage",
+    "text": "Worst app  , 90% of the time I experienced price slippage in opposite direction. I never experienced such a thing on other platforms.",
+    "date": "2026-09-29T20:38:58-07:00",
+    "version": "3.20.11",
+    "userName": "Rajesh dey",
+    "thumbsUp": 0,
+    "url": "https://itunes.apple.com/in/review?id=1526652184&type=Purple%20Software"
+  },
+  {
+    "id": "14602196308",
+    "platform": "ios",
+    "appName": "Fyers",
+    "rating": 4,
+    "title": "Alert section",
+    "text": "make it alert sound customisable",
+    "date": "2026-09-27T22:21:06-07:00",
+    "version": "3.20.10",
+    "userName": "Manikandan , Akash , Adhidev",
+    "thumbsUp": 0,
+    "url": "https://itunes.apple.com/in/review?id=1526652184&type=Purple%20Software"
+  },
+  {
     "id": "14580476418",
     "platform": "ios",
     "appName": "Fyers",
@@ -5533,7 +5572,7 @@
     "text": "This flyer app is very friendly user really I like this app and service also thank you",
     "date": "2023-02-14T19:49:46-07:00",
     "version": "1.0.46",
-    "userName": "Vijaynandhan",
+    "userName": "Smart brain indicator",
     "thumbsUp": 0,
     "url": "https://itunes.apple.com/in/review?id=1526652184&type=Purple%20Software"
   },
