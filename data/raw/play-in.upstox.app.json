@@ -1,5 +1,1578 @@
 [
   {
+    "id": "1c536d85-514b-4233-bb3a-4201be228336",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "worst app time west",
+    "date": "2026-10-17T18:45:53.400Z",
+    "version": null,
+    "userName": "Nandikonda.venkat Rajireddy Venky",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1c536d85-514b-4233-bb3a-4201be228336"
+  },
+  {
+    "id": "bf96950e-a3e3-4569-8b39-c65f2faa176b",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "many technical issues worst customer support.",
+    "date": "2026-10-17T15:14:21.985Z",
+    "version": "3.34.0",
+    "userName": "shubham adhav",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=bf96950e-a3e3-4569-8b39-c65f2faa176b"
+  },
+  {
+    "id": "5ee402cb-2001-4a07-9619-b374734b7c83",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-17T13:19:45.267Z",
+    "version": "3.36.0",
+    "userName": "krishna murty",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=5ee402cb-2001-4a07-9619-b374734b7c83"
+  },
+  {
+    "id": "734dfe0d-0abd-485c-ad4a-18bce8457a9b",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-17T12:19:15.329Z",
+    "version": "3.36.0",
+    "userName": "kamal singh bisht",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=734dfe0d-0abd-485c-ad4a-18bce8457a9b"
+  },
+  {
+    "id": "7752b16d-67ca-46fd-bf81-d4123cf8456d",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "great",
+    "date": "2026-10-17T10:57:26.368Z",
+    "version": "3.36.0",
+    "userName": "md imran",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7752b16d-67ca-46fd-bf81-d4123cf8456d"
+  },
+  {
+    "id": "fee2230f-9995-4a75-9e12-bfbd382d6fa7",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "start",
+    "date": "2026-10-17T09:02:01.698Z",
+    "version": "3.36.0",
+    "userName": "Buddhadeb Ghosh",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=fee2230f-9995-4a75-9e12-bfbd382d6fa7"
+  },
+  {
+    "id": "0c26694e-b353-4086-9540-b263b982ca26",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "mereko lon nhi chaiye please waps le lo bad me mere pas nhi rhega to mat bolna",
+    "date": "2026-10-17T08:42:16.731Z",
+    "version": null,
+    "userName": "Amit Sahu",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0c26694e-b353-4086-9540-b263b982ca26"
+  },
+  {
+    "id": "579c24ad-a0d8-4a91-985c-39db499796e6",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "best trading app",
+    "date": "2026-10-17T07:57:54.499Z",
+    "version": "3.36.0",
+    "userName": "Sukhdip Singh Ahluwalia",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=579c24ad-a0d8-4a91-985c-39db499796e6"
+  },
+  {
+    "id": "8d4d32c3-6f65-4fc4-a8d5-abd412141226",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "very good",
+    "date": "2026-10-17T07:18:41.987Z",
+    "version": "3.34.0",
+    "userName": "Thimmareddy Balsurgonda",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8d4d32c3-6f65-4fc4-a8d5-abd412141226"
+  },
+  {
+    "id": "a38a769a-af3e-49bd-a927-530de67c5f57",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "nice app",
+    "date": "2026-10-17T07:03:08.207Z",
+    "version": "3.36.0",
+    "userName": "Lalit Kumar",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a38a769a-af3e-49bd-a927-530de67c5f57"
+  },
+  {
+    "id": "1acdd4e2-3934-4617-852d-110e96a85a5d",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "hi Od okk good",
+    "date": "2026-10-17T06:53:16.358Z",
+    "version": null,
+    "userName": "Ajit Kumar Sahu",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1acdd4e2-3934-4617-852d-110e96a85a5d"
+  },
+  {
+    "id": "f21c818e-97fe-44f2-8096-80cd8eee2bf2",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good app",
+    "date": "2026-10-17T06:03:27.188Z",
+    "version": null,
+    "userName": "Sunny Kumar",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=f21c818e-97fe-44f2-8096-80cd8eee2bf2"
+  },
+  {
+    "id": "ec366802-d255-4887-ad35-6db052e7d913",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "best app for study as soon 🔜",
+    "date": "2026-10-17T03:47:10.743Z",
+    "version": null,
+    "userName": "Guiram Bora",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=ec366802-d255-4887-ad35-6db052e7d913"
+  },
+  {
+    "id": "17e3ad07-c265-40f0-b69f-dab752a043f4",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "no reply on mail or ticket, worst service, opening zerodha account, feeling Zerodha is 100times better than u. no help to close account,",
+    "date": "2026-10-17T03:27:04.450Z",
+    "version": "3.36.0",
+    "userName": "Virat Prashar",
+    "thumbsUp": 3,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=17e3ad07-c265-40f0-b69f-dab752a043f4"
+  },
+  {
+    "id": "928a9204-d211-43b8-9297-059b8d6237a6",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "worst ...im giving 1 star because it does not allow me to post without it ...although its negative star from me though ... the worst brokerage app of all time ...duped me my amount and took everything ...beware of this fraudulent app...Closing my account from here...",
+    "date": "2026-10-17T01:53:08.318Z",
+    "version": "3.37.0",
+    "userName": "Sonam Lepcha",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=928a9204-d211-43b8-9297-059b8d6237a6"
+  },
+  {
+    "id": "426bd6b1-adf6-4534-8350-c3820440f300",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "charts are and other details are very easy to understand",
+    "date": "2026-10-16T18:37:31.114Z",
+    "version": "3.34.0",
+    "userName": "Zabiullah Ansari",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=426bd6b1-adf6-4534-8350-c3820440f300"
+  },
+  {
+    "id": "30d8538c-4b6a-4d58-be0a-8a6ecfe7750e",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "very good",
+    "date": "2026-10-16T13:33:48.405Z",
+    "version": "3.36.0",
+    "userName": "Ashok Kapurwal",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=30d8538c-4b6a-4d58-be0a-8a6ecfe7750e"
+  },
+  {
+    "id": "d6afda98-7a22-4b92-8586-7e935a67cf62",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "Getting stuck at the launcher.",
+    "date": "2026-10-16T13:27:15.253Z",
+    "version": "3.36.0",
+    "userName": "Srikanth B",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=d6afda98-7a22-4b92-8586-7e935a67cf62"
+  },
+  {
+    "id": "24651ad4-bbb2-4d9d-b413-6197bc264307",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "h UDD",
+    "date": "2026-10-16T11:25:39.206Z",
+    "version": "3.36.0",
+    "userName": "Moin gouri 090",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=24651ad4-bbb2-4d9d-b413-6197bc264307"
+  },
+  {
+    "id": "3eb64bb2-c268-4602-a7b6-a8e5f24e5efb",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "NICE TRADING IN BANGALORE,",
+    "date": "2026-10-16T10:35:16.819Z",
+    "version": "2.2.25",
+    "userName": "Onkar Kumbhar",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=3eb64bb2-c268-4602-a7b6-a8e5f24e5efb"
+  },
+  {
+    "id": "6773dab1-d81d-4b8e-88b0-665e3f5ef3e3",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "The worst app period. Don't let them convince you otherwise, they charge you for every single click. Any profit you make, they steal. I would suggest using other options. Save your money, Choose the right app. Which is not Upstox.",
+    "date": "2026-10-16T10:00:42.302Z",
+    "version": null,
+    "userName": "Gaming 特Ninja",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=6773dab1-d81d-4b8e-88b0-665e3f5ef3e3"
+  },
+  {
+    "id": "b026aa96-6e8f-4718-a620-0f5c3792d0b8",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "very good app usefully and trusted",
+    "date": "2026-10-16T09:41:01.864Z",
+    "version": "3.36.0",
+    "userName": "RASHID KARUVATTA",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b026aa96-6e8f-4718-a620-0f5c3792d0b8"
+  },
+  {
+    "id": "465b48f3-0f9b-4232-84a7-3527e15fb88d",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-16T08:16:13.779Z",
+    "version": null,
+    "userName": "Annamdas Prashanth",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=465b48f3-0f9b-4232-84a7-3527e15fb88d"
+  },
+  {
+    "id": "aec619e9-ffe1-4bfe-a005-5d4b7edd4b7c",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 3,
+    "title": null,
+    "text": ". l u tell bby hi uubbv oo un u have TT bb ii.huvy BH t kuuybbbuu BH n b BH n",
+    "date": "2026-10-16T08:14:35.710Z",
+    "version": "3.35.0",
+    "userName": "Babai Islam",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=aec619e9-ffe1-4bfe-a005-5d4b7edd4b7c"
+  },
+  {
+    "id": "6564e833-6058-4e24-94af-a23ce00e1c10",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "App is much better and easy to use. Highly Recommend",
+    "date": "2026-10-16T07:42:44.650Z",
+    "version": null,
+    "userName": "Sameer",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=6564e833-6058-4e24-94af-a23ce00e1c10"
+  },
+  {
+    "id": "7abcef08-4612-42a5-a215-031bc38461c0",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "it's an amazing experience",
+    "date": "2026-10-16T06:43:08.172Z",
+    "version": "3.36.0",
+    "userName": "sudheer koruturu",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7abcef08-4612-42a5-a215-031bc38461c0"
+  },
+  {
+    "id": "8ff0feef-c96a-4368-bd74-2ed7ded22aa8",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "nice",
+    "date": "2026-10-16T06:38:35.963Z",
+    "version": "3.36.0",
+    "userName": "Blackiya Group",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8ff0feef-c96a-4368-bd74-2ed7ded22aa8"
+  },
+  {
+    "id": "e3deb565-37c6-433f-94f2-4d04d9dc1987",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 2,
+    "title": null,
+    "text": "Charts not aligning with auto rotate.",
+    "date": "2026-10-16T05:12:34.817Z",
+    "version": "3.36.0",
+    "userName": "Prasanna Patkar",
+    "thumbsUp": 20,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=e3deb565-37c6-433f-94f2-4d04d9dc1987"
+  },
+  {
+    "id": "b53d72d5-f7dc-4a77-a6e2-37b9a6ee2b43",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "money withdrawal system is worst. customer care is not raising ticket even when ask to do.",
+    "date": "2026-10-16T04:26:26.434Z",
+    "version": "3.36.0",
+    "userName": "Pratik New",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b53d72d5-f7dc-4a77-a6e2-37b9a6ee2b43"
+  },
+  {
+    "id": "9e3b567d-447c-4288-b923-9ce52ce5075e",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "good one 🕜",
+    "date": "2026-10-16T04:15:59.353Z",
+    "version": null,
+    "userName": "Jay Rajput",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9e3b567d-447c-4288-b923-9ce52ce5075e"
+  },
+  {
+    "id": "7bbcf1da-6350-4e1d-8ffb-b18a5a3426b9",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 3,
+    "title": null,
+    "text": "super",
+    "date": "2026-10-16T01:53:44.357Z",
+    "version": null,
+    "userName": "SHYAM GAMING YT",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7bbcf1da-6350-4e1d-8ffb-b18a5a3426b9"
+  },
+  {
+    "id": "6d7d685b-aaf8-4d74-9a86-cab8e5919da9",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "yah bahut achcha hai isliye five star rating kaise banai hai jitni app banaya good app",
+    "date": "2026-10-16T01:31:20.103Z",
+    "version": "3.36.0",
+    "userName": "Chand Miya",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=6d7d685b-aaf8-4d74-9a86-cab8e5919da9"
+  },
+  {
+    "id": "cf48d479-5f08-45a5-8cf3-06a6153cb1e4",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "unable to view the ledger report shows a huge difference in charge and maintenance. but unable to view.",
+    "date": "2026-10-15T21:27:50.442Z",
+    "version": "3.36.0",
+    "userName": "Karthikeyan N",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=cf48d479-5f08-45a5-8cf3-06a6153cb1e4"
+  },
+  {
+    "id": "e784e65a-a0b2-48da-927e-a53db1419a95",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Hi Upstox team, happy to see good new features in the app. I have one suggestion to add a new feature to the app. For employees who are working professionals, the trade price alert feature is working but not really well. It is just alerts and not good at all. If we can slightly increase the time to 1 to 2 seconds with a ringtone with good volume, it will give us an alert for the trade, as most of the time we are unable to catch the price in the market. Happy to this feature in coming update 😁.",
+    "date": "2026-10-15T18:01:43.667Z",
+    "version": "3.36.0",
+    "userName": "Utkarsh Shivhare",
+    "thumbsUp": 125,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=e784e65a-a0b2-48da-927e-a53db1419a95"
+  },
+  {
+    "id": "a7e2d817-c22c-4edf-90be-822f299395b4",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Best app for trading and investing",
+    "date": "2026-10-15T16:42:03.830Z",
+    "version": "3.36.0",
+    "userName": "Himanshu Gaupale",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a7e2d817-c22c-4edf-90be-822f299395b4"
+  },
+  {
+    "id": "2a75af6c-246c-4542-b537-b1816e58c164",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "The app is very good, but there is no facility to update external mutual funds.",
+    "date": "2026-10-15T15:44:57.986Z",
+    "version": "3.36.0",
+    "userName": "AJAY SAHU",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=2a75af6c-246c-4542-b537-b1816e58c164"
+  },
+  {
+    "id": "b7489de4-301e-4474-801f-4b4e5a73e732",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "One thing is irritating When we are searching stocks in the search bar and open for chart it's automatically opening in BSE 90% stocks like this, please change it to NSE and one more thing while opening in watch list stocks it is fine automatically opening in NSE only, problem is while searching stocks and open chart it's automatically opening in BSE mode please change it to NSE.",
+    "date": "2026-10-15T14:55:40.894Z",
+    "version": "3.36.0",
+    "userName": "Mallesh Panuganti",
+    "thumbsUp": 19,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b7489de4-301e-4474-801f-4b4e5a73e732"
+  },
+  {
+    "id": "ff4119c0-e8bd-4d86-a21a-5dd54339292a",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-15T14:41:18.555Z",
+    "version": "3.36.0",
+    "userName": "Saiful Islam",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=ff4119c0-e8bd-4d86-a21a-5dd54339292a"
+  },
+  {
+    "id": "b143e78c-a917-4c63-8735-ab3d85a48916",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "good 👍🏻",
+    "date": "2026-10-15T11:33:41.714Z",
+    "version": "3.36.0",
+    "userName": "Bare Lal",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b143e78c-a917-4c63-8735-ab3d85a48916"
+  },
+  {
+    "id": "b06d1048-201a-4248-a373-4844f4271af9",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "trading experience and good interface",
+    "date": "2026-10-15T11:16:42.355Z",
+    "version": "3.34.0",
+    "userName": "Anand Maurya",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b06d1048-201a-4248-a373-4844f4271af9"
+  },
+  {
+    "id": "7ee9d77c-040b-4691-b9c9-5bdeecf913fa",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "My experience with Upstox has been good. The app has a simple interface and is easy to use for checking stock market prices and managing investments. It is helpful for beginners who want to learn about the stock market. Overall, a useful platform with room for improvement.",
+    "date": "2026-10-15T08:47:43.980Z",
+    "version": "3.36.0",
+    "userName": "ANURAG KUMAR",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7ee9d77c-040b-4691-b9c9-5bdeecf913fa"
+  },
+  {
+    "id": "84dc7481-7144-4456-a150-b2b5288ff1b7",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "If you go to Top gainers or Top Losers, you will only see Adani green. 😂 lol buggy app",
+    "date": "2026-10-15T07:47:42.252Z",
+    "version": "3.36.0",
+    "userName": "Harjot Singh Chopra",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=84dc7481-7144-4456-a150-b2b5288ff1b7"
+  },
+  {
+    "id": "50f6b8ea-147c-407d-ac02-3037cd504099",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "👍",
+    "date": "2026-10-15T07:22:44.325Z",
+    "version": "3.36.0",
+    "userName": "Nishant Sharma",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=50f6b8ea-147c-407d-ac02-3037cd504099"
+  },
+  {
+    "id": "cd1e55fc-a734-44ec-9d05-9b44f75073c6",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "very poor user interface.",
+    "date": "2026-10-15T06:58:48.138Z",
+    "version": "3.35.0",
+    "userName": "Deepak Joshi",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=cd1e55fc-a734-44ec-9d05-9b44f75073c6"
+  },
+  {
+    "id": "da0cc03b-84aa-4ea2-aa35-568d0c172058",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "best app",
+    "date": "2026-10-15T05:48:36.879Z",
+    "version": "3.36.0",
+    "userName": "Mohammed Ishaq",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=da0cc03b-84aa-4ea2-aa35-568d0c172058"
+  },
+  {
+    "id": "26852e98-d693-43aa-9077-3cd7249e97cd",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "overall app is good and smooth but 1.add exit at market price after stoploss in order section, postion section and chart and add show position on chart 2. add tab option window in chart for multiple chart like dhan & other app 3. custom pine script ka features sabhi me aya hai like dhan & other apke me kab ayega 4. full page view on scalper chart app and web terminal",
+    "date": "2026-10-15T05:21:58.438Z",
+    "version": "3.36.0",
+    "userName": "rajesh kumar",
+    "thumbsUp": 7,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=26852e98-d693-43aa-9077-3cd7249e97cd"
+  },
+  {
+    "id": "e8bda196-ab23-4eb9-97dc-2a60279bbd55",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Easy handling",
+    "date": "2026-10-15T05:18:33.613Z",
+    "version": "3.35.0",
+    "userName": "Sandip Pitre",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=e8bda196-ab23-4eb9-97dc-2a60279bbd55"
+  },
+  {
+    "id": "fd8fcf8d-5ada-442e-912f-775218a933fa",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "best but understand well about aap",
+    "date": "2026-10-15T04:17:03.997Z",
+    "version": "3.36.0",
+    "userName": "Saleem Uddin",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=fd8fcf8d-5ada-442e-912f-775218a933fa"
+  },
+  {
+    "id": "b8496b5c-b724-40d1-a311-a528357afe57",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "over charges",
+    "date": "2026-10-15T04:04:58.183Z",
+    "version": null,
+    "userName": "sultan shah",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b8496b5c-b724-40d1-a311-a528357afe57"
+  },
+  {
+    "id": "0ffb4410-bc5b-4af3-ac1d-4df6c9b06565",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "please help I need money",
+    "date": "2026-10-15T03:35:02.840Z",
+    "version": "3.36.0",
+    "userName": "sambaleswar mallick",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0ffb4410-bc5b-4af3-ac1d-4df6c9b06565"
+  },
+  {
+    "id": "02635a77-c5fd-4428-92eb-4971e9824e3b",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-15T03:34:11.491Z",
+    "version": null,
+    "userName": "Raj",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=02635a77-c5fd-4428-92eb-4971e9824e3b"
+  },
+  {
+    "id": "c9f229ae-8452-4312-a6a9-05a4426dda28",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Updating in price action is better than other. Platform speed is better. More ideas available for investment and trading.",
+    "date": "2026-10-15T02:36:09.417Z",
+    "version": "3.36.0",
+    "userName": "S Mani Perumal",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c9f229ae-8452-4312-a6a9-05a4426dda28"
+  },
+  {
+    "id": "212f2aab-dc57-48fe-b986-9b537adea48d",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "good chart",
+    "date": "2026-10-15T00:08:54.292Z",
+    "version": "3.36.0",
+    "userName": "Selva Kumar",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=212f2aab-dc57-48fe-b986-9b537adea48d"
+  },
+  {
+    "id": "1bddf31c-0c20-4bec-a60b-78cf3ea94e97",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "gud",
+    "date": "2026-10-14T17:35:39.156Z",
+    "version": "3.35.0",
+    "userName": "anand kumar shukla",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1bddf31c-0c20-4bec-a60b-78cf3ea94e97"
+  },
+  {
+    "id": "cb365cce-db93-47e9-aca5-dbe0c069e7bb",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "Upstox investors should be cautious of upstox WhatsApp groups that may be involved in investment fraud through DMA Trading link . Ravi Kumar, who presents himself as a professor and analyst, along with his assistants Aditi Verma and Ananya Das, are allegedly misleading investors and cheating them out of their money. If that is the case, how are they repeatedly using Ravi Kumar’s photo and upstox seal and logo , so many times I complaint but no one investigate properly I have already loss 40 lakh",
+    "date": "2026-10-14T16:39:27.847Z",
+    "version": "3.36.0",
+    "userName": "Shoukath Ali",
+    "thumbsUp": 2,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=cb365cce-db93-47e9-aca5-dbe0c069e7bb"
+  },
+  {
+    "id": "44be0344-7e45-4225-a42f-a523714e522f",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "nice app fast data update 👍",
+    "date": "2026-10-14T16:24:06.526Z",
+    "version": "3.36.0",
+    "userName": "Arun Pancholi (Patrakar)",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=44be0344-7e45-4225-a42f-a523714e522f"
+  },
+  {
+    "id": "23a76aae-a5f1-4a2f-b06d-d567f4d9b8c1",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Could you please enable the 'Bulk delete' facility for price alerts? It's very difficult to delete the alerts one by one (if number of alerts exceeds 200+) Moreover it's a very basic feature available in all other trading apps.",
+    "date": "2026-10-14T14:17:47.732Z",
+    "version": "3.36.0",
+    "userName": "Nagarajan L",
+    "thumbsUp": 203,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=23a76aae-a5f1-4a2f-b06d-d567f4d9b8c1"
+  },
+  {
+    "id": "b3815d92-10a4-4a03-855f-36688c52acc5",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Great tool for managing car traffic fines. Detailed reports and instant status updates make tracking pending fines smooth and reliable for every driver.",
+    "date": "2026-10-14T14:07:30.515Z",
+    "version": "3.36.0",
+    "userName": "Neelam Raju",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b3815d92-10a4-4a03-855f-36688c52acc5"
+  },
+  {
+    "id": "4c724c4b-428c-4f36-af4f-583bb9ed2655",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": ".vx1 c47",
+    "date": "2026-10-14T12:17:02.690Z",
+    "version": "3.36.0",
+    "userName": "Devi Kaushalya",
+    "thumbsUp": 2,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=4c724c4b-428c-4f36-af4f-583bb9ed2655"
+  },
+  {
+    "id": "8fd8945e-b1c2-4ea6-af6c-5ded15b5e55c",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "upstox charged amc of 2025-26 & upcoming 2026-27 without any prior message or email ,, even if when i opened my account it said lifetime free & also it didn't send any mail stating it will charge and now when i said i want to close this account so remove the amc of 2026-27 which i will not be using then the customer care is saying i have to pay it amc is irreversible. this is the worst app you can use and they only want to harass customer and loot money in one way or other",
+    "date": "2026-10-14T11:08:16.400Z",
+    "version": "3.26.0",
+    "userName": "Rohit",
+    "thumbsUp": 3,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8fd8945e-b1c2-4ea6-af6c-5ded15b5e55c"
+  },
+  {
+    "id": "2f974023-9f29-46fa-a681-404c5ea08992",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "This app meets my expectations ..good app and broker too . I have been using it since 2022.",
+    "date": "2026-10-14T09:03:11.863Z",
+    "version": null,
+    "userName": "sanjay singh",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=2f974023-9f29-46fa-a681-404c5ea08992"
+  },
+  {
+    "id": "3715fc74-bb38-405f-8aa0-49ee04b56c53",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "it's good working",
+    "date": "2026-10-14T08:45:28.228Z",
+    "version": "3.36.0",
+    "userName": "Pardha Sarathi",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=3715fc74-bb38-405f-8aa0-49ee04b56c53"
+  },
+  {
+    "id": "cd8628ff-65f8-4dd4-88c6-753e00460586",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "not working properly",
+    "date": "2026-10-14T08:28:00.135Z",
+    "version": "3.36.0",
+    "userName": "NANJESH",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=cd8628ff-65f8-4dd4-88c6-753e00460586"
+  },
+  {
+    "id": "0ca5c912-1d02-4350-b86a-d3aa1f5c1abf",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "I recently started using your new platform, which is similar to algovere. Due to some initial doubts, I contacted customer care, but the executive could not resolve my issue and directed me to email Upstox. I subsequently received a call stating that my issue was escalated to the relevant department. However, I have been left waiting for a week without any update. I am deeply disappointed by this lack of professionalism and am now planning to migrate my account to platforms like zerodha.",
+    "date": "2026-10-14T08:07:47.500Z",
+    "version": "3.36.0",
+    "userName": "Manu Aravind",
+    "thumbsUp": 5,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0ca5c912-1d02-4350-b86a-d3aa1f5c1abf"
+  },
+  {
+    "id": "f4e4c2c7-3ffa-487f-830a-3811420a19bd",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "worst app when i book my profit it cancil when it is in loss 😡😡😡😭😭😭",
+    "date": "2026-10-14T06:40:31.206Z",
+    "version": "3.36.0",
+    "userName": "Oeieuwje Tiwari",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=f4e4c2c7-3ffa-487f-830a-3811420a19bd"
+  },
+  {
+    "id": "dca78a33-4026-4164-be5a-9f5b41fe7bc0",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "🤩🤩 bahut hi achcha hai🤩🤩",
+    "date": "2026-10-14T06:36:03.760Z",
+    "version": "3.36.0",
+    "userName": "Arnob Majumdar",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=dca78a33-4026-4164-be5a-9f5b41fe7bc0"
+  },
+  {
+    "id": "70c938ae-b171-4979-a341-5c75a7299646",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "excellent",
+    "date": "2026-10-14T06:29:28.941Z",
+    "version": "3.36.0",
+    "userName": "Ramanujam",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=70c938ae-b171-4979-a341-5c75a7299646"
+  },
+  {
+    "id": "8e588cc2-03bf-4a73-992d-16b9b98b6aae",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Good fast loan",
+    "date": "2026-10-14T06:05:44.531Z",
+    "version": null,
+    "userName": "Sanoj Raj",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8e588cc2-03bf-4a73-992d-16b9b98b6aae"
+  },
+  {
+    "id": "2d04affe-eaff-4a2c-bc1e-ab53a33e26c8",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 3,
+    "title": null,
+    "text": "👍",
+    "date": "2026-10-14T06:00:09.222Z",
+    "version": "3.36.0",
+    "userName": "Md Ehsan Ali",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=2d04affe-eaff-4a2c-bc1e-ab53a33e26c8"
+  },
+  {
+    "id": "b2690b36-42fb-4744-9d2f-4771ff808f6c",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 3,
+    "title": null,
+    "text": "Nice app but Too many functionality in the app. also I am not recieving any notification from the app. Notification are enabled in phone settings and inside the app as well",
+    "date": "2026-10-14T05:41:25.885Z",
+    "version": "3.36.0",
+    "userName": "Bhavik Kasundra",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b2690b36-42fb-4744-9d2f-4771ff808f6c"
+  },
+  {
+    "id": "04ce04c2-f4f0-4989-8dc3-074716e358d6",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "the app is good",
+    "date": "2026-10-14T05:03:40.703Z",
+    "version": "3.36.0",
+    "userName": "St St",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=04ce04c2-f4f0-4989-8dc3-074716e358d6"
+  },
+  {
+    "id": "12e9bed4-421e-4aed-be12-5fdf9f64c081",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "best'",
+    "date": "2026-10-14T04:52:02.802Z",
+    "version": "3.34.0",
+    "userName": "Abdul Rasheed",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=12e9bed4-421e-4aed-be12-5fdf9f64c081"
+  },
+  {
+    "id": "99acd1c2-09e4-46bc-b4f3-04e4ed61662c",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "Not recommended, many platform have same day withdrawal, Upstox given option for next day and Pathatic thing is that, u hay to pay charges to withdrawal soon I will left this platform after sold my all equity",
+    "date": "2026-10-14T03:41:45.405Z",
+    "version": "3.36.0",
+    "userName": "Avaneesh Kumar",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=99acd1c2-09e4-46bc-b4f3-04e4ed61662c"
+  },
+  {
+    "id": "a163c309-38ba-44ec-ad1d-d9c3c3534f91",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "exxelent",
+    "date": "2026-10-14T03:24:17.826Z",
+    "version": "3.36.0",
+    "userName": "Prasanna Bhat",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a163c309-38ba-44ec-ad1d-d9c3c3534f91"
+  },
+  {
+    "id": "1e03ca58-480d-45e0-b413-fee647c2178e",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 3,
+    "title": null,
+    "text": "there should be otion for one tap exit in scalper",
+    "date": "2026-10-14T01:36:06.291Z",
+    "version": "3.36.0",
+    "userName": "Its me Rahul",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1e03ca58-480d-45e0-b413-fee647c2178e"
+  },
+  {
+    "id": "aac46142-6395-4dfa-8816-d0d0e8717dfa",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "yah bahut aacha app hai and thank you",
+    "date": "2026-10-14T01:26:50.712Z",
+    "version": null,
+    "userName": "Abhay kumar Singh",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=aac46142-6395-4dfa-8816-d0d0e8717dfa"
+  },
+  {
+    "id": "ab9e31e0-c793-49ef-bb83-966243b4968c",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "bad experience",
+    "date": "2026-10-13T22:06:58.680Z",
+    "version": "3.36.0",
+    "userName": "Bharat Bhushan",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=ab9e31e0-c793-49ef-bb83-966243b4968c"
+  },
+  {
+    "id": "2c86a1f2-77f2-4cf3-bf5a-2b8bf595fe90",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "I am really happy upstox app sy",
+    "date": "2026-10-13T19:08:30.129Z",
+    "version": "3.36.0",
+    "userName": "Shuvom Roy",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=2c86a1f2-77f2-4cf3-bf5a-2b8bf595fe90"
+  },
+  {
+    "id": "8db32026-23c3-4327-9adb-4fc3a46114f4",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "Annual maintenance Charge !!!!!!!!! Upstox 300 + GST Groww 0 Zerodha 0 Trading costs are also high. Just think... TBT is just for the namesake. nobody is making money because of so called TBT dear. also please check with brokerage calculator, grow is much lower than upstox. I checked myself dear. don't fall for this... please reduce the AMC...",
+    "date": "2026-10-13T15:00:03.821Z",
+    "version": "3.36.0",
+    "userName": "jaganth chandran.c.r",
+    "thumbsUp": 2,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8db32026-23c3-4327-9adb-4fc3a46114f4"
+  },
+  {
+    "id": "30237863-a756-4696-a5bb-6feeab5e7bbe",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "required fast exit point for nifty ,options n crude,pls do needfull changes ,create fast exit point",
+    "date": "2026-10-13T13:23:06.554Z",
+    "version": "3.36.0",
+    "userName": "Balakrishna Thirumala",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=30237863-a756-4696-a5bb-6feeab5e7bbe"
+  },
+  {
+    "id": "a8cdfb5d-58b0-40e5-b017-3ebb77bada16",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-13T12:16:29.799Z",
+    "version": "3.36.0",
+    "userName": "Mani Mani",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a8cdfb5d-58b0-40e5-b017-3ebb77bada16"
+  },
+  {
+    "id": "5e75169d-bcdf-47b6-8b47-733e8ebc3419",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "very good app",
+    "date": "2026-10-13T09:41:18.908Z",
+    "version": "3.36.0",
+    "userName": "Sunil",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=5e75169d-bcdf-47b6-8b47-733e8ebc3419"
+  },
+  {
+    "id": "bf34f603-9930-4dc8-a66c-3b736800754c",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "its Nice app",
+    "date": "2026-10-13T09:10:50.756Z",
+    "version": "3.36.0",
+    "userName": "Manish Tripathi Maths Classes",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=bf34f603-9930-4dc8-a66c-3b736800754c"
+  },
+  {
+    "id": "c639fcf0-e589-4b0d-857b-e9ec0cede47b",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "zerodha is cheap and better, They deduct money from wallet but they don't show deduction report , just like hisaab baraabar movie , If you buy 2000 rs share they will deduct 200 rs on it extra, But when You buy Same in Ind Money or Zerodha you will pay nothing, these frauds take 59 rupees from me to unpledge the stocks that they automatically pledge my stocks , they can inform me before that your money is low please add money otherwise we pledge your stocks , now I am shifting to Indmoney",
+    "date": "2026-10-13T07:58:27.959Z",
+    "version": "3.35.0",
+    "userName": "Abhishek Kumar",
+    "thumbsUp": 2,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c639fcf0-e589-4b0d-857b-e9ec0cede47b"
+  },
+  {
+    "id": "0c17e69f-8ba3-4812-8a09-e3269eed5d81",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-13T07:51:11.814Z",
+    "version": "3.36.0",
+    "userName": "Nisha Kumari",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0c17e69f-8ba3-4812-8a09-e3269eed5d81"
+  },
+  {
+    "id": "069c8104-6167-4806-ae74-513e3af49b64",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "nice",
+    "date": "2026-10-13T07:39:09.476Z",
+    "version": "3.34.0",
+    "userName": "gangadhara gr",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=069c8104-6167-4806-ae74-513e3af49b64"
+  },
+  {
+    "id": "c95fee0f-9bb0-445d-a141-484255d4ac3b",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Good aap",
+    "date": "2026-10-13T07:12:55.236Z",
+    "version": null,
+    "userName": "Pukhraj Meghwal",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c95fee0f-9bb0-445d-a141-484255d4ac3b"
+  },
+  {
+    "id": "a72b8543-219b-478f-9124-ee4b8cde5ee8",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good experience",
+    "date": "2026-10-13T05:27:24.271Z",
+    "version": "3.36.0",
+    "userName": "Ravi Singh",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a72b8543-219b-478f-9124-ee4b8cde5ee8"
+  },
+  {
+    "id": "59947746-ec0e-4842-8093-91ca59157b02",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "This app is good if you want to lose money. I widraw 1L and then my balance is shown 94.5 and now I can't see my 1L ₹ and I can just see 94.5 it's time to suci*de",
+    "date": "2026-10-13T05:26:38.120Z",
+    "version": "3.35.0",
+    "userName": "Swaraj Shinde",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=59947746-ec0e-4842-8093-91ca59157b02"
+  },
+  {
+    "id": "badd2b9f-efe4-4c29-92ab-f2698cd0d6bc",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "I very satisfied with upstox app",
+    "date": "2026-10-13T05:20:37.903Z",
+    "version": "3.36.0",
+    "userName": "Pratap Nikam",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=badd2b9f-efe4-4c29-92ab-f2698cd0d6bc"
+  },
+  {
+    "id": "573bae0a-dcc4-44f5-8257-ed45e18161e3",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-13T03:33:53.901Z",
+    "version": "3.36.0",
+    "userName": "KAMALA ARYA",
+    "thumbsUp": 2,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=573bae0a-dcc4-44f5-8257-ed45e18161e3"
+  },
+  {
+    "id": "592db593-8c0b-4b9d-a5ce-c53ade7e99e0",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "Good",
+    "date": "2026-10-13T02:05:10.908Z",
+    "version": "3.35.0",
+    "userName": "Birendra Thakur",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=592db593-8c0b-4b9d-a5ce-c53ade7e99e0"
+  },
+  {
+    "id": "91ca3ea8-5bde-4e36-96cb-5381b83648a1",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Sip app pe pehla SIP set karna itna quick tha ki mujhe genuinely surprised hona pada ki sab kuch itna simple hoga.",
+    "date": "2026-10-12T16:55:32.163Z",
+    "version": null,
+    "userName": "Anshuman Gautam",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=91ca3ea8-5bde-4e36-96cb-5381b83648a1"
+  },
+  {
+    "id": "6a0feda7-91cd-4e34-97e4-2c920dcf25a6",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "wow",
+    "date": "2026-10-12T16:36:26.326Z",
+    "version": "3.36.0",
+    "userName": "Asgar Ali",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=6a0feda7-91cd-4e34-97e4-2c920dcf25a6"
+  },
+  {
+    "id": "e3d233f7-0238-4b37-b4de-c3473ed54cdd",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "k aa gaya oujt ja raha tha k",
+    "date": "2026-10-12T16:00:59.303Z",
+    "version": null,
+    "userName": "Sinha Priyatosh",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=e3d233f7-0238-4b37-b4de-c3473ed54cdd"
+  },
+  {
+    "id": "9ee77794-0af3-4e11-8040-1df7723ecded",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "mast app hai",
+    "date": "2026-10-12T15:28:20.205Z",
+    "version": null,
+    "userName": "Ro Ro",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9ee77794-0af3-4e11-8040-1df7723ecded"
+  },
+  {
+    "id": "9442ff9b-9d79-4171-b5c1-3651b1d05dc8",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "The best trading platform I have ever come across. UPSTOX nailed it to keep it simple and comfortable for any end user. As a user I like to share some suggestions and feedback. Add More indicators like SMC, Support & resistance, and many more important indicators. Profit amount same day withdrawal is very important. Trailing stop loss features in a regular order. More Stock screens. chart features need to improve.",
+    "date": "2026-10-12T14:52:37.710Z",
+    "version": "3.36.0",
+    "userName": "Prashant Shinde",
+    "thumbsUp": 47,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9442ff9b-9d79-4171-b5c1-3651b1d05dc8"
+  },
+  {
+    "id": "201cc653-d94e-4e12-8d03-abf6ba464076",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "worst app. I sold last loy of stocks and upstox charged me rs. 150 not sure for what. and after withdrawing the remaining amount my account still shows 23 rs in negative bhai Kitna paise loge",
+    "date": "2026-10-12T13:20:06.383Z",
+    "version": "3.35.0",
+    "userName": "Sumeet Firodia",
+    "thumbsUp": 8,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=201cc653-d94e-4e12-8d03-abf6ba464076"
+  },
+  {
+    "id": "8ec4d71d-23de-467f-84fb-b115ecd39cc1",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-12T12:51:35.595Z",
+    "version": "3.34.0",
+    "userName": "Hasan Shekh",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8ec4d71d-23de-467f-84fb-b115ecd39cc1"
+  },
+  {
+    "id": "861e518c-7ee1-4256-bbf6-e13bf2ded9a7",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-12T10:56:03.856Z",
+    "version": "3.36.0",
+    "userName": "manne santhosh",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=861e518c-7ee1-4256-bbf6-e13bf2ded9a7"
+  },
+  {
+    "id": "0b72dd98-320e-4d67-9e7e-ecc82784c3f7",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 4,
+    "title": null,
+    "text": "I am Using it from 2021 and its future is very useful for traders and investors.",
+    "date": "2026-10-12T10:16:25.160Z",
+    "version": null,
+    "userName": "VJ Trader's Wallet",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0b72dd98-320e-4d67-9e7e-ecc82784c3f7"
+  },
+  {
+    "id": "803de90d-e845-41e6-9609-dbf6c919378f",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "nice app",
+    "date": "2026-10-12T09:17:20.400Z",
+    "version": null,
+    "userName": "Ydv Munna",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=803de90d-e845-41e6-9609-dbf6c919378f"
+  },
+  {
+    "id": "bc1a76c4-3880-4875-95c0-6c85491c55e3",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "👍 good",
+    "date": "2026-10-12T08:39:26.290Z",
+    "version": "3.35.0",
+    "userName": "kaise jitenge",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=bc1a76c4-3880-4875-95c0-6c85491c55e3"
+  },
+  {
+    "id": "08cea1d8-f614-42ff-9845-dec809bf4b77",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "user friendly application",
+    "date": "2026-10-12T05:40:17.445Z",
+    "version": null,
+    "userName": "Pravin M",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=08cea1d8-f614-42ff-9845-dec809bf4b77"
+  },
+  {
+    "id": "ff544513-9793-4f03-bb55-bd0a816f0543",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "love it",
+    "date": "2026-10-12T05:29:39.858Z",
+    "version": "3.36.0",
+    "userName": "saravanan g",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=ff544513-9793-4f03-bb55-bd0a816f0543"
+  },
+  {
+    "id": "a8bae9ee-4145-4140-bbbb-f635a6a1f64f",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "☠️",
+    "date": "2026-10-12T05:06:02.473Z",
+    "version": "3.36.0",
+    "userName": "Chandan Charvi",
+    "thumbsUp": 2,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a8bae9ee-4145-4140-bbbb-f635a6a1f64f"
+  },
+  {
+    "id": "1c365f3c-7837-4e76-aea4-1b1f14fd4846",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "It always show 'No internet connection', despite connecting with fiber net with a speed of over 300mbps",
+    "date": "2026-10-12T04:07:09.840Z",
+    "version": "3.35.0",
+    "userName": "Ajay Nagpal",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1c365f3c-7837-4e76-aea4-1b1f14fd4846"
+  },
+  {
+    "id": "a1ccfefe-fb35-45d6-bf09-a1b0bc86092e",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "not working properly I shows like try again try again frustrated app don't download this go to kite good option",
+    "date": "2026-10-12T04:03:56.436Z",
+    "version": "3.36.0",
+    "userName": "Koti Sandeep",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a1ccfefe-fb35-45d6-bf09-a1b0bc86092e"
+  },
+  {
+    "id": "fd9d2b9d-2bcb-45fe-97b8-d8f664294e68",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "ye loading time bhut jyada leta hai to is liye me apna account close karna chahta hu is app se mai to tang ho gya hu",
+    "date": "2026-10-12T04:02:17.206Z",
+    "version": "2.13.0",
+    "userName": "Mayashanker Pandey",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=fd9d2b9d-2bcb-45fe-97b8-d8f664294e68"
+  },
+  {
+    "id": "3e68af48-be7d-4261-a62f-6469a3936cb1",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "The view of accounts is neat.",
+    "date": "2026-10-12T03:15:23.510Z",
+    "version": null,
+    "userName": "Meera Meera",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=3e68af48-be7d-4261-a62f-6469a3936cb1"
+  },
+  {
+    "id": "7b8e7e90-a7d1-47dc-9821-78106634e7fb",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good",
+    "date": "2026-10-11T19:07:24.770Z",
+    "version": "3.35.0",
+    "userName": "Prasanth C",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7b8e7e90-a7d1-47dc-9821-78106634e7fb"
+  },
+  {
+    "id": "b987d6c9-accf-4c75-9955-d7dad8091e7c",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "முழங்கால் வலிக்கு நாற்காலி பயிற்சி காட்டினாங்க. அம்மா தினமும் பண்றாங்க",
+    "date": "2026-10-11T17:29:18.612Z",
+    "version": "3.35.0",
+    "userName": "Manisha Rane",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b987d6c9-accf-4c75-9955-d7dad8091e7c"
+  },
+  {
+    "id": "01a0290d-d438-4680-9eb0-955f2a74385e",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "good app",
+    "date": "2026-10-11T17:05:11.874Z",
+    "version": null,
+    "userName": "Nisan Ali",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=01a0290d-d438-4680-9eb0-955f2a74385e"
+  },
+  {
+    "id": "9d4617bb-f070-4717-a172-d4f249548068",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "நீர் சுத்திகரிப்பு இயந்திரம் வெச்சு இருபது ரூபாய் கேன் வியாபாரம் ரொம்ப நல்லா இருக்கு. நன்றி.",
+    "date": "2026-10-11T15:31:08.280Z",
+    "version": "3.35.0",
+    "userName": "Ganesh Rane",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9d4617bb-f070-4717-a172-d4f249548068"
+  },
+  {
+    "id": "c76933e0-e28e-4a62-9039-1646c9084bd2",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 1,
+    "title": null,
+    "text": "tetap app",
+    "date": "2026-10-11T13:49:04.146Z",
+    "version": null,
+    "userName": "Sameer Khan",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c76933e0-e28e-4a62-9039-1646c9084bd2"
+  },
+  {
+    "id": "603845ea-570c-4766-99fd-c754dc4cba2a",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "kuch kah nahi sakta",
+    "date": "2026-10-11T08:01:30.549Z",
+    "version": "3.35.0",
+    "userName": "Shivam Bansal",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=603845ea-570c-4766-99fd-c754dc4cba2a"
+  },
+  {
+    "id": "cc4b48fe-f19c-4419-84bd-b08e89d81479",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 2,
+    "title": null,
+    "text": "The app is useful for trading and investing, but why does it need to be updated every month? I am unable to access the application for my current positions, which I hold until the next expiry, because of ongoing updates. When the upgrade arrived, it was the main problem. in travel we've only access our trading updates over the phone. We received an update on Upstox at that very moment, but we are unable to download it because of storage problems or other problems. and this causes my investments.",
+    "date": "2026-10-11T08:00:38.847Z",
+    "version": "3.35.0",
+    "userName": "Pratik Kamble",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=cc4b48fe-f19c-4419-84bd-b08e89d81479"
+  },
+  {
+    "id": "72f4acd5-2af3-4b5c-aba6-587b34b8cc8b",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "very very nice app",
+    "date": "2026-10-11T05:59:07.470Z",
+    "version": "3.36.0",
+    "userName": "Ram Yadav",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=72f4acd5-2af3-4b5c-aba6-587b34b8cc8b"
+  },
+  {
+    "id": "65f8b11f-ae5f-4482-95db-7c300c4a8e23",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "best apps 👌 🙌",
+    "date": "2026-10-11T05:31:51.790Z",
+    "version": "3.35.0",
+    "userName": "GOPA RAM",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=65f8b11f-ae5f-4482-95db-7c300c4a8e23"
+  },
+  {
+    "id": "b9bb2f7e-5ef6-40a6-ac0d-b9b76ca81ec3",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "password",
+    "date": "2026-10-11T03:44:04.816Z",
+    "version": null,
+    "userName": "Pranshu",
+    "thumbsUp": 0,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b9bb2f7e-5ef6-40a6-ac0d-b9b76ca81ec3"
+  },
+  {
+    "id": "162e15b0-9e59-48a0-88e3-f332bfbcc100",
+    "platform": "play",
+    "appName": "Upstox",
+    "rating": 5,
+    "title": null,
+    "text": "Please approve add to basket option from option chain directly. and add p and l exit always in strategy even though i removed some legs....",
+    "date": "2026-10-11T02:49:51.398Z",
+    "version": "3.36.0",
+    "userName": "balu mahendra",
+    "thumbsUp": 1,
+    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=162e15b0-9e59-48a0-88e3-f332bfbcc100"
+  },
+  {
     "id": "e3fde6c2-f37a-471a-a442-0243c6f114cc",
     "platform": "play",
     "appName": "Upstox",
@@ -22,21 +1595,8 @@
     "date": "2026-10-10T17:18:31.827Z",
     "version": "3.36.0",
     "userName": "hansraj agarwal",
-    "thumbsUp": 0,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=82152327-dcc3-4595-af8b-09b9bd5a2488"
-  },
-  {
-    "id": "8db32026-23c3-4327-9adb-4fc3a46114f4",
-    "platform": "play",
-    "appName": "Upstox",
-    "rating": 1,
-    "title": null,
-    "text": "Annual maintenance Charge !!!!!!!!! Upstox 300 + GST Groww 0 Zerodha 0 Trading costs are also high. Just think... TBT is just for the namesake. nobody is making money because of so called TBT dear. also please check with brokerage calculator, grow is much lower than upstox. I checked myself dear. don't fall for this...",
-    "date": "2026-10-10T15:13:19.340Z",
-    "version": "3.35.0",
-    "userName": "jaganth chandran.c.r",
-    "thumbsUp": 1,
-    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8db32026-23c3-4327-9adb-4fc3a46114f4"
   },
   {
     "id": "8557cd14-cf34-4c06-9c88-7489632760cd",
@@ -165,7 +1725,7 @@
     "date": "2026-10-09T18:09:16.753Z",
     "version": "3.36.0",
     "userName": "Pankaj Saraf",
-    "thumbsUp": 0,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=d03661bd-b8d0-4703-9075-a7600e3f9e82"
   },
   {
@@ -295,7 +1855,7 @@
     "date": "2026-10-09T08:27:51.693Z",
     "version": "3.35.0",
     "userName": "NARSINGH NARAYAN GAUTAM",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=62a658d3-b2e6-4d3d-abca-a8373a2a0f13"
   },
   {
@@ -607,7 +2167,7 @@
     "date": "2026-10-08T00:07:10.211Z",
     "version": "3.35.0",
     "userName": "Malepati Varaprasad",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=235927ec-0751-4b09-99ac-88ec2ca58cd4"
   },
   {
@@ -789,7 +2349,7 @@
     "date": "2026-10-07T08:26:49.865Z",
     "version": null,
     "userName": "swadhin Mandal",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c699cafd-5a8e-4285-9fb9-9eef8988e9b9"
   },
   {
@@ -867,7 +2427,7 @@
     "date": "2026-10-07T04:58:13.680Z",
     "version": "3.35.0",
     "userName": "Prasanna K",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b6b80831-e183-4319-9430-6d41d8320aea"
   },
   {
@@ -2401,7 +3961,7 @@
     "date": "2026-10-02T09:42:18.540Z",
     "version": "3.35.0",
     "userName": "Deepa Rani",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a861e07c-03a2-4e69-aed0-dfae89d2daac"
   },
   {
@@ -3181,7 +4741,7 @@
     "date": "2026-09-30T03:23:43.802Z",
     "version": "3.34.0",
     "userName": "Amir Khan",
-    "thumbsUp": 2,
+    "thumbsUp": 5,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a05308d9-1c36-4130-aa54-72a28ca1d6b6"
   },
   {
@@ -3285,7 +4845,7 @@
     "date": "2026-09-29T18:26:06.598Z",
     "version": "3.34.0",
     "userName": "Smeet Sachade",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=5562546b-82dd-4f8e-8ba5-88e99002fd64"
   },
   {
@@ -3402,7 +4962,7 @@
     "date": "2026-09-29T08:43:23.819Z",
     "version": "3.34.0",
     "userName": "surya tej",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0066efee-2c52-46e1-9074-bbbda0b76e95"
   },
   {
@@ -4520,7 +6080,7 @@
     "date": "2026-09-26T19:17:53.399Z",
     "version": "3.33.0",
     "userName": "Bab You",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c3ac5563-5e99-4cc2-9d61-dfd6eaa720da"
   },
   {
@@ -7029,7 +8589,7 @@
     "date": "2026-09-18T11:50:00.208Z",
     "version": "3.34.0",
     "userName": "Stamp raveendran27",
-    "thumbsUp": 9,
+    "thumbsUp": 13,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=5a273334-7d80-4a01-9a0c-c1b13cc76a2f"
   },
   {
@@ -7068,7 +8628,7 @@
     "date": "2026-09-18T09:45:52.935Z",
     "version": "3.31.2",
     "userName": "anand bhatt",
-    "thumbsUp": 5,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9a053475-3dfa-4a05-8758-49320def7890"
   },
   {
@@ -7133,7 +8693,7 @@
     "date": "2026-09-18T07:50:23.809Z",
     "version": "3.33.0",
     "userName": "Ayush Jain",
-    "thumbsUp": 6,
+    "thumbsUp": 16,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=f3454915-0fb4-47dc-8326-dedab44ac98b"
   },
   {
@@ -7198,7 +8758,7 @@
     "date": "2026-09-18T05:41:23.644Z",
     "version": "3.34.0",
     "userName": "Dharmesh Morabiya",
-    "thumbsUp": 3,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=4f90d06c-f523-405a-8ee8-a34d832f7269"
   },
   {
@@ -7237,7 +8797,7 @@
     "date": "2026-09-18T05:09:32.323Z",
     "version": "3.34.0",
     "userName": "prasanna chari",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=70fe6e9c-b910-4766-a479-1d001a38e5d5"
   },
   {
@@ -7263,7 +8823,7 @@
     "date": "2026-09-18T04:20:49.633Z",
     "version": "3.34.0",
     "userName": "Kuldeep Kumar",
-    "thumbsUp": 4,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b8d47b6a-0815-4855-a166-67ea5f642d23"
   },
   {
@@ -7367,7 +8927,7 @@
     "date": "2026-09-17T16:40:22.255Z",
     "version": "3.34.0",
     "userName": "Vetrivel S",
-    "thumbsUp": 5,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9a5cb2aa-e337-4f10-98a1-dfdfe3c8c5e4"
   },
   {
@@ -7393,7 +8953,7 @@
     "date": "2026-09-17T16:01:17.951Z",
     "version": "3.34.0",
     "userName": "Habibullah Khan",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=02fa693c-9f0c-4cfd-be76-9ef367910fec"
   },
   {
@@ -7601,7 +9161,7 @@
     "date": "2026-09-17T06:45:01.308Z",
     "version": "3.34.0",
     "userName": "Dr. Rohit Tanwar",
-    "thumbsUp": 6,
+    "thumbsUp": 49,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1171053a-c49a-41bd-8414-44f78170036c"
   },
   {
@@ -7640,7 +9200,7 @@
     "date": "2026-09-17T05:57:07.207Z",
     "version": "3.33.0",
     "userName": "Shyam Sundar Rao",
-    "thumbsUp": 0,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b68aa52d-9563-4b82-a84f-09e5a7b40ce0"
   },
   {
@@ -7692,7 +9252,7 @@
     "date": "2026-09-17T04:43:44.759Z",
     "version": "3.33.0",
     "userName": "Rajesh Kumar",
-    "thumbsUp": 9,
+    "thumbsUp": 10,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=595f0ab9-6c78-4dda-a946-87d3202bb267"
   },
   {
@@ -7731,7 +9291,7 @@
     "date": "2026-09-17T03:45:51.982Z",
     "version": "3.33.0",
     "userName": "Rohit Kumar Rabha",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=110b61d4-117a-4bd1-b48c-d205ab920d09"
   },
   {
@@ -7757,7 +9317,7 @@
     "date": "2026-09-17T03:37:08.660Z",
     "version": "3.33.0",
     "userName": "Geeta P",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=e9b9547e-ede0-4f89-afbe-9f498b64bc5c"
   },
   {
@@ -7809,7 +9369,7 @@
     "date": "2026-09-17T02:59:54.566Z",
     "version": "3.34.0",
     "userName": "Xavier The X-Men",
-    "thumbsUp": 12,
+    "thumbsUp": 16,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=d1bcb836-858a-4647-b801-2faf9e4dc2db"
   },
   {
@@ -8069,7 +9629,7 @@
     "date": "2026-09-16T07:16:14.904Z",
     "version": "3.34.0",
     "userName": "Prachi Gupta",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=e9d04c27-3630-4c68-8049-f168e37eb0e0"
   },
   {
@@ -8095,7 +9655,7 @@
     "date": "2026-09-16T05:21:43.284Z",
     "version": "3.33.0",
     "userName": "Ashutosh Kumar Thakur",
-    "thumbsUp": 5,
+    "thumbsUp": 16,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=ae47314e-eef8-4d2a-8822-114947d23d90"
   },
   {
@@ -8160,7 +9720,7 @@
     "date": "2026-09-16T03:09:28.213Z",
     "version": "3.33.0",
     "userName": "kalpesh prajapati 1314",
-    "thumbsUp": 5,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=34df1289-0db7-4ba4-a941-6b79c95fe937"
   },
   {
@@ -8238,7 +9798,7 @@
     "date": "2026-09-15T12:49:10.628Z",
     "version": "3.34.0",
     "userName": "Rajani Ravindran",
-    "thumbsUp": 169,
+    "thumbsUp": 170,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8f97223c-7d25-4d59-8c8d-2d5bac39539c"
   },
   {
@@ -8303,7 +9863,7 @@
     "date": "2026-09-15T06:30:06.376Z",
     "version": "3.33.0",
     "userName": "Ajay Bhawsagar",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=094e0be1-174e-4084-8e8d-6d0e096859c3"
   },
   {
@@ -8316,7 +9876,7 @@
     "date": "2026-09-15T06:20:42.442Z",
     "version": "3.33.0",
     "userName": "Alan binu",
-    "thumbsUp": 8,
+    "thumbsUp": 13,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=436794c9-fece-417d-a439-a63f3a28c6e4"
   },
   {
@@ -8394,7 +9954,7 @@
     "date": "2026-09-15T04:18:26.726Z",
     "version": "3.33.0",
     "userName": "sagar shelke",
-    "thumbsUp": 5,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0d70110e-ec2c-4e5f-ae37-37222b4af5aa"
   },
   {
@@ -8498,7 +10058,7 @@
     "date": "2026-09-15T03:01:56.461Z",
     "version": "3.33.0",
     "userName": "Ansza",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=dacc86f9-39ab-47bf-b07f-d3a948f93b3a"
   },
   {
@@ -8602,7 +10162,7 @@
     "date": "2026-09-14T16:04:24.371Z",
     "version": "3.33.0",
     "userName": "Sukhman Singh",
-    "thumbsUp": 3,
+    "thumbsUp": 4,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7580f584-d9c5-4f54-b7d7-6265f1488045"
   },
   {
@@ -8680,7 +10240,7 @@
     "date": "2026-09-14T12:05:36.969Z",
     "version": "3.34.0",
     "userName": "Dhaval sardhara",
-    "thumbsUp": 5,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b6dec42c-fa5b-4579-9234-88fab9cc4baf"
   },
   {
@@ -8693,7 +10253,7 @@
     "date": "2026-09-14T09:04:53.863Z",
     "version": "3.33.0",
     "userName": "Manoranjan Samanta",
-    "thumbsUp": 3,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1b05d382-e96f-41df-afcd-b4a9831920ee"
   },
   {
@@ -8979,7 +10539,7 @@
     "date": "2026-09-11T19:55:30.969Z",
     "version": "3.33.0",
     "userName": "Sanket Jain",
-    "thumbsUp": 2,
+    "thumbsUp": 4,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7ca7c6f9-bc87-47d5-b763-0380663372a8"
   },
   {
@@ -9083,7 +10643,7 @@
     "date": "2026-09-11T11:33:46.800Z",
     "version": "3.34.0",
     "userName": "Hardeep Rameana",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=da51d3c4-19d0-4ea1-bed4-6bb2dabf6f0f"
   },
   {
@@ -9213,7 +10773,7 @@
     "date": "2026-09-11T00:39:56.307Z",
     "version": "3.33.0",
     "userName": "Anees Khan",
-    "thumbsUp": 7,
+    "thumbsUp": 11,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c58293cd-e4e0-4d4c-9d95-001e567ef7dd"
   },
   {
@@ -9373,19 +10933,6 @@
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c1a69b9a-26f5-4fbc-b704-9f81193bdd34"
   },
   {
-    "id": "162e15b0-9e59-48a0-88e3-f332bfbcc100",
-    "platform": "play",
-    "appName": "Upstox",
-    "rating": 5,
-    "title": null,
-    "text": "Please prove add to basket option from option chain directly.",
-    "date": "2026-09-10T09:25:09.398Z",
-    "version": "3.34.0",
-    "userName": "balu mahendra",
-    "thumbsUp": 0,
-    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=162e15b0-9e59-48a0-88e3-f332bfbcc100"
-  },
-  {
     "id": "0e976a46-6caf-4dd4-9057-9dc15f06ce83",
     "platform": "play",
     "appName": "Upstox",
@@ -9395,7 +10942,7 @@
     "date": "2026-09-10T08:26:11.405Z",
     "version": "3.33.0",
     "userName": "Souvik Banerjee",
-    "thumbsUp": 3,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0e976a46-6caf-4dd4-9057-9dc15f06ce83"
   },
   {
@@ -9421,7 +10968,7 @@
     "date": "2026-09-10T07:30:47.540Z",
     "version": "3.34.0",
     "userName": "Saurav . J . Bhardwaj",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1504b2fb-30da-4176-a11e-a32c1b88fb47"
   },
   {
@@ -9434,7 +10981,7 @@
     "date": "2026-09-10T07:21:45.824Z",
     "version": "3.34.0",
     "userName": "Abhishek Kumar",
-    "thumbsUp": 114,
+    "thumbsUp": 118,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1d95eb89-dec6-4cb6-8dd0-4212babcd876"
   },
   {
@@ -9486,7 +11033,7 @@
     "date": "2026-09-10T06:12:19.987Z",
     "version": "3.31.3",
     "userName": "Anshid",
-    "thumbsUp": 8,
+    "thumbsUp": 13,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=2d2977d3-9009-40ed-a2a6-d9a4655e8c15"
   },
   {
@@ -9681,7 +11228,7 @@
     "date": "2026-09-09T07:45:11.758Z",
     "version": "3.33.0",
     "userName": "Subhajit Bose",
-    "thumbsUp": 17,
+    "thumbsUp": 18,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=ce6f146e-fa04-4979-a0a7-62b4b42fc20d"
   },
   {
@@ -9720,7 +11267,7 @@
     "date": "2026-09-09T06:06:48.930Z",
     "version": "3.33.0",
     "userName": "Aman Pareek",
-    "thumbsUp": 33,
+    "thumbsUp": 35,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=4dd0e511-9fe8-4fbc-8f5a-7ceb467ef3cc"
   },
   {
@@ -9759,7 +11306,7 @@
     "date": "2026-09-09T05:04:55.551Z",
     "version": null,
     "userName": "ceyaam pink",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1f5b0f72-31ce-4b0d-ae10-8203c1431ec7"
   },
   {
@@ -9850,7 +11397,7 @@
     "date": "2026-09-08T20:31:10.225Z",
     "version": "3.33.0",
     "userName": "Vighneswar Subramanian",
-    "thumbsUp": 470,
+    "thumbsUp": 471,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=60d7df32-fc9b-4571-9b75-8824e92379d1"
   },
   {
@@ -9928,7 +11475,7 @@
     "date": "2026-09-08T13:43:12.959Z",
     "version": "3.33.0",
     "userName": "Amol Kashid",
-    "thumbsUp": 8,
+    "thumbsUp": 10,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b458fc92-d352-42a0-bca6-4b16f3fd3b05"
   },
   {
@@ -10006,7 +11553,7 @@
     "date": "2026-09-08T10:17:46.635Z",
     "version": "3.33.0",
     "userName": "Mistaf Laskar",
-    "thumbsUp": 3,
+    "thumbsUp": 4,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=f9c58029-c778-422a-8be1-bb4f54eedd31"
   },
   {
@@ -10032,7 +11579,7 @@
     "date": "2026-09-08T10:10:22.580Z",
     "version": "3.33.0",
     "userName": "Varusai Iqbal",
-    "thumbsUp": 4,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=dbc74dd5-893d-4e75-a9e4-0f438ca5423c"
   },
   {
@@ -10266,7 +11813,7 @@
     "date": "2026-09-07T16:50:08.446Z",
     "version": "3.33.0",
     "userName": "SivaG SSP",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=6d67a19a-0f0b-4f05-92aa-50f28ac03bd4"
   },
   {
@@ -10513,7 +12060,7 @@
     "date": "2026-09-06T19:22:26.207Z",
     "version": "3.31.2",
     "userName": "Viral Chothani",
-    "thumbsUp": 12,
+    "thumbsUp": 14,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=3ab1758e-6e3b-464b-9053-13068ef637d1"
   },
   {
@@ -10643,7 +12190,7 @@
     "date": "2026-09-06T09:37:51.875Z",
     "version": "3.31.2",
     "userName": "kishan bhalodiya",
-    "thumbsUp": 4,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b3d9d719-6881-4904-99fd-e3417208ea7a"
   },
   {
@@ -10955,7 +12502,7 @@
     "date": "2026-09-05T03:53:39.570Z",
     "version": "3.31.2",
     "userName": "Md Imtiyaz",
-    "thumbsUp": 7,
+    "thumbsUp": 8,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=569b5b76-e4c9-4f2e-bb30-08e8dca4deb2"
   },
   {
@@ -11319,7 +12866,7 @@
     "date": "2026-09-04T01:58:54.488Z",
     "version": "3.31.3",
     "userName": "mohasin21 haju",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1667845c-172b-4f30-bcae-c944b5d44cc0"
   },
   {
@@ -11449,7 +12996,7 @@
     "date": "2026-09-03T09:54:12.930Z",
     "version": "3.31.3",
     "userName": "ali bakrolwala",
-    "thumbsUp": 7,
+    "thumbsUp": 8,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a71c66d3-42d6-43ca-b929-13743221c63d"
   },
   {
@@ -11878,7 +13425,7 @@
     "date": "2026-09-02T04:12:59.925Z",
     "version": "3.33.0",
     "userName": "Maji Soumen",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=31481d33-67f8-4b1b-8420-c20b1191e51c"
   },
   {
@@ -12333,7 +13880,7 @@
     "date": "2026-09-01T03:13:49.723Z",
     "version": "3.31.3",
     "userName": "Indrajit De",
-    "thumbsUp": 8,
+    "thumbsUp": 9,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=32551cfd-d593-4fb9-9db8-7cc9d3e053b8"
   },
   {
@@ -12372,7 +13919,7 @@
     "date": "2026-08-31T17:37:39.796Z",
     "version": "3.31.3",
     "userName": "VASUDEVAN ERUGUR BHEEMA RAO",
-    "thumbsUp": 7,
+    "thumbsUp": 8,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=835c0cd9-6e0b-4d99-8439-35467282b9db"
   },
   {
@@ -12437,7 +13984,7 @@
     "date": "2026-08-31T10:37:00.237Z",
     "version": "3.27.0",
     "userName": "Darshiv Purohit",
-    "thumbsUp": 22,
+    "thumbsUp": 27,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=15507ce0-f90a-41b7-a5bd-1a16e624aeec"
   },
   {
@@ -12463,7 +14010,7 @@
     "date": "2026-08-31T09:46:26.364Z",
     "version": "3.31.3",
     "userName": "Basant Patel",
-    "thumbsUp": 5,
+    "thumbsUp": 8,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=6e58d34d-2633-4600-b88f-b4f1ca9e9091"
   },
   {
@@ -12502,7 +14049,7 @@
     "date": "2026-08-31T06:40:24.381Z",
     "version": "3.31.3",
     "userName": "Jaimon Panthananiyil",
-    "thumbsUp": 10,
+    "thumbsUp": 63,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=1b99f6af-a936-4ea3-8df6-f4bfe832e113"
   },
   {
@@ -12580,7 +14127,7 @@
     "date": "2026-08-31T03:53:23.495Z",
     "version": "3.31.3",
     "userName": "Krish Mohan",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=10bdf3f1-f874-4e83-b6fa-80f0cf441844"
   },
   {
@@ -12632,7 +14179,7 @@
     "date": "2026-08-31T01:59:25.776Z",
     "version": "3.31.3",
     "userName": "CA Nutalapati Praveen kumar",
-    "thumbsUp": 5,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7cbf8099-25f9-4359-8fba-1d435b08b65c"
   },
   {
@@ -12658,7 +14205,7 @@
     "date": "2026-08-30T13:51:36.370Z",
     "version": "3.31.3",
     "userName": "ASWIN A",
-    "thumbsUp": 3,
+    "thumbsUp": 4,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7a705bc7-3bdd-462d-a65d-cfcd8093d17f"
   },
   {
@@ -12788,7 +14335,7 @@
     "date": "2026-08-29T12:51:03.507Z",
     "version": "3.31.3",
     "userName": "Zoha Khan",
-    "thumbsUp": 4,
+    "thumbsUp": 5,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=17e03359-3dfd-44ff-9e01-58404dcdd5b2"
   },
   {
@@ -12866,7 +14413,7 @@
     "date": "2026-08-29T07:30:06.840Z",
     "version": "3.31.3",
     "userName": "sk sunil",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=bb51be45-5f0b-4db9-a708-bc00f53e3599"
   },
   {
@@ -12892,7 +14439,7 @@
     "date": "2026-08-29T06:45:31.603Z",
     "version": "3.31.3",
     "userName": "Deepak Kumar",
-    "thumbsUp": 11,
+    "thumbsUp": 13,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b891d57f-18f8-4f48-b54f-b2127a3dbc69"
   },
   {
@@ -12944,7 +14491,7 @@
     "date": "2026-08-28T11:31:27.134Z",
     "version": "3.31.3",
     "userName": "venkatesh talluri",
-    "thumbsUp": 3,
+    "thumbsUp": 4,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a6cb2e43-21d3-465d-a666-9ca373b0ed1d"
   },
   {
@@ -13165,7 +14712,7 @@
     "date": "2026-08-27T22:58:08.151Z",
     "version": "3.31.3",
     "userName": "Vijay Thaokar",
-    "thumbsUp": 4,
+    "thumbsUp": 5,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=530c832d-14eb-44f8-b863-f18b131d3e3f"
   },
   {
@@ -13477,7 +15024,7 @@
     "date": "2026-08-26T17:14:47.161Z",
     "version": "3.31.2",
     "userName": "Rakesh Vishwakarma",
-    "thumbsUp": 8,
+    "thumbsUp": 9,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=681873ff-1398-4fa2-8094-85c0b55188a0"
   },
   {
@@ -13568,7 +15115,7 @@
     "date": "2026-08-26T13:07:03.983Z",
     "version": "3.31.2",
     "userName": "Ankush Sahu",
-    "thumbsUp": 9,
+    "thumbsUp": 11,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9be4b9b7-f4e7-438a-9f0b-2fa1ccdcbeca"
   },
   {
@@ -13802,7 +15349,7 @@
     "date": "2026-08-26T03:56:55.682Z",
     "version": null,
     "userName": "BENTHUNGO shitiri",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=960c912c-0862-470b-ae45-d73435de20a5"
   },
   {
@@ -14049,7 +15596,7 @@
     "date": "2026-08-25T08:51:16.598Z",
     "version": "3.31.2",
     "userName": "AMaL",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8b0501d5-1a1d-450e-bf0f-41f7c0f897cb"
   },
   {
@@ -14439,7 +15986,7 @@
     "date": "2026-08-24T14:16:53.360Z",
     "version": "3.31.2",
     "userName": "Kapil Rabade",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=035cba6a-20b5-4b67-ac04-7bdfd6d71c54"
   },
   {
@@ -14491,7 +16038,7 @@
     "date": "2026-08-24T12:32:03.120Z",
     "version": "3.31.2",
     "userName": "kethan rawal",
-    "thumbsUp": 33,
+    "thumbsUp": 34,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=d2c1865c-4206-45c3-b424-24db197dc350"
   },
   {
@@ -14699,7 +16246,7 @@
     "date": "2026-08-24T06:16:44.340Z",
     "version": "3.31.2",
     "userName": "Saurabh Ajmera",
-    "thumbsUp": 11,
+    "thumbsUp": 12,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=72aee771-0989-4b7e-ba3f-6c9ace24340f"
   },
   {
@@ -15674,7 +17221,7 @@
     "date": "2026-08-21T06:34:54.350Z",
     "version": "3.31.2",
     "userName": "Labesh Kale",
-    "thumbsUp": 16,
+    "thumbsUp": 74,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9aa90121-2965-4981-ac5c-f83eb7d39e15"
   },
   {
@@ -15791,7 +17338,7 @@
     "date": "2026-08-21T04:53:59.345Z",
     "version": "3.31.2",
     "userName": "Abdul Gani",
-    "thumbsUp": 7,
+    "thumbsUp": 8,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8aef6c12-8cc3-4049-ac65-d43544329fff"
   },
   {
@@ -16116,7 +17663,7 @@
     "date": "2026-08-19T22:28:10.220Z",
     "version": "3.31.1",
     "userName": "sivaram",
-    "thumbsUp": 10,
+    "thumbsUp": 11,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7b92ee7f-a8dd-45c6-afdd-c2d3e03c517b"
   },
   {
@@ -16129,7 +17676,7 @@
     "date": "2026-08-19T19:13:01.662Z",
     "version": "3.31.1",
     "userName": "Periyasamy R",
-    "thumbsUp": 8,
+    "thumbsUp": 9,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9f9f4a0a-d168-41f5-ad82-ad4d698533c3"
   },
   {
@@ -16181,7 +17728,7 @@
     "date": "2026-08-19T14:58:44.630Z",
     "version": "3.31.1",
     "userName": "Vikas T V",
-    "thumbsUp": 19,
+    "thumbsUp": 20,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=6a9c98ae-8d9a-43bd-a4e6-38a2991da4c2"
   },
   {
@@ -16207,7 +17754,7 @@
     "date": "2026-08-19T13:29:08.853Z",
     "version": null,
     "userName": "Shawan Mattu",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=d52290f1-dd2e-4a40-a6d4-8baa29f99410"
   },
   {
@@ -16220,7 +17767,7 @@
     "date": "2026-08-19T13:21:01.640Z",
     "version": "3.31.1",
     "userName": "Dheeraj kumar",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b4aa88e2-692d-4e2b-ad15-776b94bcc50b"
   },
   {
@@ -16233,7 +17780,7 @@
     "date": "2026-08-19T12:41:50.961Z",
     "version": "3.31.2",
     "userName": "PRITHIVI RAJAN",
-    "thumbsUp": 15,
+    "thumbsUp": 17,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=27541106-6c0e-4ec6-9f3c-04ce6f9bb2c3"
   },
   {
@@ -16428,7 +17975,7 @@
     "date": "2026-08-19T05:08:01.409Z",
     "version": "3.31.1",
     "userName": "OhO Business",
-    "thumbsUp": 11,
+    "thumbsUp": 13,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=04d25d80-0a10-484d-b041-1e12bfa128d4"
   },
   {
@@ -16558,7 +18105,7 @@
     "date": "2026-08-18T15:02:53.657Z",
     "version": "3.31.1",
     "userName": "shashank c shet",
-    "thumbsUp": 4,
+    "thumbsUp": 5,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0e2e3b86-6b9f-41f0-b64b-0113a7b84ad9"
   },
   {
@@ -16597,7 +18144,7 @@
     "date": "2026-08-18T12:26:44.347Z",
     "version": "3.31.1",
     "userName": "Shreekant Gondane",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=86e0572f-6478-4a31-bb39-8432c12c7c07"
   },
   {
@@ -16662,7 +18209,7 @@
     "date": "2026-08-18T09:36:16.909Z",
     "version": "3.31.1",
     "userName": "interesting things",
-    "thumbsUp": 4,
+    "thumbsUp": 5,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=0b6f64fd-3a3d-48e2-acb5-6852343edfee"
   },
   {
@@ -16740,7 +18287,7 @@
     "date": "2026-08-18T06:45:36.746Z",
     "version": "3.29.0",
     "userName": "Krishnalal GS",
-    "thumbsUp": 14,
+    "thumbsUp": 17,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=62a7297d-40b2-436d-a3a5-b58229dee263"
   },
   {
@@ -16961,7 +18508,7 @@
     "date": "2026-08-17T14:54:13.507Z",
     "version": "3.31.1",
     "userName": "Dillip Mohapatra",
-    "thumbsUp": 32,
+    "thumbsUp": 33,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=18d75cfe-e6fa-4cb4-b2a2-ef354d08be3d"
   },
   {
@@ -16987,7 +18534,7 @@
     "date": "2026-08-17T13:27:24.822Z",
     "version": "3.31.1",
     "userName": "MONO BHAI YT",
-    "thumbsUp": 4,
+    "thumbsUp": 5,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=d2b554db-146f-47a5-b8ec-385b4694b6a5"
   },
   {
@@ -17234,7 +18781,7 @@
     "date": "2026-08-16T18:07:26.230Z",
     "version": "3.31.0",
     "userName": "Abhishek Mukherjee",
-    "thumbsUp": 8,
+    "thumbsUp": 9,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7b407c1a-4756-4b7b-94ee-f01ecc6c244a"
   },
   {
@@ -17416,7 +18963,7 @@
     "date": "2026-08-16T07:21:21.292Z",
     "version": "3.31.0",
     "userName": "Souvik Das",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=057bf9a7-b4c6-4fc4-b50f-df8fee7e9c9e"
   },
   {
@@ -17507,7 +19054,7 @@
     "date": "2026-08-15T23:00:23.176Z",
     "version": "3.31.0",
     "userName": "Mr Jayasankar",
-    "thumbsUp": 7,
+    "thumbsUp": 9,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=bb3a9c6d-c65f-4b19-8840-8597ba72af47"
   },
   {
@@ -17637,7 +19184,7 @@
     "date": "2026-08-15T07:07:02.880Z",
     "version": "3.31.0",
     "userName": "Hemant Kumar",
-    "thumbsUp": 16,
+    "thumbsUp": 23,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8bd7f57c-cea0-4d7e-ad2d-3f43c0075191"
   },
   {
@@ -17988,7 +19535,7 @@
     "date": "2026-08-14T05:28:07.450Z",
     "version": "3.29.0",
     "userName": "Rushikesh Bothikar",
-    "thumbsUp": 3,
+    "thumbsUp": 4,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=be103ada-3a2d-4c79-acfd-3f9c22ddf130"
   },
   {
@@ -18027,7 +19574,7 @@
     "date": "2026-08-14T04:08:36.774Z",
     "version": null,
     "userName": "Karan Rawat",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=95bea5c4-9abe-4f5d-9dff-ad3b13ab4479"
   },
   {
@@ -18222,7 +19769,7 @@
     "date": "2026-08-13T11:04:44.732Z",
     "version": "3.29.0",
     "userName": "Deep Singh",
-    "thumbsUp": 4,
+    "thumbsUp": 5,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=dd0a1ac4-c5f1-4e36-9fc6-c5bd18387fd5"
   },
   {
@@ -18261,7 +19808,7 @@
     "date": "2026-08-13T06:35:34.670Z",
     "version": "3.30.0",
     "userName": "Rajiv Kumar Sharma",
-    "thumbsUp": 7,
+    "thumbsUp": 8,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=f092ce3f-ccc7-4815-ac5e-9fc2a17ddcb6"
   },
   {
@@ -18729,7 +20276,7 @@
     "date": "2026-08-11T13:57:08.989Z",
     "version": "3.30.0",
     "userName": "virendra jain",
-    "thumbsUp": 6,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=69bd58c5-7901-499f-9620-67ab7e4bfd8d"
   },
   {
@@ -18833,7 +20380,7 @@
     "date": "2026-08-11T09:24:21.944Z",
     "version": "3.30.0",
     "userName": "GLIFFORD KUMAR",
-    "thumbsUp": 13,
+    "thumbsUp": 15,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=dfd5c101-7d1d-414a-9d96-f3c354c2e279"
   },
   {
@@ -18872,7 +20419,7 @@
     "date": "2026-08-11T06:46:46.600Z",
     "version": "3.31.0",
     "userName": "Gayatri Mukherjee",
-    "thumbsUp": 12,
+    "thumbsUp": 13,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7f271bb6-ad75-4850-909e-084a28c61cf8"
   },
   {
@@ -18924,7 +20471,7 @@
     "date": "2026-08-11T02:08:39.656Z",
     "version": "3.29.0",
     "userName": "mangesh gadge",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=cddc846c-56d4-4540-b0cc-874d3d409890"
   },
   {
@@ -18976,7 +20523,7 @@
     "date": "2026-08-10T15:16:10.293Z",
     "version": "3.31.0",
     "userName": "Capt.Sandeep Fernandes",
-    "thumbsUp": 11,
+    "thumbsUp": 13,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=db8c7ca0-60aa-4185-89bb-ec10999bdad2"
   },
   {
@@ -19119,7 +20666,7 @@
     "date": "2026-08-10T05:35:49.785Z",
     "version": "3.30.0",
     "userName": "Shinu . P",
-    "thumbsUp": 6,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=425b6a38-dcc2-42f3-8b26-d699b09a0504"
   },
   {
@@ -19236,7 +20783,7 @@
     "date": "2026-08-09T17:23:18.629Z",
     "version": "3.29.0",
     "userName": "manan dave",
-    "thumbsUp": 3,
+    "thumbsUp": 4,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=9cc0ce0a-058a-42ff-b9cd-f04ba013001e"
   },
   {
@@ -19288,7 +20835,7 @@
     "date": "2026-08-09T10:05:36.895Z",
     "version": "3.31.0",
     "userName": "Jerrel TonyManuel",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=de5edf41-f7e4-4d02-9c13-fa7a79ff6731"
   },
   {
@@ -19327,7 +20874,7 @@
     "date": "2026-08-09T04:14:42.236Z",
     "version": "3.31.0",
     "userName": "Sainath Patel",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=22b5a13b-eff9-49d0-8705-a4be8cd42afc"
   },
   {
@@ -19431,7 +20978,7 @@
     "date": "2026-08-07T17:42:48.940Z",
     "version": null,
     "userName": "Sumathi Thangavelu",
-    "thumbsUp": 0,
+    "thumbsUp": 1,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=67e4338e-bbc5-4703-b0d3-22c44c9c92cf"
   },
   {
@@ -19522,7 +21069,7 @@
     "date": "2026-08-07T04:23:22.241Z",
     "version": "3.31.0",
     "userName": "kuldeep",
-    "thumbsUp": 13,
+    "thumbsUp": 14,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=93c56631-0c30-4f43-9d60-897b8ec612b1"
   },
   {
@@ -19587,7 +21134,7 @@
     "date": "2026-08-06T16:46:12.985Z",
     "version": "3.29.0",
     "userName": "sharath s",
-    "thumbsUp": 8,
+    "thumbsUp": 9,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=2089fdef-0d0b-43ff-b77b-68cc288b819e"
   },
   {
@@ -19600,7 +21147,7 @@
     "date": "2026-08-06T15:18:37.610Z",
     "version": "3.31.0",
     "userName": "Balachandra bhat",
-    "thumbsUp": 8,
+    "thumbsUp": 10,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=10b4a309-3d70-4dc0-aebd-012ab2f107fe"
   },
   {
@@ -19704,7 +21251,7 @@
     "date": "2026-08-06T07:10:05.890Z",
     "version": "3.30.0",
     "userName": "Naman Singhal",
-    "thumbsUp": 14,
+    "thumbsUp": 23,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b1009ecc-6bcb-45bf-955b-5d950e46f37f"
   },
   {
@@ -19730,7 +21277,7 @@
     "date": "2026-08-06T06:58:02.515Z",
     "version": "3.30.0",
     "userName": "harish kumar",
-    "thumbsUp": 5,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=62bef03e-c6fe-464e-b771-1eb0833fb969"
   },
   {
@@ -19769,7 +21316,7 @@
     "date": "2026-08-06T05:57:15.943Z",
     "version": "3.30.0",
     "userName": "Dhiraj Kapuriya",
-    "thumbsUp": 5,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=86f848fb-478d-43b3-a5b2-ae2cfade4d9c"
   },
   {
@@ -20354,7 +21901,7 @@
     "date": "2026-08-04T07:09:56.394Z",
     "version": "3.29.0",
     "userName": "GAURAV-555",
-    "thumbsUp": 6,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b586a7d0-92b7-4549-844e-b44fca1cf69f"
   },
   {
@@ -20497,7 +22044,7 @@
     "date": "2026-08-03T15:03:27.987Z",
     "version": "3.30.0",
     "userName": "Vinay Prakash",
-    "thumbsUp": 13,
+    "thumbsUp": 14,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=36ce6452-2e00-41dc-8802-44935c16bd9b"
   },
   {
@@ -20822,7 +22369,7 @@
     "date": "2026-08-02T16:29:46.477Z",
     "version": "3.30.0",
     "userName": "MUTHUKUMAR S",
-    "thumbsUp": 15,
+    "thumbsUp": 18,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=d011f2f8-cc3c-4e90-96f6-b902659f3dc4"
   },
   {
@@ -20835,7 +22382,7 @@
     "date": "2026-08-02T15:16:09.473Z",
     "version": "3.30.0",
     "userName": "Sehlab Khan",
-    "thumbsUp": 10,
+    "thumbsUp": 11,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=91f765c6-eb6c-459a-ad5f-c94682b86a04"
   },
   {
@@ -20887,7 +22434,7 @@
     "date": "2026-08-02T06:22:13.104Z",
     "version": "3.30.0",
     "userName": "Amit Kumar",
-    "thumbsUp": 20,
+    "thumbsUp": 22,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=277e0d47-0eb5-46ec-9d71-8ebc0be2760e"
   },
   {
@@ -20900,7 +22447,7 @@
     "date": "2026-08-02T05:54:10.314Z",
     "version": "3.30.0",
     "userName": "d f raju",
-    "thumbsUp": 5,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=b881075b-e289-4d07-868e-31f7eb8e4c35"
   },
   {
@@ -20926,7 +22473,7 @@
     "date": "2026-08-01T18:58:10.940Z",
     "version": "3.30.0",
     "userName": "Mohit Sankhla",
-    "thumbsUp": 17,
+    "thumbsUp": 18,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=7dd6fe0c-ea6c-4bea-af49-04124300a6af"
   },
   {
@@ -21225,7 +22772,7 @@
     "date": "2026-07-31T11:08:03.400Z",
     "version": "3.29.0",
     "userName": "Bad boy",
-    "thumbsUp": 7,
+    "thumbsUp": 8,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=971a870b-1f29-4740-b4e6-918556f7a0fb"
   },
   {
@@ -21342,7 +22889,7 @@
     "date": "2026-07-31T06:28:01.558Z",
     "version": "3.29.0",
     "userName": "HariKrishna Faldu",
-    "thumbsUp": 6,
+    "thumbsUp": 7,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a75e63f2-ea9c-42ae-86a0-7425bfdfba1e"
   },
   {
@@ -21368,7 +22915,7 @@
     "date": "2026-07-31T05:58:07.720Z",
     "version": "3.29.0",
     "userName": "Anup Mandal",
-    "thumbsUp": 1,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a37fad6e-ab99-4112-910b-e9290db085dd"
   },
   {
@@ -21446,7 +22993,7 @@
     "date": "2026-07-30T18:24:22.362Z",
     "version": "3.29.0",
     "userName": "Rupam Karmahapatra",
-    "thumbsUp": 3,
+    "thumbsUp": 4,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=f4f8bf83-a7dc-411c-bbf9-a76f1298dab3"
   },
   {
@@ -21576,7 +23123,7 @@
     "date": "2026-07-30T11:26:02.391Z",
     "version": "3.29.0",
     "userName": "atul gupta",
-    "thumbsUp": 15,
+    "thumbsUp": 16,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=29995f77-0558-41b9-b2b7-2b7112e67010"
   },
   {
@@ -21589,7 +23136,7 @@
     "date": "2026-07-30T11:21:27.935Z",
     "version": "3.29.0",
     "userName": "Vivek Jain",
-    "thumbsUp": 16,
+    "thumbsUp": 17,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a1232243-061b-4eb5-8ab6-c7b3d66afb71"
   },
   {
@@ -21927,7 +23474,7 @@
     "date": "2026-07-29T07:31:41.813Z",
     "version": "3.28.0",
     "userName": "garud bhavesh",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=92727f12-e34a-45c5-997b-76f9cd194353"
   },
   {
@@ -22148,7 +23695,7 @@
     "date": "2026-07-28T17:06:05.980Z",
     "version": "3.29.0",
     "userName": "Manu M",
-    "thumbsUp": 5,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=62072701-cb86-4b74-8db5-bb42a79104f7"
   },
   {
@@ -22278,7 +23825,7 @@
     "date": "2026-07-28T04:32:11.440Z",
     "version": "3.28.0",
     "userName": "subramani ivs",
-    "thumbsUp": 2,
+    "thumbsUp": 3,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=a07dba5f-ddd8-4230-932f-74bfc47281df"
   },
   {
@@ -22382,7 +23929,7 @@
     "date": "2026-07-27T16:09:10.727Z",
     "version": "3.28.0",
     "userName": "selva` kumar",
-    "thumbsUp": 5,
+    "thumbsUp": 6,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=6d24d0e8-4096-4afd-8e06-ac53da2d499d"
   },
   {
@@ -22408,7 +23955,7 @@
     "date": "2026-07-27T10:22:00.100Z",
     "version": "3.28.0",
     "userName": "Hemsagar Dewangan",
-    "thumbsUp": 1,
+    "thumbsUp": 2,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=2b6c82fd-6a78-4e8b-80bf-43850961d828"
   },
   {
@@ -22460,7 +24007,7 @@
     "date": "2026-07-27T07:37:51.289Z",
     "version": "3.29.0",
     "userName": "Faizan Ansari",
-    "thumbsUp": 7,
+    "thumbsUp": 8,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=deaaec73-a1c7-4c0f-88d9-83e8f0fc7796"
   },
   {
@@ -26492,19 +28039,6 @@
     "userName": "Krupanand Mailapalli",
     "thumbsUp": 0,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=c33d3448-388a-4bbb-aba6-807760dbf504"
-  },
-  {
-    "id": "26852e98-d693-43aa-9077-3cd7249e97cd",
-    "platform": "play",
-    "appName": "Upstox",
-    "rating": 5,
-    "title": null,
-    "text": "overall app is good and smooth but 1.add exit at market price after stoploss in order section, postion section and chart and add show position on chart 2. add tab option window in chart for multiple chart like dhan & other app 3. web terminal scalper window small size like dhan & other",
-    "date": "2026-07-14T10:09:48.415Z",
-    "version": "3.28.0",
-    "userName": "rajesh kumar",
-    "thumbsUp": 4,
-    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=26852e98-d693-43aa-9077-3cd7249e97cd"
   },
   {
     "id": "ef5d53fd-0e19-4eec-9e87-983e084235b5",
@@ -30886,19 +32420,6 @@
     "userName": "Barny Weasley",
     "thumbsUp": 0,
     "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=aa2c4724-7467-4f61-9927-3e0696868586"
-  },
-  {
-    "id": "8fd8945e-b1c2-4ea6-af6c-5ded15b5e55c",
-    "platform": "play",
-    "appName": "Upstox",
-    "rating": 1,
-    "title": null,
-    "text": "upstox charged amc of 2025-26 & upcoming 2026-27 even if when i opened my account it said lifetime free & also it didn't send any mail stating it will charge and now when i said i want to close this account so remove the amc of 2026-27 which i will not be using then the customer care is saying i have to pay it amc is irreversible. this is the worst app you can use and they only want to harass customer and loot money in one way or other,also upstox didn't even send email or msg that amc deduct",
-    "date": "2026-07-01T09:42:35.190Z",
-    "version": "3.26.0",
-    "userName": "Rohit",
-    "thumbsUp": 3,
-    "url": "https://play.google.com/store/apps/details?id=in.upstox.app&reviewId=8fd8945e-b1c2-4ea6-af6c-5ded15b5e55c"
   },
   {
     "id": "98bbbdd0-4f34-4062-835e-937c8c228dd0",
