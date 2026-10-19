@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T05:16:35.614Z",
+  "generatedAt": "2026-10-19T05:30:07.037Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -16,18 +16,18 @@
       "platforms": [
         {
           "platform": "play",
-          "totalReviews": 1817,
+          "totalReviews": 1818,
           "avgRating": 3.61,
           "avgTextSentiment": 0.645,
           "ratingDistribution": {
             "1": 550,
             "2": 31,
             "3": 55,
-            "4": 130,
+            "4": 131,
             "5": 1051
           },
           "sentimentBuckets": {
-            "positive": 1181,
+            "positive": 1182,
             "neutral": 55,
             "negative": 581
           },
@@ -1386,9 +1386,9 @@
             },
             {
               "period": "2026-10-12",
-              "count": 6,
-              "avgRating": 3.67,
-              "positive": 4,
+              "count": 7,
+              "avgRating": 3.71,
+              "positive": 5,
               "neutral": 0,
               "negative": 2
             }
@@ -2022,11 +2022,11 @@
             {
               "category": "other",
               "label": "Other",
-              "count": 1234,
+              "count": 1235,
               "pctOfTotal": 67.9,
               "avgRating": 3.9,
               "sentimentBuckets": {
-                "positive": 893,
+                "positive": 894,
                 "neutral": 41,
                 "negative": 300
               },
@@ -3799,15 +3799,15 @@
               "key": "play:1.9.14",
               "platform": "play",
               "version": "1.9.14",
-              "count": 2,
-              "avgRating": 5,
+              "count": 3,
+              "avgRating": 4.67,
               "sentimentBuckets": {
-                "positive": 2,
+                "positive": 3,
                 "neutral": 0,
                 "negative": 0
               },
               "firstSeen": "2026-10-16T12:27:33.138Z",
-              "lastSeen": "2026-10-16T14:30:18.286Z",
+              "lastSeen": "2026-10-17T11:23:28.668Z",
               "deltaVsPrevious": null,
               "isRegression": false
             }
@@ -6179,6 +6179,20 @@
             ]
           },
           "recentReviews": [
+            {
+              "id": "01475d32-6e05-4663-a7d0-1b872855d339",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 4,
+              "title": null,
+              "text": "Sathi abvice coming slightly late.",
+              "date": "2026-10-17T11:23:28.668Z",
+              "version": "1.9.14",
+              "userName": "Parthasarathi Paul",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=01475d32-6e05-4663-a7d0-1b872855d339",
+              "category": "other"
+            },
             {
               "id": "43d866c8-0ea6-4c20-a47b-12a69bc6dd46",
               "platform": "play",
@@ -10364,20 +10378,6 @@
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=2cdbb74d-c15e-427b-bfc5-0c2451984033",
               "category": "other"
-            },
-            {
-              "id": "0c4bddce-0bef-40e8-8c40-903fcc41d92f",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 1,
-              "title": null,
-              "text": "very bead expirince and dp charges is very high texas is very high",
-              "date": "2025-04-25T11:52:50.410Z",
-              "version": "1.7.85",
-              "userName": "Raj Singh",
-              "thumbsUp": 1,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=0c4bddce-0bef-40e8-8c40-903fcc41d92f",
-              "category": "trading"
             }
           ]
         },
@@ -13949,18 +13949,18 @@
       ],
       "combined": {
         "platform": "combined",
-        "totalReviews": 1913,
+        "totalReviews": 1914,
         "avgRating": 3.61,
-        "avgTextSentiment": 0.626,
+        "avgTextSentiment": 0.625,
         "ratingDistribution": {
           "1": 575,
           "2": 32,
           "3": 56,
-          "4": 142,
+          "4": 143,
           "5": 1108
         },
         "sentimentBuckets": {
-          "positive": 1250,
+          "positive": 1251,
           "neutral": 56,
           "negative": 607
         },
@@ -15367,9 +15367,9 @@
           },
           {
             "period": "2026-10-12",
-            "count": 6,
-            "avgRating": 3.67,
-            "positive": 4,
+            "count": 7,
+            "avgRating": 3.71,
+            "positive": 5,
             "neutral": 0,
             "negative": 2
           }
@@ -16038,11 +16038,11 @@
           {
             "category": "other",
             "label": "Other",
-            "count": 1279,
+            "count": 1280,
             "pctOfTotal": 66.9,
             "avgRating": 3.89,
             "sentimentBuckets": {
-              "positive": 925,
+              "positive": 926,
               "neutral": 42,
               "negative": 312
             },
@@ -18423,15 +18423,15 @@
             "key": "play:1.9.14",
             "platform": "play",
             "version": "1.9.14",
-            "count": 2,
-            "avgRating": 5,
+            "count": 3,
+            "avgRating": 4.67,
             "sentimentBuckets": {
-              "positive": 2,
+              "positive": 3,
               "neutral": 0,
               "negative": 0
             },
             "firstSeen": "2026-10-16T12:27:33.138Z",
-            "lastSeen": "2026-10-16T14:30:18.286Z",
+            "lastSeen": "2026-10-17T11:23:28.668Z",
             "deltaVsPrevious": null,
             "isRegression": false
           }
@@ -20939,6 +20939,20 @@
           ]
         },
         "recentReviews": [
+          {
+            "id": "01475d32-6e05-4663-a7d0-1b872855d339",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 4,
+            "title": null,
+            "text": "Sathi abvice coming slightly late.",
+            "date": "2026-10-17T11:23:28.668Z",
+            "version": "1.9.14",
+            "userName": "Parthasarathi Paul",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=01475d32-6e05-4663-a7d0-1b872855d339",
+            "category": "other"
+          },
           {
             "id": "43d866c8-0ea6-4c20-a47b-12a69bc6dd46",
             "platform": "play",
@@ -25123,20 +25137,6 @@
             "userName": "Abhinay Rai",
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=669d1c7e-b1d4-4e45-8617-2f1c7c13e913",
-            "category": "other"
-          },
-          {
-            "id": "5ce05a37-6c4f-4318-ad5a-22c7c8df5f3b",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 4,
-            "title": null,
-            "text": "Tips and Recommendation on the point",
-            "date": "2025-05-23T12:20:52.852Z",
-            "version": "1.7.93",
-            "userName": "amish patel",
-            "thumbsUp": 0,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=5ce05a37-6c4f-4318-ad5a-22c7c8df5f3b",
             "category": "other"
           }
         ]
