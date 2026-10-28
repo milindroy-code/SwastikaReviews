@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T05:48:51.868Z",
+  "generatedAt": "2026-10-28T06:27:11.618Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -16,19 +16,19 @@
       "platforms": [
         {
           "platform": "play",
-          "totalReviews": 1820,
+          "totalReviews": 1822,
           "avgRating": 3.6,
           "avgTextSentiment": 0.643,
           "ratingDistribution": {
             "1": 552,
             "2": 31,
-            "3": 55,
+            "3": 56,
             "4": 131,
-            "5": 1051
+            "5": 1052
           },
           "sentimentBuckets": {
-            "positive": 1182,
-            "neutral": 55,
+            "positive": 1183,
+            "neutral": 56,
             "negative": 583
           },
           "weeklyTrend": [
@@ -1399,6 +1399,14 @@
               "positive": 0,
               "neutral": 0,
               "negative": 2
+            },
+            {
+              "period": "2026-10-26",
+              "count": 2,
+              "avgRating": 4,
+              "positive": 1,
+              "neutral": 1,
+              "negative": 0
             }
           ],
           "flags": [
@@ -1406,6 +1414,11 @@
               "period": "2023-07-24",
               "type": "rating_dip",
               "detail": "avg rating 2 vs overall 3.29"
+            },
+            {
+              "period": "2023-07-31",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
             },
             {
               "period": "2023-08-21",
@@ -1426,6 +1439,11 @@
               "period": "2023-08-28",
               "type": "rating_dip",
               "detail": "avg rating 2.08 vs overall 3.29"
+            },
+            {
+              "period": "2023-09-11",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
             },
             {
               "period": "2023-09-11",
@@ -1451,6 +1469,11 @@
               "period": "2023-10-16",
               "type": "negative_spike",
               "detail": "11 negative reviews (avg 3.4/week)"
+            },
+            {
+              "period": "2023-10-23",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
             },
             {
               "period": "2023-11-06",
@@ -1479,6 +1502,11 @@
             },
             {
               "period": "2023-12-18",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
+            },
+            {
+              "period": "2023-12-18",
               "type": "rating_dip",
               "detail": "avg rating 2.5 vs overall 3.29"
             },
@@ -1486,6 +1514,11 @@
               "period": "2024-01-01",
               "type": "rating_dip",
               "detail": "avg rating 2.33 vs overall 3.29"
+            },
+            {
+              "period": "2024-01-15",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
             },
             {
               "period": "2024-01-22",
@@ -1504,8 +1537,18 @@
             },
             {
               "period": "2024-02-05",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
+            },
+            {
+              "period": "2024-02-05",
               "type": "rating_dip",
               "detail": "avg rating 2.18 vs overall 3.29"
+            },
+            {
+              "period": "2024-02-12",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
             },
             {
               "period": "2024-02-12",
@@ -1569,6 +1612,11 @@
             },
             {
               "period": "2024-07-15",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
+            },
+            {
+              "period": "2024-07-15",
               "type": "rating_dip",
               "detail": "avg rating 2.62 vs overall 3.29"
             },
@@ -1581,6 +1629,11 @@
               "period": "2024-07-22",
               "type": "rating_dip",
               "detail": "avg rating 2.52 vs overall 3.29"
+            },
+            {
+              "period": "2024-07-29",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
             },
             {
               "period": "2024-07-29",
@@ -1601,6 +1654,11 @@
               "period": "2024-10-21",
               "type": "rating_dip",
               "detail": "avg rating 2.5 vs overall 3.29"
+            },
+            {
+              "period": "2024-12-09",
+              "type": "negative_spike",
+              "detail": "8 negative reviews (avg 3.4/week)"
             },
             {
               "period": "2024-12-09",
@@ -1675,7 +1733,7 @@
             },
             {
               "word": "app",
-              "count": 698
+              "count": 699
             },
             {
               "word": "swastika",
@@ -1699,7 +1757,7 @@
             },
             {
               "word": "service",
-              "count": 184
+              "count": 185
             },
             {
               "word": "nice",
@@ -1859,7 +1917,7 @@
             },
             {
               "word": "app",
-              "count": 396
+              "count": 397
             },
             {
               "word": "swastika",
@@ -1939,7 +1997,7 @@
               "category": "trading",
               "label": "Trading",
               "count": 467,
-              "pctOfTotal": 25.7,
+              "pctOfTotal": 25.6,
               "avgRating": 2.8,
               "sentimentBuckets": {
                 "positive": 207,
@@ -2030,12 +2088,12 @@
             {
               "category": "other",
               "label": "Other",
-              "count": 1237,
+              "count": 1239,
               "pctOfTotal": 68,
               "avgRating": 3.89,
               "sentimentBuckets": {
-                "positive": 894,
-                "neutral": 41,
+                "positive": 895,
+                "neutral": 42,
                 "negative": 302
               },
               "topKeywords": [
@@ -2045,7 +2103,7 @@
                 },
                 {
                   "word": "app",
-                  "count": 336
+                  "count": 337
                 },
                 {
                   "word": "nice",
@@ -2065,7 +2123,7 @@
                 },
                 {
                   "word": "service",
-                  "count": 112
+                  "count": 113
                 },
                 {
                   "word": "best",
@@ -3807,16 +3865,16 @@
               "key": "play:1.9.14",
               "platform": "play",
               "version": "1.9.14",
-              "count": 5,
-              "avgRating": 3.2,
+              "count": 6,
+              "avgRating": 3.17,
               "sentimentBuckets": {
                 "positive": 3,
-                "neutral": 0,
+                "neutral": 1,
                 "negative": 2
               },
               "firstSeen": "2026-10-16T12:27:33.138Z",
-              "lastSeen": "2026-10-21T13:46:46.523Z",
-              "deltaVsPrevious": 1,
+              "lastSeen": "2026-10-27T05:21:52.200Z",
+              "deltaVsPrevious": 0.97,
               "isRegression": false
             }
           ],
@@ -4128,10 +4186,10 @@
               },
               {
                 "period": "2026-10",
-                "count": 1,
-                "avgRating": 5,
+                "count": 2,
+                "avgRating": 4,
                 "positive": 1,
-                "neutral": 0,
+                "neutral": 1,
                 "negative": 0
               }
             ],
@@ -5298,10 +5356,10 @@
               },
               {
                 "period": "2026-10",
-                "count": 1,
-                "avgRating": 1,
+                "count": 2,
+                "avgRating": 2,
                 "positive": 0,
-                "neutral": 0,
+                "neutral": 1,
                 "negative": 1
               }
             ],
@@ -6187,6 +6245,34 @@
             ]
           },
           "recentReviews": [
+            {
+              "id": "530abe28-7816-4b98-b744-ab2a8fb9f70b",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 3,
+              "title": null,
+              "text": "slow service",
+              "date": "2026-10-27T05:21:52.200Z",
+              "version": "1.9.14",
+              "userName": "Sanjeev kumar",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=530abe28-7816-4b98-b744-ab2a8fb9f70b",
+              "category": "other"
+            },
+            {
+              "id": "8dd1c3f0-44c3-4871-b4d5-16bbee19ab37",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 5,
+              "title": null,
+              "text": "I am very happy for this app",
+              "date": "2026-10-26T16:32:01.233Z",
+              "version": null,
+              "userName": "YogiNil Company",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8dd1c3f0-44c3-4871-b4d5-16bbee19ab37",
+              "category": "other"
+            },
             {
               "id": "f273fc4a-51e8-44e4-8d08-0a416ab864db",
               "platform": "play",
@@ -10358,34 +10444,6 @@
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=2cde45f1-7932-4150-866d-531447528f0e",
               "category": "other"
-            },
-            {
-              "id": "3d4e36aa-b5f1-46ae-9702-a4e953ca7ff4",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 5,
-              "title": null,
-              "text": "best app",
-              "date": "2025-05-05T06:41:18.276Z",
-              "version": "1.7.92",
-              "userName": "Praveenbhaisureja Sureja",
-              "thumbsUp": 0,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=3d4e36aa-b5f1-46ae-9702-a4e953ca7ff4",
-              "category": "other"
-            },
-            {
-              "id": "b6ddc4ec-4852-4a3e-ab72-fabcbed2d140",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 4,
-              "title": null,
-              "text": "good for algo trade",
-              "date": "2025-05-02T06:25:53.324Z",
-              "version": "1.7.92",
-              "userName": "DEVENDRA WAKODIKAR",
-              "thumbsUp": 1,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b6ddc4ec-4852-4a3e-ab72-fabcbed2d140",
-              "category": "trading"
             }
           ]
         },
@@ -14011,19 +14069,19 @@
       ],
       "combined": {
         "platform": "combined",
-        "totalReviews": 1917,
+        "totalReviews": 1919,
         "avgRating": 3.61,
-        "avgTextSentiment": 0.624,
+        "avgTextSentiment": 0.623,
         "ratingDistribution": {
           "1": 577,
           "2": 32,
-          "3": 56,
+          "3": 57,
           "4": 143,
-          "5": 1109
+          "5": 1110
         },
         "sentimentBuckets": {
-          "positive": 1252,
-          "neutral": 56,
+          "positive": 1253,
+          "neutral": 57,
           "negative": 609
         },
         "weeklyTrend": [
@@ -15442,13 +15500,21 @@
             "positive": 0,
             "neutral": 0,
             "negative": 2
+          },
+          {
+            "period": "2026-10-26",
+            "count": 2,
+            "avgRating": 4,
+            "positive": 1,
+            "neutral": 1,
+            "negative": 0
           }
         ],
         "flags": [
           {
             "period": "2023-07-24",
             "type": "rating_dip",
-            "detail": "avg rating 2 vs overall 3.29"
+            "detail": "avg rating 2 vs overall 3.30"
           },
           {
             "period": "2023-08-21",
@@ -15458,7 +15524,7 @@
           {
             "period": "2023-08-21",
             "type": "rating_dip",
-            "detail": "avg rating 1.87 vs overall 3.29"
+            "detail": "avg rating 1.87 vs overall 3.30"
           },
           {
             "period": "2023-08-28",
@@ -15468,7 +15534,7 @@
           {
             "period": "2023-08-28",
             "type": "rating_dip",
-            "detail": "avg rating 2.08 vs overall 3.29"
+            "detail": "avg rating 2.08 vs overall 3.30"
           },
           {
             "period": "2023-09-11",
@@ -15478,7 +15544,7 @@
           {
             "period": "2023-09-11",
             "type": "rating_dip",
-            "detail": "avg rating 2.15 vs overall 3.29"
+            "detail": "avg rating 2.15 vs overall 3.30"
           },
           {
             "period": "2023-09-18",
@@ -15488,17 +15554,17 @@
           {
             "period": "2023-09-18",
             "type": "rating_dip",
-            "detail": "avg rating 1.94 vs overall 3.29"
+            "detail": "avg rating 1.94 vs overall 3.30"
           },
           {
             "period": "2023-09-25",
             "type": "rating_dip",
-            "detail": "avg rating 2.6 vs overall 3.29"
+            "detail": "avg rating 2.6 vs overall 3.30"
           },
           {
             "period": "2023-10-09",
             "type": "rating_dip",
-            "detail": "avg rating 2.27 vs overall 3.29"
+            "detail": "avg rating 2.27 vs overall 3.30"
           },
           {
             "period": "2023-10-16",
@@ -15508,7 +15574,7 @@
           {
             "period": "2023-11-06",
             "type": "rating_dip",
-            "detail": "avg rating 2.1 vs overall 3.29"
+            "detail": "avg rating 2.1 vs overall 3.30"
           },
           {
             "period": "2023-12-04",
@@ -15518,7 +15584,7 @@
           {
             "period": "2023-12-04",
             "type": "rating_dip",
-            "detail": "avg rating 2.65 vs overall 3.29"
+            "detail": "avg rating 2.65 vs overall 3.30"
           },
           {
             "period": "2023-12-11",
@@ -15528,22 +15594,22 @@
           {
             "period": "2023-12-11",
             "type": "rating_dip",
-            "detail": "avg rating 2.06 vs overall 3.29"
+            "detail": "avg rating 2.06 vs overall 3.30"
           },
           {
             "period": "2023-12-18",
             "type": "rating_dip",
-            "detail": "avg rating 2.5 vs overall 3.29"
+            "detail": "avg rating 2.5 vs overall 3.30"
           },
           {
             "period": "2024-01-01",
             "type": "rating_dip",
-            "detail": "avg rating 2.33 vs overall 3.29"
+            "detail": "avg rating 2.33 vs overall 3.30"
           },
           {
             "period": "2024-01-22",
             "type": "rating_dip",
-            "detail": "avg rating 1.89 vs overall 3.29"
+            "detail": "avg rating 1.89 vs overall 3.30"
           },
           {
             "period": "2024-01-29",
@@ -15553,7 +15619,7 @@
           {
             "period": "2024-01-29",
             "type": "rating_dip",
-            "detail": "avg rating 2.15 vs overall 3.29"
+            "detail": "avg rating 2.15 vs overall 3.30"
           },
           {
             "period": "2024-02-05",
@@ -15563,17 +15629,17 @@
           {
             "period": "2024-02-05",
             "type": "rating_dip",
-            "detail": "avg rating 2.08 vs overall 3.29"
+            "detail": "avg rating 2.08 vs overall 3.30"
           },
           {
             "period": "2024-02-12",
             "type": "rating_dip",
-            "detail": "avg rating 1.8 vs overall 3.29"
+            "detail": "avg rating 1.8 vs overall 3.30"
           },
           {
             "period": "2024-03-11",
             "type": "rating_dip",
-            "detail": "avg rating 2.6 vs overall 3.29"
+            "detail": "avg rating 2.6 vs overall 3.30"
           },
           {
             "period": "2024-03-18",
@@ -15583,7 +15649,7 @@
           {
             "period": "2024-04-01",
             "type": "rating_dip",
-            "detail": "avg rating 2.2 vs overall 3.29"
+            "detail": "avg rating 2.2 vs overall 3.30"
           },
           {
             "period": "2024-05-27",
@@ -15598,7 +15664,7 @@
           {
             "period": "2024-06-03",
             "type": "rating_dip",
-            "detail": "avg rating 2.4 vs overall 3.29"
+            "detail": "avg rating 2.4 vs overall 3.30"
           },
           {
             "period": "2024-06-10",
@@ -15608,7 +15674,7 @@
           {
             "period": "2024-06-24",
             "type": "rating_dip",
-            "detail": "avg rating 1 vs overall 3.29"
+            "detail": "avg rating 1 vs overall 3.30"
           },
           {
             "period": "2024-07-08",
@@ -15618,12 +15684,12 @@
           {
             "period": "2024-07-08",
             "type": "rating_dip",
-            "detail": "avg rating 1.92 vs overall 3.29"
+            "detail": "avg rating 1.92 vs overall 3.30"
           },
           {
             "period": "2024-07-15",
             "type": "rating_dip",
-            "detail": "avg rating 2.62 vs overall 3.29"
+            "detail": "avg rating 2.62 vs overall 3.30"
           },
           {
             "period": "2024-07-22",
@@ -15633,17 +15699,17 @@
           {
             "period": "2024-07-22",
             "type": "rating_dip",
-            "detail": "avg rating 2.52 vs overall 3.29"
+            "detail": "avg rating 2.52 vs overall 3.30"
           },
           {
             "period": "2024-07-29",
             "type": "rating_dip",
-            "detail": "avg rating 2 vs overall 3.29"
+            "detail": "avg rating 2 vs overall 3.30"
           },
           {
             "period": "2024-08-05",
             "type": "rating_dip",
-            "detail": "avg rating 1.67 vs overall 3.29"
+            "detail": "avg rating 1.67 vs overall 3.30"
           },
           {
             "period": "2024-09-16",
@@ -15653,7 +15719,7 @@
           {
             "period": "2024-10-21",
             "type": "rating_dip",
-            "detail": "avg rating 2.5 vs overall 3.29"
+            "detail": "avg rating 2.5 vs overall 3.30"
           },
           {
             "period": "2024-12-09",
@@ -15663,72 +15729,72 @@
           {
             "period": "2024-12-09",
             "type": "rating_dip",
-            "detail": "avg rating 2.65 vs overall 3.29"
+            "detail": "avg rating 2.65 vs overall 3.30"
           },
           {
             "period": "2025-02-03",
             "type": "rating_dip",
-            "detail": "avg rating 1 vs overall 3.29"
+            "detail": "avg rating 1 vs overall 3.30"
           },
           {
             "period": "2025-03-10",
             "type": "rating_dip",
-            "detail": "avg rating 2 vs overall 3.29"
+            "detail": "avg rating 2 vs overall 3.30"
           },
           {
             "period": "2025-06-23",
             "type": "rating_dip",
-            "detail": "avg rating 1.67 vs overall 3.29"
+            "detail": "avg rating 1.67 vs overall 3.30"
           },
           {
             "period": "2025-07-21",
             "type": "rating_dip",
-            "detail": "avg rating 1.8 vs overall 3.29"
+            "detail": "avg rating 1.8 vs overall 3.30"
           },
           {
             "period": "2025-08-18",
             "type": "rating_dip",
-            "detail": "avg rating 1.75 vs overall 3.29"
+            "detail": "avg rating 1.75 vs overall 3.30"
           },
           {
             "period": "2025-10-20",
             "type": "rating_dip",
-            "detail": "avg rating 1 vs overall 3.29"
+            "detail": "avg rating 1 vs overall 3.30"
           },
           {
             "period": "2025-11-17",
             "type": "rating_dip",
-            "detail": "avg rating 2 vs overall 3.29"
+            "detail": "avg rating 2 vs overall 3.30"
           },
           {
             "period": "2025-12-01",
             "type": "rating_dip",
-            "detail": "avg rating 1 vs overall 3.29"
+            "detail": "avg rating 1 vs overall 3.30"
           },
           {
             "period": "2026-04-06",
             "type": "rating_dip",
-            "detail": "avg rating 2.33 vs overall 3.29"
+            "detail": "avg rating 2.33 vs overall 3.30"
           },
           {
             "period": "2026-04-27",
             "type": "rating_dip",
-            "detail": "avg rating 2.67 vs overall 3.29"
+            "detail": "avg rating 2.67 vs overall 3.30"
           },
           {
             "period": "2026-06-22",
             "type": "rating_dip",
-            "detail": "avg rating 2.25 vs overall 3.29"
+            "detail": "avg rating 2.25 vs overall 3.30"
           },
           {
             "period": "2026-07-13",
             "type": "rating_dip",
-            "detail": "avg rating 2.33 vs overall 3.29"
+            "detail": "avg rating 2.33 vs overall 3.30"
           },
           {
             "period": "2026-09-14",
             "type": "rating_dip",
-            "detail": "avg rating 2.17 vs overall 3.29"
+            "detail": "avg rating 2.17 vs overall 3.30"
           }
         ],
         "topKeywords": [
@@ -15738,7 +15804,7 @@
           },
           {
             "word": "app",
-            "count": 779
+            "count": 780
           },
           {
             "word": "swastika",
@@ -15762,7 +15828,7 @@
           },
           {
             "word": "service",
-            "count": 212
+            "count": 213
           },
           {
             "word": "best",
@@ -15922,7 +15988,7 @@
           },
           {
             "word": "app",
-            "count": 450
+            "count": 451
           },
           {
             "word": "swastika",
@@ -16093,12 +16159,12 @@
           {
             "category": "other",
             "label": "Other",
-            "count": 1283,
-            "pctOfTotal": 66.9,
+            "count": 1285,
+            "pctOfTotal": 67,
             "avgRating": 3.89,
             "sentimentBuckets": {
-              "positive": 927,
-              "neutral": 42,
+              "positive": 928,
+              "neutral": 43,
               "negative": 314
             },
             "topKeywords": [
@@ -16108,7 +16174,7 @@
               },
               {
                 "word": "app",
-                "count": 369
+                "count": 370
               },
               {
                 "word": "nice",
@@ -16123,11 +16189,11 @@
                 "count": 140
               },
               {
-                "word": "application",
-                "count": 127
+                "word": "service",
+                "count": 128
               },
               {
-                "word": "service",
+                "word": "application",
                 "count": 127
               },
               {
@@ -18478,16 +18544,16 @@
             "key": "play:1.9.14",
             "platform": "play",
             "version": "1.9.14",
-            "count": 5,
-            "avgRating": 3.2,
+            "count": 6,
+            "avgRating": 3.17,
             "sentimentBuckets": {
               "positive": 3,
-              "neutral": 0,
+              "neutral": 1,
               "negative": 2
             },
             "firstSeen": "2026-10-16T12:27:33.138Z",
-            "lastSeen": "2026-10-21T13:46:46.523Z",
-            "deltaVsPrevious": 1,
+            "lastSeen": "2026-10-27T05:21:52.200Z",
+            "deltaVsPrevious": 0.97,
             "isRegression": false
           },
           {
@@ -18831,10 +18897,10 @@
             },
             {
               "period": "2026-10",
-              "count": 2,
-              "avgRating": 5,
+              "count": 3,
+              "avgRating": 4.33,
               "positive": 2,
-              "neutral": 0,
+              "neutral": 1,
               "negative": 0
             }
           ],
@@ -20065,10 +20131,10 @@
             },
             {
               "period": "2026-10",
-              "count": 1,
-              "avgRating": 1,
+              "count": 2,
+              "avgRating": 2,
               "positive": 0,
-              "neutral": 0,
+              "neutral": 1,
               "negative": 1
             }
           ],
@@ -21018,6 +21084,34 @@
           ]
         },
         "recentReviews": [
+          {
+            "id": "530abe28-7816-4b98-b744-ab2a8fb9f70b",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 3,
+            "title": null,
+            "text": "slow service",
+            "date": "2026-10-27T05:21:52.200Z",
+            "version": "1.9.14",
+            "userName": "Sanjeev kumar",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=530abe28-7816-4b98-b744-ab2a8fb9f70b",
+            "category": "other"
+          },
+          {
+            "id": "8dd1c3f0-44c3-4871-b4d5-16bbee19ab37",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 5,
+            "title": null,
+            "text": "I am very happy for this app",
+            "date": "2026-10-26T16:32:01.233Z",
+            "version": null,
+            "userName": "YogiNil Company",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8dd1c3f0-44c3-4871-b4d5-16bbee19ab37",
+            "category": "other"
+          },
           {
             "id": "f273fc4a-51e8-44e4-8d08-0a416ab864db",
             "platform": "play",
@@ -25188,34 +25282,6 @@
             "userName": "Anshu Pamecha",
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=629e2abb-e6e8-4646-bbbe-b146dc68e5dc",
-            "category": "other"
-          },
-          {
-            "id": "e1e9a5cf-b017-41fc-855e-263be964f0c7",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 5,
-            "title": null,
-            "text": "very good services",
-            "date": "2025-05-29T08:04:08.494Z",
-            "version": "1.7.93",
-            "userName": "nitin kulkarni",
-            "thumbsUp": 0,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e1e9a5cf-b017-41fc-855e-263be964f0c7",
-            "category": "other"
-          },
-          {
-            "id": "aa6177a8-f6d6-48ba-bb0a-d10c459b79d6",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 5,
-            "title": null,
-            "text": "keep it up",
-            "date": "2025-05-28T06:56:19.213Z",
-            "version": "1.7.95",
-            "userName": "GOPAL",
-            "thumbsUp": 0,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=aa6177a8-f6d6-48ba-bb0a-d10c459b79d6",
             "category": "other"
           }
         ]
