@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T06:38:31.223Z",
+  "generatedAt": "2026-10-31T06:28:29.763Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -16,18 +16,18 @@
       "platforms": [
         {
           "platform": "play",
-          "totalReviews": 1822,
-          "avgRating": 3.6,
-          "avgTextSentiment": 0.643,
+          "totalReviews": 1824,
+          "avgRating": 3.61,
+          "avgTextSentiment": 0.642,
           "ratingDistribution": {
             "1": 552,
             "2": 31,
             "3": 56,
             "4": 131,
-            "5": 1052
+            "5": 1054
           },
           "sentimentBuckets": {
-            "positive": 1183,
+            "positive": 1185,
             "neutral": 56,
             "negative": 583
           },
@@ -1402,9 +1402,9 @@
             },
             {
               "period": "2026-10-26",
-              "count": 2,
-              "avgRating": 4,
-              "positive": 1,
+              "count": 4,
+              "avgRating": 4.5,
+              "positive": 3,
               "neutral": 1,
               "negative": 0
             }
@@ -1737,7 +1737,7 @@
             },
             {
               "word": "swastika",
-              "count": 312
+              "count": 313
             },
             {
               "word": "trading",
@@ -1792,11 +1792,11 @@
               "count": 128
             },
             {
-              "word": "brokerage",
-              "count": 126
+              "word": "team",
+              "count": 127
             },
             {
-              "word": "team",
+              "word": "brokerage",
               "count": 126
             },
             {
@@ -1921,7 +1921,7 @@
             },
             {
               "word": "swastika",
-              "count": 231
+              "count": 232
             },
             {
               "word": "support",
@@ -1953,7 +1953,7 @@
             },
             {
               "word": "team",
-              "count": 102
+              "count": 103
             },
             {
               "word": "excellent",
@@ -1996,11 +1996,11 @@
             {
               "category": "trading",
               "label": "Trading",
-              "count": 467,
-              "pctOfTotal": 25.6,
+              "count": 468,
+              "pctOfTotal": 25.7,
               "avgRating": 2.8,
               "sentimentBuckets": {
-                "positive": 207,
+                "positive": 208,
                 "neutral": 13,
                 "negative": 247
               },
@@ -2088,11 +2088,11 @@
             {
               "category": "other",
               "label": "Other",
-              "count": 1239,
+              "count": 1240,
               "pctOfTotal": 68,
               "avgRating": 3.89,
               "sentimentBuckets": {
-                "positive": 895,
+                "positive": 896,
                 "neutral": 42,
                 "negative": 302
               },
@@ -2110,12 +2110,12 @@
                   "count": 140
                 },
                 {
-                  "word": "support",
+                  "word": "swastika",
                   "count": 130
                 },
                 {
-                  "word": "swastika",
-                  "count": 129
+                  "word": "support",
+                  "count": 130
                 },
                 {
                   "word": "application",
@@ -3876,6 +3876,22 @@
               "lastSeen": "2026-10-27T05:21:52.200Z",
               "deltaVsPrevious": 0.97,
               "isRegression": false
+            },
+            {
+              "key": "play:1.9.16",
+              "platform": "play",
+              "version": "1.9.16",
+              "count": 2,
+              "avgRating": 5,
+              "sentimentBuckets": {
+                "positive": 2,
+                "neutral": 0,
+                "negative": 0
+              },
+              "firstSeen": "2026-10-29T11:10:42.882Z",
+              "lastSeen": "2026-10-29T12:28:10.321Z",
+              "deltaVsPrevious": null,
+              "isRegression": false
             }
           ],
           "themeTrend": {
@@ -4186,9 +4202,9 @@
               },
               {
                 "period": "2026-10",
-                "count": 2,
-                "avgRating": 4,
-                "positive": 1,
+                "count": 3,
+                "avgRating": 4.33,
+                "positive": 2,
                 "neutral": 1,
                 "negative": 0
               }
@@ -6245,6 +6261,34 @@
             ]
           },
           "recentReviews": [
+            {
+              "id": "b9b8d3b9-81e9-4152-9e27-d1e1376ff7e4",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 5,
+              "title": null,
+              "text": "super my team swastika thank you so much",
+              "date": "2026-10-29T12:28:10.321Z",
+              "version": "1.9.16",
+              "userName": "ashok rathor",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b9b8d3b9-81e9-4152-9e27-d1e1376ff7e4",
+              "category": "other"
+            },
+            {
+              "id": "b86ac0a6-4692-428b-a813-93ece187bc5e",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 5,
+              "title": null,
+              "text": "Need to come up with more trades and they are very limited trades available",
+              "date": "2026-10-29T11:10:42.882Z",
+              "version": "1.9.16",
+              "userName": "Dandu Nagaraj",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b86ac0a6-4692-428b-a813-93ece187bc5e",
+              "category": "trading"
+            },
             {
               "id": "530abe28-7816-4b98-b744-ab2a8fb9f70b",
               "platform": "play",
@@ -10416,34 +10460,6 @@
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=858ff7f9-1fb2-47f5-82e1-a4230a91f8d1",
               "category": "other"
-            },
-            {
-              "id": "97943b44-8f7b-4df2-91a4-c101babeb992",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 1,
-              "title": null,
-              "text": "Stock price updation is fast according to another trading application",
-              "date": "2025-05-07T15:39:11.618Z",
-              "version": "1.7.92",
-              "userName": "Khurendra Raghuwanshi",
-              "thumbsUp": 2,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=97943b44-8f7b-4df2-91a4-c101babeb992",
-              "category": "trading"
-            },
-            {
-              "id": "2cde45f1-7932-4150-866d-531447528f0e",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 5,
-              "title": null,
-              "text": "great",
-              "date": "2025-05-07T12:03:27.935Z",
-              "version": "1.5.04",
-              "userName": "Dinki Makoriya",
-              "thumbsUp": 0,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=2cde45f1-7932-4150-866d-531447528f0e",
-              "category": "other"
             }
           ]
         },
@@ -14069,7 +14085,7 @@
       ],
       "combined": {
         "platform": "combined",
-        "totalReviews": 1919,
+        "totalReviews": 1921,
         "avgRating": 3.61,
         "avgTextSentiment": 0.623,
         "ratingDistribution": {
@@ -14077,10 +14093,10 @@
           "2": 32,
           "3": 57,
           "4": 143,
-          "5": 1110
+          "5": 1112
         },
         "sentimentBuckets": {
-          "positive": 1253,
+          "positive": 1255,
           "neutral": 57,
           "negative": 609
         },
@@ -15503,9 +15519,9 @@
           },
           {
             "period": "2026-10-26",
-            "count": 2,
-            "avgRating": 4,
-            "positive": 1,
+            "count": 4,
+            "avgRating": 4.5,
+            "positive": 3,
             "neutral": 1,
             "negative": 0
           }
@@ -15808,7 +15824,7 @@
           },
           {
             "word": "swastika",
-            "count": 360
+            "count": 361
           },
           {
             "word": "support",
@@ -15856,7 +15872,7 @@
           },
           {
             "word": "team",
-            "count": 140
+            "count": 141
           },
           {
             "word": "easy",
@@ -15992,7 +16008,7 @@
           },
           {
             "word": "swastika",
-            "count": 269
+            "count": 270
           },
           {
             "word": "support",
@@ -16024,7 +16040,7 @@
           },
           {
             "word": "team",
-            "count": 114
+            "count": 115
           },
           {
             "word": "excellent",
@@ -16067,11 +16083,11 @@
           {
             "category": "trading",
             "label": "Trading",
-            "count": 507,
+            "count": 508,
             "pctOfTotal": 26.4,
             "avgRating": 2.85,
             "sentimentBuckets": {
-              "positive": 233,
+              "positive": 234,
               "neutral": 13,
               "negative": 261
             },
@@ -16159,11 +16175,11 @@
           {
             "category": "other",
             "label": "Other",
-            "count": 1285,
-            "pctOfTotal": 67,
+            "count": 1286,
+            "pctOfTotal": 66.9,
             "avgRating": 3.89,
             "sentimentBuckets": {
-              "positive": 928,
+              "positive": 929,
               "neutral": 43,
               "negative": 314
             },
@@ -16182,7 +16198,7 @@
               },
               {
                 "word": "swastika",
-                "count": 142
+                "count": 143
               },
               {
                 "word": "support",
@@ -18571,6 +18587,22 @@
             "lastSeen": "2026-10-17T04:35:37-07:00",
             "deltaVsPrevious": null,
             "isRegression": false
+          },
+          {
+            "key": "play:1.9.16",
+            "platform": "play",
+            "version": "1.9.16",
+            "count": 2,
+            "avgRating": 5,
+            "sentimentBuckets": {
+              "positive": 2,
+              "neutral": 0,
+              "negative": 0
+            },
+            "firstSeen": "2026-10-29T11:10:42.882Z",
+            "lastSeen": "2026-10-29T12:28:10.321Z",
+            "deltaVsPrevious": null,
+            "isRegression": false
           }
         ],
         "themeTrend": {
@@ -18897,9 +18929,9 @@
             },
             {
               "period": "2026-10",
-              "count": 3,
-              "avgRating": 4.33,
-              "positive": 2,
+              "count": 4,
+              "avgRating": 4.5,
+              "positive": 3,
               "neutral": 1,
               "negative": 0
             }
@@ -21084,6 +21116,34 @@
           ]
         },
         "recentReviews": [
+          {
+            "id": "b9b8d3b9-81e9-4152-9e27-d1e1376ff7e4",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 5,
+            "title": null,
+            "text": "super my team swastika thank you so much",
+            "date": "2026-10-29T12:28:10.321Z",
+            "version": "1.9.16",
+            "userName": "ashok rathor",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b9b8d3b9-81e9-4152-9e27-d1e1376ff7e4",
+            "category": "other"
+          },
+          {
+            "id": "b86ac0a6-4692-428b-a813-93ece187bc5e",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 5,
+            "title": null,
+            "text": "Need to come up with more trades and they are very limited trades available",
+            "date": "2026-10-29T11:10:42.882Z",
+            "version": "1.9.16",
+            "userName": "Dandu Nagaraj",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b86ac0a6-4692-428b-a813-93ece187bc5e",
+            "category": "trading"
+          },
           {
             "id": "530abe28-7816-4b98-b744-ab2a8fb9f70b",
             "platform": "play",
@@ -25255,34 +25315,6 @@
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=a1d81e13-5929-492f-9400-daa1a252979e",
             "category": "trading"
-          },
-          {
-            "id": "07e9a10a-f658-4644-a520-8334b3b86cc1",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 5,
-            "title": null,
-            "text": "👍🏼",
-            "date": "2025-06-02T10:06:34.490Z",
-            "version": "1.7.95",
-            "userName": "Choudhary Tent House Tahliwal",
-            "thumbsUp": 0,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=07e9a10a-f658-4644-a520-8334b3b86cc1",
-            "category": "other"
-          },
-          {
-            "id": "629e2abb-e6e8-4646-bbbe-b146dc68e5dc",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 1,
-            "title": null,
-            "text": "not work properly always show 100% loss",
-            "date": "2025-06-02T05:08:58.825Z",
-            "version": null,
-            "userName": "Anshu Pamecha",
-            "thumbsUp": 1,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=629e2abb-e6e8-4646-bbbe-b146dc68e5dc",
-            "category": "other"
           }
         ]
       },
