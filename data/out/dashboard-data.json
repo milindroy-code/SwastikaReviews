@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T06:59:59.792Z",
+  "generatedAt": "2026-11-02T06:59:27.925Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -16,20 +16,20 @@
       "platforms": [
         {
           "platform": "play",
-          "totalReviews": 1824,
-          "avgRating": 3.61,
-          "avgTextSentiment": 0.642,
+          "totalReviews": 1826,
+          "avgRating": 3.6,
+          "avgTextSentiment": 0.643,
           "ratingDistribution": {
-            "1": 552,
+            "1": 553,
             "2": 31,
             "3": 56,
             "4": 131,
-            "5": 1054
+            "5": 1055
           },
           "sentimentBuckets": {
-            "positive": 1185,
+            "positive": 1186,
             "neutral": 56,
-            "negative": 583
+            "negative": 584
           },
           "weeklyTrend": [
             {
@@ -1402,11 +1402,11 @@
             },
             {
               "period": "2026-10-26",
-              "count": 4,
-              "avgRating": 4.5,
-              "positive": 3,
+              "count": 6,
+              "avgRating": 4,
+              "positive": 4,
               "neutral": 1,
-              "negative": 0
+              "negative": 1
             }
           ],
           "flags": [
@@ -1997,7 +1997,7 @@
               "category": "trading",
               "label": "Trading",
               "count": 468,
-              "pctOfTotal": 25.7,
+              "pctOfTotal": 25.6,
               "avgRating": 2.8,
               "sentimentBuckets": {
                 "positive": 208,
@@ -2088,13 +2088,13 @@
             {
               "category": "other",
               "label": "Other",
-              "count": 1240,
+              "count": 1242,
               "pctOfTotal": 68,
               "avgRating": 3.89,
               "sentimentBuckets": {
-                "positive": 896,
+                "positive": 897,
                 "neutral": 42,
-                "negative": 302
+                "negative": 303
               },
               "topKeywords": [
                 {
@@ -3673,17 +3673,17 @@
               "key": "play:1.8.90",
               "platform": "play",
               "version": "1.8.90",
-              "count": 4,
+              "count": 5,
               "avgRating": 1,
               "sentimentBuckets": {
                 "positive": 0,
                 "neutral": 0,
-                "negative": 4
+                "negative": 5
               },
               "firstSeen": "2026-07-08T12:19:28.316Z",
-              "lastSeen": "2026-08-19T03:36:33.446Z",
-              "deltaVsPrevious": null,
-              "isRegression": false
+              "lastSeen": "2026-10-31T14:57:22.282Z",
+              "deltaVsPrevious": -1.63,
+              "isRegression": true
             },
             {
               "key": "play:1.8.93",
@@ -3714,7 +3714,7 @@
               },
               "firstSeen": "2026-07-21T06:03:28.671Z",
               "lastSeen": "2026-07-30T12:54:01.580Z",
-              "deltaVsPrevious": 1.54,
+              "deltaVsPrevious": 3.17,
               "isRegression": false
             },
             {
@@ -3881,15 +3881,15 @@
               "key": "play:1.9.16",
               "platform": "play",
               "version": "1.9.16",
-              "count": 2,
+              "count": 3,
               "avgRating": 5,
               "sentimentBuckets": {
-                "positive": 2,
+                "positive": 3,
                 "neutral": 0,
                 "negative": 0
               },
               "firstSeen": "2026-10-29T11:10:42.882Z",
-              "lastSeen": "2026-10-29T12:28:10.321Z",
+              "lastSeen": "2026-10-31T14:02:20.900Z",
               "deltaVsPrevious": null,
               "isRegression": false
             }
@@ -6261,6 +6261,34 @@
             ]
           },
           "recentReviews": [
+            {
+              "id": "8da341a8-6a0b-4e90-b1eb-09dbe16778f0",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 1,
+              "title": null,
+              "text": "w,",
+              "date": "2026-10-31T14:57:22.282Z",
+              "version": "1.8.90",
+              "userName": "Pursottam Soni",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8da341a8-6a0b-4e90-b1eb-09dbe16778f0",
+              "category": "other"
+            },
+            {
+              "id": "3be75c1b-e87f-4081-bf5f-b188fbba260f",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 5,
+              "title": null,
+              "text": "fine",
+              "date": "2026-10-31T14:02:20.900Z",
+              "version": "1.9.16",
+              "userName": "Pramod Gore",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=3be75c1b-e87f-4081-bf5f-b188fbba260f",
+              "category": "other"
+            },
             {
               "id": "b9b8d3b9-81e9-4152-9e27-d1e1376ff7e4",
               "platform": "play",
@@ -8707,7 +8735,7 @@
               "date": "2025-10-14T14:58:37.650Z",
               "version": "1.8.28",
               "userName": "Ajay Wankhede_9291",
-              "thumbsUp": 10,
+              "thumbsUp": 9,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8c84d6ad-3649-4407-ad4a-d97e3bca87eb",
               "category": "investment"
             },
@@ -10431,34 +10459,6 @@
               "userName": "Rahul Mohite",
               "thumbsUp": 1,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=503def79-b2f1-4cfc-b54d-bb01118e5a92",
-              "category": "other"
-            },
-            {
-              "id": "35281049-85ee-4f1f-8c6d-8ec1b129bdb3",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 5,
-              "title": null,
-              "text": "ok",
-              "date": "2025-05-09T09:11:37.800Z",
-              "version": "1.7.92",
-              "userName": "Dev Sharan Pandey",
-              "thumbsUp": 0,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=35281049-85ee-4f1f-8c6d-8ec1b129bdb3",
-              "category": "other"
-            },
-            {
-              "id": "858ff7f9-1fb2-47f5-82e1-a4230a91f8d1",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 4,
-              "title": null,
-              "text": "good application",
-              "date": "2025-05-08T09:06:42.298Z",
-              "version": "1.7.92",
-              "userName": "Abdul Vahid",
-              "thumbsUp": 0,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=858ff7f9-1fb2-47f5-82e1-a4230a91f8d1",
               "category": "other"
             }
           ]
@@ -14085,20 +14085,20 @@
       ],
       "combined": {
         "platform": "combined",
-        "totalReviews": 1921,
+        "totalReviews": 1923,
         "avgRating": 3.61,
         "avgTextSentiment": 0.623,
         "ratingDistribution": {
-          "1": 577,
+          "1": 578,
           "2": 32,
           "3": 57,
           "4": 143,
-          "5": 1112
+          "5": 1113
         },
         "sentimentBuckets": {
-          "positive": 1255,
+          "positive": 1256,
           "neutral": 57,
-          "negative": 609
+          "negative": 610
         },
         "weeklyTrend": [
           {
@@ -15519,11 +15519,11 @@
           },
           {
             "period": "2026-10-26",
-            "count": 4,
-            "avgRating": 4.5,
-            "positive": 3,
+            "count": 6,
+            "avgRating": 4,
+            "positive": 4,
             "neutral": 1,
-            "negative": 0
+            "negative": 1
           }
         ],
         "flags": [
@@ -16175,13 +16175,13 @@
           {
             "category": "other",
             "label": "Other",
-            "count": 1286,
-            "pctOfTotal": 66.9,
+            "count": 1288,
+            "pctOfTotal": 67,
             "avgRating": 3.89,
             "sentimentBuckets": {
-              "positive": 929,
+              "positive": 930,
               "neutral": 43,
-              "negative": 314
+              "negative": 315
             },
             "topKeywords": [
               {
@@ -18352,17 +18352,17 @@
             "key": "play:1.8.90",
             "platform": "play",
             "version": "1.8.90",
-            "count": 4,
+            "count": 5,
             "avgRating": 1,
             "sentimentBuckets": {
               "positive": 0,
               "neutral": 0,
-              "negative": 4
+              "negative": 5
             },
             "firstSeen": "2026-07-08T12:19:28.316Z",
-            "lastSeen": "2026-08-19T03:36:33.446Z",
-            "deltaVsPrevious": null,
-            "isRegression": false
+            "lastSeen": "2026-10-31T14:57:22.282Z",
+            "deltaVsPrevious": -1.63,
+            "isRegression": true
           },
           {
             "key": "play:1.8.93",
@@ -18393,7 +18393,7 @@
             },
             "firstSeen": "2026-07-21T06:03:28.671Z",
             "lastSeen": "2026-07-30T12:54:01.580Z",
-            "deltaVsPrevious": 1.54,
+            "deltaVsPrevious": 3.17,
             "isRegression": false
           },
           {
@@ -18592,15 +18592,15 @@
             "key": "play:1.9.16",
             "platform": "play",
             "version": "1.9.16",
-            "count": 2,
+            "count": 3,
             "avgRating": 5,
             "sentimentBuckets": {
-              "positive": 2,
+              "positive": 3,
               "neutral": 0,
               "negative": 0
             },
             "firstSeen": "2026-10-29T11:10:42.882Z",
-            "lastSeen": "2026-10-29T12:28:10.321Z",
+            "lastSeen": "2026-10-31T14:02:20.900Z",
             "deltaVsPrevious": null,
             "isRegression": false
           }
@@ -21116,6 +21116,34 @@
           ]
         },
         "recentReviews": [
+          {
+            "id": "8da341a8-6a0b-4e90-b1eb-09dbe16778f0",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 1,
+            "title": null,
+            "text": "w,",
+            "date": "2026-10-31T14:57:22.282Z",
+            "version": "1.8.90",
+            "userName": "Pursottam Soni",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8da341a8-6a0b-4e90-b1eb-09dbe16778f0",
+            "category": "other"
+          },
+          {
+            "id": "3be75c1b-e87f-4081-bf5f-b188fbba260f",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 5,
+            "title": null,
+            "text": "fine",
+            "date": "2026-10-31T14:02:20.900Z",
+            "version": "1.9.16",
+            "userName": "Pramod Gore",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=3be75c1b-e87f-4081-bf5f-b188fbba260f",
+            "category": "other"
+          },
           {
             "id": "b9b8d3b9-81e9-4152-9e27-d1e1376ff7e4",
             "platform": "play",
@@ -23744,7 +23772,7 @@
             "date": "2025-10-14T14:58:37.650Z",
             "version": "1.8.28",
             "userName": "Ajay Wankhede_9291",
-            "thumbsUp": 10,
+            "thumbsUp": 9,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=8c84d6ad-3649-4407-ad4a-d97e3bca87eb",
             "category": "investment"
           },
@@ -25286,34 +25314,6 @@
             "userName": "PRINCE MITTAL",
             "thumbsUp": 12,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=f9f09bd8-986e-4c4f-92d4-5724e593e07a",
-            "category": "trading"
-          },
-          {
-            "id": "93e5bd9b-4e79-46e3-b3c1-f874918b7cc3",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 5,
-            "title": null,
-            "text": "good",
-            "date": "2025-06-03T06:57:00.654Z",
-            "version": "1.7.95",
-            "userName": "Mohan singh Pokarna",
-            "thumbsUp": 0,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=93e5bd9b-4e79-46e3-b3c1-f874918b7cc3",
-            "category": "other"
-          },
-          {
-            "id": "a1d81e13-5929-492f-9400-daa1a252979e",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 1,
-            "title": null,
-            "text": "this app is waste for investor , don't invest in this app because charges is too much , and is taking trade option waste.",
-            "date": "2025-06-03T04:37:19.907Z",
-            "version": "1.7.95",
-            "userName": "Manjunath Pathikonda",
-            "thumbsUp": 1,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=a1d81e13-5929-492f-9400-daa1a252979e",
             "category": "trading"
           }
         ]
