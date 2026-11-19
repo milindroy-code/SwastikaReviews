@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T08:04:25.770Z",
+  "generatedAt": "2026-11-19T08:10:53.528Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -16,20 +16,20 @@
       "platforms": [
         {
           "platform": "play",
-          "totalReviews": 1827,
+          "totalReviews": 1829,
           "avgRating": 3.6,
           "avgTextSentiment": 0.642,
           "ratingDistribution": {
-            "1": 554,
+            "1": 555,
             "2": 32,
             "3": 56,
             "4": 131,
-            "5": 1054
+            "5": 1055
           },
           "sentimentBuckets": {
-            "positive": 1185,
+            "positive": 1186,
             "neutral": 56,
-            "negative": 586
+            "negative": 587
           },
           "weeklyTrend": [
             {
@@ -1415,6 +1415,14 @@
               "positive": 0,
               "neutral": 0,
               "negative": 2
+            },
+            {
+              "period": "2026-11-16",
+              "count": 2,
+              "avgRating": 3,
+              "positive": 1,
+              "neutral": 0,
+              "negative": 1
             }
           ],
           "flags": [
@@ -1737,7 +1745,7 @@
           "topKeywords": [
             {
               "word": "good",
-              "count": 739
+              "count": 740
             },
             {
               "word": "app",
@@ -1765,7 +1773,7 @@
             },
             {
               "word": "service",
-              "count": 185
+              "count": 186
             },
             {
               "word": "nice",
@@ -1809,7 +1817,7 @@
             },
             {
               "word": "loss",
-              "count": 125
+              "count": 126
             },
             {
               "word": "bad",
@@ -1855,7 +1863,7 @@
             },
             {
               "word": "loss",
-              "count": 114
+              "count": 115
             },
             {
               "word": "brokerage",
@@ -1921,7 +1929,7 @@
           "topPraiseKeywords": [
             {
               "word": "good",
-              "count": 682
+              "count": 683
             },
             {
               "word": "app",
@@ -1952,12 +1960,12 @@
               "count": 136
             },
             {
-              "word": "easy",
+              "word": "service",
               "count": 124
             },
             {
-              "word": "service",
-              "count": 123
+              "word": "easy",
+              "count": 124
             },
             {
               "word": "team",
@@ -2005,7 +2013,7 @@
               "category": "trading",
               "label": "Trading",
               "count": 469,
-              "pctOfTotal": 25.7,
+              "pctOfTotal": 25.6,
               "avgRating": 2.79,
               "sentimentBuckets": {
                 "positive": 207,
@@ -2096,18 +2104,18 @@
             {
               "category": "other",
               "label": "Other",
-              "count": 1242,
+              "count": 1244,
               "pctOfTotal": 68,
               "avgRating": 3.89,
               "sentimentBuckets": {
-                "positive": 897,
+                "positive": 898,
                 "neutral": 42,
-                "negative": 303
+                "negative": 304
               },
               "topKeywords": [
                 {
                   "word": "good",
-                  "count": 548
+                  "count": 549
                 },
                 {
                   "word": "app",
@@ -2131,7 +2139,7 @@
                 },
                 {
                   "word": "service",
-                  "count": 113
+                  "count": 114
                 },
                 {
                   "word": "best",
@@ -3361,16 +3369,16 @@
               "key": "play:1.8.32",
               "platform": "play",
               "version": "1.8.32",
-              "count": 10,
-              "avgRating": 3.5,
+              "count": 11,
+              "avgRating": 3.27,
               "sentimentBuckets": {
                 "positive": 6,
                 "neutral": 0,
-                "negative": 4
+                "negative": 5
               },
               "firstSeen": "2025-10-17T07:08:25.436Z",
-              "lastSeen": "2025-11-11T18:54:26.978Z",
-              "deltaVsPrevious": -1.07,
+              "lastSeen": "2026-11-17T11:02:06.677Z",
+              "deltaVsPrevious": -1.3,
               "isRegression": true
             },
             {
@@ -3498,8 +3506,8 @@
               },
               "firstSeen": "2026-01-02T09:19:54.548Z",
               "lastSeen": "2026-01-10T07:31:28.278Z",
-              "deltaVsPrevious": -0.5,
-              "isRegression": true
+              "deltaVsPrevious": -0.27,
+              "isRegression": false
             },
             {
               "key": "play:1.8.54",
@@ -3905,15 +3913,15 @@
               "key": "play:1.9.18",
               "platform": "play",
               "version": "1.9.18",
-              "count": 2,
-              "avgRating": 1.5,
+              "count": 3,
+              "avgRating": 2.67,
               "sentimentBuckets": {
-                "positive": 0,
+                "positive": 1,
                 "neutral": 0,
                 "negative": 2
               },
               "firstSeen": "2026-11-13T03:16:13.185Z",
-              "lastSeen": "2026-11-14T06:16:15.843Z",
+              "lastSeen": "2026-11-17T08:42:11.300Z",
               "deltaVsPrevious": null,
               "isRegression": false
             }
@@ -4234,9 +4242,9 @@
               },
               {
                 "period": "2026-11",
-                "count": 1,
-                "avgRating": 2,
-                "positive": 0,
+                "count": 2,
+                "avgRating": 3.5,
+                "positive": 1,
                 "neutral": 0,
                 "negative": 1
               }
@@ -6305,10 +6313,46 @@
                 "positive": 0,
                 "neutral": 0,
                 "negative": 1
+              },
+              {
+                "period": "2026-11",
+                "count": 1,
+                "avgRating": 1,
+                "positive": 0,
+                "neutral": 0,
+                "negative": 1
               }
             ]
           },
           "recentReviews": [
+            {
+              "id": "7c24d7a2-9f2f-4a63-90ec-76bd4f4d6f96",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 1,
+              "title": null,
+              "text": "Big loss",
+              "date": "2026-11-17T11:02:06.677Z",
+              "version": "1.8.32",
+              "userName": "Akshay Pathe",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=7c24d7a2-9f2f-4a63-90ec-76bd4f4d6f96",
+              "category": "other"
+            },
+            {
+              "id": "e3c03320-74c4-455e-9f93-d51600728b92",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 5,
+              "title": null,
+              "text": "Provides good service , reliable advice for reading.",
+              "date": "2026-11-17T08:42:11.300Z",
+              "version": "1.9.18",
+              "userName": "Shabbir Hussain",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e3c03320-74c4-455e-9f93-d51600728b92",
+              "category": "other"
+            },
             {
               "id": "47d473ec-6960-4caa-b21f-49288eeb5fb6",
               "platform": "play",
@@ -10480,34 +10524,6 @@
               "thumbsUp": 2,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e20ef701-298a-486d-a854-a404294b52aa",
               "category": "trading"
-            },
-            {
-              "id": "c0bf562e-b1e0-4e53-b070-41cf91e20e70",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 4,
-              "title": null,
-              "text": "ok",
-              "date": "2025-05-19T11:57:40.995Z",
-              "version": "1.7.92",
-              "userName": "Alok JAIN",
-              "thumbsUp": 2,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=c0bf562e-b1e0-4e53-b070-41cf91e20e70",
-              "category": "other"
-            },
-            {
-              "id": "4c5cb84c-84cf-40bc-ac95-8295005f708a",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 1,
-              "title": null,
-              "text": "Not of use, Always saying No Internet connection but all other apps are working fine. Not good for person who are thinking for Investing through swastika",
-              "date": "2025-05-19T07:20:14.836Z",
-              "version": "1.7.92",
-              "userName": "Shreyash Wani",
-              "thumbsUp": 53,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=4c5cb84c-84cf-40bc-ac95-8295005f708a",
-              "category": "investment"
             }
           ]
         },
@@ -14133,20 +14149,20 @@
       ],
       "combined": {
         "platform": "combined",
-        "totalReviews": 1924,
+        "totalReviews": 1926,
         "avgRating": 3.61,
-        "avgTextSentiment": 0.623,
+        "avgTextSentiment": 0.622,
         "ratingDistribution": {
-          "1": 579,
+          "1": 580,
           "2": 33,
           "3": 57,
           "4": 143,
-          "5": 1112
+          "5": 1113
         },
         "sentimentBuckets": {
-          "positive": 1255,
+          "positive": 1256,
           "neutral": 57,
-          "negative": 612
+          "negative": 613
         },
         "weeklyTrend": [
           {
@@ -15580,6 +15596,14 @@
             "positive": 0,
             "neutral": 0,
             "negative": 2
+          },
+          {
+            "period": "2026-11-16",
+            "count": 2,
+            "avgRating": 3,
+            "positive": 1,
+            "neutral": 0,
+            "negative": 1
           }
         ],
         "flags": [
@@ -15872,7 +15896,7 @@
         "topKeywords": [
           {
             "word": "good",
-            "count": 803
+            "count": 804
           },
           {
             "word": "app",
@@ -15900,7 +15924,7 @@
           },
           {
             "word": "service",
-            "count": 213
+            "count": 214
           },
           {
             "word": "best",
@@ -15944,7 +15968,7 @@
           },
           {
             "word": "loss",
-            "count": 130
+            "count": 131
           },
           {
             "word": "charges",
@@ -15990,7 +16014,7 @@
           },
           {
             "word": "loss",
-            "count": 119
+            "count": 120
           },
           {
             "word": "brokerage",
@@ -16056,7 +16080,7 @@
         "topPraiseKeywords": [
           {
             "word": "good",
-            "count": 744
+            "count": 745
           },
           {
             "word": "app",
@@ -16088,7 +16112,7 @@
           },
           {
             "word": "service",
-            "count": 143
+            "count": 144
           },
           {
             "word": "easy",
@@ -16140,7 +16164,7 @@
             "category": "trading",
             "label": "Trading",
             "count": 509,
-            "pctOfTotal": 26.5,
+            "pctOfTotal": 26.4,
             "avgRating": 2.84,
             "sentimentBuckets": {
               "positive": 233,
@@ -16231,18 +16255,18 @@
           {
             "category": "other",
             "label": "Other",
-            "count": 1288,
-            "pctOfTotal": 66.9,
+            "count": 1290,
+            "pctOfTotal": 67,
             "avgRating": 3.89,
             "sentimentBuckets": {
-              "positive": 930,
+              "positive": 931,
               "neutral": 43,
-              "negative": 315
+              "negative": 316
             },
             "topKeywords": [
               {
                 "word": "good",
-                "count": 583
+                "count": 584
               },
               {
                 "word": "app",
@@ -16262,7 +16286,7 @@
               },
               {
                 "word": "service",
-                "count": 128
+                "count": 129
               },
               {
                 "word": "application",
@@ -17992,16 +18016,16 @@
             "key": "play:1.8.32",
             "platform": "play",
             "version": "1.8.32",
-            "count": 10,
-            "avgRating": 3.5,
+            "count": 11,
+            "avgRating": 3.27,
             "sentimentBuckets": {
               "positive": 6,
               "neutral": 0,
-              "negative": 4
+              "negative": 5
             },
             "firstSeen": "2025-10-17T07:08:25.436Z",
-            "lastSeen": "2025-11-11T18:54:26.978Z",
-            "deltaVsPrevious": -1.07,
+            "lastSeen": "2026-11-17T11:02:06.677Z",
+            "deltaVsPrevious": -1.3,
             "isRegression": true
           },
           {
@@ -18145,8 +18169,8 @@
             },
             "firstSeen": "2026-01-02T09:19:54.548Z",
             "lastSeen": "2026-01-10T07:31:28.278Z",
-            "deltaVsPrevious": -0.5,
-            "isRegression": true
+            "deltaVsPrevious": -0.27,
+            "isRegression": false
           },
           {
             "key": "play:1.8.54",
@@ -18664,15 +18688,15 @@
             "key": "play:1.9.18",
             "platform": "play",
             "version": "1.9.18",
-            "count": 2,
-            "avgRating": 1.5,
+            "count": 3,
+            "avgRating": 2.67,
             "sentimentBuckets": {
-              "positive": 0,
+              "positive": 1,
               "neutral": 0,
               "negative": 2
             },
             "firstSeen": "2026-11-13T03:16:13.185Z",
-            "lastSeen": "2026-11-14T06:16:15.843Z",
+            "lastSeen": "2026-11-17T08:42:11.300Z",
             "deltaVsPrevious": null,
             "isRegression": false
           }
@@ -19009,9 +19033,9 @@
             },
             {
               "period": "2026-11",
-              "count": 1,
-              "avgRating": 2,
-              "positive": 0,
+              "count": 2,
+              "avgRating": 3.5,
+              "positive": 1,
               "neutral": 0,
               "negative": 1
             }
@@ -21208,10 +21232,46 @@
               "positive": 0,
               "neutral": 0,
               "negative": 1
+            },
+            {
+              "period": "2026-11",
+              "count": 1,
+              "avgRating": 1,
+              "positive": 0,
+              "neutral": 0,
+              "negative": 1
             }
           ]
         },
         "recentReviews": [
+          {
+            "id": "7c24d7a2-9f2f-4a63-90ec-76bd4f4d6f96",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 1,
+            "title": null,
+            "text": "Big loss",
+            "date": "2026-11-17T11:02:06.677Z",
+            "version": "1.8.32",
+            "userName": "Akshay Pathe",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=7c24d7a2-9f2f-4a63-90ec-76bd4f4d6f96",
+            "category": "other"
+          },
+          {
+            "id": "e3c03320-74c4-455e-9f93-d51600728b92",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 5,
+            "title": null,
+            "text": "Provides good service , reliable advice for reading.",
+            "date": "2026-11-17T08:42:11.300Z",
+            "version": "1.9.18",
+            "userName": "Shabbir Hussain",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=e3c03320-74c4-455e-9f93-d51600728b92",
+            "category": "other"
+          },
           {
             "id": "47d473ec-6960-4caa-b21f-49288eeb5fb6",
             "platform": "play",
@@ -25382,34 +25442,6 @@
             "userName": "Gautam Makwana",
             "thumbsUp": 0,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=7025d096-eed2-4f07-9160-47e9530533e3",
-            "category": "other"
-          },
-          {
-            "id": "6c9e47ed-97b3-4b01-96bf-ab08e24d3d0a",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 1,
-            "title": null,
-            "text": "Lost 90% of my capital trading through Swastika’s advisory. Their so-called 'experts' aren't accurate, and the app is painfully slow. On top of that, their charges are sky-high. Don’t fall for their false promises — you can get the same kind of random trade tips for free on any Telegram group.",
-            "date": "2025-06-05T07:51:46.456Z",
-            "version": "1.7.95",
-            "userName": "Rupesh Gote",
-            "thumbsUp": 13,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=6c9e47ed-97b3-4b01-96bf-ab08e24d3d0a",
-            "category": "trading"
-          },
-          {
-            "id": "b630a914-fd53-441b-8816-eab66b72ef79",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 3,
-            "title": null,
-            "text": "जल्दी चार्ट ओपन नही होता है",
-            "date": "2025-06-04T16:32:39.167Z",
-            "version": "1.7.95",
-            "userName": "Shivaji Surawase",
-            "thumbsUp": 1,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=b630a914-fd53-441b-8816-eab66b72ef79",
             "category": "other"
           }
         ]
