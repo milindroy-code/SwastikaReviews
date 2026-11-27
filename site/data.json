@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T09:01:53.736Z",
+  "generatedAt": "2026-11-27T09:17:55.345Z",
   "llmEnabled": false,
   "apps": [
     {
@@ -16,7 +16,7 @@
       "platforms": [
         {
           "platform": "play",
-          "totalReviews": 1830,
+          "totalReviews": 1831,
           "avgRating": 3.6,
           "avgTextSentiment": 0.641,
           "ratingDistribution": {
@@ -24,10 +24,10 @@
             "2": 32,
             "3": 56,
             "4": 131,
-            "5": 1056
+            "5": 1057
           },
           "sentimentBuckets": {
-            "positive": 1187,
+            "positive": 1188,
             "neutral": 56,
             "negative": 587
           },
@@ -1426,9 +1426,9 @@
             },
             {
               "period": "2026-11-23",
-              "count": 1,
+              "count": 2,
               "avgRating": 5,
-              "positive": 1,
+              "positive": 2,
               "neutral": 0,
               "negative": 0
             }
@@ -1765,7 +1765,7 @@
             },
             {
               "word": "trading",
-              "count": 226
+              "count": 228
             },
             {
               "word": "support",
@@ -1773,7 +1773,7 @@
             },
             {
               "word": "hai",
-              "count": 219
+              "count": 220
             },
             {
               "word": "application",
@@ -1809,7 +1809,7 @@
             },
             {
               "word": "experience",
-              "count": 135
+              "count": 136
             },
             {
               "word": "easy",
@@ -1953,7 +1953,7 @@
             },
             {
               "word": "trading",
-              "count": 167
+              "count": 169
             },
             {
               "word": "nice",
@@ -1992,12 +1992,12 @@
               "count": 80
             },
             {
-              "word": "friendly",
+              "word": "experience",
               "count": 70
             },
             {
-              "word": "experience",
-              "count": 69
+              "word": "friendly",
+              "count": 70
             },
             {
               "word": "user",
@@ -2020,11 +2020,11 @@
             {
               "category": "trading",
               "label": "Trading",
-              "count": 469,
-              "pctOfTotal": 25.6,
-              "avgRating": 2.79,
+              "count": 470,
+              "pctOfTotal": 25.7,
+              "avgRating": 2.8,
               "sentimentBuckets": {
-                "positive": 207,
+                "positive": 208,
                 "neutral": 13,
                 "negative": 249
               },
@@ -2035,7 +2035,7 @@
                 },
                 {
                   "word": "trading",
-                  "count": 204
+                  "count": 206
                 },
                 {
                   "word": "good",
@@ -2047,7 +2047,7 @@
                 },
                 {
                   "word": "hai",
-                  "count": 125
+                  "count": 126
                 },
                 {
                   "word": "brokerage",
@@ -3937,15 +3937,15 @@
               "key": "play:1.9.20",
               "platform": "play",
               "version": "1.9.20",
-              "count": 1,
+              "count": 2,
               "avgRating": 5,
               "sentimentBuckets": {
-                "positive": 1,
+                "positive": 2,
                 "neutral": 0,
                 "negative": 0
               },
               "firstSeen": "2026-11-23T08:09:29.458Z",
-              "lastSeen": "2026-11-23T08:09:29.458Z",
+              "lastSeen": "2026-11-26T07:27:54.332Z",
               "deltaVsPrevious": null,
               "isRegression": false
             }
@@ -5234,9 +5234,9 @@
               },
               {
                 "period": "2026-11",
-                "count": 1,
-                "avgRating": 2,
-                "positive": 0,
+                "count": 2,
+                "avgRating": 3.5,
+                "positive": 1,
                 "neutral": 0,
                 "negative": 1
               }
@@ -6349,6 +6349,20 @@
             ]
           },
           "recentReviews": [
+            {
+              "id": "d22f9c63-41f9-460a-96f8-f76e2e0e5136",
+              "platform": "play",
+              "appName": "Swastika Stocks & Investments",
+              "rating": 5,
+              "title": null,
+              "text": "Main regularly intraday trading karta hoon. Scalper ke features aur quick order placement se mera trading experience better hua hai",
+              "date": "2026-11-26T07:27:54.332Z",
+              "version": "1.9.20",
+              "userName": "Iqbal Kasar",
+              "thumbsUp": 0,
+              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=d22f9c63-41f9-460a-96f8-f76e2e0e5136",
+              "category": "trading"
+            },
             {
               "id": "9c854236-effd-4486-b252-d40866f9e6a0",
               "platform": "play",
@@ -10534,20 +10548,6 @@
               "thumbsUp": 0,
               "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=397d8ff4-5132-4212-b342-43273a3ec187",
               "category": "other"
-            },
-            {
-              "id": "4cee1497-b889-46e9-ba6d-c701e4e5c2a2",
-              "platform": "play",
-              "appName": "Swastika Stocks & Investments",
-              "rating": 5,
-              "title": null,
-              "text": "good",
-              "date": "2025-05-22T06:34:25.188Z",
-              "version": "1.7.92",
-              "userName": "MAHAVIR SINGH",
-              "thumbsUp": 0,
-              "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=4cee1497-b889-46e9-ba6d-c701e4e5c2a2",
-              "category": "other"
             }
           ]
         },
@@ -14173,7 +14173,7 @@
       ],
       "combined": {
         "platform": "combined",
-        "totalReviews": 1927,
+        "totalReviews": 1928,
         "avgRating": 3.61,
         "avgTextSentiment": 0.622,
         "ratingDistribution": {
@@ -14181,10 +14181,10 @@
           "2": 33,
           "3": 57,
           "4": 143,
-          "5": 1114
+          "5": 1115
         },
         "sentimentBuckets": {
-          "positive": 1257,
+          "positive": 1258,
           "neutral": 57,
           "negative": 613
         },
@@ -15631,9 +15631,9 @@
           },
           {
             "period": "2026-11-23",
-            "count": 1,
+            "count": 2,
             "avgRating": 5,
-            "positive": 1,
+            "positive": 2,
             "neutral": 0,
             "negative": 0
           }
@@ -15944,11 +15944,11 @@
           },
           {
             "word": "trading",
-            "count": 248
+            "count": 250
           },
           {
             "word": "hai",
-            "count": 225
+            "count": 226
           },
           {
             "word": "application",
@@ -15980,7 +15980,7 @@
           },
           {
             "word": "experience",
-            "count": 150
+            "count": 151
           },
           {
             "word": "team",
@@ -16128,7 +16128,7 @@
           },
           {
             "word": "trading",
-            "count": 185
+            "count": 187
           },
           {
             "word": "best",
@@ -16168,7 +16168,7 @@
           },
           {
             "word": "experience",
-            "count": 82
+            "count": 83
           },
           {
             "word": "friendly",
@@ -16195,11 +16195,11 @@
           {
             "category": "trading",
             "label": "Trading",
-            "count": 509,
-            "pctOfTotal": 26.4,
-            "avgRating": 2.84,
+            "count": 510,
+            "pctOfTotal": 26.5,
+            "avgRating": 2.85,
             "sentimentBuckets": {
-              "positive": 233,
+              "positive": 234,
               "neutral": 13,
               "negative": 263
             },
@@ -16210,7 +16210,7 @@
               },
               {
                 "word": "trading",
-                "count": 226
+                "count": 228
               },
               {
                 "word": "good",
@@ -16226,7 +16226,7 @@
               },
               {
                 "word": "hai",
-                "count": 127
+                "count": 128
               },
               {
                 "word": "swastika",
@@ -18736,15 +18736,15 @@
             "key": "play:1.9.20",
             "platform": "play",
             "version": "1.9.20",
-            "count": 1,
+            "count": 2,
             "avgRating": 5,
             "sentimentBuckets": {
-              "positive": 1,
+              "positive": 2,
               "neutral": 0,
               "negative": 0
             },
             "firstSeen": "2026-11-23T08:09:29.458Z",
-            "lastSeen": "2026-11-23T08:09:29.458Z",
+            "lastSeen": "2026-11-26T07:27:54.332Z",
             "deltaVsPrevious": null,
             "isRegression": false
           }
@@ -20097,9 +20097,9 @@
             },
             {
               "period": "2026-11",
-              "count": 1,
-              "avgRating": 2,
-              "positive": 0,
+              "count": 2,
+              "avgRating": 3.5,
+              "positive": 1,
               "neutral": 0,
               "negative": 1
             }
@@ -21292,6 +21292,20 @@
           ]
         },
         "recentReviews": [
+          {
+            "id": "d22f9c63-41f9-460a-96f8-f76e2e0e5136",
+            "platform": "play",
+            "appName": "Swastika Stocks & Investments",
+            "rating": 5,
+            "title": null,
+            "text": "Main regularly intraday trading karta hoon. Scalper ke features aur quick order placement se mera trading experience better hua hai",
+            "date": "2026-11-26T07:27:54.332Z",
+            "version": "1.9.20",
+            "userName": "Iqbal Kasar",
+            "thumbsUp": 0,
+            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=d22f9c63-41f9-460a-96f8-f76e2e0e5136",
+            "category": "trading"
+          },
           {
             "id": "9c854236-effd-4486-b252-d40866f9e6a0",
             "platform": "play",
@@ -25476,20 +25490,6 @@
             "userName": "Vikas Vaishanav",
             "thumbsUp": 1,
             "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=be2e254e-7572-494f-904b-35e17e549cb5",
-            "category": "other"
-          },
-          {
-            "id": "14cc88ec-8687-428d-897c-5b6b56673e2f",
-            "platform": "play",
-            "appName": "Swastika Stocks & Investments",
-            "rating": 1,
-            "title": null,
-            "text": "शेयर मार्केट में डिमैट अकाउंट खोलने के जितने भी ब्रोकर है उसमें सबसे घटिया ब्रोकर यही है दुश्मन को भी डिमैट अकाउंट इसमें खुलवाने के लिए मत कहना । चोरों की दुकान है ।ऊपर की टीम में सब चोर ही चोर बैठे हैं। आपके डिमैट अकाउंट के बैलेंस को दीमक की तरह चोरते रहेंगे और आपको पता भी नहीं चलेगा । सेबी को इस तरह के ब्रोकर पर सख्त से सख्त कार्रवाई करना चाहिए । 100 में से यदि जीरो नंबर भी दे तो बहुत ज्यादा है ।",
-            "date": "2025-06-06T06:27:31.131Z",
-            "version": null,
-            "userName": "Rajesh Mahajan",
-            "thumbsUp": 1,
-            "url": "https://play.google.com/store/apps/details?id=swastika.tradingo.justrade&reviewId=14cc88ec-8687-428d-897c-5b6b56673e2f",
             "category": "other"
           }
         ]
